@@ -1,0 +1,821 @@
+{
+    "@@locale": "ar",
+    "appTitle": "مدير السيرة الذاتية بالذكاء الاصطناعي",
+    "@appTitle": {
+        "description": "The title of the application"
+    },
+    "welcomeBack": "مرحباً بعودتك",
+    "@welcomeBack": {
+        "description": "Welcome message on home screen"
+    },
+    "availableCredits": "الرصيد المتاح",
+    "@availableCredits": {
+        "description": "Label for credits balance"
+    },
+    "tapToViewHistory": "انقر لعرض السجل",
+    "@tapToViewHistory": {
+        "description": "Hint text for credits card"
+    },
+    "proPlan": "الخطة المجانية",
+    "@proPlan": {
+        "description": "Plan name label"
+    },
+    "quickActions": "إجراءات سريعة",
+    "@quickActions": {
+        "description": "Section title for quick actions"
+    },
+    "generateCV": "إنشاء سيرة ذاتية",
+    "@generateCV": {
+        "description": "Generate CV action"
+    },
+    "createFromScratch": "إنشاء من البداية",
+    "@createFromScratch": {
+        "description": "Generate CV description"
+    },
+    "optimizeCV": "تحسين السيرة الذاتية",
+    "@optimizeCV": {
+        "description": "Optimize CV action"
+    },
+    "improveExisting": "تحسين السيرة الموجودة",
+    "@improveExisting": {
+        "description": "Optimize CV description"
+    },
+    "tailorCV": "تخصيص السيرة الذاتية",
+    "@tailorCV": {
+        "description": "Tailor CV action"
+    },
+    "matchJobDesc": "مطابقة مع الوصف الوظيفي",
+    "@matchJobDesc": {
+        "description": "Tailor CV description"
+    },
+    "coverLetter": "خطاب التغطية",
+    "@coverLetter": {
+        "description": "Cover letter action"
+    },
+    "writePerfectly": "كتابة مثالية",
+    "@writePerfectly": {
+        "description": "Cover letter description"
+    },
+    "recentCVs": "السير الذاتية الأخيرة",
+    "@recentCVs": {
+        "description": "Recent CVs section title"
+    },
+    "viewAll": "عرض الكل",
+    "@viewAll": {
+        "description": "View all button text"
+    },
+    "noCVsYet": "لم يتم إنشاء سير ذاتية بعد.",
+    "@noCVsYet": {
+        "description": "Empty state message for CVs"
+    },
+    "created": "تاريخ الإنشاء",
+    "@created": {
+        "description": "Created date label"
+    },
+    "errorLoadingCVs": "خطأ في تحميل السير الذاتية: {error}",
+    "@errorLoadingCVs": {
+        "description": "Error message for loading CVs",
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "login": "تسجيل الدخول",
+    "@login": {
+        "description": "Login button text"
+    },
+    "signUp": "إنشاء حساب",
+    "@signUp": {
+        "description": "Sign up button text"
+    },
+    "logout": "تسجيل الخروج",
+    "@logout": {
+        "description": "Logout button text"
+    },
+    "email": "البريد الإلكتروني",
+    "@email": {
+        "description": "Email label"
+    },
+    "password": "كلمة المرور",
+    "@password": {
+        "description": "Password label"
+    },
+    "firstName": "الاسم الأول",
+    "@firstName": {
+        "description": "First name label"
+    },
+    "lastName": "اسم العائلة",
+    "@lastName": {
+        "description": "Last name label"
+    },
+    "phone": "الهاتف",
+    "@phone": {
+        "description": "Phone label"
+    },
+    "address": "العنوان",
+    "@address": {
+        "description": "Address label"
+    },
+    "save": "حفظ",
+    "@save": {
+        "description": "Save button text"
+    },
+    "cancel": "إلغاء",
+    "@cancel": {
+        "description": "Cancel button text"
+    },
+    "skip": "تخطي",
+    "languageEnglish": "الإنجليزية",
+    "@languageEnglish": {
+        "description": "English language name"
+    },
+    "languageSpanish": "الإسبانية",
+    "@languageSpanish": {
+        "description": "Spanish language name"
+    },
+    "languageFrench": "الفرنسية",
+    "@languageFrench": {
+        "description": "French language name"
+    },
+    "languageArabic": "العربية",
+    "@languageArabic": {
+        "description": "Arabic language name"
+    },
+    "languageDutch": "الهولندية",
+    "@languageDutch": {
+        "description": "Dutch language name"
+    },
+    "languageGerman": "الألمانية",
+    "@languageGerman": {
+        "description": "German language name"
+    },
+    "languageRussian": "الروسية",
+    "@languageRussian": {
+        "description": "Russian language name"
+    },
+    "error": "خطأ",
+    "@error": {
+        "description": "Error label"
+    },
+    "dontHaveAccount": "ليس لديك حساب؟ سجل الآن",
+    "@dontHaveAccount": {
+        "description": "Don't have account text"
+    },
+    "pleaseEnterEmail": "الرجاء إدخال بريدك الإلكتروني",
+    "@pleaseEnterEmail": {
+        "description": "Email validation message"
+    },
+    "pleaseEnterPassword": "الرجاء إدخال كلمة المرور",
+    "@pleaseEnterPassword": {
+        "description": "Password validation message"
+    },
+    "createYourCV": "إنشاء سيرتك الذاتية",
+    "@createYourCV": {
+        "description": "Create CV screen title"
+    },
+    "generateCVDescription": "أدخل المسمى الوظيفي المستهدف وسنقوم بإنشاء سيرة ذاتية احترافية بناءً على ملفك الشخصي.",
+    "@generateCVDescription": {
+        "description": "Generate CV screen description"
+    },
+    "targetJobTitle": "المسمى الوظيفي المستهدف",
+    "@targetJobTitle": {
+        "description": "Target job title label"
+    },
+    "jobTitleHint": "مثال: مطور Flutter كبير",
+    "@jobTitleHint": {
+        "description": "Job title hint text"
+    },
+    "targetLanguage": "اللغة المستهدفة",
+    "@targetLanguage": {
+        "description": "Target language label"
+    },
+    "generateCVButton": "إنشاء سيرة ذاتية (1 رصيد)",
+    "@generateCVButton": {
+        "description": "Generate CV button text"
+    },
+    "required": "مطلوب",
+    "@required": {
+        "description": "Required field validation"
+    },
+    "errorLoadingProfile": "خطأ في تحميل الملف الشخصي",
+    "@errorLoadingProfile": {
+        "description": "Error loading profile message"
+    },
+    "optimizeCVDescription": "قم بتحميل سيرتك الذاتية الحالية أو الصق المحتوى أدناه ليقوم الذكاء الاصطناعي بتحسينها لتحقيق تأثير أكبر.",
+    "@optimizeCVDescription": {
+        "description": "Optimize CV screen description"
+    },
+    "or": "أو",
+    "@or": {
+        "description": "Or separator"
+    },
+    "pasteCVContentHere": "الصق محتوى سيرتك الذاتية هنا...",
+    "@pasteCVContentHere": {
+        "description": "Paste CV content hint"
+    },
+    "optimizeMyCVButton": "تحسين سيرتي الذاتية (1 رصيد)",
+    "@optimizeMyCVButton": {
+        "description": "Optimize CV button text"
+    },
+    "selectPDForTXT": "اختر ملف PDF أو TXT",
+    "@selectPDForTXT": {
+        "description": "Select file button text"
+    },
+    "textExtractedSuccessfully": "تم استخراج النص بنجاح",
+    "@textExtractedSuccessfully": {
+        "description": "Text extraction success message"
+    },
+    "changeFile": "تغيير الملف",
+    "@changeFile": {
+        "description": "Change file button text"
+    },
+    "browseFiles": "استعرض الملفات",
+    "@browseFiles": {
+        "description": "Browse files button text"
+    },
+    "extractingTextFromFile": "جاري استخراج النص من الملف...",
+    "@extractingTextFromFile": {
+        "description": "Text extraction loading message"
+    },
+    "optimizingYourCV": "جاري تحسين سيرتك الذاتية...",
+    "@optimizingYourCV": {
+        "description": "Optimizing CV loading message"
+    },
+    "thisMayTakeAMoment": "قد يستغرق هذا بعض الوقت",
+    "@thisMayTakeAMoment": {
+        "description": "Loading sub-message"
+    },
+    "provideCVContent": "الرجاء تقديم محتوى السيرة الذاتية",
+    "@provideCVContent": {
+        "description": "Provide CV content validation"
+    },
+    "successfullyExtractedText": "تم استخراج النص بنجاح من {fileName}",
+    "@successfullyExtractedText": {
+        "description": "Text extraction success with filename",
+        "placeholders": {
+            "fileName": {
+                "type": "String"
+            }
+        }
+    },
+    "tailorCVDescription": "خصص سيرتك الذاتية لتناسب وصف وظيفة محدد. اختر سيرة ذاتية موجودة، أو حمل ملفاً، أو الصق المحتوى.",
+    "@tailorCVDescription": {
+        "description": "Tailor CV screen description"
+    },
+    "selectFromLibrary": "اختر من المكتبة (اختياري)",
+    "@selectFromLibrary": {
+        "description": "Select from library label"
+    },
+    "selectCVToTailor": "اختر سيرة ذاتية لتخصيصها",
+    "@selectCVToTailor": {
+        "description": "Select CV to tailor hint"
+    },
+    "noneUploadOrPaste": "لا شيء (تحميل أو لصق)",
+    "@noneUploadOrPaste": {
+        "description": "None option for CV selection"
+    },
+    "orPasteCVContent": "أو الصق محتوى السيرة الذاتية",
+    "@orPasteCVContent": {
+        "description": "Paste CV content label"
+    },
+    "jobDescription": "الوصف الوظيفي",
+    "@jobDescription": {
+        "description": "Job description label"
+    },
+    "pasteJobDescriptionHere": "الصق وصف الوظيفة هنا...",
+    "@pasteJobDescriptionHere": {
+        "description": "Paste job description hint"
+    },
+    "tailorMyCVButton": "تخصيص سيرتي الذاتية (1 رصيد)",
+    "@tailorMyCVButton": {
+        "description": "Tailor CV button text"
+    },
+    "tailoringYourCV": "جاري تخصيص سيرتك الذاتية...",
+    "@tailoringYourCV": {
+        "description": "Tailoring CV loading message"
+    },
+    "matchingSkillsToJobDesc": "مطابقة المهارات مع الوصف الوظيفي",
+    "@matchingSkillsToJobDesc": {
+        "description": "Tailoring CV sub-message"
+    },
+    "provideCVContentUploadPasteOrSelect": "الرجاء تقديم محتوى السيرة الذاتية (تحميل، لصق، أو اختيار)",
+    "@provideCVContentUploadPasteOrSelect": {
+        "description": "Provide CV content validation"
+    },
+    "provideJobDescription": "الرجاء تقديم وصف وظيفي",
+    "@provideJobDescription": {
+        "description": "Provide job description validation"
+    },
+    "createAccount": "إنشاء حساب",
+    "@createAccount": {
+        "description": "Create account screen title"
+    },
+    "confirmPassword": "تأكيد كلمة المرور",
+    "@confirmPassword": {
+        "description": "Confirm password label"
+    },
+    "passwordMustBe6Chars": "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
+    "@passwordMustBe6Chars": {
+        "description": "Password length validation"
+    },
+    "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
+    "@passwordsDoNotMatch": {
+        "description": "Password match validation"
+    },
+    "accountCreatedCompleteProfile": "تم إنشاء الحساب! الرجاء إكمال ملفك الشخصي.",
+    "@accountCreatedCompleteProfile": {
+        "description": "Account created success message"
+    },
+    "completeProfile": "أكمل ملفك الشخصي",
+    "@completeProfile": {
+        "description": "Complete profile screen title"
+    },
+    "profileCompletionDescription": "الرجاء ملء بياناتك للمتابعة. سيتم استخدامها لسيرك الذاتية.",
+    "@profileCompletionDescription": {
+        "description": "Complete profile description"
+    },
+    "saveAndContinue": "حفظ والمتابعة",
+    "@saveAndContinue": {
+        "description": "Save and continue button text"
+    },
+    "editCV": "تعديل السيرة الذاتية",
+    "@editCV": {
+        "description": "Edit CV button text"
+    },
+    "downloadPDF": "تحميل PDF",
+    "@downloadPDF": {
+        "description": "Download PDF button text"
+    },
+    "personalInfo": "المعلومات الشخصية",
+    "@personalInfo": {
+        "description": "Personal info section title"
+    },
+    "professionalSummary": "ملخص احترافي",
+    "@professionalSummary": {
+        "description": "Professional summary section title"
+    },
+    "professionalSummaryHint": "اكتب ملخصاً مختصراً عن خلفيتك المهنية...",
+    "@professionalSummaryHint": {
+        "description": "Hint for professional summary"
+    },
+    "skillsLabel": "المهارات",
+    "@skillsLabel": {
+        "description": "Skills section title"
+    },
+    "skillsHint": "Flutter, Dart, Firebase, Git...",
+    "@skillsHint": {
+        "description": "Hint for skills input"
+    },
+    "languagesLabel": "اللغات",
+    "@languagesLabel": {
+        "description": "Languages section title"
+    },
+    "languagesHint": "الإنجليزية، الإسبانية، الفرنسية...",
+    "@languagesHint": {
+        "description": "Hint for languages input"
+    },
+    "experience": "الخبرة",
+    "@experience": {
+        "description": "Experience section title"
+    },
+    "education": "التعليم",
+    "@education": {
+        "description": "Education section title"
+    },
+    "noItemsAdded": "لم يتم إضافة {item} بعد.",
+    "@noItemsAdded": {
+        "description": "Generic empty list message",
+        "placeholders": {
+            "item": {
+                "type": "String"
+            }
+        }
+    },
+    "addExperience": "إضافة خبرة",
+    "@addExperience": {
+        "description": "Add experience dialog title"
+    },
+    "editExperience": "تعديل الخبرة",
+    "@editExperience": {
+        "description": "Edit experience dialog title"
+    },
+    "jobTitle": "المسمى الوظيفي",
+    "@jobTitle": {
+        "description": "Job title label"
+    },
+    "company": "الشركة",
+    "@company": {
+        "description": "Company label"
+    },
+    "startDate": "تاريخ البدء",
+    "@startDate": {
+        "description": "Start date label"
+    },
+    "endDate": "تاريخ الانتهاء",
+    "@endDate": {
+        "description": "End date label"
+    },
+    "description": "الوصف",
+    "@description": {
+        "description": "Description label"
+    },
+    "addEducation": "إضافة تعليم",
+    "@addEducation": {
+        "description": "Add education dialog title"
+    },
+    "editEducation": "تعديل التعليم",
+    "@editEducation": {
+        "description": "Edit education dialog title"
+    },
+    "degree": "الشهادة",
+    "@degree": {
+        "description": "Degree label"
+    },
+    "school": "المؤسسة التعليمية",
+    "@school": {
+        "description": "School label"
+    },
+    "generateCoverLetter": "إنشاء خطاب تغطية",
+    "@generateCoverLetter": {
+        "description": "Generate cover letter screen title"
+    },
+    "generatingCoverLetter": "جاري إنشاء خطاب التغطية...",
+    "@generatingCoverLetter": {
+        "description": "Loading message for cover letter"
+    },
+    "craftingCoverLetter": "جاري كتابة خطاب احترافي لك",
+    "@craftingCoverLetter": {
+        "description": "Loading sub-message for cover letter"
+    },
+    "coverLetterDescription": "أنشئ خطاب تغطية مخصص في ثوانٍ. املأ التفاصيل أدناه.",
+    "@coverLetterDescription": {
+        "description": "Description for cover letter screen"
+    },
+    "selectCVOptional": "اختر سيرة ذاتية (اختياري)",
+    "@selectCVOptional": {
+        "description": "Select CV label"
+    },
+    "selectCVToTailorFrom": "اختر سيرة ذاتية للتخصيص منها",
+    "@selectCVToTailorFrom": {
+        "description": "Select CV hint"
+    },
+    "noneUseProfileData": "لا شيء (استخدام بيانات الملف الشخصي)",
+    "@noneUseProfileData": {
+        "description": "None option for CV selection"
+    },
+    "companyName": "اسم الشركة",
+    "@companyName": {
+        "description": "Company name label"
+    },
+    "pleaseEnterCompanyName": "الرجاء إدخال اسم الشركة",
+    "@pleaseEnterCompanyName": {
+        "description": "Company name validation"
+    },
+    "jobDescriptionOptional": "الوصف الوظيفي (اختياري)",
+    "@jobDescriptionOptional": {
+        "description": "Job description optional label"
+    },
+    "jobDescriptionHint": "الصق وصف الوظيفة هنا لتخصيص أفضل",
+    "@jobDescriptionHint": {
+        "description": "Job description hint"
+    },
+    "generateCoverLetterButton": "إنشاء خطاب تغطية (1 رصيد)",
+    "@generateCoverLetterButton": {
+        "description": "Generate cover letter button text"
+    },
+    "pleaseEnterJobTitle": "الرجاء إدخال مسمى وظيفي",
+    "@pleaseEnterJobTitle": {
+        "description": "Job title validation"
+    },
+    "coverLetterPreview": "معاينة خطاب التغطية",
+    "@coverLetterPreview": {
+        "description": "Cover letter preview screen title"
+    },
+    "creditHistory": "سجل الرصيد",
+    "@creditHistory": {
+        "description": "Credit history screen title"
+    },
+    "nextReset": "إعادة التعيين التالية: {date}",
+    "@nextReset": {
+        "description": "Next credit reset date",
+        "placeholders": {
+            "date": {
+                "type": "String"
+            }
+        }
+    },
+    "transactionHistory": "سجل المعاملات",
+    "@transactionHistory": {
+        "description": "Transaction history section title"
+    },
+    "noTransactionsYet": "لا توجد معاملات حتى الآن",
+    "@noTransactionsYet": {
+        "description": "Empty transaction history message"
+    },
+    "next": "التالي",
+    "@next": {
+        "description": "Next button text"
+    },
+    "letsGetStarted": "لنبدأ",
+    "@letsGetStarted": {
+        "description": "Final onboarding button text"
+    },
+    "featureTitle1": "إنشاء السيرة الذاتية بالذكاء الاصطناعي",
+    "@featureTitle1": {
+        "description": "First feature title"
+    },
+    "featureDesc1": "أنشئ سير ذاتية احترافية تتوافق مع أنظمة تتبع مقدمي الطلبات في ثوانٍ باستخدام تقنية الذكاء الاصطناعي المتقدمة",
+    "@featureDesc1": {
+        "description": "First feature description"
+    },
+    "featureTitle2": "تحسين ذكي",
+    "@featureTitle2": {
+        "description": "Second feature title"
+    },
+    "featureDesc2": "حسن وخصص سيرتك الذاتية لتتطابق تماماً مع الأوصاف الوظيفية المحددة",
+    "@featureDesc2": {
+        "description": "Second feature description"
+    },
+    "featureTitle3": "خطابات تغطية احترافية",
+    "@featureTitle3": {
+        "description": "Third feature title"
+    },
+    "featureDesc3": "أنشئ خطابات تغطية مقنعة ومخصصة على الفور بمساعدة الذكاء الاصطناعي",
+    "@featureDesc3": {
+        "description": "Third feature description"
+    },
+    "featureTitle4": "دعم متعدد اللغات",
+    "@featureTitle4": {
+        "description": "Fourth feature title"
+    },
+    "featureDesc4": "أنشئ سير ذاتية بلغات متعددة مع دعم RTL الصحيح للغة العربية",
+    "@featureDesc4": {
+        "description": "Fourth feature description"
+    },
+    "confirmGeneration": "تأكيد إنشاء السيرة الذاتية",
+    "@confirmGeneration": {
+        "description": "Title for CV generation confirmation dialog"
+    },
+    "confirmGenerationMessage": "سنقوم بإنشاء سيرة ذاتية احترافية بناءً على مسمى وظيفتك وملفك الشخصي. بعد الإنشاء، يمكنك تعديل السيرة الذاتية وتحميلها كملف PDF.",
+    "@confirmGenerationMessage": {
+        "description": "Message explaining CV generation process"
+    },
+    "myFiles": "ملفاتي",
+    "@myFiles": {
+        "description": "My Files navigation label"
+    },
+    "organizeYourDocuments": "نظم وأدر جميع سيرك الذاتية وخطابات التغطية",
+    "@organizeYourDocuments": {
+        "description": "My Files screen description"
+    },
+    "generatedCVs": "السير الذاتية المنشأة",
+    "@generatedCVs": {
+        "description": "Generated CVs section title"
+    },
+    "optimizedCVs": "السير الذاتية المحسنة",
+    "@optimizedCVs": {
+        "description": "Optimized CVs section title"
+    },
+    "tailoredCVs": "السير الذاتية المخصصة",
+    "@tailoredCVs": {
+        "description": "Tailored CVs section title"
+    },
+    "coverLetters": "خطابات التغطية",
+    "@coverLetters": {
+        "description": "Cover Letters section title"
+    },
+    "noGeneratedCVs": "لا توجد سير ذاتية منشأة بعد",
+    "@noGeneratedCVs": {
+        "description": "Empty state message for generated CVs"
+    },
+    "noOptimizedCVs": "لا توجد سير ذاتية محسنة بعد",
+    "@noOptimizedCVs": {
+        "description": "Empty state message for optimized CVs"
+    },
+    "noTailoredCVs": "لا توجد سير ذاتية مخصصة بعد",
+    "@noTailoredCVs": {
+        "description": "Empty state message for tailored CVs"
+    },
+    "noCoverLetters": "لا توجد خطابات تغطية بعد",
+    "@noCoverLetters": {
+        "description": "Empty state message for cover letters"
+    },
+    "item": "عنصر",
+    "@item": {
+        "description": "Singular form of item"
+    },
+    "items": "عناصر",
+    "@items": {
+        "description": "Plural form of items"
+    },
+    "language": "اللغة",
+    "@language": {
+        "description": "Language label"
+    },
+    "confirmDelete": "تأكيد الحذف",
+    "@confirmDelete": {
+        "description": "Delete confirmation dialog title"
+    },
+    "areYouSureDeleteCV": "هل أنت متأكد من رغبتك في حذف هذه السيرة الذاتية؟",
+    "@areYouSureDeleteCV": {
+        "description": "CV delete confirmation message"
+    },
+    "areYouSureDeleteCoverLetter": "هل أنت متأكد من رغبتك في حذف خطاب التغطية هذا؟",
+    "@areYouSureDeleteCoverLetter": {
+        "description": "Cover letter delete confirmation message"
+    },
+    "delete": "حذف",
+    "@delete": {
+        "description": "Delete button text"
+    },
+    "cvDeletedSuccessfully": "تم حذف السيرة الذاتية بنجاح",
+    "@cvDeletedSuccessfully": {
+        "description": "CV delete success message"
+    },
+    "coverLetterDeletedSuccessfully": "تم حذف خطاب التغطية بنجاح",
+    "@coverLetterDeletedSuccessfully": {
+        "description": "Cover letter delete success message"
+    },
+    "view": "عرض",
+    "@view": {
+        "description": "View button text"
+    },
+    "@skip": {
+        "description": "Skip button text"
+    },
+    "getStarted": "ابدأ الآن",
+    "@getStarted": {
+        "description": "Get started button text"
+    },
+    "alreadyHaveAccount": "هل لديك حساب بالفعل؟",
+    "@alreadyHaveAccount": {
+        "description": "Already have account text"
+    },
+    "logIn": "تسجيل الدخول",
+    "@logIn": {
+        "description": "Log in link text"
+    },
+    "aiPoweredResumeCreation": "إنشاء السيرة الذاتية\nبالذكاء الاصطناعي",
+    "@aiPoweredResumeCreation": {
+        "description": "Onboarding title"
+    },
+    "onboardingDescription": "أنشئ سير ذاتية احترافية تتوافق مع أنظمة تتبع مقدمي الطلبات في ثوانٍ باستخدام تقنية الذكاء الاصطناعي المتقدمة.",
+    "@onboardingDescription": {
+        "description": "Onboarding description"
+    },
+    "selectLanguage": "اختر اللغة",
+    "@selectLanguage": {
+        "description": "Select language title"
+    },
+    "myFilesDescription": "عرض جميع المستندات",
+    "@myFilesDescription": {
+        "description": "My Files description"
+    },
+    "profile": "الملف الشخصي",
+    "@profile": {
+        "description": "Profile navigation label"
+    },
+    "profileDescription": "إدارة معلوماتك",
+    "@profileDescription": {
+        "description": "Profile description"
+    },
+    "editProfile": "تعديل الملف الشخصي",
+    "@editProfile": {
+        "description": "Edit profile button text"
+    },
+    "saveChanges": "حفظ التغييرات",
+    "@saveChanges": {
+        "description": "Save changes button text"
+    },
+    "profileUpdatedSuccessfully": "تم تحديث الملف الشخصي بنجاح",
+    "@profileUpdatedSuccessfully": {},
+    "phoneNumber": "رقم الهاتف",
+    "@phoneNumber": {
+        "description": "Phone number label"
+    },
+    "fullName": "الاسم الكامل",
+    "@fullName": {
+        "description": "Full name label"
+    },
+    "viewProfile": "عرض الملف الشخصي",
+    "@viewProfile": {
+        "description": "View profile button text"
+    },
+    "personalInformation": "المعلومات الشخصية",
+    "@personalInformation": {
+        "description": "Personal information section title"
+    },
+    "adminPanel": "لوحة الإدارة",
+    "@adminPanel": {
+        "description": "Admin panel title"
+    },
+    "adminPanelDescription": "إدارة المستخدمين والرصيد",
+    "@adminPanelDescription": {
+        "description": "Admin panel description"
+    },
+    "userManagement": "إدارة المستخدمين",
+    "@userManagement": {
+        "description": "User management title"
+    },
+    "totalUsers": "إجمالي المستخدمين",
+    "@totalUsers": {
+        "description": "Total users label"
+    },
+    "editUser": "تعديل المستخدم",
+    "@editUser": {
+        "description": "Edit user button"
+    },
+    "deleteUser": "حذف المستخدم",
+    "@deleteUser": {
+        "description": "Delete user button"
+    },
+    "adjustCredits": "ضبط الرصيد",
+    "@adjustCredits": {
+        "description": "Adjust credits button"
+    },
+    "creditAmount": "مبلغ الرصيد",
+    "@creditAmount": {
+        "description": "Credit amount label"
+    },
+    "reason": "السبب",
+    "@reason": {
+        "description": "Reason label"
+    },
+    "currentBalance": "الرصيد الحالي",
+    "@currentBalance": {
+        "description": "Current balance label"
+    },
+    "newBalance": "الرصيد الجديد",
+    "@newBalance": {
+        "description": "New balance label"
+    },
+    "userDeletedSuccessfully": "تم حذف المستخدم بنجاح",
+    "@userDeletedSuccessfully": {
+        "description": "User deleted success message"
+    },
+    "userUpdatedSuccessfully": "تم تحديث المستخدم بنجاح",
+    "@userUpdatedSuccessfully": {
+        "description": "User updated success message"
+    },
+    "creditsAdjustedSuccessfully": "تم ضبط الرصيد بنجاح",
+    "@creditsAdjustedSuccessfully": {
+        "description": "Credits adjusted success message"
+    },
+    "confirmDeleteUser": "هل أنت متأكد من رغبتك في حذف هذا المستخدم؟ لا يمكن التراجع عن هذا الإجراء وسيؤدي إلى حذف جميع سيره الذاتية وخطابات التغطية.",
+    "@confirmDeleteUser": {
+        "description": "Confirm delete user message"
+    },
+    "searchUsers": "البحث عن مستخدمين...",
+    "@searchUsers": {
+        "description": "Search users placeholder"
+    },
+    "noUsersFound": "لم يتم العثور على مستخدمين",
+    "@noUsersFound": {
+        "description": "No users found message"
+    },
+    "joinedOn": "انضم في",
+    "@joinedOn": {
+        "description": "Joined on label"
+    },
+    "adminOnly": "للمسؤول فقط",
+    "@adminOnly": {
+        "description": "Admin only badge"
+    },
+    "signInWithGoogle": "تسجيل الدخول باستخدام Google",
+    "@signInWithGoogle": {
+        "description": "Sign in with Google button text"
+    },
+    "certificates": "الشهادات",
+    "@certificates": {
+        "description": "Certificates section title"
+    },
+    "certificate": "شهادة",
+    "@certificate": {
+        "description": "Certificate singular label"
+    },
+    "addCertificate": "إضافة شهادة",
+    "@addCertificate": {
+        "description": "Add certificate button text"
+    },
+    "editCertificate": "تعديل الشهادة",
+    "@editCertificate": {
+        "description": "Edit certificate dialog title"
+    },
+    "certificateName": "اسم الشهادة",
+    "@certificateName": {
+        "description": "Certificate name label"
+    },
+    "issuer": "المُصدر",
+    "@issuer": {
+        "description": "Issuer organization label"
+    },
+    "issueDate": "تاريخ الإصدار",
+    "@issueDate": {
+        "description": "Issue date label"
+    },
+    "noCertificates": "لم يتم إضافة شهادات بعد.",
+    "@noCertificates": {
+        "description": "Empty certificates message"
+    }
+}
