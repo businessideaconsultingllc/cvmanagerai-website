@@ -4,6 +4,10 @@
     "@appTitle": {
         "description": "The title of the application"
     },
+    "home": "الصفحة الرئيسية",
+    "@home": {
+        "description": "Home navigation label"
+    },
     "welcomeBack": "مرحباً بعودتك",
     "@welcomeBack": {
         "description": "Welcome message on home screen"

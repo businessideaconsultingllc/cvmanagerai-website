@@ -13,6 +13,7 @@ import '../../../core/theme/theme_provider.dart';
 import '../../../core/locale/locale_provider.dart';
 import '../../../core/utils/responsive.dart';
 import '../../../core/ads/banner_ad_widget.dart';
+import '../../../core/widgets/app_navigation_bar.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -23,8 +24,11 @@ class HomeScreen extends ConsumerWidget {
     final isAdminAsync = ref.watch(isAdminProvider);
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
+    final isMobile = Responsive.isMobile(context);
 
-    return Scaffold(
+    final scaffold = Scaffold(
+      // Add drawer for mobile
+      drawer: isMobile ? const AppNavigationBar(currentRoute: '/') : null,
       body: RefreshIndicator(
         onRefresh: () async {
           ref.invalidate(profileProvider);
@@ -39,8 +43,13 @@ class HomeScreen extends ConsumerWidget {
               pinned: true,
               backgroundColor: theme.scaffoldBackgroundColor,
               surfaceTintColor: theme.scaffoldBackgroundColor,
+              // Show hamburger menu only on mobile
+              automaticallyImplyLeading: isMobile,
               flexibleSpace: FlexibleSpaceBar(
-                titlePadding: const EdgeInsets.only(left: 16, bottom: 16),
+                titlePadding: EdgeInsets.only(
+                  left: isMobile ? 56 : 16,
+                  bottom: 16,
+                ),
                 title: Text(
                   l10n.appTitle,
                   style: theme.textTheme.headlineMedium?.copyWith(
@@ -233,6 +242,18 @@ class HomeScreen extends ConsumerWidget {
         ),
       ),
     );
+
+    // For web/desktop, wrap with navigation rail
+    if (!isMobile) {
+      return Row(
+        children: [
+          const AppNavigationBar(currentRoute: '/'),
+          Expanded(child: scaffold),
+        ],
+      );
+    }
+
+    return scaffold;
   }
 
   Widget _buildRecentCVs(

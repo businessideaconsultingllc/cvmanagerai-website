@@ -4,6 +4,10 @@
     "@appTitle": {
         "description": "The title of the application"
     },
+    "home": "Главная",
+    "@home": {
+        "description": "Home navigation label"
+    },
     "welcomeBack": "С возвращением",
     "@welcomeBack": {
         "description": "Welcome message on home screen"

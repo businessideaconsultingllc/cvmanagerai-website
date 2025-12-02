@@ -15,17 +15,34 @@ class CoverLetterPreviewScreen extends ConsumerWidget {
   Future<void> _printDoc() async {
     final doc = pw.Document();
 
-    // Load fonts
-    final font = await PdfGoogleFonts.interRegular();
-    final boldFont = await PdfGoogleFonts.interBold();
-
-    // Load Arabic font if needed
+    // Determine the language and load appropriate fonts
+    final language = coverLetter.language.toLowerCase();
     final isRtl = AppLanguages.isRtl(coverLetter.language);
-    final arabicFont = await PdfGoogleFonts.amiriRegular();
-    final arabicBoldFont = await PdfGoogleFonts.amiriBold();
+    final isChinese = language.startsWith('zh'); // Chinese (zh-CN, zh-TW, etc.)
+    final isJapanese = language == 'ja'; // Japanese
 
-    final regularFontToUse = isRtl ? arabicFont : font;
-    final boldFontToUse = isRtl ? arabicBoldFont : boldFont;
+    // Load fonts based on language
+    pw.Font regularFontToUse;
+    pw.Font boldFontToUse;
+
+    if (isChinese) {
+      // Use Noto Sans SC for Chinese
+      regularFontToUse = await PdfGoogleFonts.notoSansSCRegular();
+      boldFontToUse = await PdfGoogleFonts.notoSansSCBold();
+    } else if (isJapanese) {
+      // Use Noto Sans JP for Japanese
+      regularFontToUse = await PdfGoogleFonts.notoSansJPRegular();
+      boldFontToUse = await PdfGoogleFonts.notoSansJPBold();
+    } else if (isRtl) {
+      // Use Amiri for Arabic and other RTL languages
+      regularFontToUse = await PdfGoogleFonts.amiriRegular();
+      boldFontToUse = await PdfGoogleFonts.amiriBold();
+    } else {
+      // Use Inter for Latin languages (default)
+      regularFontToUse = await PdfGoogleFonts.interRegular();
+      boldFontToUse = await PdfGoogleFonts.interBold();
+    }
+
     final textDirection = isRtl ? pw.TextDirection.rtl : pw.TextDirection.ltr;
     final alignment =
         isRtl ? pw.CrossAxisAlignment.end : pw.CrossAxisAlignment.start;

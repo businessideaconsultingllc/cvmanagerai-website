@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -64,29 +65,40 @@ class MyApp extends ConsumerWidget {
     final locale = ref.watch(localeProvider);
 
     return AppLifecycleObserver(
-      child: MaterialApp.router(
-        title: AppConstants.appName,
-        theme: AppTheme.lightTheme,
-        darkTheme: AppTheme.darkTheme,
-        themeMode: themeMode,
-        locale: locale,
-        localizationsDelegates: const [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: const [
-          Locale('en'), // English
-          Locale('es'), // Spanish
-          Locale('fr'), // French
-          Locale('ar'), // Arabic
-          Locale('nl'), // Dutch
-          Locale('de'), // German
-          Locale('ru'), // Russian
-        ],
-        routerConfig: router,
-        debugShowCheckedModeBanner: false,
+      child: Focus(
+        autofocus: kIsWeb,
+        child: MaterialApp.router(
+          title: AppConstants.appName,
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: themeMode,
+          locale: locale,
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('en'), // English
+            Locale('es'), // Spanish
+            Locale('fr'), // French
+            Locale('ar'), // Arabic
+            Locale('nl'), // Dutch
+            Locale('de'), // German
+            Locale('ru'), // Russian
+          ],
+          routerConfig: router,
+          debugShowCheckedModeBanner: false,
+          scrollBehavior: const MaterialScrollBehavior().copyWith(
+            dragDevices: {
+              PointerDeviceKind.mouse,
+              PointerDeviceKind.touch,
+              PointerDeviceKind.stylus,
+              PointerDeviceKind.unknown,
+            },
+          ),
+        ),
       ),
     );
   }
