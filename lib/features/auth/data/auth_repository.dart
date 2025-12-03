@@ -1,6 +1,8 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'dart:html' as html show window;
 
 final authRepositoryProvider = Provider<AuthRepository>((ref) {
   return AuthRepository(Supabase.instance.client.auth);
@@ -32,6 +34,7 @@ class AuthRepository {
     return await _auth.signUp(
       email: email,
       password: password,
+      emailRedirectTo: 'https://cvmanagerai.com/app/#/login',
     );
   }
 
@@ -41,9 +44,22 @@ class AuthRepository {
       // The google_sign_in plugin on web often fails to return an ID token (returns null).
       // Supabase's native OAuth flow handles this reliably via redirect.
       if (const bool.fromEnvironment('dart.library.js_util')) {
+        // Dynamically determine redirect URL based on environment
+        // Production: https://cvmanagerai.com/app/
+        // Development: http://localhost:5000
+        String redirectUrl = 'https://cvmanagerai.com/app/';
+
+        // Check if running on localhost
+        if (kIsWeb) {
+          final currentOrigin = html.window.location.origin;
+          if (currentOrigin.contains('localhost')) {
+            redirectUrl = 'http://localhost:5000';
+          }
+        }
+
         await _auth.signInWithOAuth(
           OAuthProvider.google,
-          redirectTo: 'http://localhost:5000', // Matches your fixed port
+          redirectTo: redirectUrl,
           authScreenLaunchMode: LaunchMode.platformDefault,
         );
         return; // Flow continues after redirect
@@ -79,6 +95,13 @@ class AuthRepository {
     } catch (e) {
       throw Exception('Google Sign-In failed: $e');
     }
+  }
+
+  Future<void> resetPassword({required String email}) async {
+    await _auth.resetPasswordForEmail(
+      email,
+      redirectTo: 'https://cvmanagerai.com/app/#/reset-password',
+    );
   }
 
   Future<void> signOut() async {

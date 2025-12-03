@@ -8,6 +8,38 @@
     "@home": {
         "description": "Home navigation label"
     },
+    "forgotPassword": "Wachtwoord vergeten?",
+    "@forgotPassword": {
+        "description": "forgotPassword text"
+    },
+    "resetPassword": "Wachtwoord resetten",
+    "@resetPassword": {
+        "description": "resetPassword text"
+    },
+    "enterEmailToReset": "Voer uw e-mailadres in en we sturen u een link om uw wachtwoord te resetten.",
+    "@enterEmailToReset": {
+        "description": "enterEmailToReset text"
+    },
+    "sendResetLink": "Resetlink verzenden",
+    "@sendResetLink": {
+        "description": "sendResetLink text"
+    },
+    "resetLinkSent": "Resetlink verzonden!",
+    "@resetLinkSent": {
+        "description": "resetLinkSent text"
+    },
+    "checkYourEmail": "Controleer uw e-mail voor instructies om uw wachtwoord te resetten.",
+    "@checkYourEmail": {
+        "description": "checkYourEmail text"
+    },
+    "backToLogin": "Terug naar inloggen",
+    "@backToLogin": {
+        "description": "backToLogin text"
+    },
+    "pleaseEnterValidEmail": "Voer een geldig e-mailadres in",
+    "@pleaseEnterValidEmail": {
+        "description": "pleaseEnterValidEmail text"
+    },
     "welcomeBack": "Welkom terug",
     "@welcomeBack": {
         "description": "Welcome message on home screen"

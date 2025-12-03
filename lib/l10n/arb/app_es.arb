@@ -8,6 +8,38 @@
     "@home": {
         "description": "Home navigation label"
     },
+    "forgotPassword": "¿Olvidó su contraseña?",
+    "@forgotPassword": {
+        "description": "forgotPassword text"
+    },
+    "resetPassword": "Restablecer contraseña",
+    "@resetPassword": {
+        "description": "resetPassword text"
+    },
+    "enterEmailToReset": "Ingrese su dirección de correo electrónico y le enviaremos un enlace para restablecer su contraseña.",
+    "@enterEmailToReset": {
+        "description": "enterEmailToReset text"
+    },
+    "sendResetLink": "Enviar enlace de restablecimiento",
+    "@sendResetLink": {
+        "description": "sendResetLink text"
+    },
+    "resetLinkSent": "¡Enlace de restablecimiento enviado!",
+    "@resetLinkSent": {
+        "description": "resetLinkSent text"
+    },
+    "checkYourEmail": "Revise su correo electrónico para obtener instrucciones para restablecer su contraseña.",
+    "@checkYourEmail": {
+        "description": "checkYourEmail text"
+    },
+    "backToLogin": "Volver al inicio de sesión",
+    "@backToLogin": {
+        "description": "backToLogin text"
+    },
+    "pleaseEnterValidEmail": "Por favor ingrese una dirección de correo electrónico válida",
+    "@pleaseEnterValidEmail": {
+        "description": "pleaseEnterValidEmail text"
+    },
     "welcomeBack": "Bienvenido de nuevo",
     "@welcomeBack": {
         "description": "Welcome message on home screen"

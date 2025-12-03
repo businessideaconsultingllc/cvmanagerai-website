@@ -8,6 +8,38 @@
     "@home": {
         "description": "Home navigation label"
     },
+    "forgotPassword": "Забыли пароль?",
+    "@forgotPassword": {
+        "description": "forgotPassword text"
+    },
+    "resetPassword": "Сбросить пароль",
+    "@resetPassword": {
+        "description": "resetPassword text"
+    },
+    "enterEmailToReset": "Введите свой адрес электронной почты, и мы вышлем вам ссылку для сброса пароля.",
+    "@enterEmailToReset": {
+        "description": "enterEmailToReset text"
+    },
+    "sendResetLink": "Отправить ссылку для сброса",
+    "@sendResetLink": {
+        "description": "sendResetLink text"
+    },
+    "resetLinkSent": "Ссылка для сброса отправлена!",
+    "@resetLinkSent": {
+        "description": "resetLinkSent text"
+    },
+    "checkYourEmail": "Проверьте свою электронную почту на наличие инструкций по сбросу пароля.",
+    "@checkYourEmail": {
+        "description": "checkYourEmail text"
+    },
+    "backToLogin": "Вернуться к входу",
+    "@backToLogin": {
+        "description": "backToLogin text"
+    },
+    "pleaseEnterValidEmail": "Пожалуйста, введите действительный адрес электронной почты",
+    "@pleaseEnterValidEmail": {
+        "description": "pleaseEnterValidEmail text"
+    },
     "welcomeBack": "С возвращением",
     "@welcomeBack": {
         "description": "Welcome message on home screen"

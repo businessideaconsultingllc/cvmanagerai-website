@@ -144,10 +144,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                         ),
                                       ],
                                       image: const DecorationImage(
-                                        image: NetworkImage(
-                                          'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                                        image: AssetImage(
+                                          'assets/logo.png',
                                         ),
-                                        fit: BoxFit.cover,
+                                        fit: BoxFit.contain,
                                       ),
                                     ),
                                   )

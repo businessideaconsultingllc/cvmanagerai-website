@@ -97,7 +97,17 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 24),
+                const SizedBox(height: 8),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                    onPressed: () {
+                      context.push('/forgot-password');
+                    },
+                    child: Text(l10n.forgotPassword),
+                  ),
+                ),
+                const SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: authState.isLoading ? null : _login,
                   child: authState.isLoading

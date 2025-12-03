@@ -8,6 +8,38 @@
     "@home": {
         "description": "Home navigation label"
     },
+    "forgotPassword": "Mot de passe oublié?",
+    "@forgotPassword": {
+        "description": "forgotPassword text"
+    },
+    "resetPassword": "Réinitialiser le mot de passe",
+    "@resetPassword": {
+        "description": "resetPassword text"
+    },
+    "enterEmailToReset": "Entrez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.",
+    "@enterEmailToReset": {
+        "description": "enterEmailToReset text"
+    },
+    "sendResetLink": "Envoyer le lien de réinitialisation",
+    "@sendResetLink": {
+        "description": "sendResetLink text"
+    },
+    "resetLinkSent": "Lien de réinitialisation envoyé!",
+    "@resetLinkSent": {
+        "description": "resetLinkSent text"
+    },
+    "checkYourEmail": "Veuillez vérifier votre e-mail pour des instructions de réinitialisation de mot de passe.",
+    "@checkYourEmail": {
+        "description": "checkYourEmail text"
+    },
+    "backToLogin": "Retour à la connexion",
+    "@backToLogin": {
+        "description": "backToLogin text"
+    },
+    "pleaseEnterValidEmail": "Veuillez entrer une adresse e-mail valide",
+    "@pleaseEnterValidEmail": {
+        "description": "pleaseEnterValidEmail text"
+    },
     "welcomeBack": "Bon retour",
     "@welcomeBack": {
         "description": "Welcome message on home screen"

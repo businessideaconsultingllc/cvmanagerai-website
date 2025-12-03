@@ -27,6 +27,8 @@ import '../../features/profile/presentation/profile_screen.dart';
 import '../../core/providers/first_launch_provider.dart';
 import '../../features/admin/presentation/admin_panel_screen.dart';
 import '../../features/admin/presentation/user_management_screen.dart';
+import '../../features/auth/presentation/forgot_password_screen.dart';
+import '../../features/auth/presentation/reset_password_screen.dart';
 
 final goRouterProvider = Provider<GoRouter>((ref) {
   final authState = ref.watch(authStateProvider);
@@ -37,12 +39,17 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         ref.watch(authRepositoryProvider).authStateChanges),
     redirect: (context, state) async {
       // Check if this is the first launch
-      final firstLaunchAsync = ref.watch(firstLaunchProvider);
+      final firstLaunchAsync = ref.read(firstLaunchProvider);
       final isFirstLaunch = firstLaunchAsync.value ?? true;
 
-      // Allow splash screens to be accessed directly
+      // Allow splash screens and auth screens to be accessed directly
       if (state.uri.path == '/language-selection' ||
-          state.uri.path == '/features-intro') {
+          state.uri.path == '/features-intro' ||
+          state.uri.path == '/login' ||
+          state.uri.path == '/signup' ||
+          state.uri.path == '/forgot-password' ||
+          state.uri.path == '/reset-password' ||
+          state.uri.path == '/onboarding') {
         return null;
       }
 
@@ -52,12 +59,14 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       }
 
       final isLoggedIn = authState.valueOrNull?.session != null;
-      final isLoggingIn =
-          state.uri.path == '/login' || state.uri.path == '/signup';
+      final isLoggingIn = state.uri.path == '/login' ||
+          state.uri.path == '/signup' ||
+          state.uri.path == '/forgot-password' ||
+          state.uri.path == '/reset-password';
       final isOnboarding = state.uri.path == '/onboarding';
 
       if (!isLoggedIn) {
-        // Allow access to login, signup, and onboarding
+        // Allow access to login, signup, forgot-password, reset-password, and onboarding
         if (isLoggingIn || isOnboarding) {
           return null;
         }
@@ -124,6 +133,14 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/signup',
         builder: (context, state) => const SignupScreen(),
+      ),
+      GoRoute(
+        path: '/forgot-password',
+        builder: (context, state) => const ForgotPasswordScreen(),
+      ),
+      GoRoute(
+        path: '/reset-password',
+        builder: (context, state) => const ResetPasswordScreen(),
       ),
       GoRoute(
         path: '/profile-completion',
