@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class AdminUserModel {
   final String id;
   final String email;
@@ -11,6 +13,7 @@ class AdminUserModel {
   final DateTime? updatedAt;
   final int creditBalance;
   final DateTime? lastSeen;
+  final String signupMethod; // 'email' or 'google'
 
   AdminUserModel({
     required this.id,
@@ -25,6 +28,7 @@ class AdminUserModel {
     this.updatedAt,
     required this.creditBalance,
     this.lastSeen,
+    this.signupMethod = 'email', // Default to email
   });
 
   factory AdminUserModel.fromJson(Map<String, dynamic> json) {
@@ -47,6 +51,7 @@ class AdminUserModel {
       lastSeen: json['last_seen'] != null
           ? DateTime.parse(json['last_seen'] as String)
           : null,
+      signupMethod: json['auth_provider'] as String? ?? 'email',
     );
   }
 
@@ -64,6 +69,7 @@ class AdminUserModel {
       'updated_at': updatedAt?.toIso8601String(),
       'credit_balance': creditBalance,
       'last_seen': lastSeen?.toIso8601String(),
+      'auth_provider': signupMethod,
     };
   }
 
@@ -80,6 +86,7 @@ class AdminUserModel {
     DateTime? updatedAt,
     int? creditBalance,
     DateTime? lastSeen,
+    String? signupMethod,
   }) {
     return AdminUserModel(
       id: id ?? this.id,
@@ -94,6 +101,7 @@ class AdminUserModel {
       updatedAt: updatedAt ?? this.updatedAt,
       creditBalance: creditBalance ?? this.creditBalance,
       lastSeen: lastSeen ?? this.lastSeen,
+      signupMethod: signupMethod ?? this.signupMethod,
     );
   }
 
@@ -123,5 +131,15 @@ class AdminUserModel {
     if (diff.inHours < 24) return '${diff.inHours}h ago';
     if (diff.inDays < 7) return '${diff.inDays}d ago';
     return 'Offline';
+  }
+
+  /// Get display text for signup method
+  String get signupMethodDisplay {
+    return signupMethod == 'google' ? 'Google' : 'Email';
+  }
+
+  /// Get icon for signup method
+  IconData get signupMethodIcon {
+    return signupMethod == 'google' ? Icons.g_mobiledata : Icons.email;
   }
 }

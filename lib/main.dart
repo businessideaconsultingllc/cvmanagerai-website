@@ -15,6 +15,7 @@ import 'core/locale/locale_provider.dart';
 import 'core/providers/first_launch_provider.dart';
 import 'core/widgets/app_lifecycle_observer.dart';
 import 'core/ads/interstitial_ad_manager.dart';
+import 'core/auth/auth_recovery_listener.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -65,38 +66,40 @@ class MyApp extends ConsumerWidget {
     final locale = ref.watch(localeProvider);
 
     return AppLifecycleObserver(
-      child: Focus(
-        autofocus: kIsWeb,
-        child: MaterialApp.router(
-          title: AppConstants.appName,
-          theme: AppTheme.lightTheme,
-          darkTheme: AppTheme.darkTheme,
-          themeMode: themeMode,
-          locale: locale,
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: const [
-            Locale('en'), // English
-            Locale('es'), // Spanish
-            Locale('fr'), // French
-            Locale('ar'), // Arabic
-            Locale('nl'), // Dutch
-            Locale('de'), // German
-            Locale('ru'), // Russian
-          ],
-          routerConfig: router,
-          debugShowCheckedModeBanner: false,
-          scrollBehavior: const MaterialScrollBehavior().copyWith(
-            dragDevices: {
-              PointerDeviceKind.mouse,
-              PointerDeviceKind.touch,
-              PointerDeviceKind.stylus,
-              PointerDeviceKind.unknown,
-            },
+      child: AuthRecoveryListener(
+        child: Focus(
+          autofocus: kIsWeb,
+          child: MaterialApp.router(
+            title: AppConstants.appName,
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: themeMode,
+            locale: locale,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('en'), // English
+              Locale('es'), // Spanish
+              Locale('fr'), // French
+              Locale('ar'), // Arabic
+              Locale('nl'), // Dutch
+              Locale('de'), // German
+              Locale('ru'), // Russian
+            ],
+            routerConfig: router,
+            debugShowCheckedModeBanner: false,
+            scrollBehavior: const MaterialScrollBehavior().copyWith(
+              dragDevices: {
+                PointerDeviceKind.mouse,
+                PointerDeviceKind.touch,
+                PointerDeviceKind.stylus,
+                PointerDeviceKind.unknown,
+              },
+            ),
           ),
         ),
       ),

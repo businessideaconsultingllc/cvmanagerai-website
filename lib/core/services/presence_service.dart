@@ -12,25 +12,55 @@ class PresenceService {
   final SupabaseClient _client = Supabase.instance.client;
 
   /// Start tracking user presence
-  /// Updates last_seen every 2 minutes while app is active
+  /// Updates last_seen every 1 minute while app is active
   void startTracking() {
-    // Stop any existing timer
-    stopTracking();
+    // Cancel any existing timer
+    _heartbeatTimer?.cancel();
+    _heartbeatTimer = null;
 
     // Update immediately
     _updatePresence();
 
-    // Then update every 2 minutes
+    // Update every 1 minute (reduced from 2 minutes for faster offline detection)
     _heartbeatTimer = Timer.periodic(
-      const Duration(minutes: 2),
+      const Duration(minutes: 1),
       (_) => _updatePresence(),
     );
   }
 
-  /// Stop tracking user presence
-  void stopTracking() {
+  /// Stop tracking user presence and mark user as offline
+  Future<void> stopTracking() async {
+    // Capture user ID BEFORE canceling timer or clearing session
+    final userId = _client.auth.currentUser?.id;
+
     _heartbeatTimer?.cancel();
     _heartbeatTimer = null;
+
+    // Mark user as offline by setting last_seen to now minus 10 minutes
+    await _markOffline(userId);
+  }
+
+  /// Mark user as offline by setting last_seen to past timestamp
+  Future<void> _markOffline([String? userId]) async {
+    try {
+      // Use provided userId or get current one
+      final uid = userId ?? _client.auth.currentUser?.id;
+
+      if (uid != null) {
+        print('DEBUG: Marking user $uid as offline'); // Debug logging
+        // Set last_seen to now minus 10 minutes to ensure they show as offline
+        final result = await _client.from('profiles').update({
+          'last_seen': DateTime.now()
+              .subtract(const Duration(minutes: 10))
+              .toIso8601String(),
+        }).eq('id', uid);
+        print('DEBUG: Update result: $result'); // Debug logging
+      } else {
+        print('DEBUG: No userId available to mark offline'); // Debug logging
+      }
+    } catch (e) {
+      print('DEBUG: Error marking offline: $e'); // Debug logging
+    }
   }
 
   /// Update the user's last_seen timestamp in the database
@@ -44,7 +74,6 @@ class PresenceService {
       }).eq('id', userId);
     } catch (e) {
       // Silently fail - don't interrupt user experience
-      // In production, you might want to log this
     }
   }
 

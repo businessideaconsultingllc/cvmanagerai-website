@@ -21,6 +21,36 @@ class _ResetPasswordScreenState extends ConsumerState<ResetPasswordScreen> {
   bool _isLoading = false;
 
   @override
+  void initState() {
+    super.initState();
+    // Check for error parameters in the URL (e.g., expired link)
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final uri = Uri.base;
+      if (uri.queryParameters.containsKey('error_description')) {
+        final errorDesc = uri.queryParameters['error_description'] ?? '';
+        final decodedError = Uri.decodeComponent(errorDesc);
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(decodedError.isEmpty
+                ? 'The password reset link has expired or is invalid. Please request a new one.'
+                : decodedError),
+            backgroundColor: Colors.red,
+            duration: const Duration(seconds: 5),
+            action: SnackBarAction(
+              label: 'Request New Link',
+              textColor: Colors.white,
+              onPressed: () {
+                context.go('/forgot-password');
+              },
+            ),
+          ),
+        );
+      }
+    });
+  }
+
+  @override
   void dispose() {
     _passwordController.dispose();
     _confirmPasswordController.dispose();

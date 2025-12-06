@@ -2,7 +2,6 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'dart:html' as html show window;
 
 final authRepositoryProvider = Provider<AuthRepository>((ref) {
   return AuthRepository(Supabase.instance.client.auth);
@@ -44,22 +43,10 @@ class AuthRepository {
       // The google_sign_in plugin on web often fails to return an ID token (returns null).
       // Supabase's native OAuth flow handles this reliably via redirect.
       if (const bool.fromEnvironment('dart.library.js_util')) {
-        // Dynamically determine redirect URL based on environment
-        // Production: https://cvmanagerai.com/app/
-        // Development: http://localhost:5000
-        String redirectUrl = 'https://cvmanagerai.com/app/';
-
-        // Check if running on localhost
-        if (kIsWeb) {
-          final currentOrigin = html.window.location.origin;
-          if (currentOrigin.contains('localhost')) {
-            redirectUrl = 'http://localhost:5000';
-          }
-        }
-
+        // Use production URL for Google OAuth redirect
         await _auth.signInWithOAuth(
           OAuthProvider.google,
-          redirectTo: redirectUrl,
+          redirectTo: 'https://cvmanagerai.com/app/',
           authScreenLaunchMode: LaunchMode.platformDefault,
         );
         return; // Flow continues after redirect
@@ -105,6 +92,29 @@ class AuthRepository {
   }
 
   Future<void> signOut() async {
+    // Get user ID BEFORE signing out (while session still exists)
+    final userId = _auth.currentUser?.id;
+
+    // Mark user as offline in database first
+    if (userId != null) {
+      try {
+        // Use Supabase client for database operations
+        final client = Supabase.instance.client;
+        await client.from('profiles').update({
+          'last_seen': DateTime.now()
+              .subtract(const Duration(minutes: 10))
+              .toIso8601String(),
+        }).eq('id', userId);
+        print('DEBUG: User $userId marked offline before signOut'); // Debug log
+      } catch (e) {
+        print('DEBUG: Error marking offline: $e'); // Debug log
+        // Continue with sign out even if update fails
+      }
+    } else {
+      print('DEBUG: No userId to mark offline'); // Debug log
+    }
+
+    // Now sign out from Supabase
     await _auth.signOut();
   }
 }

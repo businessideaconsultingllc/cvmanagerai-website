@@ -65,6 +65,31 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           state.uri.path == '/reset-password';
       final isOnboarding = state.uri.path == '/onboarding';
 
+      // Check for password recovery flow
+      // When users click the reset link, Supabase redirects with a recovery token
+      // The URL will contain access_token, type=recovery, or error parameters
+      // NOTE: On web with hash routing, params might be before the hash, so we check Uri.base too
+      final uriBase = Uri.base;
+      final hasRecoveryToken =
+          state.uri.queryParameters.containsKey('access_token') ||
+              state.uri.queryParameters.containsKey('token_hash') ||
+              (state.uri.queryParameters['type'] == 'recovery') ||
+              uriBase.queryParameters.containsKey('access_token') ||
+              uriBase.queryParameters.containsKey('token_hash') ||
+              (uriBase.queryParameters['type'] == 'recovery');
+
+      // Check if there's an error from password reset (expired link, etc.)
+      final hasAuthError = (state.uri.queryParameters.containsKey('error') &&
+              state.uri.queryParameters.containsKey('error_description')) ||
+          (uriBase.queryParameters.containsKey('error') &&
+              uriBase.queryParameters.containsKey('error_description'));
+
+      // If user came from password reset email (has token or error), show reset screen
+      if ((hasRecoveryToken || hasAuthError) &&
+          state.uri.path != '/reset-password') {
+        return '/reset-password';
+      }
+
       if (!isLoggedIn) {
         // Allow access to login, signup, forgot-password, reset-password, and onboarding
         if (isLoggingIn || isOnboarding) {
@@ -72,6 +97,18 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         }
         // Default to onboarding for non-logged-in users
         return '/onboarding';
+      }
+
+      // Check if this is a recovery session (password reset flow)
+      // When Supabase completes the password reset OAuth flow, it redirects to
+      // the app with a 'code' parameter and creates an authenticated session
+      // On web with hash routing, the code param is in Uri.base (before the hash)
+      final hasCodeParam = state.uri.queryParameters.containsKey('code') ||
+          uriBase.queryParameters.containsKey('code');
+
+      if (isLoggedIn && state.uri.path == '/' && hasCodeParam) {
+        // This is a password reset callback - go to reset screen
+        return '/reset-password';
       }
 
       // Check if profile is complete

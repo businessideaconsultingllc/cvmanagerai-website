@@ -32,14 +32,14 @@ class _AppLifecycleObserverState extends ConsumerState<AppLifecycleObserver>
     }
 
     // Listen to auth state changes
-    _supabase.auth.onAuthStateChange.listen((data) {
+    _supabase.auth.onAuthStateChange.listen((data) async {
       final session = data.session;
       if (session != null) {
         // User logged in - start tracking
         ref.read(presenceServiceProvider).startTracking();
       } else {
-        // User logged out - stop tracking
-        ref.read(presenceServiceProvider).stopTracking();
+        // User logged out - stop tracking (await to ensure DB update completes)
+        await ref.read(presenceServiceProvider).stopTracking();
       }
     });
   }

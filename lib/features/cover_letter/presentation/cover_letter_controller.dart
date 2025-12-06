@@ -133,28 +133,25 @@ class CoverLetterController
   }
 
   Future<String> _callDeepSeekAPI(String prompt) async {
-    final url = Uri.parse('https://api.deepseek.com/v1/chat/completions');
+    final url = Uri.parse(AppConstants.deepSeekEdgeFunctionUrl);
     final response = await http.post(
       url,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${AppConstants.deepSeekApiKey}',
+        'Authorization': 'Bearer ${AppConstants.supabaseAnonKey}',
       },
       body: jsonEncode({
-        'model': 'deepseek-chat',
-        'messages': [
-          {'role': 'system', 'content': 'You are an expert career coach.'},
-          {'role': 'user', 'content': prompt},
-        ],
-        'temperature': 0.7,
+        'prompt': prompt,
+        'systemMessage': 'You are an expert career coach.',
       }),
     );
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
-      return data['choices'][0]['message']['content'];
+      return data['content'];
     } else {
-      throw Exception('Failed to generate cover letter: ${response.body}');
+      final errorData = jsonDecode(response.body);
+      throw Exception('Failed to generate cover letter: ${errorData['error']}');
     }
   }
 }

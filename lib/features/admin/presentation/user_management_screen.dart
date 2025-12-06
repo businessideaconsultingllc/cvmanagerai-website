@@ -345,6 +345,19 @@ class _UserCard extends StatelessWidget {
                 ),
               ],
             ),
+            const SizedBox(height: 8),
+            // Signup method indicator
+            Row(
+              children: [
+                _InfoChip(
+                  icon: user.signupMethodIcon,
+                  label: user.signupMethodDisplay,
+                  color: user.signupMethod == 'google'
+                      ? Colors.red
+                      : Colors.purple,
+                ),
+              ],
+            ),
             const SizedBox(height: 12),
             Row(
               children: [
