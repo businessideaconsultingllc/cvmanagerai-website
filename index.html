@@ -218,16 +218,216 @@
                 </div>
             </div>
         </div>
-    </section>
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+        }
 
-    <footer class="footer">
-        <p>&copy; 2025 CV Manager AI. All rights reserved.</p>
-        <p style="margin-top: 1rem;">
-            <a href="/app/">Get Started</a> |
-            <a href="/app/">Features</a> |
-            <a href="mailto:info@cvmanagerai.com">Contact</a>
-        </p>
-    </footer>
-</body>
+        .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="1" fill="white" opacity="0.1" />
+        </svg>');
+        opacity: 0.3;
+        }
+
+        .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        }
+
+        .hero h1 {
+        font-size: clamp(2.5rem, 8vw, 4.5rem);
+        font-weight: 800;
+        color: white;
+        margin-bottom: 1.5rem;
+        line-height: 1.1;
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+        font-size: clamp(1.1rem, 3vw, 1.5rem);
+        color: rgba(255, 255, 255, 0.95);
+        margin-bottom: 2.5rem;
+        line-height: 1.6;
+        }
+
+        .cta-button {
+        display: inline-block;
+        background: white;
+        color: #667eea;
+        padding: 1.2rem 3rem;
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .features {
+        padding: 6rem 2rem;
+        background: white;
+        }
+
+        .features-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        }
+
+        .features h2 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        text-align: center;
+        margin-bottom: 4rem;
+        color: #333;
+        }
+
+        .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 3rem;
+        }
+
+        .feature-card {
+        text-align: center;
+        padding: 2rem;
+        border-radius: 20px;
+        background: #f8f9fa;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1.5rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        }
+
+        .feature-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #333;
+        }
+
+        .feature-card p {
+        color: #666;
+        line-height: 1.6;
+        }
+
+        .footer {
+        background: #1a1a1a;
+        color: white;
+        text-align: center;
+        padding: 3rem 2rem;
+        }
+
+        .footer a {
+        color: #667eea;
+        text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+        .hero {
+        padding: 4rem 1.5rem;
+        }
+
+        .features {
+        padding: 4rem 1.5rem;
+        }
+
+        .features-grid {
+        gap: 2rem;
+        }
+        }
+        </style>
+        </head>
+
+        <body>
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>CV Manager AI</h1>
+                    <p>Create, optimize, and tailor professional CVs with AI-powered tools. Stand out in your job search
+                        with
+                        intelligent resume assistance.</p>
+                    <a href="/app/" class="cta-button">Launch App →</a>
+                </div>
+            </section>
+
+            <section class="features">
+                <div class="features-container">
+                    <h2>Powered by Artificial Intelligence</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">✨</div>
+                            <h3>AI-Powered Generation</h3>
+                            <p>Create professional CVs in minutes with our intelligent AI that understands your
+                                experience and
+                                skills.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🎯</div>
+                            <h3>Smart Optimization</h3>
+                            <p>Optimize your existing CV for ATS systems and make it stand out to recruiters.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🔧</div>
+                            <h3>Job Tailoring</h3>
+                            <p>Automatically tailor your CV for specific job descriptions to increase your chances.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📝</div>
+                            <h3>Cover Letters</h3>
+                            <p>Generate compelling cover letters that complement your CV perfectly.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🌍</div>
+                            <h3>Multi-Language</h3>
+                            <p>Create CVs in multiple languages including English, Arabic, French, German, and more.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">💼</div>
+                            <h3>Professional Templates</h3>
+                            <p>Beautiful, modern CV templates designed by experts to make the best impression.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <p>&copy; 2025 CV Manager AI. All rights reserved.</p>
+                <p style="margin-top: 1rem;">
+                    <a href="/app/">Get Started</a> |
+                    <a href="/privacy.html">Privacy Policy</a> |
+                    <a href="/terms.html">Terms of Service</a> |
+                    <a href="/contact.html">Contact</a>
+                </p>
+            </footer>
+        </body>
 
 </html>
