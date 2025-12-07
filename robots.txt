@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Allow: /app/
+Disallow: /app/assets/
+
+Sitemap: https://cvmanagerai.com/sitemap.xml
