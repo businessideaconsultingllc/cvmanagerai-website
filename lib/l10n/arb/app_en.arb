@@ -222,6 +222,10 @@
     "@jobTitleHint": {
         "description": "Job title hint text"
     },
+    "enterTargetJobTitle": "Enter the target job title (e.g. Software Engineer)",
+    "@enterTargetJobTitle": {
+        "description": "Target job title hint text for tailor CV"
+    },
     "targetLanguage": "Target Language",
     "@targetLanguage": {
         "description": "Target language label"

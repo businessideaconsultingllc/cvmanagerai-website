@@ -17,7 +17,12 @@ class CVController extends StateNotifier<AsyncValue<CVModel?>> {
 
   Future<void> generateCV({
     required String jobTitle,
+    required String fullName,
+    required String email,
     String targetLanguage = 'en',
+    String? address,
+    String? phone,
+    String? customNotes,
   }) async {
     state = const AsyncValue.loading();
     try {
@@ -32,17 +37,29 @@ class CVController extends StateNotifier<AsyncValue<CVModel?>> {
             'Insufficient credits. You need 1 credit to generate a CV.');
       }
 
-      // Fetch user profile for context
+      // Fetch user profile for work experience context only
       final profileRepo = _ref.read(profileRepositoryProvider);
       final profile = await profileRepo.getProfile(user.id);
 
       if (profile == null) throw Exception('Profile not found');
 
+      // Create modified profile with provided personal info
+      final modifiedProfile = Map<String, dynamic>.from(profile);
+      final nameParts = fullName.trim().split(' ');
+      modifiedProfile['first_name'] =
+          nameParts.isNotEmpty ? nameParts.first : '';
+      modifiedProfile['last_name'] =
+          nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '';
+      modifiedProfile['email'] = email;
+      modifiedProfile['address'] = address ?? '';
+      modifiedProfile['phone'] = phone ?? '';
+
       // Construct prompt for DeepSeek
       final prompt = _buildPrompt(
-        profile: profile,
+        profile: modifiedProfile,
         jobTitle: jobTitle,
         targetLanguage: targetLanguage,
+        customNotes: customNotes,
       );
 
       // Call DeepSeek API
@@ -355,7 +372,22 @@ class CVController extends StateNotifier<AsyncValue<CVModel?>> {
     required Map<String, dynamic> profile,
     required String jobTitle,
     String targetLanguage = 'en',
+    String? customNotes,
   }) {
+    final customNotesSection = customNotes != null && customNotes.isNotEmpty
+        ? '''
+    
+    ADDITIONAL INFORMATION PROVIDED BY USER:
+    $customNotes
+    
+    IMPORTANT: Intelligently incorporate the above information into the appropriate CV sections:
+    - Work experience → Add to experience section
+    - Skills/languages → Add to skills or languages sections  
+    - Certifications → Add to certificates section
+    - Education → Add to education section
+    '''
+        : '';
+
     return '''
     You are an expert CV writer. Generate a professional CV for the following candidate targeting a specific job.
     
@@ -367,7 +399,7 @@ class CVController extends StateNotifier<AsyncValue<CVModel?>> {
     Phone: ${profile['phone']}
     Address: ${profile['address']}
     
-    TARGET JOB: $jobTitle
+    TARGET JOB: $jobTitle$customNotesSection
     
     INSTRUCTIONS:
     1. Generate ALL content in $targetLanguage.

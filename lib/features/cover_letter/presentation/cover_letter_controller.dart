@@ -30,9 +30,13 @@ class CoverLetterController
   Future<void> generateCoverLetter({
     required String jobTitle,
     required String companyName,
+    required String fullName,
+    required String email,
     String? jobDescription,
     String? cvContent,
     String targetLanguage = 'en',
+    String? address,
+    String? phone,
   }) async {
     state = const AsyncValue.loading();
     try {
@@ -47,14 +51,25 @@ class CoverLetterController
             'Insufficient credits. You need 1 credit to generate a cover letter.');
       }
 
-      // Get profile
+      // Get profile for work experience context only
       final profileRepo = _ref.read(profileRepositoryProvider);
       final profile = await profileRepo.getProfile(user.id);
       if (profile == null) throw Exception('Profile not found');
 
+      // Create modified profile with provided personal info
+      final modifiedProfile = Map<String, dynamic>.from(profile);
+      final nameParts = fullName.trim().split(' ');
+      modifiedProfile['first_name'] =
+          nameParts.isNotEmpty ? nameParts.first : '';
+      modifiedProfile['last_name'] =
+          nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '';
+      modifiedProfile['email'] = email;
+      modifiedProfile['address'] = address ?? '';
+      modifiedProfile['phone'] = phone ?? '';
+
       // Build prompt
       final prompt = _buildPrompt(
-        profile: profile,
+        profile: modifiedProfile,
         jobTitle: jobTitle,
         companyName: companyName,
         jobDescription: jobDescription,
