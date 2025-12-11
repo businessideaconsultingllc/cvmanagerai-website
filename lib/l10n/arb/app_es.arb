@@ -1,0 +1,857 @@
+{
+    "@@locale": "es",
+    "appTitle": "CV Manager AI",
+    "@appTitle": {
+        "description": "The title of the application"
+    },
+    "home": "Inicio",
+    "@home": {
+        "description": "Home navigation label"
+    },
+    "forgotPassword": "¿Olvidó su contraseña?",
+    "@forgotPassword": {
+        "description": "forgotPassword text"
+    },
+    "resetPassword": "Restablecer contraseña",
+    "@resetPassword": {
+        "description": "resetPassword text"
+    },
+    "enterEmailToReset": "Ingrese su dirección de correo electrónico y le enviaremos un enlace para restablecer su contraseña.",
+    "@enterEmailToReset": {
+        "description": "enterEmailToReset text"
+    },
+    "sendResetLink": "Enviar enlace de restablecimiento",
+    "@sendResetLink": {
+        "description": "sendResetLink text"
+    },
+    "resetLinkSent": "¡Enlace de restablecimiento enviado!",
+    "@resetLinkSent": {
+        "description": "resetLinkSent text"
+    },
+    "checkYourEmail": "Revise su correo electrónico para obtener instrucciones para restablecer su contraseña.",
+    "@checkYourEmail": {
+        "description": "checkYourEmail text"
+    },
+    "backToLogin": "Volver al inicio de sesión",
+    "@backToLogin": {
+        "description": "backToLogin text"
+    },
+    "pleaseEnterValidEmail": "Por favor ingrese una dirección de correo electrónico válida",
+    "@pleaseEnterValidEmail": {
+        "description": "pleaseEnterValidEmail text"
+    },
+    "welcomeBack": "Bienvenido de nuevo",
+    "@welcomeBack": {
+        "description": "Welcome message on home screen"
+    },
+    "availableCredits": "Créditos Disponibles",
+    "@availableCredits": {
+        "description": "Label for credits balance"
+    },
+    "tapToViewHistory": "Toca para ver el historial",
+    "@tapToViewHistory": {
+        "description": "Hint text for credits card"
+    },
+    "proPlan": "Plan Gratuito",
+    "@proPlan": {
+        "description": "Plan name label"
+    },
+    "quickActions": "Acciones Rápidas",
+    "@quickActions": {
+        "description": "Section title for quick actions"
+    },
+    "generateCV": "Generar CV",
+    "@generateCV": {
+        "description": "Generate CV action"
+    },
+    "createFromScratch": "Crear desde cero",
+    "@createFromScratch": {
+        "description": "Generate CV description"
+    },
+    "optimizeCV": "Optimizar CV",
+    "@optimizeCV": {
+        "description": "Optimize CV action"
+    },
+    "improveExisting": "Mejorar existente",
+    "@improveExisting": {
+        "description": "Optimize CV description"
+    },
+    "tailorCV": "Personalizar CV",
+    "@tailorCV": {
+        "description": "Tailor CV action"
+    },
+    "matchJobDesc": "Ajustar a descripción",
+    "@matchJobDesc": {
+        "description": "Tailor CV description"
+    },
+    "coverLetter": "Carta de Presentación",
+    "@coverLetter": {
+        "description": "Cover letter action"
+    },
+    "writePerfectly": "Escribir perfectamente",
+    "@writePerfectly": {
+        "description": "Cover letter description"
+    },
+    "recentCVs": "CVs Recientes",
+    "@recentCVs": {
+        "description": "Recent CVs section title"
+    },
+    "viewAll": "Ver Todo",
+    "@viewAll": {
+        "description": "View all button text"
+    },
+    "noCVsYet": "Aún no hay CVs generados.",
+    "@noCVsYet": {
+        "description": "Empty state message for CVs"
+    },
+    "created": "Creado",
+    "@created": {
+        "description": "Created date label"
+    },
+    "errorLoadingCVs": "Error al cargar CVs: {error}",
+    "@errorLoadingCVs": {
+        "description": "Error message for loading CVs",
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "login": "Iniciar Sesión",
+    "@login": {
+        "description": "Login button text"
+    },
+    "signUp": "Registrarse",
+    "@signUp": {
+        "description": "Sign up button text"
+    },
+    "logout": "Cerrar Sesión",
+    "@logout": {
+        "description": "Logout button text"
+    },
+    "email": "Correo Electrónico",
+    "@email": {
+        "description": "Email label"
+    },
+    "password": "Contraseña",
+    "@password": {
+        "description": "Password label"
+    },
+    "firstName": "Nombre",
+    "@firstName": {
+        "description": "First name label"
+    },
+    "lastName": "Apellido",
+    "@lastName": {
+        "description": "Last name label"
+    },
+    "phone": "Teléfono",
+    "@phone": {
+        "description": "Phone label"
+    },
+    "address": "Dirección",
+    "@address": {
+        "description": "Address label"
+    },
+    "save": "Guardar",
+    "@save": {
+        "description": "Save button text"
+    },
+    "cancel": "Cancelar",
+    "@cancel": {
+        "description": "Cancel button text"
+    },
+    "skip": "Saltar",
+    "languageEnglish": "Inglés",
+    "@languageEnglish": {
+        "description": "English language name"
+    },
+    "languageSpanish": "Español",
+    "@languageSpanish": {
+        "description": "Spanish language name"
+    },
+    "languageFrench": "Francés",
+    "@languageFrench": {
+        "description": "French language name"
+    },
+    "languageArabic": "Árabe",
+    "@languageArabic": {
+        "description": "Arabic language name"
+    },
+    "languageDutch": "Holandés",
+    "@languageDutch": {
+        "description": "Dutch language name"
+    },
+    "languageGerman": "Alemán",
+    "@languageGerman": {
+        "description": "German language name"
+    },
+    "languageRussian": "Ruso",
+    "@languageRussian": {
+        "description": "Russian language name"
+    },
+    "error": "Error",
+    "@error": {
+        "description": "Error label"
+    },
+    "dontHaveAccount": "¿No tienes cuenta? Regístrate",
+    "@dontHaveAccount": {
+        "description": "Don't have account text"
+    },
+    "pleaseEnterEmail": "Por favor ingresa tu correo electrónico",
+    "@pleaseEnterEmail": {
+        "description": "Email validation message"
+    },
+    "pleaseEnterPassword": "Por favor ingresa tu contraseña",
+    "@pleaseEnterPassword": {
+        "description": "Password validation message"
+    },
+    "createYourCV": "Crea tu CV",
+    "@createYourCV": {
+        "description": "Create CV screen title"
+    },
+    "generateCVDescription": "Ingresa el título del trabajo que buscas y generaremos un CV profesional basado en tu perfil.",
+    "@generateCVDescription": {
+        "description": "Generate CV screen description"
+    },
+    "targetJobTitle": "Título del Trabajo Objetivo",
+    "@targetJobTitle": {
+        "description": "Target job title label"
+    },
+    "jobTitleHint": "ej. Desarrollador Flutter Senior",
+    "@jobTitleHint": {
+        "description": "Job title hint text"
+    },
+    "targetLanguage": "Idioma Objetivo",
+    "@targetLanguage": {
+        "description": "Target language label"
+    },
+    "generateCVButton": "Generar CV (1 Crédito)",
+    "@generateCVButton": {
+        "description": "Generate CV button text"
+    },
+    "required": "Requerido",
+    "@required": {
+        "description": "Required field validation"
+    },
+    "errorLoadingProfile": "Error al cargar el perfil",
+    "@errorLoadingProfile": {
+        "description": "Error loading profile message"
+    },
+    "optimizeCVDescription": "Sube tu CV existente o pega el contenido a continuación para que nuestra IA lo optimice.",
+    "@optimizeCVDescription": {
+        "description": "Optimize CV screen description"
+    },
+    "or": "O",
+    "@or": {
+        "description": "Or separator"
+    },
+    "pasteCVContentHere": "Pega el contenido de tu CV aquí...",
+    "@pasteCVContentHere": {
+        "description": "Paste CV content hint"
+    },
+    "optimizeMyCVButton": "Optimizar Mi CV (1 Crédito)",
+    "@optimizeMyCVButton": {
+        "description": "Optimize CV button text"
+    },
+    "selectPDForTXT": "Selecciona un archivo PDF o TXT",
+    "@selectPDForTXT": {
+        "description": "Select file button text"
+    },
+    "textExtractedSuccessfully": "Texto extraído exitosamente",
+    "@textExtractedSuccessfully": {
+        "description": "Text extraction success message"
+    },
+    "changeFile": "Cambiar Archivo",
+    "@changeFile": {
+        "description": "Change file button text"
+    },
+    "browseFiles": "Explorar Archivos",
+    "@browseFiles": {
+        "description": "Browse files button text"
+    },
+    "extractingTextFromFile": "Extrayendo texto del archivo...",
+    "@extractingTextFromFile": {
+        "description": "Text extraction loading message"
+    },
+    "optimizingYourCV": "Optimizando tu CV...",
+    "@optimizingYourCV": {
+        "description": "Optimizing CV loading message"
+    },
+    "thisMayTakeAMoment": "Esto puede tomar un momento",
+    "@thisMayTakeAMoment": {
+        "description": "Loading sub-message"
+    },
+    "provideCVContent": "Por favor proporciona el contenido del CV",
+    "@provideCVContent": {
+        "description": "Provide CV content validation"
+    },
+    "successfullyExtractedText": "Texto extraído exitosamente de {fileName}",
+    "@successfullyExtractedText": {
+        "description": "Text extraction success with filename",
+        "placeholders": {
+            "fileName": {
+                "type": "String"
+            }
+        }
+    },
+    "tailorCVDescription": "Personaliza tu CV para una descripción de trabajo específica. Selecciona un CV existente, sube un archivo o pega el contenido.",
+    "@tailorCVDescription": {
+        "description": "Tailor CV screen description"
+    },
+    "selectFromLibrary": "Seleccionar de la Biblioteca (Opcional)",
+    "@selectFromLibrary": {
+        "description": "Select from library label"
+    },
+    "selectCVToTailor": "Selecciona un CV para personalizar",
+    "@selectCVToTailor": {
+        "description": "Select CV to tailor hint"
+    },
+    "noneUploadOrPaste": "Ninguno (Subir o Pegar)",
+    "@noneUploadOrPaste": {
+        "description": "None option for CV selection"
+    },
+    "orPasteCVContent": "O Pega el Contenido del CV",
+    "@orPasteCVContent": {
+        "description": "Paste CV content label"
+    },
+    "jobDescription": "Descripción del Trabajo",
+    "@jobDescription": {
+        "description": "Job description label"
+    },
+    "pasteJobDescriptionHere": "Pega la descripción del trabajo aquí...",
+    "@pasteJobDescriptionHere": {
+        "description": "Paste job description hint"
+    },
+    "tailorMyCVButton": "Personalizar Mi CV (1 Crédito)",
+    "@tailorMyCVButton": {
+        "description": "Tailor CV button text"
+    },
+    "tailoringYourCV": "Personalizando tu CV...",
+    "@tailoringYourCV": {
+        "description": "Tailoring CV loading message"
+    },
+    "matchingSkillsToJobDesc": "Ajustando habilidades a la descripción del trabajo",
+    "@matchingSkillsToJobDesc": {
+        "description": "Tailoring CV sub-message"
+    },
+    "provideCVContentUploadPasteOrSelect": "Por favor proporciona contenido del CV (Subir, Pegar o Seleccionar)",
+    "@provideCVContentUploadPasteOrSelect": {
+        "description": "Provide CV content validation"
+    },
+    "provideJobDescription": "Por favor proporciona una Descripción del Trabajo",
+    "@provideJobDescription": {
+        "description": "Provide job description validation"
+    },
+    "createAccount": "Crear Cuenta",
+    "@createAccount": {
+        "description": "Create account screen title"
+    },
+    "confirmPassword": "Confirmar Contraseña",
+    "@confirmPassword": {
+        "description": "Confirm password label"
+    },
+    "passwordMustBe6Chars": "La contraseña debe tener al menos 6 caracteres",
+    "@passwordMustBe6Chars": {
+        "description": "Password length validation"
+    },
+    "passwordsDoNotMatch": "Las contraseñas no coinciden",
+    "@passwordsDoNotMatch": {
+        "description": "Password match validation"
+    },
+    "accountCreatedCompleteProfile": "¡Cuenta creada! Por favor completa tu perfil.",
+    "@accountCreatedCompleteProfile": {
+        "description": "Account created success message"
+    },
+    "completeProfile": "Completa Tu Perfil",
+    "@completeProfile": {
+        "description": "Complete profile screen title"
+    },
+    "profileCompletionDescription": "Por favor completa tus datos para continuar. Estos se usarán para tus CVs.",
+    "@profileCompletionDescription": {
+        "description": "Complete profile description"
+    },
+    "saveAndContinue": "Guardar y Continuar",
+    "@saveAndContinue": {
+        "description": "Save and continue button text"
+    },
+    "editCV": "Editar CV",
+    "@editCV": {
+        "description": "Edit CV button text"
+    },
+    "downloadPDF": "Descargar PDF",
+    "@downloadPDF": {
+        "description": "Download PDF button text"
+    },
+    "personalInfo": "Información Personal",
+    "@personalInfo": {
+        "description": "Personal info section title"
+    },
+    "professionalSummary": "Resumen Profesional",
+    "@professionalSummary": {
+        "description": "Professional summary section title"
+    },
+    "professionalSummaryHint": "Escribe un breve resumen de tu trayectoria profesional...",
+    "@professionalSummaryHint": {
+        "description": "Hint for professional summary"
+    },
+    "skillsLabel": "Habilidades",
+    "@skillsLabel": {
+        "description": "Skills section title"
+    },
+    "skillsHint": "Flutter, Dart, Firebase, Git...",
+    "@skillsHint": {
+        "description": "Hint for skills input"
+    },
+    "languagesLabel": "Idiomas",
+    "@languagesLabel": {
+        "description": "Languages section title"
+    },
+    "languagesHint": "Inglés, Español, Francés...",
+    "@languagesHint": {
+        "description": "Hint for languages input"
+    },
+    "experience": "Experiencia",
+    "@experience": {
+        "description": "Experience section title"
+    },
+    "education": "Educación",
+    "@education": {
+        "description": "Education section title"
+    },
+    "noItemsAdded": "Aún no se han agregado {item}.",
+    "@noItemsAdded": {
+        "description": "Generic empty list message",
+        "placeholders": {
+            "item": {
+                "type": "String"
+            }
+        }
+    },
+    "addExperience": "Agregar Experiencia",
+    "@addExperience": {
+        "description": "Add experience dialog title"
+    },
+    "editExperience": "Editar Experiencia",
+    "@editExperience": {
+        "description": "Edit experience dialog title"
+    },
+    "jobTitle": "Título del Trabajo",
+    "@jobTitle": {
+        "description": "Job title label"
+    },
+    "company": "Empresa",
+    "@company": {
+        "description": "Company label"
+    },
+    "startDate": "Fecha de Inicio",
+    "@startDate": {
+        "description": "Start date label"
+    },
+    "endDate": "Fecha de Fin",
+    "@endDate": {
+        "description": "End date label"
+    },
+    "description": "Descripción",
+    "@description": {
+        "description": "Description label"
+    },
+    "addEducation": "Agregar Educación",
+    "@addEducation": {
+        "description": "Add education dialog title"
+    },
+    "editEducation": "Editar Educación",
+    "@editEducation": {
+        "description": "Edit education dialog title"
+    },
+    "degree": "Título",
+    "@degree": {
+        "description": "Degree label"
+    },
+    "school": "Escuela",
+    "@school": {
+        "description": "School label"
+    },
+    "generateCoverLetter": "Generar Carta de Presentación",
+    "@generateCoverLetter": {
+        "description": "Generate cover letter screen title"
+    },
+    "generatingCoverLetter": "Generando Carta de Presentación...",
+    "@generatingCoverLetter": {
+        "description": "Loading message for cover letter"
+    },
+    "craftingCoverLetter": "Elaborando una carta profesional para ti",
+    "@craftingCoverLetter": {
+        "description": "Loading sub-message for cover letter"
+    },
+    "coverLetterDescription": "Crea una carta de presentación personalizada en segundos. Completa los detalles a continuación.",
+    "@coverLetterDescription": {
+        "description": "Description for cover letter screen"
+    },
+    "selectCVOptional": "Seleccionar CV (Opcional)",
+    "@selectCVOptional": {
+        "description": "Select CV label"
+    },
+    "selectCVToTailorFrom": "Selecciona un CV como base",
+    "@selectCVToTailorFrom": {
+        "description": "Select CV hint"
+    },
+    "noneUseProfileData": "Ninguno (Usar Datos del Perfil)",
+    "@noneUseProfileData": {
+        "description": "None option for CV selection"
+    },
+    "companyName": "Nombre de la Empresa",
+    "@companyName": {
+        "description": "Company name label"
+    },
+    "pleaseEnterCompanyName": "Por favor ingresa el nombre de la empresa",
+    "@pleaseEnterCompanyName": {
+        "description": "Company name validation"
+    },
+    "jobDescriptionOptional": "Descripción del Trabajo (Opcional)",
+    "@jobDescriptionOptional": {
+        "description": "Job description optional label"
+    },
+    "jobDescriptionHint": "Pega la descripción del trabajo aquí para una mejor personalización",
+    "@jobDescriptionHint": {
+        "description": "Job description hint"
+    },
+    "generateCoverLetterButton": "Generar Carta de Presentación (1 Crédito)",
+    "@generateCoverLetterButton": {
+        "description": "Generate cover letter button text"
+    },
+    "pleaseEnterJobTitle": "Por favor ingresa un título de trabajo",
+    "@pleaseEnterJobTitle": {
+        "description": "Job title validation"
+    },
+    "coverLetterPreview": "Vista Previa de Carta de Presentación",
+    "@coverLetterPreview": {
+        "description": "Cover letter preview screen title"
+    },
+    "creditHistory": "Historial de Créditos",
+    "@creditHistory": {
+        "description": "Credit history screen title"
+    },
+    "nextReset": "Próximo reinicio: {date}",
+    "@nextReset": {
+        "description": "Next credit reset date",
+        "placeholders": {
+            "date": {
+                "type": "String"
+            }
+        }
+    },
+    "transactionHistory": "Historial de Transacciones",
+    "@transactionHistory": {
+        "description": "Transaction history section title"
+    },
+    "noTransactionsYet": "Aún no hay transacciones",
+    "@noTransactionsYet": {
+        "description": "Empty transaction history message"
+    },
+    "next": "Siguiente",
+    "@next": {
+        "description": "Next button text"
+    },
+    "letsGetStarted": "Comencemos",
+    "@letsGetStarted": {
+        "description": "Final onboarding button text"
+    },
+    "featureTitle1": "Generación de CV con IA",
+    "@featureTitle1": {
+        "description": "First feature title"
+    },
+    "featureDesc1": "Crea currículums profesionales y compatibles con ATS en segundos usando tecnología IA avanzada",
+    "@featureDesc1": {
+        "description": "First feature description"
+    },
+    "featureTitle2": "Optimización Inteligente",
+    "@featureTitle2": {
+        "description": "Second feature title"
+    },
+    "featureDesc2": "Optimiza y personaliza tu CV para que coincida perfectamente con descripciones de trabajo específicas",
+    "@featureDesc2": {
+        "description": "Second feature description"
+    },
+    "featureTitle3": "Cartas de Presentación Profesionales",
+    "@featureTitle3": {
+        "description": "Third feature title"
+    },
+    "featureDesc3": "Genera cartas de presentación convincentes y personalizadas al instante con asistencia de IA",
+    "@featureDesc3": {
+        "description": "Third feature description"
+    },
+    "featureTitle4": "Soporte Multiidioma",
+    "@featureTitle4": {
+        "description": "Fourth feature title"
+    },
+    "featureDesc4": "Crea CVs en múltiples idiomas con soporte RTL adecuado para árabe",
+    "@featureDesc4": {
+        "description": "Fourth feature description"
+    },
+    "confirmGeneration": "Confirmar Generación de CV",
+    "@confirmGeneration": {
+        "description": "Title for CV generation confirmation dialog"
+    },
+    "confirmGenerationMessage": "Generaremos un CV profesional basado en tu título de trabajo y perfil. Después de la generación, podrás editar el CV y descargarlo como PDF.",
+    "@confirmGenerationMessage": {
+        "description": "Message explaining CV generation process"
+    },
+    "myFiles": "Mis Archivos",
+    "@myFiles": {
+        "description": "My Files navigation label"
+    },
+    "organizeYourDocuments": "Organiza y gestiona todos tus CVs y cartas de presentación",
+    "@organizeYourDocuments": {
+        "description": "My Files screen description"
+    },
+    "generatedCVs": "CVs Generados",
+    "@generatedCVs": {
+        "description": "Generated CVs section title"
+    },
+    "optimizedCVs": "CVs Optimizados",
+    "@optimizedCVs": {
+        "description": "Optimized CVs section title"
+    },
+    "tailoredCVs": "CVs Personalizados",
+    "@tailoredCVs": {
+        "description": "Tailored CVs section title"
+    },
+    "coverLetters": "Cartas de Presentación",
+    "@coverLetters": {
+        "description": "Cover Letters section title"
+    },
+    "noGeneratedCVs": "Aún no hay CVs generados",
+    "@noGeneratedCVs": {
+        "description": "Empty state message for generated CVs"
+    },
+    "noOptimizedCVs": "Aún no hay CVs optimizados",
+    "@noOptimizedCVs": {
+        "description": "Empty state message for optimized CVs"
+    },
+    "noTailoredCVs": "Aún no hay CVs personalizados",
+    "@noTailoredCVs": {
+        "description": "Empty state message for tailored CVs"
+    },
+    "noCoverLetters": "Aún no hay cartas de presentación",
+    "@noCoverLetters": {
+        "description": "Empty state message for cover letters"
+    },
+    "item": "elemento",
+    "@item": {
+        "description": "Singular form of item"
+    },
+    "items": "elementos",
+    "@items": {
+        "description": "Plural form of items"
+    },
+    "language": "Idioma",
+    "@language": {
+        "description": "Language label"
+    },
+    "confirmDelete": "Confirmar Eliminación",
+    "@confirmDelete": {
+        "description": "Delete confirmation dialog title"
+    },
+    "areYouSureDeleteCV": "¿Estás seguro de que quieres eliminar este CV?",
+    "@areYouSureDeleteCV": {
+        "description": "CV delete confirmation message"
+    },
+    "areYouSureDeleteCoverLetter": "¿Estás seguro de que quieres eliminar esta carta de presentación?",
+    "@areYouSureDeleteCoverLetter": {
+        "description": "Cover letter delete confirmation message"
+    },
+    "delete": "Eliminar",
+    "@delete": {
+        "description": "Delete button text"
+    },
+    "cvDeletedSuccessfully": "CV eliminado exitosamente",
+    "@cvDeletedSuccessfully": {
+        "description": "CV delete success message"
+    },
+    "coverLetterDeletedSuccessfully": "Carta de presentación eliminada exitosamente",
+    "@coverLetterDeletedSuccessfully": {
+        "description": "Cover letter delete success message"
+    },
+    "view": "Ver",
+    "@view": {
+        "description": "View button text"
+    },
+    "@skip": {
+        "description": "Skip button text"
+    },
+    "getStarted": "Comenzar",
+    "@getStarted": {
+        "description": "Get started button text"
+    },
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "@alreadyHaveAccount": {
+        "description": "Already have account text"
+    },
+    "logIn": "Iniciar Sesión",
+    "@logIn": {
+        "description": "Log in link text"
+    },
+    "aiPoweredResumeCreation": "Creación de CV\nImpulsada por IA",
+    "@aiPoweredResumeCreation": {
+        "description": "Onboarding title"
+    },
+    "onboardingDescription": "Crea currículums profesionales y compatibles con ATS en segundos usando nuestra tecnología IA avanzada.",
+    "@onboardingDescription": {
+        "description": "Onboarding description"
+    },
+    "selectLanguage": "Seleccionar Idioma",
+    "@selectLanguage": {
+        "description": "Select language title"
+    },
+    "myFilesDescription": "Ver todos los documentos",
+    "@myFilesDescription": {
+        "description": "My Files description"
+    },
+    "profile": "Perfil",
+    "@profile": {
+        "description": "Profile navigation label"
+    },
+    "profileDescription": "Gestiona tu información",
+    "@profileDescription": {
+        "description": "Profile description"
+    },
+    "editProfile": "Editar Perfil",
+    "@editProfile": {
+        "description": "Edit profile button text"
+    },
+    "saveChanges": "Guardar Cambios",
+    "@saveChanges": {
+        "description": "Save changes button text"
+    },
+    "profileUpdatedSuccessfully": "Perfil actualizado exitosamente",
+    "@profileUpdatedSuccessfully": {},
+    "phoneNumber": "Número de Teléfono",
+    "@phoneNumber": {
+        "description": "Phone number label"
+    },
+    "fullName": "Nombre Completo",
+    "@fullName": {
+        "description": "Full name label"
+    },
+    "viewProfile": "Ver Perfil",
+    "@viewProfile": {
+        "description": "View profile button text"
+    },
+    "personalInformation": "Información Personal",
+    "@personalInformation": {
+        "description": "Personal information section title"
+    },
+    "adminPanel": "Panel de Administración",
+    "@adminPanel": {
+        "description": "Admin panel title"
+    },
+    "adminPanelDescription": "Gestionar usuarios y créditos",
+    "@adminPanelDescription": {
+        "description": "Admin panel description"
+    },
+    "userManagement": "Gestión de Usuarios",
+    "@userManagement": {
+        "description": "User management title"
+    },
+    "totalUsers": "Total de Usuarios",
+    "@totalUsers": {
+        "description": "Total users label"
+    },
+    "editUser": "Editar Usuario",
+    "@editUser": {
+        "description": "Edit user button"
+    },
+    "deleteUser": "Eliminar Usuario",
+    "@deleteUser": {
+        "description": "Delete user button"
+    },
+    "adjustCredits": "Ajustar Créditos",
+    "@adjustCredits": {
+        "description": "Adjust credits button"
+    },
+    "creditAmount": "Cantidad de Créditos",
+    "@creditAmount": {
+        "description": "Credit amount label"
+    },
+    "reason": "Razón",
+    "@reason": {
+        "description": "Reason label"
+    },
+    "currentBalance": "Saldo Actual",
+    "@currentBalance": {
+        "description": "Current balance label"
+    },
+    "newBalance": "Nuevo Saldo",
+    "@newBalance": {
+        "description": "New balance label"
+    },
+    "userDeletedSuccessfully": "Usuario eliminado exitosamente",
+    "@userDeletedSuccessfully": {
+        "description": "User deleted success message"
+    },
+    "userUpdatedSuccessfully": "Usuario actualizado exitosamente",
+    "@userUpdatedSuccessfully": {
+        "description": "User updated success message"
+    },
+    "creditsAdjustedSuccessfully": "Créditos ajustados exitosamente",
+    "@creditsAdjustedSuccessfully": {
+        "description": "Credits adjusted success message"
+    },
+    "confirmDeleteUser": "¿Estás seguro de que quieres eliminar este usuario? Esta acción no se puede deshacer y eliminará todos sus CVs y cartas de presentación.",
+    "@confirmDeleteUser": {
+        "description": "Confirm delete user message"
+    },
+    "searchUsers": "Buscar usuarios...",
+    "@searchUsers": {
+        "description": "Search users placeholder"
+    },
+    "noUsersFound": "No se encontraron usuarios",
+    "@noUsersFound": {
+        "description": "No users found message"
+    },
+    "joinedOn": "Se unió el",
+    "@joinedOn": {
+        "description": "Joined on label"
+    },
+    "adminOnly": "Solo Administrador",
+    "@adminOnly": {
+        "description": "Admin only badge"
+    },
+    "signInWithGoogle": "Iniciar sesión con Google",
+    "@signInWithGoogle": {
+        "description": "Sign in with Google button text"
+    },
+    "certificates": "Certificados",
+    "@certificates": {
+        "description": "Certificates section title"
+    },
+    "certificate": "Certificado",
+    "@certificate": {
+        "description": "Certificate singular label"
+    },
+    "addCertificate": "Agregar Certificado",
+    "@addCertificate": {
+        "description": "Add certificate button text"
+    },
+    "editCertificate": "Editar Certificado",
+    "@editCertificate": {
+        "description": "Edit certificate dialog title"
+    },
+    "certificateName": "Nombre del Certificado",
+    "@certificateName": {
+        "description": "Certificate name label"
+    },
+    "issuer": "Emisor",
+    "@issuer": {
+        "description": "Issuer organization label"
+    },
+    "issueDate": "Fecha de Emisión",
+    "@issueDate": {
+        "description": "Issue date label"
+    },
+    "noCertificates": "Aún no se han agregado certificados.",
+    "@noCertificates": {
+        "description": "Empty certificates message"
+    }
+}

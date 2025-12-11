@@ -1,0 +1,857 @@
+{
+    "@@locale": "de",
+    "appTitle": "CV Manager KI",
+    "@appTitle": {
+        "description": "The title of the application"
+    },
+    "home": "Startseite",
+    "@home": {
+        "description": "Home navigation label"
+    },
+    "forgotPassword": "Passwort vergessen?",
+    "@forgotPassword": {
+        "description": "forgotPassword text"
+    },
+    "resetPassword": "Passwort zurücksetzen",
+    "@resetPassword": {
+        "description": "resetPassword text"
+    },
+    "enterEmailToReset": "Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen einen Link zum Zurücksetzen Ihres Passworts.",
+    "@enterEmailToReset": {
+        "description": "enterEmailToReset text"
+    },
+    "sendResetLink": "Zurücksetzungslink senden",
+    "@sendResetLink": {
+        "description": "sendResetLink text"
+    },
+    "resetLinkSent": "Zurücksetzungslink gesendet!",
+    "@resetLinkSent": {
+        "description": "resetLinkSent text"
+    },
+    "checkYourEmail": "Bitte überprüfen Sie Ihre E-Mail für Anweisungen zum Zurücksetzen Ihres Passworts.",
+    "@checkYourEmail": {
+        "description": "checkYourEmail text"
+    },
+    "backToLogin": "Zurück zur Anmeldung",
+    "@backToLogin": {
+        "description": "backToLogin text"
+    },
+    "pleaseEnterValidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+    "@pleaseEnterValidEmail": {
+        "description": "pleaseEnterValidEmail text"
+    },
+    "welcomeBack": "Willkommen zurück",
+    "@welcomeBack": {
+        "description": "Welcome message on home screen"
+    },
+    "availableCredits": "Verfügbare Credits",
+    "@availableCredits": {
+        "description": "Label for credits balance"
+    },
+    "tapToViewHistory": "Zum Anzeigen der Historie antippen",
+    "@tapToViewHistory": {
+        "description": "Hint text for credits card"
+    },
+    "proPlan": "Kostenloser Plan",
+    "@proPlan": {
+        "description": "Plan name label"
+    },
+    "quickActions": "Schnellaktionen",
+    "@quickActions": {
+        "description": "Section title for quick actions"
+    },
+    "generateCV": "Lebenslauf erstellen",
+    "@generateCV": {
+        "description": "Generate CV action"
+    },
+    "createFromScratch": "Von Grund auf erstellen",
+    "@createFromScratch": {
+        "description": "Generate CV description"
+    },
+    "optimizeCV": "Lebenslauf optimieren",
+    "@optimizeCV": {
+        "description": "Optimize CV action"
+    },
+    "improveExisting": "Vorhandenen verbessern",
+    "@improveExisting": {
+        "description": "Optimize CV description"
+    },
+    "tailorCV": "Lebenslauf anpassen",
+    "@tailorCV": {
+        "description": "Tailor CV action"
+    },
+    "matchJobDesc": "An Stellenbeschreibung anpassen",
+    "@matchJobDesc": {
+        "description": "Tailor CV description"
+    },
+    "coverLetter": "Anschreiben",
+    "@coverLetter": {
+        "description": "Cover letter action"
+    },
+    "writePerfectly": "Perfekt verfassen",
+    "@writePerfectly": {
+        "description": "Cover letter description"
+    },
+    "recentCVs": "Aktuelle Lebensläufe",
+    "@recentCVs": {
+        "description": "Recent CVs section title"
+    },
+    "viewAll": "Alle anzeigen",
+    "@viewAll": {
+        "description": "View all button text"
+    },
+    "noCVsYet": "Noch keine Lebensläufe erstellt.",
+    "@noCVsYet": {
+        "description": "Empty state message for CVs"
+    },
+    "created": "Erstellt",
+    "@created": {
+        "description": "Created date label"
+    },
+    "errorLoadingCVs": "Fehler beim Laden der Lebensläufe: {error}",
+    "@errorLoadingCVs": {
+        "description": "Error message for loading CVs",
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "login": "Anmelden",
+    "@login": {
+        "description": "Login button text"
+    },
+    "signUp": "Registrieren",
+    "@signUp": {
+        "description": "Sign up button text"
+    },
+    "logout": "Abmelden",
+    "@logout": {
+        "description": "Logout button text"
+    },
+    "email": "E-Mail",
+    "@email": {
+        "description": "Email label"
+    },
+    "password": "Passwort",
+    "@password": {
+        "description": "Password label"
+    },
+    "firstName": "Vorname",
+    "@firstName": {
+        "description": "First name label"
+    },
+    "lastName": "Nachname",
+    "@lastName": {
+        "description": "Last name label"
+    },
+    "phone": "Telefon",
+    "@phone": {
+        "description": "Phone label"
+    },
+    "address": "Adresse",
+    "@address": {
+        "description": "Address label"
+    },
+    "save": "Speichern",
+    "@save": {
+        "description": "Save button text"
+    },
+    "cancel": "Abbrechen",
+    "@cancel": {
+        "description": "Cancel button text"
+    },
+    "skip": "Überspringen",
+    "languageEnglish": "Englisch",
+    "@languageEnglish": {
+        "description": "English language name"
+    },
+    "languageSpanish": "Spanisch",
+    "@languageSpanish": {
+        "description": "Spanish language name"
+    },
+    "languageFrench": "Französisch",
+    "@languageFrench": {
+        "description": "French language name"
+    },
+    "languageArabic": "Arabisch",
+    "@languageArabic": {
+        "description": "Arabic language name"
+    },
+    "languageDutch": "Niederländisch",
+    "@languageDutch": {
+        "description": "Dutch language name"
+    },
+    "languageGerman": "Deutsch",
+    "@languageGerman": {
+        "description": "German language name"
+    },
+    "languageRussian": "Russisch",
+    "@languageRussian": {
+        "description": "Russian language name"
+    },
+    "error": "Fehler",
+    "@error": {
+        "description": "Error label"
+    },
+    "dontHaveAccount": "Noch kein Konto? Registrieren",
+    "@dontHaveAccount": {
+        "description": "Don't have account text"
+    },
+    "pleaseEnterEmail": "Bitte geben Sie Ihre E-Mail-Adresse ein",
+    "@pleaseEnterEmail": {
+        "description": "Email validation message"
+    },
+    "pleaseEnterPassword": "Bitte geben Sie Ihr Passwort ein",
+    "@pleaseEnterPassword": {
+        "description": "Password validation message"
+    },
+    "createYourCV": "Erstellen Sie Ihren Lebenslauf",
+    "@createYourCV": {
+        "description": "Create CV screen title"
+    },
+    "generateCVDescription": "Geben Sie Ihre Zielposition ein und wir erstellen einen professionellen Lebenslauf basierend auf Ihrem Profil.",
+    "@generateCVDescription": {
+        "description": "Generate CV screen description"
+    },
+    "targetJobTitle": "Zielposition",
+    "@targetJobTitle": {
+        "description": "Target job title label"
+    },
+    "jobTitleHint": "z.B. Senior Flutter Developer",
+    "@jobTitleHint": {
+        "description": "Job title hint text"
+    },
+    "targetLanguage": "Zielsprache",
+    "@targetLanguage": {
+        "description": "Target language label"
+    },
+    "generateCVButton": "Lebenslauf erstellen (1 Credit)",
+    "@generateCVButton": {
+        "description": "Generate CV button text"
+    },
+    "required": "Erforderlich",
+    "@required": {
+        "description": "Required field validation"
+    },
+    "errorLoadingProfile": "Fehler beim Laden des Profils",
+    "@errorLoadingProfile": {
+        "description": "Error loading profile message"
+    },
+    "optimizeCVDescription": "Laden Sie Ihren vorhandenen Lebenslauf hoch oder fügen Sie den Inhalt unten ein, damit unsere KI ihn für bessere Wirkung optimieren kann.",
+    "@optimizeCVDescription": {
+        "description": "Optimize CV screen description"
+    },
+    "or": "ODER",
+    "@or": {
+        "description": "Or separator"
+    },
+    "pasteCVContentHere": "Fügen Sie hier Ihren Lebenslauf-Inhalt ein...",
+    "@pasteCVContentHere": {
+        "description": "Paste CV content hint"
+    },
+    "optimizeMyCVButton": "Meinen Lebenslauf optimieren (1 Credit)",
+    "@optimizeMyCVButton": {
+        "description": "Optimize CV button text"
+    },
+    "selectPDForTXT": "PDF- oder TXT-Datei auswählen",
+    "@selectPDForTXT": {
+        "description": "Select file button text"
+    },
+    "textExtractedSuccessfully": "Text erfolgreich extrahiert",
+    "@textExtractedSuccessfully": {
+        "description": "Text extraction success message"
+    },
+    "changeFile": "Datei ändern",
+    "@changeFile": {
+        "description": "Change file button text"
+    },
+    "browseFiles": "Dateien durchsuchen",
+    "@browseFiles": {
+        "description": "Browse files button text"
+    },
+    "extractingTextFromFile": "Text wird aus Datei extrahiert...",
+    "@extractingTextFromFile": {
+        "description": "Text extraction loading message"
+    },
+    "optimizingYourCV": "Ihr Lebenslauf wird optimiert...",
+    "@optimizingYourCV": {
+        "description": "Optimizing CV loading message"
+    },
+    "thisMayTakeAMoment": "Dies kann einen Moment dauern",
+    "@thisMayTakeAMoment": {
+        "description": "Loading sub-message"
+    },
+    "provideCVContent": "Bitte geben Sie Lebenslauf-Inhalt an",
+    "@provideCVContent": {
+        "description": "Provide CV content validation"
+    },
+    "successfullyExtractedText": "Text erfolgreich aus {fileName} extrahiert",
+    "@successfullyExtractedText": {
+        "description": "Text extraction success with filename",
+        "placeholders": {
+            "fileName": {
+                "type": "String"
+            }
+        }
+    },
+    "tailorCVDescription": "Passen Sie Ihren Lebenslauf an eine spezifische Stellenbeschreibung an. Wählen Sie einen vorhandenen Lebenslauf, laden Sie eine Datei hoch oder fügen Sie Inhalt ein.",
+    "@tailorCVDescription": {
+        "description": "Tailor CV screen description"
+    },
+    "selectFromLibrary": "Aus Bibliothek auswählen (Optional)",
+    "@selectFromLibrary": {
+        "description": "Select from library label"
+    },
+    "selectCVToTailor": "Lebenslauf zum Anpassen auswählen",
+    "@selectCVToTailor": {
+        "description": "Select CV to tailor hint"
+    },
+    "noneUploadOrPaste": "Keiner (Hochladen oder Einfügen)",
+    "@noneUploadOrPaste": {
+        "description": "None option for CV selection"
+    },
+    "orPasteCVContent": "ODER Lebenslauf-Inhalt einfügen",
+    "@orPasteCVContent": {
+        "description": "Paste CV content label"
+    },
+    "jobDescription": "Stellenbeschreibung",
+    "@jobDescription": {
+        "description": "Job description label"
+    },
+    "pasteJobDescriptionHere": "Stellenbeschreibung hier einfügen...",
+    "@pasteJobDescriptionHere": {
+        "description": "Paste job description hint"
+    },
+    "tailorMyCVButton": "Meinen Lebenslauf anpassen (1 Credit)",
+    "@tailorMyCVButton": {
+        "description": "Tailor CV button text"
+    },
+    "tailoringYourCV": "Ihr Lebenslauf wird angepasst...",
+    "@tailoringYourCV": {
+        "description": "Tailoring CV loading message"
+    },
+    "matchingSkillsToJobDesc": "Fähigkeiten werden mit Stellenbeschreibung abgeglichen",
+    "@matchingSkillsToJobDesc": {
+        "description": "Tailoring CV sub-message"
+    },
+    "provideCVContentUploadPasteOrSelect": "Bitte geben Sie Lebenslauf-Inhalt an (Hochladen, Einfügen oder Auswählen)",
+    "@provideCVContentUploadPasteOrSelect": {
+        "description": "Provide CV content validation"
+    },
+    "provideJobDescription": "Bitte geben Sie eine Stellenbeschreibung an",
+    "@provideJobDescription": {
+        "description": "Provide job description validation"
+    },
+    "createAccount": "Konto erstellen",
+    "@createAccount": {
+        "description": "Create account screen title"
+    },
+    "confirmPassword": "Passwort bestätigen",
+    "@confirmPassword": {
+        "description": "Confirm password label"
+    },
+    "passwordMustBe6Chars": "Passwort muss mindestens 6 Zeichen lang sein",
+    "@passwordMustBe6Chars": {
+        "description": "Password length validation"
+    },
+    "passwordsDoNotMatch": "Passwörter stimmen nicht überein",
+    "@passwordsDoNotMatch": {
+        "description": "Password match validation"
+    },
+    "accountCreatedCompleteProfile": "Konto erstellt! Bitte vervollständigen Sie Ihr Profil.",
+    "@accountCreatedCompleteProfile": {
+        "description": "Account created success message"
+    },
+    "completeProfile": "Vervollständigen Sie Ihr Profil",
+    "@completeProfile": {
+        "description": "Complete profile screen title"
+    },
+    "profileCompletionDescription": "Bitte füllen Sie Ihre Daten aus, um fortzufahren. Diese werden für Ihre Lebensläufe verwendet.",
+    "@profileCompletionDescription": {
+        "description": "Complete profile description"
+    },
+    "saveAndContinue": "Speichern und fortfahren",
+    "@saveAndContinue": {
+        "description": "Save and continue button text"
+    },
+    "editCV": "Lebenslauf bearbeiten",
+    "@editCV": {
+        "description": "Edit CV button text"
+    },
+    "downloadPDF": "PDF herunterladen",
+    "@downloadPDF": {
+        "description": "Download PDF button text"
+    },
+    "personalInfo": "Persönliche Informationen",
+    "@personalInfo": {
+        "description": "Personal info section title"
+    },
+    "professionalSummary": "Professionelle Zusammenfassung",
+    "@professionalSummary": {
+        "description": "Professional summary section title"
+    },
+    "professionalSummaryHint": "Schreiben Sie eine kurze Zusammenfassung Ihres beruflichen Hintergrunds...",
+    "@professionalSummaryHint": {
+        "description": "Hint for professional summary"
+    },
+    "skillsLabel": "Fähigkeiten",
+    "@skillsLabel": {
+        "description": "Skills section title"
+    },
+    "skillsHint": "Flutter, Dart, Firebase, Git...",
+    "@skillsHint": {
+        "description": "Hint for skills input"
+    },
+    "languagesLabel": "Sprachen",
+    "@languagesLabel": {
+        "description": "Languages section title"
+    },
+    "languagesHint": "Englisch, Spanisch, Französisch...",
+    "@languagesHint": {
+        "description": "Hint for languages input"
+    },
+    "experience": "Berufserfahrung",
+    "@experience": {
+        "description": "Experience section title"
+    },
+    "education": "Ausbildung",
+    "@education": {
+        "description": "Education section title"
+    },
+    "noItemsAdded": "Noch keine {item} hinzugefügt.",
+    "@noItemsAdded": {
+        "description": "Generic empty list message",
+        "placeholders": {
+            "item": {
+                "type": "String"
+            }
+        }
+    },
+    "addExperience": "Erfahrung hinzufügen",
+    "@addExperience": {
+        "description": "Add experience dialog title"
+    },
+    "editExperience": "Erfahrung bearbeiten",
+    "@editExperience": {
+        "description": "Edit experience dialog title"
+    },
+    "jobTitle": "Position",
+    "@jobTitle": {
+        "description": "Job title label"
+    },
+    "company": "Unternehmen",
+    "@company": {
+        "description": "Company label"
+    },
+    "startDate": "Startdatum",
+    "@startDate": {
+        "description": "Start date label"
+    },
+    "endDate": "Enddatum",
+    "@endDate": {
+        "description": "End date label"
+    },
+    "description": "Beschreibung",
+    "@description": {
+        "description": "Description label"
+    },
+    "addEducation": "Ausbildung hinzufügen",
+    "@addEducation": {
+        "description": "Add education dialog title"
+    },
+    "editEducation": "Ausbildung bearbeiten",
+    "@editEducation": {
+        "description": "Edit education dialog title"
+    },
+    "degree": "Abschluss",
+    "@degree": {
+        "description": "Degree label"
+    },
+    "school": "Bildungseinrichtung",
+    "@school": {
+        "description": "School label"
+    },
+    "generateCoverLetter": "Anschreiben erstellen",
+    "@generateCoverLetter": {
+        "description": "Generate cover letter screen title"
+    },
+    "generatingCoverLetter": "Anschreiben wird erstellt...",
+    "@generatingCoverLetter": {
+        "description": "Loading message for cover letter"
+    },
+    "craftingCoverLetter": "Ein professionelles Anschreiben wird für Sie verfasst",
+    "@craftingCoverLetter": {
+        "description": "Loading sub-message for cover letter"
+    },
+    "coverLetterDescription": "Erstellen Sie in Sekunden ein maßgeschneidertes Anschreiben. Füllen Sie die Details unten aus.",
+    "@coverLetterDescription": {
+        "description": "Description for cover letter screen"
+    },
+    "selectCVOptional": "Lebenslauf auswählen (Optional)",
+    "@selectCVOptional": {
+        "description": "Select CV label"
+    },
+    "selectCVToTailorFrom": "Lebenslauf zum Anpassen auswählen",
+    "@selectCVToTailorFrom": {
+        "description": "Select CV hint"
+    },
+    "noneUseProfileData": "Keiner (Profildaten verwenden)",
+    "@noneUseProfileData": {
+        "description": "None option for CV selection"
+    },
+    "companyName": "Unternehmensname",
+    "@companyName": {
+        "description": "Company name label"
+    },
+    "pleaseEnterCompanyName": "Bitte geben Sie einen Unternehmensnamen ein",
+    "@pleaseEnterCompanyName": {
+        "description": "Company name validation"
+    },
+    "jobDescriptionOptional": "Stellenbeschreibung (Optional)",
+    "@jobDescriptionOptional": {
+        "description": "Job description optional label"
+    },
+    "jobDescriptionHint": "Fügen Sie die Stellenbeschreibung hier für bessere Anpassung ein",
+    "@jobDescriptionHint": {
+        "description": "Job description hint"
+    },
+    "generateCoverLetterButton": "Anschreiben erstellen (1 Credit)",
+    "@generateCoverLetterButton": {
+        "description": "Generate cover letter button text"
+    },
+    "pleaseEnterJobTitle": "Bitte geben Sie eine Position ein",
+    "@pleaseEnterJobTitle": {
+        "description": "Job title validation"
+    },
+    "coverLetterPreview": "Anschreiben-Vorschau",
+    "@coverLetterPreview": {
+        "description": "Cover letter preview screen title"
+    },
+    "creditHistory": "Credit-Historie",
+    "@creditHistory": {
+        "description": "Credit history screen title"
+    },
+    "nextReset": "Nächster Reset: {date}",
+    "@nextReset": {
+        "description": "Next credit reset date",
+        "placeholders": {
+            "date": {
+                "type": "String"
+            }
+        }
+    },
+    "transactionHistory": "Transaktionshistorie",
+    "@transactionHistory": {
+        "description": "Transaction history section title"
+    },
+    "noTransactionsYet": "Noch keine Transaktionen",
+    "@noTransactionsYet": {
+        "description": "Empty transaction history message"
+    },
+    "next": "Weiter",
+    "@next": {
+        "description": "Next button text"
+    },
+    "letsGetStarted": "Los geht's",
+    "@letsGetStarted": {
+        "description": "Final onboarding button text"
+    },
+    "featureTitle1": "KI-gestützte Lebenslauf-Erstellung",
+    "@featureTitle1": {
+        "description": "First feature title"
+    },
+    "featureDesc1": "Erstellen Sie professionelle, ATS-freundliche Lebensläufe in Sekunden mit fortschrittlicher KI-Technologie",
+    "@featureDesc1": {
+        "description": "First feature description"
+    },
+    "featureTitle2": "Intelligente Optimierung",
+    "@featureTitle2": {
+        "description": "Second feature title"
+    },
+    "featureDesc2": "Optimieren und passen Sie Ihren Lebenslauf perfekt an spezifische Stellenbeschreibungen an",
+    "@featureDesc2": {
+        "description": "Second feature description"
+    },
+    "featureTitle3": "Professionelle Anschreiben",
+    "@featureTitle3": {
+        "description": "Third feature title"
+    },
+    "featureDesc3": "Erstellen Sie überzeugende, maßgeschneiderte Anschreiben sofort mit KI-Unterstützung",
+    "@featureDesc3": {
+        "description": "Third feature description"
+    },
+    "featureTitle4": "Mehrsprachige Unterstützung",
+    "@featureTitle4": {
+        "description": "Fourth feature title"
+    },
+    "featureDesc4": "Erstellen Sie Lebensläufe in mehreren Sprachen mit korrekter RTL-Unterstützung für Arabisch",
+    "@featureDesc4": {
+        "description": "Fourth feature description"
+    },
+    "confirmGeneration": "Lebenslauf-Erstellung bestätigen",
+    "@confirmGeneration": {
+        "description": "Title for CV generation confirmation dialog"
+    },
+    "confirmGenerationMessage": "Wir erstellen einen professionellen Lebenslauf basierend auf Ihrer Position und Ihrem Profil. Nach der Erstellung können Sie den Lebenslauf bearbeiten und als PDF herunterladen.",
+    "@confirmGenerationMessage": {
+        "description": "Message explaining CV generation process"
+    },
+    "myFiles": "Meine Dateien",
+    "@myFiles": {
+        "description": "My Files navigation label"
+    },
+    "organizeYourDocuments": "Organisieren und verwalten Sie alle Ihre Lebensläufe und Anschreiben",
+    "@organizeYourDocuments": {
+        "description": "My Files screen description"
+    },
+    "generatedCVs": "Erstellte Lebensläufe",
+    "@generatedCVs": {
+        "description": "Generated CVs section title"
+    },
+    "optimizedCVs": "Optimierte Lebensläufe",
+    "@optimizedCVs": {
+        "description": "Optimized CVs section title"
+    },
+    "tailoredCVs": "Angepasste Lebensläufe",
+    "@tailoredCVs": {
+        "description": "Tailored CVs section title"
+    },
+    "coverLetters": "Anschreiben",
+    "@coverLetters": {
+        "description": "Cover Letters section title"
+    },
+    "noGeneratedCVs": "Noch keine erstellten Lebensläufe",
+    "@noGeneratedCVs": {
+        "description": "Empty state message for generated CVs"
+    },
+    "noOptimizedCVs": "Noch keine optimierten Lebensläufe",
+    "@noOptimizedCVs": {
+        "description": "Empty state message for optimized CVs"
+    },
+    "noTailoredCVs": "Noch keine angepassten Lebensläufe",
+    "@noTailoredCVs": {
+        "description": "Empty state message for tailored CVs"
+    },
+    "noCoverLetters": "Noch keine Anschreiben",
+    "@noCoverLetters": {
+        "description": "Empty state message for cover letters"
+    },
+    "item": "Element",
+    "@item": {
+        "description": "Singular form of item"
+    },
+    "items": "Elemente",
+    "@items": {
+        "description": "Plural form of items"
+    },
+    "language": "Sprache",
+    "@language": {
+        "description": "Language label"
+    },
+    "confirmDelete": "Löschen bestätigen",
+    "@confirmDelete": {
+        "description": "Delete confirmation dialog title"
+    },
+    "areYouSureDeleteCV": "Sind Sie sicher, dass Sie diesen Lebenslauf löschen möchten?",
+    "@areYouSureDeleteCV": {
+        "description": "CV delete confirmation message"
+    },
+    "areYouSureDeleteCoverLetter": "Sind Sie sicher, dass Sie dieses Anschreiben löschen möchten?",
+    "@areYouSureDeleteCoverLetter": {
+        "description": "Cover letter delete confirmation message"
+    },
+    "delete": "Löschen",
+    "@delete": {
+        "description": "Delete button text"
+    },
+    "cvDeletedSuccessfully": "Lebenslauf erfolgreich gelöscht",
+    "@cvDeletedSuccessfully": {
+        "description": "CV delete success message"
+    },
+    "coverLetterDeletedSuccessfully": "Anschreiben erfolgreich gelöscht",
+    "@coverLetterDeletedSuccessfully": {
+        "description": "Cover letter delete success message"
+    },
+    "view": "Anzeigen",
+    "@view": {
+        "description": "View button text"
+    },
+    "@skip": {
+        "description": "Skip button text"
+    },
+    "getStarted": "Starten",
+    "@getStarted": {
+        "description": "Get started button text"
+    },
+    "alreadyHaveAccount": "Haben Sie bereits ein Konto?",
+    "@alreadyHaveAccount": {
+        "description": "Already have account text"
+    },
+    "logIn": "Anmelden",
+    "@logIn": {
+        "description": "Log in link text"
+    },
+    "aiPoweredResumeCreation": "KI-gestützte\nLebenslauf-Erstellung",
+    "@aiPoweredResumeCreation": {
+        "description": "Onboarding title"
+    },
+    "onboardingDescription": "Erstellen Sie professionelle, ATS-freundliche Lebensläufe in Sekunden mit unserer fortschrittlichen KI-Technologie.",
+    "@onboardingDescription": {
+        "description": "Onboarding description"
+    },
+    "selectLanguage": "Sprache auswählen",
+    "@selectLanguage": {
+        "description": "Select language title"
+    },
+    "myFilesDescription": "Alle Dokumente anzeigen",
+    "@myFilesDescription": {
+        "description": "My Files description"
+    },
+    "profile": "Profil",
+    "@profile": {
+        "description": "Profile navigation label"
+    },
+    "profileDescription": "Verwalten Sie Ihre Informationen",
+    "@profileDescription": {
+        "description": "Profile description"
+    },
+    "editProfile": "Profil bearbeiten",
+    "@editProfile": {
+        "description": "Edit profile button text"
+    },
+    "saveChanges": "Änderungen speichern",
+    "@saveChanges": {
+        "description": "Save changes button text"
+    },
+    "profileUpdatedSuccessfully": "Profil erfolgreich aktualisiert",
+    "@profileUpdatedSuccessfully": {},
+    "phoneNumber": "Telefonnummer",
+    "@phoneNumber": {
+        "description": "Phone number label"
+    },
+    "fullName": "Vollständiger Name",
+    "@fullName": {
+        "description": "Full name label"
+    },
+    "viewProfile": "Profil anzeigen",
+    "@viewProfile": {
+        "description": "View profile button text"
+    },
+    "personalInformation": "Persönliche Informationen",
+    "@personalInformation": {
+        "description": "Personal information section title"
+    },
+    "adminPanel": "Admin-Panel",
+    "@adminPanel": {
+        "description": "Admin panel title"
+    },
+    "adminPanelDescription": "Benutzer & Credits verwalten",
+    "@adminPanelDescription": {
+        "description": "Admin panel description"
+    },
+    "userManagement": "Benutzerverwaltung",
+    "@userManagement": {
+        "description": "User management title"
+    },
+    "totalUsers": "Benutzer gesamt",
+    "@totalUsers": {
+        "description": "Total users label"
+    },
+    "editUser": "Benutzer bearbeiten",
+    "@editUser": {
+        "description": "Edit user button"
+    },
+    "deleteUser": "Benutzer löschen",
+    "@deleteUser": {
+        "description": "Delete user button"
+    },
+    "adjustCredits": "Credits anpassen",
+    "@adjustCredits": {
+        "description": "Adjust credits button"
+    },
+    "creditAmount": "Credit-Betrag",
+    "@creditAmount": {
+        "description": "Credit amount label"
+    },
+    "reason": "Grund",
+    "@reason": {
+        "description": "Reason label"
+    },
+    "currentBalance": "Aktueller Saldo",
+    "@currentBalance": {
+        "description": "Current balance label"
+    },
+    "newBalance": "Neuer Saldo",
+    "@newBalance": {
+        "description": "New balance label"
+    },
+    "userDeletedSuccessfully": "Benutzer erfolgreich gelöscht",
+    "@userDeletedSuccessfully": {
+        "description": "User deleted success message"
+    },
+    "userUpdatedSuccessfully": "Benutzer erfolgreich aktualisiert",
+    "@userUpdatedSuccessfully": {
+        "description": "User updated success message"
+    },
+    "creditsAdjustedSuccessfully": "Credits erfolgreich angepasst",
+    "@creditsAdjustedSuccessfully": {
+        "description": "Credits adjusted success message"
+    },
+    "confirmDeleteUser": "Sind Sie sicher, dass Sie diesen Benutzer löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden und löscht alle seine Lebensläufe und Anschreiben.",
+    "@confirmDeleteUser": {
+        "description": "Confirm delete user message"
+    },
+    "searchUsers": "Benutzer suchen...",
+    "@searchUsers": {
+        "description": "Search users placeholder"
+    },
+    "noUsersFound": "Keine Benutzer gefunden",
+    "@noUsersFound": {
+        "description": "No users found message"
+    },
+    "joinedOn": "Beigetreten am",
+    "@joinedOn": {
+        "description": "Joined on label"
+    },
+    "adminOnly": "Nur Admin",
+    "@adminOnly": {
+        "description": "Admin only badge"
+    },
+    "signInWithGoogle": "Mit Google anmelden",
+    "@signInWithGoogle": {
+        "description": "Sign in with Google button text"
+    },
+    "certificates": "Zertifikate",
+    "@certificates": {
+        "description": "Certificates section title"
+    },
+    "certificate": "Zertifikat",
+    "@certificate": {
+        "description": "Certificate singular label"
+    },
+    "addCertificate": "Zertifikat hinzufügen",
+    "@addCertificate": {
+        "description": "Add certificate button text"
+    },
+    "editCertificate": "Zertifikat bearbeiten",
+    "@editCertificate": {
+        "description": "Edit certificate dialog title"
+    },
+    "certificateName": "Zertifikatname",
+    "@certificateName": {
+        "description": "Certificate name label"
+    },
+    "issuer": "Ausstellende Organisation",
+    "@issuer": {
+        "description": "Issuer organization label"
+    },
+    "issueDate": "Ausstellungsdatum",
+    "@issueDate": {
+        "description": "Issue date label"
+    },
+    "noCertificates": "Noch keine Zertifikate hinzugefügt.",
+    "@noCertificates": {
+        "description": "Empty certificates message"
+    }
+}
