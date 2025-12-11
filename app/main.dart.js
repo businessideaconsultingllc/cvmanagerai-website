@@ -106748,7 +106748,7 @@ if(o.c!=null){o.a8(new A.b2M(o))
 if(n.a!=null){o.c.al(t.M).f.eA(A.f1(null,null,null,B.bh,null,B.T,null,B.bol,null,B.bq,null,null,null,null,null,null,null,null,null))
 l=o.c
 l.toString
-A.dD(l).iM("/login",null)}}q=1
+A.dD(l).iM("/",null)}}q=1
 s=7
 break
 case 5:q=4
