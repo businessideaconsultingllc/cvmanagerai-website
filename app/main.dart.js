@@ -105042,45 +105042,46 @@ A.b9c.prototype={
 $1(a){var s,r=null,q=a.d1($.anN(),t.Vl),p=a.d1($.ok(),t.m0).a.z
 p=A.byx(new A.hB(p,p.$ti.j("hB<1>")))
 s=A.a([A.fU(new A.b8Q(),"/language-selection"),A.fU(new A.b8R(),"/features-intro"),A.fU(new A.b8S(),"/"),A.fU(new A.b92(),"/onboarding"),A.fU(new A.b95(),"/login"),A.fU(new A.b96(),"/signup"),A.fU(new A.b97(),"/forgot-password"),A.fU(new A.b98(),"/reset-password"),A.fU(new A.b99(),"/profile-completion"),A.fU(new A.b9a(),"/generate-cv"),A.fU(new A.b9b(),"/cv-preview"),A.fU(new A.b8T(),"/optimize-cv"),A.fU(new A.b8U(),"/tailor-cv"),A.fU(new A.b8V(),"/edit-cv"),A.fU(new A.b8W(),"/credit-history"),A.fU(new A.b8X(),"/generate-cover-letter"),A.fU(new A.b8Y(),"/cover-letter-preview"),A.fU(new A.b8Z(),"/my-files"),A.fU(new A.b9_(),"/profile"),A.fU(new A.b90(),"/admin"),A.fU(new A.b91(),"/admin/users"),A.fU(new A.b93(),"/buy-credits")],t.yo)
-return A.byw(!1,r,r,r,r,"/",r,r,r,!1,p,!0,r,!1,new A.adK(new A.aMY(s,new A.b94(a,q),5)))},
+return A.byw(!1,r,r,r,r,"/",r,r,r,!1,p,!0,r,!1,new A.adK(new A.aMY(s,new A.b94(q,a),5)))},
 $S:533}
 A.b94.prototype={
 $2(a,b){return this.anm(a,b)},
-anm(a0,a1){var s=0,r=A.x(t.T),q,p=this,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a
-var $async$$2=A.t(function(a2,a3){if(a2===1)return A.u(a3,r)
-while(true)switch(s){case 0:g=A.aa_()
-f=g.gf0().p("code")
-e=g.gf0().p("access_token")
-d=f||e
-c=g.gf0().i(0,"type")==="recovery"
-b=p.a
-a=b.ct($.bgl(),t._e).gm()
-if(a==null)a=!0
-o=!d
-if(o&&!c){n=a1.b
-if(n.gcW()==="/language-selection"||n.gcW()==="/features-intro"||n.gcW()==="/login"||n.gcW()==="/signup"||n.gcW()==="/forgot-password"||n.gcW()==="/reset-password"||n.gcW()==="/onboarding"){q=null
+anm(a1,a2){var s=0,r=A.x(t.T),q,p=this,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,a0
+var $async$$2=A.t(function(a3,a4){if(a3===1)return A.u(a4,r)
+while(true)switch(s){case 0:a=A.aa_()
+a0=A.kU(p.a)
+a0=(a0==null?null:a0.b)==null
+o=a.gf0().p("code")
+n=a.gf0().p("access_token")
+if(a0)m=o||n
+else m=!1
+l=a.gf0().i(0,"type")==="recovery"
+k=p.b
+j=k.ct($.bgl(),t._e).gm()
+if(j==null)j=!0
+i=!m
+if(i&&!l){h=a2.b
+if(h.gcW()==="/language-selection"||h.gcW()==="/features-intro"||h.gcW()==="/login"||h.gcW()==="/signup"||h.gcW()==="/forgot-password"||h.gcW()==="/reset-password"||h.gcW()==="/onboarding"){q=null
 s=1
-break}}n=A.kU(p.b)
-n=(n==null?null:n.b)==null
-if(a&&n&&o&&!c){q="/language-selection"
+break}}if(j&&a0&&i&&!l){q="/language-selection"
 s=1
-break}o=a1.b
-m=o.gcW()==="/login"||o.gcW()==="/signup"||o.gcW()==="/forgot-password"||o.gcW()==="/reset-password"
-l=o.gcW()==="/onboarding"
-if(!(o.gf0().p("error")&&o.gf0().p("error_description")))k=g.gf0().p("error")&&g.gf0().p("error_description")
-else k=!0
-if((c||k)&&o.gcW()!=="/reset-password"){q="/reset-password"
+break}i=a2.b
+g=i.gcW()==="/login"||i.gcW()==="/signup"||i.gcW()==="/forgot-password"||i.gcW()==="/reset-password"
+f=i.gcW()==="/onboarding"
+if(!(i.gf0().p("error")&&i.gf0().p("error_description")))e=a.gf0().p("error")&&a.gf0().p("error_description")
+else e=!0
+if((l||e)&&i.gcW()!=="/reset-password"){q="/reset-password"
 s=1
-break}if(n){if(m||l){q=null
+break}if(a0){if(g||f){q=null
 s=1
 break}q="/onboarding"
 s=1
-break}j=b.d1($.tc(),t.oM)
-if(!j.gh8()&&j.gdl()==null&&j.gkk()){i=j.gm()
-if(i!=null){h=A.ca(i.i(0,"first_name"))
-if(h==null||h.length===0){if(o.gcW()!=="/profile-completion"){q="/profile-completion"
+break}d=k.d1($.tc(),t.oM)
+if(!d.gh8()&&d.gdl()==null&&d.gkk()){c=d.gm()
+if(c!=null){b=A.ca(c.i(0,"first_name"))
+if(b==null||b.length===0){if(i.gcW()!=="/profile-completion"){q="/profile-completion"
 s=1
-break}}else if(o.gcW()==="/profile-completion"||o.gcW()==="/onboarding"||o.gcW()==="/login"||o.gcW()==="/signup"){q="/"
+break}}else if(i.gcW()==="/profile-completion"||i.gcW()==="/onboarding"||i.gcW()==="/login"||i.gcW()==="/signup"){q="/"
 s=1
 break}}}q=null
 s=1
