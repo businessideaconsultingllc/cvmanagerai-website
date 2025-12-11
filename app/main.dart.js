@@ -106683,17 +106683,17 @@ return A.bBq(!1,r,r,r,r,"/",r,r,r,!1,p,!0,r,!1,new A.af8(new A.aPg(s,new A.bbt(q
 $S:535}
 A.bbt.prototype={
 $2(a,b){return this.ano(a,b)},
-ano(a2,a3){var s=0,r=A.y(t.T),q,p=this,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,a0,a1
-var $async$$2=A.u(function(a4,a5){if(a4===1)return A.v(a5,r)
-while(true)switch(s){case 0:a1=p.a
-if(a1.gfO()){q=null
+ano(a3,a4){var s=0,r=A.y(t.T),q,p=this,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,a0,a1,a2
+var $async$$2=A.u(function(a5,a6){if(a5===1)return A.v(a6,r)
+while(true)switch(s){case 0:a2=p.a
+if(a2.gfO()){q=null
 s=1
 break}o=A.abl()
-a1=A.lh(a1)
-a1=(a1==null?null:a1.b)==null
+a2=A.lh(a2)
+a2=(a2==null?null:a2.b)==null
 n=o.gf0().p(0,"code")
 m=o.gf0().p(0,"access_token")
-if(a1)l=n||m
+if(a2)l=n||m
 else l=!1
 k=o.gf0().i(0,"type")==="recovery"
 j=p.b
@@ -106701,30 +106701,31 @@ i=j.ct(0,$.biO(),t._e)
 h=i.gm(i)
 if(h==null)h=!0
 g=!l
-if(g&&!k){f=a3.b
+if(g&&!k){f=a4.b
 if(f.gcY(f)==="/language-selection"||f.gcY(f)==="/features-intro"||f.gcY(f)==="/login"||f.gcY(f)==="/signup"||f.gcY(f)==="/forgot-password"||f.gcY(f)==="/reset-password"||f.gcY(f)==="/onboarding"){q=null
 s=1
-break}}if(h&&a1&&g&&!k){q="/language-selection"
+break}}if(h&&a2&&g&&!k){q="/language-selection"
 s=1
-break}g=a3.b
-e=g.gcY(g)==="/login"||g.gcY(g)==="/signup"||g.gcY(g)==="/forgot-password"||g.gcY(g)==="/reset-password"
-d=g.gcY(g)==="/onboarding"
-if(!(g.gf0().p(0,"error")&&g.gf0().p(0,"error_description")))c=o.gf0().p(0,"error")&&o.gf0().p(0,"error_description")
+break}f=a4.b
+e=f.gcY(f)==="/login"||f.gcY(f)==="/signup"||f.gcY(f)==="/forgot-password"||f.gcY(f)==="/reset-password"
+d=f.gcY(f)==="/onboarding"
+if(!(f.gf0().p(0,"error")&&f.gf0().p(0,"error_description")))c=o.gf0().p(0,"error")&&o.gf0().p(0,"error_description")
 else c=!0
-if((k||c)&&g.gcY(g)!=="/reset-password"){q="/reset-password"
+b=!k
+if((!b||c)&&f.gcY(f)!=="/reset-password"){q="/reset-password"
 s=1
-break}if(a1){if(e||d){q=null
+break}if(a2){if(e||d){q=null
 s=1
-break}q="/onboarding"
+break}if(g&&b){q="/onboarding"
 s=1
-break}b=j.d4($.tH(),t.oM)
-if(!b.gfO()&&b.gdn(b)==null&&b.gkm()){a=b.gm(b)
-if(a!=null){a0=A.cg(J.l(a,"first_name"))
-if(a0==null||a0.length===0){if(g.gcY(g)!=="/profile-completion"){q="/profile-completion"
+break}}if(!a2){a=j.d4($.tH(),t.oM)
+if(!a.gfO()&&a.gdn(a)==null&&a.gkm()){a0=a.gm(a)
+if(a0!=null){a1=A.cg(J.l(a0,"first_name"))
+if(a1==null||a1.length===0){if(f.gcY(f)!=="/profile-completion"){q="/profile-completion"
 s=1
-break}}else if(g.gcY(g)==="/profile-completion"||g.gcY(g)==="/onboarding"||g.gcY(g)==="/login"||g.gcY(g)==="/signup"){q="/"
+break}}else if(f.gcY(f)==="/profile-completion"||f.gcY(f)==="/onboarding"||f.gcY(f)==="/login"||f.gcY(f)==="/signup"){q="/"
 s=1
-break}}}q=null
+break}}}}q=null
 s=1
 break
 case 1:return A.w(q,r)}})
