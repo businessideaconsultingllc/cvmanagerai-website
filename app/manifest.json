@@ -1,11 +1,11 @@
 {
-    "name": "flutter_cv_app",
-    "short_name": "flutter_cv_app",
+    "name": "CV Manager AI",
+    "short_name": "CV Manager",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#E8F4F8",
     "theme_color": "#2C5F7D",
-    "description": "A new Flutter project.",
+    "description": "Create professional, ATS-friendly resumes in seconds using our advanced AI technology.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
