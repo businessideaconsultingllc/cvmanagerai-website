@@ -12,686 +12,709 @@
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="LdQKPjwDYEyi1nOn03SIiMe6082LkcEmvSR-iar2-oE" />
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- AOS Library for Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <!-- Primary Meta Tags -->
-    <!-- Primary Meta Tags -->
-    <meta name="title" content="Generate CV using AI - Free ATS Friendly Resume Builder">
+    <title>CV Manager AI | Free AI-Powered ATS Resume Builder</title>
+    <meta name="title" content="CV Manager AI | Free AI-Powered ATS Resume Builder">
     <meta name="description"
-        content="Generate professional CV using AI in seconds. Free ATS-friendly resume builder and cover letter generator. Download PDF, optimize for jobs, and build your career with our top-rated AI tools.">
+        content="Build professional, ATS-optimized resumes in minutes with AI. Custom templates, job tailoring, and multi-language support. Download for free today.">
     <meta name="keywords"
-        content="generate cv using ai, cv ai, cv ai ats, free ai cv generator, ai resume builder, pdf resume maker, cv maker, create cv online, best free resume builder 2025, ats friendly resume templates, ai cv writer, professional cv builder, easy resume maker, job application tool, cover letter generator ai, curriculum vitae maker, build cv for free, smart resume builder, automated cv generator, ai powered resume, resume optimization tool, free cv templates, online cv creator, quick resume builder, resume for jobs, career builder tool, resume checker ai, cv editing tool, multi-language cv, arabic cv maker, english resume builder, download resume pdf, mobile resume app, fast cv maker, instant resume generator, job winning resume, modern cv templates, simple resume builder, executive resume maker, student cv builder, entry level resume, experienced professional cv, cv format 2025, resume writing assistant, artificial intelligence resume, free resume maker no watermarks">
-    <meta name="author" content="Business Idea Consulting LLC">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="English">
-    <meta name="revisit-after" content="7 days">
+        content="ai resume builder, free cv builder, ats friendly resume, ai cv generator, professional resume, cv manager ai">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://cvmanagerai.com/">
-    <meta property="og:title" content="Free AI CV Generator & Resume Builder | CV Manager AI">
+    <meta property="og:title" content="CV Manager AI | AI-Powered Resume Excellence">
     <meta property="og:description"
-        content="Create professional, ATS-friendly resumes in seconds using our advanced AI technology. Free templates and PDF download. Multi-language support including Arabic RTL.">
+        content="Generate high-scoring ATS resumes in seconds using advanced AI. Multi-language and professional templates included.">
     <meta property="og:image" content="https://cvmanagerai.com/app/icons/Icon-512.png">
-    <meta property="og:site_name" content="CV Manager AI">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://cvmanagerai.com/">
-    <meta property="twitter:title" content="Free AI CV Generator & Resume Builder | CV Manager AI">
-    <meta property="twitter:description"
-        content="Create professional, ATS-friendly resumes in seconds using our advanced AI technology. Free templates and PDF download. Multi-language support including Arabic RTL.">
-    <meta property="twitter:image" content="https://cvmanagerai.com/app/icons/Icon-512.png">
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://cvmanagerai.com/">
-
-    <title>Generate CV using AI - Free ATS Friendly Resume Builder</title>
+    <!-- Favicon -->
     <link rel="icon" href="/app/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
 
-    <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "CV Manager AI",
-      "url": "https://cvmanagerai.com",
-      "logo": "https://cvmanagerai.com/app/icons/Icon-512.png",
-      "description": "Professional AI-powered resume builder and CV optimization tool with multi-language support",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Web, Android, iOS",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": "Business Idea Consulting LLC",
-        "url": "https://cvmanagerai.com",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "email": "Support@cvmanagerai.com",
-          "contactType": "Customer Service"
-        }
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "127",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
-      "featureList": [
-        "AI-Powered Resume Generation",
-        "ATS-Friendly Templates",
-        "CV Optimization Tools",
-        "Cover Letter Generator",
-        "Multi-Language Support (7 languages)",
-        "PDF Export",
-        "Professional Templates"
-      ]
-    }
-    </script>
     <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --accent: #8b5cf6;
+            --bg-dark: #0f172a;
+            --text-main: #1e293b;
+            --text-light: #64748b;
+            --glass: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --shadow-premium: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #1a202c;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            background-color: #fcfcfd;
             overflow-x: hidden;
         }
 
-        /* Hero Section with Animated Background */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
+        h1,
+        h2,
+        h3,
+        .brand {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
         }
 
-        /* Animated gradient orbs */
-        .hero::before,
-        .hero::after {
-            content: '';
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.3;
-            animation: float 8s ease-in-out infinite;
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            padding: 15px 30px;
+            border-radius: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            top: 0;
+            width: 100%;
+            max-width: 100%;
+            border-radius: 0;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn-nav {
+            background: var(--primary);
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 160px 20px 100px;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at 50% 10%, #f3f4ff 0%, #ffffff 50%);
+            overflow: hidden;
         }
 
         .hero::before {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, #fff 0%, transparent 70%);
-            top: -100px;
-            right: -100px;
-            animation-delay: 0s;
-        }
-
-        .hero::after {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, #a8edea 0%, transparent 70%);
-            bottom: -100px;
-            left: -100px;
-            animation-delay: 2s;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            50% {
-                transform: translate(30px, -30px) scale(1.1);
-            }
-        }
-
-        /* Floating particles */
-        .particles {
+            content: '';
             position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
+            background: url('assets/landing_page/hero_bg.png') no-repeat center center;
+            background-size: cover;
+            opacity: 0.05;
+            z-index: -1;
         }
 
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            animation: rise 15s infinite ease-in;
-        }
-
-        .particle:nth-child(1) {
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .particle:nth-child(2) {
-            left: 20%;
-            animation-delay: 2s;
-        }
-
-        .particle:nth-child(3) {
-            left: 30%;
-            animation-delay: 4s;
-        }
-
-        .particle:nth-child(4) {
-            left: 40%;
-            animation-delay: 1s;
-        }
-
-        .particle:nth-child(5) {
-            left: 50%;
-            animation-delay: 3s;
-        }
-
-        .particle:nth-child(6) {
-            left: 60%;
-            animation-delay: 5s;
-        }
-
-        .particle:nth-child(7) {
-            left: 70%;
-            animation-delay: 2.5s;
-        }
-
-        .particle:nth-child(8) {
-            left: 80%;
-            animation-delay: 4.5s;
-        }
-
-        .particle:nth-child(9) {
-            left: 90%;
-            animation-delay: 1.5s;
-        }
-
-        @keyframes rise {
-            0% {
-                bottom: -10%;
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            90% {
-                opacity: 1;
-            }
-
-            100% {
-                bottom: 110%;
-                opacity: 0;
-            }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .badge-hero {
+            background: #e0e7ff;
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 10vw, 5.5rem);
-            font-weight: 900;
-            color: white;
-            margin-bottom: 1.5rem;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
             line-height: 1.1;
-            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-            letter-spacing: -0.02em;
+            max-width: 1000px;
+            margin-bottom: 24px;
+            color: var(--bg-dark);
         }
 
-        .hero .gradient-text {
-            background: linear-gradient(90deg, #fff 0%, #a8edea 50%, #fed6e3 100%);
+        .text-gradient {
+            background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: clamp(1.2rem, 3vw, 1.6rem);
-            color: rgba(255, 255, 255, 0.95);
-            margin-bottom: 3rem;
-            line-height: 1.7;
-            font-weight: 500;
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin-bottom: 40px;
+            line-height: 1.6;
         }
 
-        .cta-buttons {
+        .cta-group {
             display: flex;
-            gap: 1.5rem;
-            justify-content: center;
+            gap: 16px;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: white;
-            color: #667eea;
-            padding: 1.3rem 3rem;
-            font-size: 1.2rem;
+        .btn {
+            padding: 18px 36px;
+            border-radius: 16px;
             font-weight: 700;
+            font-size: 1.1rem;
             text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(99, 102, 241, 0.5);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--bg-dark);
+            border: 1px solid #e2e8f0;
+        }
+
+        .btn-secondary:hover {
+            background: #f8fafc;
+            transform: translateY(-4px);
+        }
+
+        /* Mockup Section */
+        .mockup-container {
+            margin: 60px auto 0;
+            max-width: 1100px;
+            perspective: 1000px;
             position: relative;
-            overflow: hidden;
         }
 
-        .cta-button::before {
-            content: '';
+        .app-mockup {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.1);
+            border: 8px solid rgba(255, 255, 255, 1);
+            transform: rotateX(5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .mockup-container:hover .app-mockup {
+            transform: rotateX(0deg) scale(1.02);
+        }
+
+        .floating-orb {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(102, 126, 234, 0.1);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .cta-button:hover::before {
             width: 300px;
             height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            filter: blur(60px);
+            opacity: 0.1;
+            z-index: -1;
+            animation: move 20s infinite alternate;
         }
 
-        .cta-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        @keyframes move {
+            from {
+                transform: translate(-10%, -10%);
+            }
+
+            to {
+                transform: translate(100%, 50%);
+            }
         }
 
-        .cta-button-secondary {
-            background: rgba(255, 255, 255, 0.2);
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--bg-dark);
             color: white;
-            backdrop-filter: blur(10px);
+            padding: 40px 0;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
         }
 
-        /* Stats Section */
-        .stats {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 4rem 2rem;
-        }
-
-        .stats-container {
+        .stats-grid {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
             text-align: center;
+            gap: 30px;
         }
 
-        .stat-item h3 {
-            font-size: 3rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .stat-val {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 5px;
+            background: linear-gradient(to right, #fff, #94a3b8);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 0.5rem;
+            -webkit-text-fill-color: transparent;
         }
 
-        .stat-item p {
-            font-size: 1.1rem;
-            color: #4a5568;
+        .stat-label {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             font-weight: 600;
         }
 
         /* Features Section */
         .features {
-            padding: 7rem 2rem;
-            background: white;
-            position: relative;
-        }
-
-        .features-container {
-            max-width: 1400px;
+            padding: 120px 20px;
+            max-width: 1300px;
             margin: 0 auto;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 5rem;
-        }
-
-        .section-header .badge {
-            display: inline-block;
-            padding: 0.5rem 1.5rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            margin-bottom: 80px;
         }
 
         .section-header h2 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #1a202c 0%, #4a5568 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-header p {
-            font-size: 1.3rem;
-            color: #718096;
-            max-width: 700px;
-            margin: 0 auto;
+            font-size: 3rem;
+            color: var(--bg-dark);
+            margin-bottom: 20px;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
         }
 
-        .feature-card {
-            background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
-            padding: 3rem 2.5rem;
-            border-radius: 30px;
-            border: 2px solid transparent;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        .f-card {
+            background: white;
+            padding: 40px;
+            border-radius: 32px;
+            border: 1px solid #f1f5f9;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
         }
 
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            opacity: 0;
-            transition: opacity 0.3s;
+        .f-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-premium);
+            border-color: var(--primary);
         }
 
-        .feature-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
-            border-color: rgba(102, 126, 234, 0.2);
+        .f-icon {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+            display: block;
         }
 
-        .feature-card:hover::before {
-            opacity: 1;
+        .f-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            color: var(--bg-dark);
         }
 
-        .feature-icon {
-            width: 90px;
-            height: 90px;
-            margin: 0 0 2rem 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 25px;
+        .f-card p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* How it works */
+        .process {
+            background: #f8fafc;
+            padding: 120px 20px;
+        }
+
+        .process-steps {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px;
+            position: relative;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-num {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-            transition: transform 0.3s;
-        }
-
-        .feature-card:hover .feature-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .feature-card h3 {
-            font-size: 1.7rem;
-            margin-bottom: 1rem;
-            color: #1a202c;
+            margin: 0 auto 24px;
             font-weight: 800;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
         }
 
-        .feature-card p {
-            color: #4a5568;
-            line-height: 1.8;
-            font-size: 1.05rem;
+        /* ATS Section Overlay */
+        .ats-info {
+            background: linear-gradient(to bottom, #ffffff, #f1f5f9);
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .ats-card {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--bg-dark);
+            color: white;
+            padding: 60px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            text-align: left;
+        }
+
+        @media (max-width: 850px) {
+            .ats-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+            }
         }
 
         /* Footer */
         .footer {
-            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
-            color: white;
-            text-align: center;
-            padding: 4rem 2rem;
-            position: relative;
-            overflow: hidden;
+            padding: 100px 20px 40px;
+            background: white;
+            border-top: 1px solid #f1f5f9;
         }
 
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-        }
-
-        .footer p {
-            margin: 1rem 0;
-            opacity: 0.9;
-        }
-
-        .footer a {
-            color: #a8edea;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .footer a:hover {
-            color: #fed6e3;
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
         }
 
         @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 24px;
+            color: var(--bg-dark);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            text-decoration: none;
+            color: var(--text-light);
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--text-light);
+            border-top: 1px solid #f1f5f9;
+            padding-top: 40px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8rem !important;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .navbar {
+                padding: 12px 20px;
+            }
+
             .hero {
-                padding: 4rem 1.5rem;
-            }
-
-            .features {
-                padding: 5rem 1.5rem;
-            }
-
-            .features-grid {
-                gap: 2rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: stretch;
+                padding-top: 140px;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="particles">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
+    <nav class="navbar" id="navbar">
+        <a href="/" class="brand">CV Manager AI</a>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#process">How it Works</a>
+            <a href="/app/" class="btn-nav">Launch App</a>
         </div>
-        <div class="hero-content">
-            <h1>Generate <span class="gradient-text">AI & ATS-Friendly</span> CV</h1>
-            <p>Generate your professional CV using AI in just <strong>1 minute</strong>. Our <strong>Free</strong>,
-                AI-powered
-                tools help you create, optimize, and tailor resumes that pass ATS filters with a higher score.</p>
-            <div class="cta-buttons">
-                <a href="/app/" class="cta-button">
-                    <span>Create Free CV with AI</span>
-                    <span>→</span>
-                </a>
-                <a href="#features" class="cta-button cta-button-secondary">
-                    <span>Learn More</span>
-                    <span>↓</span>
-                </a>
-            </div>
-        </div>
-    </section>
+    </nav>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="stats-container">
-            <div class="stat-item">
-                <h3>10K+</h3>
-                <p>CVs Generated</p>
-            </div>
-            <div class="stat-item">
-                <h3>95%</h3>
-                <p>Success Rate</p>
-            </div>
-            <div class="stat-item">
-                <h3>7+</h3>
-                <p>Languages</p>
-            </div>
-            <div class="stat-item">
-                <h3>24/7</h3>
-                <p>AI Assistance</p>
-            </div>
-        </div>
-    </section>
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <div class="floating-orb" style="top: 10%; left: -5%;"></div>
+            <div class="floating-orb" style="bottom: 10%; right: -5%; background: var(--secondary);"></div>
 
-    <!-- What is ATS Section (New) -->
-    <section class="features" style="background: linear-gradient(to bottom, #f8f9fa, #ffffff);">
-        <div class="features-container">
-            <div class="section-header">
-                <span class="badge">Why It Matters</span>
-                <h2>What is ATS?</h2>
-                <p style="max-width: 800px; margin: 0 auto; margin-bottom: 2rem;">
-                    <strong>ATS (Applicant Tracking System)</strong> is software used by employers to scan and rank
-                    resumes before a human ever sees them.
-                </p>
-            </div>
+            <div data-aos="fade-up">
+                <span class="badge-hero">New: AI Job Tailoring 2.0</span>
+                <h1>Craft Your Career with <span class="text-gradient">AI-Powered</span> Precision</h1>
+                <p>Build professional, high-scoring ATS resumes in under 60 seconds. Our intelligent engine optimizes
+                    your content to beat the algorithms and land interviews.</p>
 
-            <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-                <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
-                    <h3>The Gatekeeper</h3>
-                    <p>Over 90% of large companies use ATS. If your CV isn't optimized for these systems, it may be
-                        rejected automatically, regardless of your qualifications.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <h3>Higher Scores</h3>
-                    <p>Our templates are designed to be "ATS Friendly". This means they use standard formatting and
-                        keywords that help you achieve a higher ranking score.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">👀</div>
-                    <h3>Get Noticed</h3>
-                    <p>By passing the ATS filter, your resume actually reaches human recruiters, significantly
-                        increasing your chances of getting an interview.</p>
+                <div class="cta-group">
+                    <a href="/app/" class="btn btn-primary">Build Free CV Now —></a>
+                    <a href="#features" class="btn btn-secondary">Explore Features</a>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="features-container">
-            <div class="section-header">
-                <span class="badge">Features</span>
-                <h2>Powered by Artificial Intelligence</h2>
-                <p>Everything you need to create the perfect CV and land your dream job</p>
+            <div class="mockup-container" data-aos="zoom-in-up" data-aos-delay="200">
+                <img src="assets/landing_page/cv_mockup.png" alt="App UI Mockup" class="app-mockup">
             </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="stats-bar">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-val">12,500+</span>
+                    <span class="stat-label">CVs Crafted</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-val">98%</span>
+                    <span class="stat-label">ATS Score Avg</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-val">7+</span>
+                    <span class="stat-label">Global Languages</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-val">24/7</span>
+                    <span class="stat-label">AI Assistance</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="features" id="features">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Designed for Success</h2>
+                <p>Everything you need to stand out in the modern job market.</p>
+            </div>
+
             <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">✨</div>
-                    <h3>AI-Powered Generation</h3>
-                    <p>Create professional CVs in minutes with our intelligent AI that understands your experience,
-                        skills, and career goals.</p>
+                <div class="f-card" data-aos="fade-up">
+                    <span class="f-icon">✨</span>
+                    <h3>Instant Generation</h3>
+                    <p>Just tell us your role. Our AI writes professional bullet points, summaries, and skills tailored
+                        to your industry standards.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Smart Optimization</h3>
-                    <p>Optimize your existing CV for ATS systems and make it stand out to recruiters with AI-powered
-                        suggestions.</p>
+                <div class="f-card" data-aos="fade-up" data-aos-delay="100">
+                    <span class="f-icon">🎯</span>
+                    <h3>ATS Optimization</h3>
+                    <p>Stop being ignored by bots. We analyze your CV against real ATS filters to ensure you're in the
+                        top 5% of candidates.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔧</div>
+                <div class="f-card" data-aos="fade-up" data-aos-delay="200">
+                    <span class="f-icon">🌍</span>
+                    <h3>Multi-Language Support</h3>
+                    <p>Create resumes in English, Arabic (RTL support), French, German, Italian, and more with perfect
+                        grammar and tone.</p>
+                </div>
+                <div class="f-card" data-aos="fade-up">
+                    <span class="f-icon">🔧</span>
                     <h3>Job Tailoring</h3>
-                    <p>Automatically tailor your CV for specific job descriptions to increase your chances of getting
-                        interviews.</p>
+                    <p>Paste a job description and our AI will automatically adjust your CV highlighting the most
+                        relevant skills for that specific role.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📝</div>
-                    <h3>Cover Letters</h3>
-                    <p>Generate compelling, personalized cover letters that complement your CV and showcase your
-                        enthusiasm.</p>
+                <div class="f-card" data-aos="fade-up" data-aos-delay="100">
+                    <span class="f-icon">📝</span>
+                    <h3>Smart Cover Letters</h3>
+                    <p>Generate matching cover letters that resonate with recruiters and perfectly complement your new
+                        resume.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
-                    <h3>Multi-Language</h3>
-                    <p>Create CVs in multiple languages including English, Arabic, French, German, Spanish, and more.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💼</div>
-                    <h3>Professional Templates</h3>
-                    <p>Beautiful, modern CV templates designed by experts to make the best first impression with
-                        recruiters.</p>
+                <div class="f-card" data-aos="fade-up" data-aos-delay="200">
+                    <span class="f-icon">💼</span>
+                    <h3>Expert Templates</h3>
+                    <p>Minimalist, professional, and elegant templates designed by recruitment experts for maximum
+                        readability.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Process -->
+        <section class="process" id="process">
+            <div class="section-header" data-aos="fade-up">
+                <h2>How It Works</h2>
+            </div>
+            <div class="process-steps">
+                <div class="step" data-aos="fade-right">
+                    <div class="step-num">1</div>
+                    <h3>Input Details</h3>
+                    <p>Enter your basic info or paste your old resume to get started.</p>
+                </div>
+                <div class="step" data-aos="fade-right" data-aos-delay="100">
+                    <div class="step-num">2</div>
+                    <h3>AI Refinement</h3>
+                    <p>Our AI optimizes your keywords and professional phrasing.</p>
+                </div>
+                <div class="step" data-aos="fade-right" data-aos-delay="200">
+                    <div class="step-num">3</div>
+                    <h3>Launch & Land</h3>
+                    <p>Download your PDF and start applying with confidence.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ATS Special Info -->
+        <section class="ats-info">
+            <div class="ats-card" data-aos="zoom-in">
+                <div style="font-size: 4rem;">🤖</div>
+                <div>
+                    <h3>Why is ATS optimization critical?</h3>
+                    <p style="margin-top: 15px; opacity: 0.8; line-height: 1.6;">90% of Fortune 500 companies use
+                        Applicant Tracking Systems to filter candidates. If your CV lacks the right keywords or format,
+                        it may never reach a human. CV Manager AI bridge this gap automatically.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2025 CV Manager AI. All rights reserved.</p>
-        <p style="margin-top: 1.5rem;">
-            <a href="/app/">Get Started</a> |
-            <a href="/privacy.html">Privacy Policy</a> |
-            <a href="/terms.html">Terms of Service</a> |
-            <a href="/contact.html">Contact</a>
-        </p>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="/" class="brand footer-logo">CV Manager AI</a>
+                <p style="color: var(--text-light); margin-top: 10px;">The next generation of career tools. Empowering
+                    job seekers with professional AI technology.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="/app/">Build CV</a></li>
+                    <li><a href="/app/">Optimize CV</a></li>
+                    <li><a href="/app/">Cover Letters</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/contact.html">Contact Us</a></li>
+                    <li><a href="/privacy.html">Privacy Policy</a></li>
+                    <li><a href="/terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Business Idea Consulting LLC. All rights reserved.
+        </div>
     </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Init AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 
 </html>
