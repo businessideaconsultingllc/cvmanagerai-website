@@ -2,4 +2,14 @@ User-agent: *
 Allow: /
 Disallow: /app/assets/
 
+# AI Crawlers
+User-agent: GPTBot
+Allow: /
+User-agent: OpenAI-SearchBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Claude-Web
+Allow: /
+
 Sitemap: https://cvmanagerai.com/sitemap.xml
