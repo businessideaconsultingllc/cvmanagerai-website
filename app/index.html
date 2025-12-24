@@ -2,19 +2,6 @@
 <html>
 
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
   <base href="/app/">
 
   <meta charset="UTF-8">
@@ -60,12 +47,86 @@
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="shortcut icon" type="image/png" href="favicon.png" />
 
+  <style>
+    .loading-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #f8fafc;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #e2e8f0;
+      border-top: 4px solid #6366f1;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    .loading-text {
+      margin-top: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .loading-hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+
   <title>Generate CV using AI - Free ATS Friendly Resume Builder</title>
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="manifest.json?v=2">
 </head>
 
 <body>
+  <div id="loading" class="loading-container">
+    <div class="spinner"></div>
+    <div class="loading-text">Loading CV Manager AI...</div>
+  </div>
+
   <script src="flutter_bootstrap.js" async></script>
+
+  <script>
+    // Configuration for Flutter Engine
+    window.flutterConfiguration = {
+      // Force HTML renderer on mobile for much faster initial load and better responsiveness
+      renderer: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? "html" : "auto",
+    };
+
+    // Watch for Flutter to be initialized and hide the loading spinner
+    const interval = setInterval(() => {
+      if (document.querySelector('flutter-view')) {
+        const loading = document.getElementById('loading');
+        if (loading) {
+          loading.classList.add('loading-hidden');
+          setTimeout(() => loading.remove(), 500);
+        }
+        clearInterval(interval);
+      }
+    }, 200);
+  </script>
 </body>
 
 </html>
