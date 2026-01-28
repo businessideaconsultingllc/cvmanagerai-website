@@ -4,21 +4,47 @@ import 'package:go_router/go_router.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/foundation.dart';
 import '../../../core/constants/languages.dart';
 import '../domain/cv_model.dart';
 import 'cv_controller.dart';
 import 'pdf_translations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class CVPreviewScreen extends ConsumerWidget {
+class CVPreviewScreen extends ConsumerStatefulWidget {
   final CVModel cvModel;
 
   const CVPreviewScreen({super.key, required this.cvModel});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<CVPreviewScreen> createState() => _CVPreviewScreenState();
+}
+
+class _CVPreviewScreenState extends ConsumerState<CVPreviewScreen> {
+  late FocusNode _focusNode;
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode = FocusNode();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _focusNode.requestFocus();
+    });
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final cvState = ref.watch(cvControllerProvider);
-    final currentCV = cvState.valueOrNull ?? cvModel;
+    final currentCV = cvState.valueOrNull ?? widget.cvModel;
     final l10n = AppLocalizations.of(context)!;
 
     final isRtl = AppLanguages.isRtl(currentCV.language);
@@ -26,6 +52,16 @@ class CVPreviewScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(currentCV.title),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            if (Navigator.of(context).canPop()) {
+              Navigator.of(context).pop();
+            } else {
+              context.go('/');
+            }
+          },
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.edit),
@@ -33,33 +69,67 @@ class CVPreviewScreen extends ConsumerWidget {
             onPressed: () => context.push('/edit-cv', extra: currentCV),
           ),
           IconButton(
-            icon: const Icon(Icons.picture_as_pdf),
+            icon: const Icon(Icons.download),
             tooltip: l10n.downloadPDF,
             onPressed: () => _printDoc(currentCV),
           ),
         ],
       ),
-      body: Directionality(
-        textDirection: isRtl ? TextDirection.rtl : TextDirection.ltr,
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildHeader(context, currentCV),
-              const Divider(height: 32),
-              _buildSummary(context, currentCV),
-              const Divider(height: 32),
-              _buildExperience(context, currentCV),
-              const Divider(height: 32),
-              _buildEducation(context, currentCV),
-              const Divider(height: 32),
-              _buildCertificates(context, currentCV),
-              const Divider(height: 32),
-              _buildSkills(context, currentCV),
-              const Divider(height: 32),
-              _buildLanguages(context, currentCV),
-            ],
+      body: Focus(
+        focusNode: _focusNode,
+        autofocus: true,
+        onKeyEvent: (node, event) {
+          if (event is KeyDownEvent || event is KeyRepeatEvent) {
+            final double scrollAmount = 100.0;
+            if (event.logicalKey == LogicalKeyboardKey.arrowDown) {
+              if (_scrollController.hasClients) {
+                _scrollController.animateTo(
+                  _scrollController.offset + scrollAmount,
+                  duration: const Duration(milliseconds: 100),
+                  curve: Curves.easeOut,
+                );
+                return KeyEventResult.handled;
+              }
+            } else if (event.logicalKey == LogicalKeyboardKey.arrowUp) {
+              if (_scrollController.hasClients) {
+                _scrollController.animateTo(
+                  _scrollController.offset - scrollAmount,
+                  duration: const Duration(milliseconds: 100),
+                  curve: Curves.easeOut,
+                );
+                return KeyEventResult.handled;
+              }
+            }
+          }
+          return KeyEventResult.ignored;
+        },
+        child: Directionality(
+          textDirection: isRtl ? TextDirection.rtl : TextDirection.ltr,
+          child: SingleChildScrollView(
+            controller: _scrollController,
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildHeader(context, currentCV),
+                const Divider(height: 32),
+                _buildSummary(context, currentCV),
+                const Divider(height: 32),
+                _buildExperience(context, currentCV),
+                const Divider(height: 32),
+                _buildEducation(context, currentCV),
+                const Divider(height: 32),
+                _buildCertificates(context, currentCV),
+                const Divider(height: 32),
+                _buildSkills(context, currentCV),
+                const Divider(height: 32),
+                _buildLanguages(context, currentCV),
+                if (currentCV.data.customSections.isNotEmpty) ...[
+                  const Divider(height: 32),
+                  _buildCustomSections(context, currentCV),
+                ],
+              ],
+            ),
           ),
         ),
       ),
@@ -247,8 +317,18 @@ class CVPreviewScreen extends ConsumerWidget {
         Wrap(
           spacing: 8,
           runSpacing: 8,
-          children:
-              cv.data.skills.map((skill) => Chip(label: Text(skill))).toList(),
+          children: cv.data.skills
+              .map((skill) => Chip(
+                    label: Text(
+                      skill,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: Theme.of(context).colorScheme.onSurface,
+                          ),
+                    ),
+                    backgroundColor:
+                        Theme.of(context).colorScheme.surfaceContainerHighest,
+                  ))
+              .toList(),
         ),
       ],
     );
@@ -269,10 +349,68 @@ class CVPreviewScreen extends ConsumerWidget {
         Wrap(
           spacing: 8,
           runSpacing: 8,
-          children:
-              cv.data.languages.map((lang) => Chip(label: Text(lang))).toList(),
+          children: cv.data.languages
+              .map((lang) => Chip(
+                    label: Text(
+                      lang,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: Theme.of(context).colorScheme.onSurface,
+                          ),
+                    ),
+                    backgroundColor:
+                        Theme.of(context).colorScheme.surfaceContainerHighest,
+                  ))
+              .toList(),
         ),
       ],
+    );
+  }
+
+  Widget _buildCustomSections(BuildContext context, CVModel cv) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: cv.data.customSections.map((section) {
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 32.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                section.title,
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge
+                    ?.copyWith(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 16),
+              ...section.items.map((item) => Padding(
+                    padding: const EdgeInsets.only(bottom: 16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          item.title,
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium
+                              ?.copyWith(fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          '${item.subtitle} | ${item.date}',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium
+                              ?.copyWith(fontStyle: FontStyle.italic),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(item.description),
+                      ],
+                    ),
+                  )),
+            ],
+          ),
+        );
+      }).toList(),
     );
   }
 
@@ -321,56 +459,280 @@ class CVPreviewScreen extends ConsumerWidget {
         textDirection: textDirection,
         build: (pw.Context context) {
           return [
-            pw.Directionality(
-              textDirection: textDirection,
-              child: pw.Column(
+            // Header
+            pw.Text(
+              '${cv.data.personalInfo.firstName} ${cv.data.personalInfo.lastName}',
+              style: pw.TextStyle(
+                font: boldFontToUse,
+                fontSize: 24,
+                color: primaryColor,
+                fontWeight: pw.FontWeight.bold,
+              ),
+            ),
+            pw.SizedBox(height: 10),
+            pw.Text(
+              '${cv.data.personalInfo.email} | ${cv.data.personalInfo.phone}',
+              style:
+                  pw.TextStyle(font: regularFontToUse, color: secondaryColor),
+            ),
+            pw.Text(
+              cv.data.personalInfo.address,
+              style:
+                  pw.TextStyle(font: regularFontToUse, color: secondaryColor),
+            ),
+            pw.Divider(color: PdfColor.fromInt(0xFFE2E8F0)),
+            pw.SizedBox(height: 10),
+
+            // Summary
+            pw.Text(
+              PdfTranslations.get(cv.language, 'summary'),
+              style: pw.TextStyle(
+                font: boldFontToUse,
+                fontSize: 18,
+                color: blackColor,
+                fontWeight: pw.FontWeight.bold,
+              ),
+            ),
+            pw.SizedBox(height: 5),
+            pw.Text(
+              cv.data.summary,
+              style: pw.TextStyle(font: regularFontToUse, color: blackColor),
+            ),
+            pw.SizedBox(height: 15),
+
+            // Experience
+            pw.Text(
+              PdfTranslations.get(cv.language, 'experience'),
+              style: pw.TextStyle(
+                font: boldFontToUse,
+                fontSize: 18,
+                color: blackColor,
+                fontWeight: pw.FontWeight.bold,
+              ),
+            ),
+            pw.SizedBox(height: 10),
+            ...cv.data.experience.map((exp) {
+              final descriptionLines = exp.description.split('\n');
+              return pw.Column(
                 crossAxisAlignment: alignment,
                 children: [
-                  // Header
                   pw.Text(
-                    '${cv.data.personalInfo.firstName} ${cv.data.personalInfo.lastName}',
+                    exp.jobTitle,
                     style: pw.TextStyle(
                       font: boldFontToUse,
-                      fontSize: 24,
-                      color: primaryColor,
+                      fontSize: 14,
+                      color: blackColor,
                       fontWeight: pw.FontWeight.bold,
                     ),
                   ),
-                  pw.SizedBox(height: 10),
+                  pw.SizedBox(height: 2),
                   pw.Text(
-                    '${cv.data.personalInfo.email} | ${cv.data.personalInfo.phone}',
+                    '${exp.company} | ${exp.startDate} - ${exp.endDate}',
                     style: pw.TextStyle(
-                        font: regularFontToUse, color: secondaryColor),
-                  ),
-                  pw.Text(
-                    cv.data.personalInfo.address,
-                    style: pw.TextStyle(
-                        font: regularFontToUse, color: secondaryColor),
-                  ),
-                  pw.Divider(color: PdfColor.fromInt(0xFFE2E8F0)),
-                  pw.SizedBox(height: 10),
-
-                  // Summary
-                  pw.Text(
-                    PdfTranslations.get(cv.language, 'summary'),
-                    style: pw.TextStyle(
-                      font: boldFontToUse,
-                      fontSize: 18,
-                      color: blackColor,
-                      fontWeight: pw.FontWeight.bold,
+                      font: regularFontToUse,
+                      fontStyle: pw.FontStyle.italic,
+                      color: secondaryColor,
                     ),
                   ),
                   pw.SizedBox(height: 5),
-                  pw.Text(
-                    cv.data.summary,
-                    style:
-                        pw.TextStyle(font: regularFontToUse, color: blackColor),
-                  ),
-                  pw.SizedBox(height: 15),
+                  ...descriptionLines.map((line) {
+                    if (line.trim().isEmpty) {
+                      return pw.SizedBox(height: 2);
+                    }
+                    // Clean the line: remove leading bullets, hyphens, and whitespace
+                    String cleanedLine = line.trim();
+                    if (cleanedLine.startsWith('•')) {
+                      cleanedLine = cleanedLine.substring(1).trim();
+                    } else if (cleanedLine.startsWith('-')) {
+                      cleanedLine = cleanedLine.substring(1).trim();
+                    }
 
-                  // Experience
+                    return pw.Row(
+                      crossAxisAlignment: pw.CrossAxisAlignment.start,
+                      children: [
+                        pw.Text('• ',
+                            style: pw.TextStyle(
+                                font: regularFontToUse, color: blackColor)),
+                        pw.Expanded(
+                          child: pw.Text(
+                            cleanedLine,
+                            style: pw.TextStyle(
+                              font: regularFontToUse,
+                              color: blackColor,
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  }),
+                  pw.SizedBox(
+                      height:
+                          15), // Increased spacing between experiences slightly for clarity, but layout handle will prevent giant gaps
+                ],
+              );
+            }),
+            // Removed extra SizedBox here as we have spacing in the loop
+
+            // Education
+            pw.Text(
+              PdfTranslations.get(cv.language, 'education'),
+              style: pw.TextStyle(
+                font: boldFontToUse,
+                fontSize: 18,
+                color: blackColor,
+                fontWeight: pw.FontWeight.bold,
+              ),
+            ),
+            pw.SizedBox(height: 10),
+            ...cv.data.education.map((edu) => pw.Column(
+                  crossAxisAlignment: alignment,
+                  children: [
+                    pw.Text(
+                      edu.degree,
+                      style: pw.TextStyle(
+                        font: boldFontToUse,
+                        fontSize: 14,
+                        color: blackColor,
+                        fontWeight: pw.FontWeight.bold,
+                      ),
+                    ),
+                    pw.Text(
+                      '${edu.school} | ${edu.startDate} - ${edu.endDate}',
+                      style: pw.TextStyle(
+                        font: regularFontToUse,
+                        fontStyle: pw.FontStyle.italic,
+                        color: secondaryColor,
+                      ),
+                    ),
+                    pw.SizedBox(height: 10),
+                  ],
+                )),
+            pw.SizedBox(height: 15),
+
+            // Certificates
+            if (cv.data.certificates.isNotEmpty) ...[
+              pw.Text(
+                PdfTranslations.get(cv.language, 'certificates'),
+                style: pw.TextStyle(
+                  font: boldFontToUse,
+                  fontSize: 18,
+                  color: blackColor,
+                  fontWeight: pw.FontWeight.bold,
+                ),
+              ),
+              pw.SizedBox(height: 10),
+              ...cv.data.certificates.map((cert) => pw.Column(
+                    crossAxisAlignment: alignment,
+                    children: [
+                      pw.Text(
+                        cert.name,
+                        style: pw.TextStyle(
+                          font: boldFontToUse,
+                          fontSize: 14,
+                          color: blackColor,
+                          fontWeight: pw.FontWeight.bold,
+                        ),
+                      ),
+                      pw.Text(
+                        '${cert.issuer} | ${cert.date}',
+                        style: pw.TextStyle(
+                          font: regularFontToUse,
+                          fontStyle: pw.FontStyle.italic,
+                          color: secondaryColor,
+                        ),
+                      ),
+                      if (cert.description != null &&
+                          cert.description!.isNotEmpty) ...[
+                        pw.SizedBox(height: 2),
+                        pw.Text(
+                          cert.description!,
+                          style: pw.TextStyle(
+                              font: regularFontToUse, color: blackColor),
+                        ),
+                      ],
+                      pw.SizedBox(height: 10),
+                    ],
+                  )),
+              pw.SizedBox(height: 5),
+            ],
+
+            // Skills
+            pw.Text(
+              PdfTranslations.get(cv.language, 'skills'),
+              style: pw.TextStyle(
+                font: boldFontToUse,
+                fontSize: 18,
+                color: blackColor,
+                fontWeight: pw.FontWeight.bold,
+              ),
+            ),
+            pw.SizedBox(height: 5),
+            if (cv.data.skills.isEmpty)
+              pw.Text(
+                PdfTranslations.get(cv.language, 'no_skills'),
+                style:
+                    pw.TextStyle(font: regularFontToUse, color: secondaryColor),
+              )
+            else
+              ...cv.data.skills.map((skill) => pw.Row(
+                    crossAxisAlignment: pw.CrossAxisAlignment.start,
+                    children: [
+                      pw.Text('• ',
+                          style: pw.TextStyle(
+                              font: regularFontToUse, color: blackColor)),
+                      pw.Expanded(
+                        child: pw.Text(
+                          skill,
+                          style: pw.TextStyle(
+                              font: regularFontToUse, color: blackColor),
+                        ),
+                      ),
+                    ],
+                  )),
+            pw.SizedBox(height: 15),
+
+            // Languages
+            pw.Text(
+              PdfTranslations.get(cv.language, 'languages'),
+              style: pw.TextStyle(
+                font: boldFontToUse,
+                fontSize: 18,
+                color: blackColor,
+                fontWeight: pw.FontWeight.bold,
+              ),
+            ),
+            pw.SizedBox(height: 5),
+            if (cv.data.languages.isEmpty)
+              pw.Text(
+                PdfTranslations.get(cv.language, 'no_languages'),
+                style:
+                    pw.TextStyle(font: regularFontToUse, color: secondaryColor),
+              )
+            else
+              ...cv.data.languages.map((lang) => pw.Row(
+                    crossAxisAlignment: pw.CrossAxisAlignment.start,
+                    children: [
+                      pw.Text('• ',
+                          style: pw.TextStyle(
+                              font: regularFontToUse, color: blackColor)),
+                      pw.Expanded(
+                        child: pw.Text(
+                          lang,
+                          style: pw.TextStyle(
+                              font: regularFontToUse, color: blackColor),
+                        ),
+                      ),
+                    ],
+                  )),
+            pw.SizedBox(height: 15),
+
+            // Custom Sections
+            ...cv.data.customSections.map((section) {
+              return pw.Column(
+                crossAxisAlignment: alignment,
+                children: [
                   pw.Text(
-                    PdfTranslations.get(cv.language, 'experience'),
+                    section.title,
                     style: pw.TextStyle(
                       font: boldFontToUse,
                       fontSize: 18,
@@ -379,13 +741,13 @@ class CVPreviewScreen extends ConsumerWidget {
                     ),
                   ),
                   pw.SizedBox(height: 10),
-                  ...cv.data.experience.map((exp) {
-                    final descriptionLines = exp.description.split('\n');
+                  ...section.items.map((item) {
+                    final descriptionLines = item.description.split('\n');
                     return pw.Column(
                       crossAxisAlignment: alignment,
                       children: [
                         pw.Text(
-                          exp.jobTitle,
+                          item.title,
                           style: pw.TextStyle(
                             font: boldFontToUse,
                             fontSize: 14,
@@ -395,7 +757,7 @@ class CVPreviewScreen extends ConsumerWidget {
                         ),
                         pw.SizedBox(height: 2),
                         pw.Text(
-                          '${exp.company} | ${exp.startDate} - ${exp.endDate}',
+                          '${item.subtitle} | ${item.date}',
                           style: pw.TextStyle(
                             font: regularFontToUse,
                             fontStyle: pw.FontStyle.italic,
@@ -407,7 +769,7 @@ class CVPreviewScreen extends ConsumerWidget {
                           if (line.trim().isEmpty) {
                             return pw.SizedBox(height: 2);
                           }
-                          // Clean the line: remove leading bullets, hyphens, and whitespace
+                          // Clean the line
                           String cleanedLine = line.trim();
                           if (cleanedLine.startsWith('•')) {
                             cleanedLine = cleanedLine.substring(1).trim();
@@ -418,19 +780,21 @@ class CVPreviewScreen extends ConsumerWidget {
                           return pw.Row(
                             crossAxisAlignment: pw.CrossAxisAlignment.start,
                             children: [
-                              pw.Text('• ',
-                                  style: pw.TextStyle(
+                              if (cleanedLine.isNotEmpty) ...[
+                                pw.Text('• ',
+                                    style: pw.TextStyle(
+                                        font: regularFontToUse,
+                                        color: blackColor)),
+                                pw.Expanded(
+                                  child: pw.Text(
+                                    cleanedLine,
+                                    style: pw.TextStyle(
                                       font: regularFontToUse,
-                                      color: blackColor)),
-                              pw.Expanded(
-                                child: pw.Text(
-                                  cleanedLine,
-                                  style: pw.TextStyle(
-                                    font: regularFontToUse,
-                                    color: blackColor,
+                                      color: blackColor,
+                                    ),
                                   ),
                                 ),
-                              ),
+                              ]
                             ],
                           );
                         }),
@@ -439,148 +803,32 @@ class CVPreviewScreen extends ConsumerWidget {
                     );
                   }),
                   pw.SizedBox(height: 5),
-
-                  // Education
-                  pw.Text(
-                    PdfTranslations.get(cv.language, 'education'),
-                    style: pw.TextStyle(
-                      font: boldFontToUse,
-                      fontSize: 18,
-                      color: blackColor,
-                      fontWeight: pw.FontWeight.bold,
-                    ),
-                  ),
-                  pw.SizedBox(height: 10),
-                  ...cv.data.education.map((edu) => pw.Column(
-                        crossAxisAlignment: alignment,
-                        children: [
-                          pw.Text(
-                            edu.degree,
-                            style: pw.TextStyle(
-                              font: boldFontToUse,
-                              fontSize: 14,
-                              color: blackColor,
-                              fontWeight: pw.FontWeight.bold,
-                            ),
-                          ),
-                          pw.Text(
-                            '${edu.school} | ${edu.startDate} - ${edu.endDate}',
-                            style: pw.TextStyle(
-                              font: regularFontToUse,
-                              fontStyle: pw.FontStyle.italic,
-                              color: secondaryColor,
-                            ),
-                          ),
-                          pw.SizedBox(height: 10),
-                        ],
-                      )),
-                  pw.SizedBox(height: 15),
-
-                  // Certificates
-                  if (cv.data.certificates.isNotEmpty) ...[
-                    pw.Text(
-                      PdfTranslations.get(cv.language, 'certificates'),
-                      style: pw.TextStyle(
-                        font: boldFontToUse,
-                        fontSize: 18,
-                        color: blackColor,
-                        fontWeight: pw.FontWeight.bold,
-                      ),
-                    ),
-                    pw.SizedBox(height: 10),
-                    ...cv.data.certificates.map((cert) => pw.Column(
-                          crossAxisAlignment: alignment,
-                          children: [
-                            pw.Text(
-                              cert.name,
-                              style: pw.TextStyle(
-                                font: boldFontToUse,
-                                fontSize: 14,
-                                color: blackColor,
-                                fontWeight: pw.FontWeight.bold,
-                              ),
-                            ),
-                            pw.Text(
-                              '${cert.issuer} | ${cert.date}',
-                              style: pw.TextStyle(
-                                font: regularFontToUse,
-                                fontStyle: pw.FontStyle.italic,
-                                color: secondaryColor,
-                              ),
-                            ),
-                            if (cert.description != null &&
-                                cert.description!.isNotEmpty) ...[
-                              pw.SizedBox(height: 2),
-                              pw.Text(
-                                cert.description!,
-                                style: pw.TextStyle(
-                                    font: regularFontToUse, color: blackColor),
-                              ),
-                            ],
-                            pw.SizedBox(height: 10),
-                          ],
-                        )),
-                    pw.SizedBox(height: 5),
-                  ],
-
-                  // Skills
-                  pw.Text(
-                    PdfTranslations.get(cv.language, 'skills'),
-                    style: pw.TextStyle(
-                      font: boldFontToUse,
-                      fontSize: 18,
-                      color: blackColor,
-                      fontWeight: pw.FontWeight.bold,
-                    ),
-                  ),
-                  pw.SizedBox(height: 5),
-                  if (cv.data.skills.isEmpty)
-                    pw.Text(
-                      PdfTranslations.get(cv.language, 'no_skills'),
-                      style: pw.TextStyle(
-                          font: regularFontToUse, color: secondaryColor),
-                    )
-                  else
-                    pw.Text(
-                      cv.data.skills.join(', '),
-                      style: pw.TextStyle(
-                          font: regularFontToUse, color: blackColor),
-                    ),
-                  pw.SizedBox(height: 15),
-
-                  // Languages
-                  pw.Text(
-                    PdfTranslations.get(cv.language, 'languages'),
-                    style: pw.TextStyle(
-                      font: boldFontToUse,
-                      fontSize: 18,
-                      color: blackColor,
-                      fontWeight: pw.FontWeight.bold,
-                    ),
-                  ),
-                  pw.SizedBox(height: 5),
-                  if (cv.data.languages.isEmpty)
-                    pw.Text(
-                      PdfTranslations.get(cv.language, 'no_languages'),
-                      style: pw.TextStyle(
-                          font: regularFontToUse, color: secondaryColor),
-                    )
-                  else
-                    pw.Text(
-                      cv.data.languages.join(', '),
-                      style: pw.TextStyle(
-                          font: regularFontToUse, color: blackColor),
-                    ),
                 ],
-              ),
-            ),
+              );
+            }),
           ];
         },
       ),
     );
 
-    await Printing.layoutPdf(
-      onLayout: (PdfPageFormat format) async => doc.save(),
-    );
+    String filename = cv.title;
+    if (cv.cvType == CVType.optimized) {
+      filename += ' Optimized';
+    } else if (cv.cvType == CVType.tailored) {
+      filename += ' Tailored';
+    }
+    filename += ' CV';
+
+    if (kIsWeb) {
+      await Printing.layoutPdf(
+        onLayout: (PdfPageFormat format) async => doc.save(),
+        name: filename,
+      );
+    } else {
+      await Printing.sharePdf(
+        bytes: await doc.save(),
+        filename: '$filename.pdf',
+      );
+    }
   }
 }

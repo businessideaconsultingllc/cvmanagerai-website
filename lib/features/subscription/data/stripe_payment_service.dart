@@ -1,8 +1,5 @@
-import 'dart:convert';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/constants/stripe_constants.dart';
@@ -29,6 +26,7 @@ class StripePaymentService {
     required String userEmail,
     required int credits,
     required double amount,
+    String? priceId,
   }) async {
     try {
       // Call Supabase Edge Function to create checkout session
@@ -40,6 +38,7 @@ class StripePaymentService {
           'userEmail': userEmail,
           'credits': credits,
           'amount': amount,
+          if (priceId != null) 'priceId': priceId,
         },
       );
 
@@ -73,14 +72,18 @@ class StripePaymentService {
   static Future<PaymentResult> purchaseCredits({
     required String userId,
     required String userEmail,
+    required int credits,
+    required double amount,
+    String? priceId,
   }) async {
     try {
       // Step 1: Create Checkout Session
       final session = await createCheckoutSession(
         userId: userId,
         userEmail: userEmail,
-        credits: 25,
-        amount: 5.0,
+        credits: credits,
+        amount: amount,
+        priceId: priceId,
       );
 
       if (session == null) {

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Manager AI - Asset Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #eef2f5;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 60px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #333;
+            margin: 0;
+        }
+
+        .instruction {
+            background: #fff;
+            padding: 30px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            max-width: 800px;
+            text-align: center;
+        }
+
+        button.download-btn {
+            background-color: #4F46E5;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        button.download-btn.ios {
+            background-color: #000;
+        }
+
+        button.download-btn:hover {
+            opacity: 0.9;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-top: 40px;
+            border-bottom: 3px solid #ccc;
+            padding-bottom: 10px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .asset-container {
+            margin-bottom: 60px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* --- GOOGLE PLAY (1000x1000) --- */
+        .mockup-wrapper {
+            position: relative;
+            width: 1000px;
+            height: 1000px;
+            background: #111;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 60px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+        .phone-frame {
+            width: 400px;
+            height: 800px;
+            background: #000;
+            border-radius: 50px;
+            box-shadow: 0 0 0 12px #333, 0 0 0 14px #555, 0 30px 80px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+            border: 8px solid #000;
+        }
+
+        /* --- iOS APP STORE (1290 x 2796) --- */
+        /* Scaled down in CSS for viewability, but html2canvas captures full size */
+        .ios-wrapper {
+            position: relative;
+            width: 1290px;
+            height: 2796px;
+            background: #111;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 150px;
+            /* More padding for tall screen */
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            color: white;
+
+            /* CSS Scaling for preview only */
+            transform-origin: top center;
+            transform: scale(0.35);
+            /* Show small, capture big */
+            margin-bottom: -1700px;
+            /* Offset the scale whitespace */
+        }
+
+        .ios-title {
+            font-size: 110px;
+            font-weight: 700;
+            text-align: center;
+            margin: 0;
+            z-index: 2;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .ios-subtitle {
+            font-size: 55px;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 120px;
+            color: #eee;
+            z-index: 2;
+            max-width: 85%;
+        }
+
+        .ios-phone-frame {
+            width: 1000px;
+            /* Huge phone for high res */
+            height: 2000px;
+            background: #000;
+            border-radius: 90px;
+            box-shadow: 0 0 0 20px #333, 0 0 0 24px #555, 0 50px 150px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+            border: 16px solid #000;
+        }
+
+        .ios-phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 350px;
+            height: 70px;
+            background: #000;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            z-index: 10;
+        }
+
+        /* Common Styles */
+        .phone-screen,
+        .ios-phone-screen {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 30px;
+            background: #000;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            z-index: 10;
+        }
+
+        .mu-title {
+            font-size: 72px;
+            font-weight: 700;
+            text-align: center;
+            margin: 0;
+            z-index: 2;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .mu-subtitle {
+            font-size: 32px;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 40px;
+            color: #eee;
+            z-index: 2;
+            max-width: 80%;
+        }
+
+        /* Feature Graphic */
+        .feature-graphic {
+            width: 1024px;
+            height: 500px;
+            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+
+        .fg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .fg-c1 {
+            width: 600px;
+            height: 600px;
+            top: -200px;
+            left: -200px;
+        }
+
+        .fg-c2 {
+            width: 400px;
+            height: 400px;
+            bottom: -100px;
+            right: -100px;
+        }
+
+        .fg-content {
+            z-index: 2;
+            text-align: center;
+        }
+
+        .fg-title {
+            font-size: 80px;
+            margin: 0;
+            letter-spacing: -2px;
+        }
+
+        .fg-subtitle {
+            font-size: 32px;
+            margin: 16px 0 0 0;
+            opacity: 0.9;
+        }
+
+        .fg-icon {
+            font-size: 64px;
+            margin-bottom: 24px;
+            background: rgba(255, 255, 255, 0.2);
+            width: 100px;
+            height: 100px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px auto;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        /* Gradients */
+        .bg-indigo {
+            background: radial-gradient(circle at center, #4F46E5 0%, #111827 100%);
+        }
+
+        .bg-green {
+            background: radial-gradient(circle at center, #10B981 0%, #064E3B 100%);
+        }
+
+        .bg-purple {
+            background: radial-gradient(circle at center, #8B5CF6 0%, #4C1D95 100%);
+        }
+
+        .bg-blue {
+            background: radial-gradient(circle at center, #3B82F6 0%, #1E3A8A 100%);
+        }
+
+        .bg-pink {
+            background: radial-gradient(circle at center, #EC4899 0%, #831843 100%);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="instruction">
+        <h2>Updated: iOS & Google Play Support</h2>
+        <p><b>Google Play:</b> Use the Square images (Top section).</p>
+        <p><b>App Store (iOS):</b> Use the Vertical/Tall images (Bottom section).</p>
+        <p><i>The iOS images look small here but will download in full 1290x2796 High Res.</i></p>
+    </div>
+
+    <!-- SET 1: GOOGLE PLAY -->
+    <div class="section-title">Google Play Store (Android)</div>
+
+    <div class="asset-container">
+        <span class="label">Feature Graphic</span>
+        <div class="feature-graphic" id="fg">
+            <div class="fg-circle fg-c1"></div>
+            <div class="fg-circle fg-c2"></div>
+            <div class="fg-content">
+                <div class="fg-icon">✨</div>
+                <div class="fg-title">CV Manager AI</div>
+                <div class="fg-subtitle">Build. Tailor. Succeed.</div>
+            </div>
+        </div>
+        <button class="download-btn" onclick="downloadImage('fg', 'play_store_feature_graphic.png')">⬇ Download Feature
+            Graphic</button>
+    </div>
+
+    <div class="asset-container">
+        <div class="mockup-wrapper bg-indigo" id="play1">
+            <div class="mu-title">Smart Dashboard</div>
+            <div class="mu-subtitle">Manage your CVs and credits.</div>
+            <div class="phone-frame">
+                <div class="phone-notch"></div><img src="./dashboard.png" class="phone-screen">
+            </div>
+        </div>
+        <button class="download-btn" onclick="downloadImage('play1', 'play_dashboard.png')">⬇ Download for
+            Android</button>
+    </div>
+    <div class="asset-container">
+        <div class="mockup-wrapper bg-purple" id="play2">
+            <div class="mu-title">Easy CV Builder</div>
+            <div class="mu-subtitle">Professional CVs in minutes.</div>
+            <div class="phone-frame">
+                <div class="phone-notch"></div><img src="./generate_cv.png" class="phone-screen">
+            </div>
+        </div>
+        <button class="download-btn" onclick="downloadImage('play2', 'play_builder.png')">⬇ Download for
+            Android</button>
+    </div>
+    <div class="asset-container">
+        <div class="mockup-wrapper bg-pink" id="play3">
+            <div class="mu-title">Optimize CV</div>
+            <div class="mu-subtitle">Improve with AI suggestions.</div>
+            <div class="phone-frame">
+                <div class="phone-notch"></div><img src="./optimize_cv.png" class="phone-screen">
+            </div>
+        </div>
+        <button class="download-btn" onclick="downloadImage('play3', 'play_optimize.png')">⬇ Download for
+            Android</button>
+    </div>
+    <div class="asset-container">
+        <div class="mockup-wrapper bg-green" id="play4">
+            <div class="mu-title">AI Job Tailoring</div>
+            <div class="mu-subtitle">Optimize for job descriptions.</div>
+            <div class="phone-frame">
+                <div class="phone-notch"></div><img src="./tailor_cv.png" class="phone-screen">
+            </div>
+        </div>
+        <button class="download-btn" onclick="downloadImage('play4', 'play_tailoring.png')">⬇ Download for
+            Android</button>
+    </div>
+    <div class="asset-container">
+        <div class="mockup-wrapper bg-blue" id="play5">
+            <div class="mu-title">Stay Organized</div>
+            <div class="mu-subtitle">All versions in one place.</div>
+            <div class="phone-frame">
+                <div class="phone-notch"></div><img src="./my_files.png" class="phone-screen">
+            </div>
+        </div>
+        <button class="download-btn" onclick="downloadImage('play5', 'play_files.png')">⬇ Download for Android</button>
+    </div>
+
+
+    <!-- SET 2: iOS APP STORE -->
+    <div class="section-title">Apple App Store (iOS)</div>
+
+    <div class="asset-container">
+        <div class="ios-wrapper bg-indigo" id="ios1">
+            <div class="ios-title">Smart<br>Dashboard</div>
+            <div class="ios-subtitle">Manage your CVs and credits in one place.</div>
+            <div class="ios-phone-frame">
+                <div class="ios-phone-notch"></div><img src="./dashboard.png" class="ios-phone-screen">
+            </div>
+        </div>
+        <button class="download-btn ios" onclick="downloadImage('ios1', 'ios_dashboard.png')">⬇ Download for iOS
+            (iPhone)</button>
+    </div>
+    <div class="asset-container">
+        <div class="ios-wrapper bg-purple" id="ios2">
+            <div class="ios-title">Easy CV<br>Builder</div>
+            <div class="ios-subtitle">Create professional CVs in minutes.</div>
+            <div class="ios-phone-frame">
+                <div class="ios-phone-notch"></div><img src="./generate_cv.png" class="ios-phone-screen">
+            </div>
+        </div>
+        <button class="download-btn ios" onclick="downloadImage('ios2', 'ios_builder.png')">⬇ Download for iOS
+            (iPhone)</button>
+    </div>
+    <div class="asset-container">
+        <div class="ios-wrapper bg-pink" id="ios3">
+            <div class="ios-title">Optimize<br>CV</div>
+            <div class="ios-subtitle">Improve your CV with AI suggestions.</div>
+            <div class="ios-phone-frame">
+                <div class="ios-phone-notch"></div><img src="./optimize_cv.png" class="ios-phone-screen">
+            </div>
+        </div>
+        <button class="download-btn ios" onclick="downloadImage('ios3', 'ios_optimize.png')">⬇ Download for iOS
+            (iPhone)</button>
+    </div>
+    <div class="asset-container">
+        <div class="ios-wrapper bg-green" id="ios4">
+            <div class="ios-title">AI Job<br>Tailoring</div>
+            <div class="ios-subtitle">Optimize your CV for any job description.</div>
+            <div class="ios-phone-frame">
+                <div class="ios-phone-notch"></div><img src="./tailor_cv.png" class="ios-phone-screen">
+            </div>
+        </div>
+        <button class="download-btn ios" onclick="downloadImage('ios4', 'ios_tailoring.png')">⬇ Download for iOS
+            (iPhone)</button>
+    </div>
+    <div class="asset-container">
+        <div class="ios-wrapper bg-blue" id="ios5">
+            <div class="ios-title">Stay<br>Organized</div>
+            <div class="ios-subtitle">Keep all your versions in one secure place.</div>
+            <div class="ios-phone-frame">
+                <div class="ios-phone-notch"></div><img src="./my_files.png" class="ios-phone-screen">
+            </div>
+        </div>
+        <button class="download-btn ios" onclick="downloadImage('ios5', 'ios_files.png')">⬇ Download for iOS
+            (iPhone)</button>
+    </div>
+
+    <script>
+        function downloadImage(elementId, filename) {
+            const element = document.getElementById(elementId);
+            const btn = event.target;
+            const originalText = btn.innerText;
+            btn.innerText = "Processing...";
+
+            html2canvas(element, {
+                scale: 1,
+                useCORS: true
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = filename;
+                link.href = canvas.toDataURL("image/png");
+                link.click();
+                btn.innerText = "✅ Saved!";
+                setTimeout(() => btn.innerText = originalText, 2000);
+            }).catch(err => {
+                console.error(err);
+                alert("Error: " + err);
+                btn.innerText = "❌ Error";
+            });
+        }
+    </script>
+</body>
+
+</html>

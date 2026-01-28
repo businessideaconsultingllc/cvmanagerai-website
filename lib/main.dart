@@ -81,15 +81,7 @@ class MyApp extends ConsumerWidget {
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
-            supportedLocales: const [
-              Locale('en'), // English
-              Locale('es'), // Spanish
-              Locale('fr'), // French
-              Locale('ar'), // Arabic
-              Locale('nl'), // Dutch
-              Locale('de'), // German
-              Locale('ru'), // Russian
-            ],
+            supportedLocales: AppLocalizations.supportedLocales,
             routerConfig: router,
             debugShowCheckedModeBanner: false,
             scrollBehavior: const MaterialScrollBehavior().copyWith(

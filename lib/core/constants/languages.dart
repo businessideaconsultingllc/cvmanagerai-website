@@ -1,16 +1,16 @@
 class AppLanguages {
   static const Map<String, String> supportedLanguages = {
     'en': 'English',
-    'ar': 'Arabic',
-    'fr': 'French',
-    'es': 'Spanish',
-    'de': 'German',
-    'it': 'Italian',
-    'pt': 'Portuguese',
-    'nl': 'Dutch',
-    'ru': 'Russian',
-    'zh': 'Chinese',
-    'ja': 'Japanese',
+    'ar': 'العربية',
+    'fr': 'Français',
+    'es': 'Español',
+    'de': 'Deutsch',
+    'it': 'Italiano',
+    'pt': 'Português',
+    'nl': 'Nederlands',
+    'ru': 'Русский',
+    'zh': '中文',
+    'ja': '日本語',
   };
 
   static bool isRtl(String languageCode) {

@@ -4,10 +4,18 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'dart:html' as html show window;
+import 'package:flutter/foundation.dart';
+
 import '../../../core/theme/app_theme.dart';
 import '../../../core/widgets/beautiful_components.dart';
+import '../../../core/utils/web_navigation/web_navigation.dart';
 
+/// Screen for resetting the password.
+///
+/// CRITICAL: The logic in this screen, especially `_resetPassword` and `initState` recovery,
+/// has been carefully tuned to handle redirect loops, double-slash URLs, and session race conditions.
+/// DO NOT MODIFY the navigation or session recovery logic without extensive regression testing.
+/// The current "Clean URL" + "JIT Recovery" + "SignOut-driven Redirect" flow is proven to work.
 class ResetPasswordScreen extends ConsumerStatefulWidget {
   const ResetPasswordScreen({super.key});
 
@@ -62,38 +70,43 @@ class _ResetPasswordScreenState extends ConsumerState<ResetPasswordScreen> {
         return;
       }
 
-      // Check if we have a valid recovery session
+      // RELAXED VALIDATION & RECOVERY:
       final session = Supabase.instance.client.auth.currentSession;
-      final hasRecoveryToken =
-          uri.queryParameters.containsKey('access_token') ||
-              uri.queryParameters['type'] == 'recovery';
+      final authCode = uri.queryParameters['code'];
 
-      // If no session and no recovery token, user shouldn't be on this page
-      if (session == null && !hasRecoveryToken) {
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: const Text(
-                'No active password reset session found. Please request a new password reset link.',
+      // If we have an auth code but no session, try to exchange it manually
+      if (session == null && authCode != null) {
+        try {
+          setState(() => _isLoading = true);
+          await Supabase.instance.client.auth.exchangeCodeForSession(authCode);
+          if (mounted) {
+            setState(() => _isLoading = false);
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: const Text(
+                    'Session restored successfully. You can now reset your password.'),
+                backgroundColor: AppTheme.accentEmerald,
               ),
-              backgroundColor: AppTheme.errorRed,
-              duration: const Duration(seconds: 5),
-              action: SnackBarAction(
-                label: 'Request New Link',
-                textColor: Colors.white,
-                onPressed: () {
-                  context.go('/forgot-password');
-                },
+            );
+            // Clean URL immediately after recovery
+            if (kIsWeb) removeUrlParams();
+          }
+        } catch (e) {
+          if (mounted) {
+            setState(() => _isLoading = false);
+            // SHOW ERROR TO USER
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Session recovery failed: $e'),
+                backgroundColor: AppTheme.errorRed,
+                duration: const Duration(seconds: 5),
               ),
-            ),
-          );
-          // Redirect to forgot password after a short delay
-          Future.delayed(const Duration(seconds: 2), () {
-            if (mounted) {
-              context.go('/forgot-password');
-            }
-          });
+            );
+          }
         }
+      } else if (session != null) {
+        // If session already exists, just clean the URL
+        if (kIsWeb) removeUrlParams();
       }
     });
   }
@@ -137,6 +150,21 @@ class _ResetPasswordScreenState extends ConsumerState<ResetPasswordScreen> {
       setState(() => _isLoading = true);
 
       try {
+        // JUST-IN-TIME RECOVERY
+        // If session is missing (e.g. page refresh), try to recover using the URL code one last time.
+        final currentSession = Supabase.instance.client.auth.currentSession;
+        if (currentSession == null) {
+          final authCode = Uri.base.queryParameters['code'];
+          if (authCode != null) {
+            await Supabase.instance.client.auth
+                .exchangeCodeForSession(authCode);
+            // If successful, we can proceed. If not, the catch block will handle it.
+          } else {
+            throw AuthSessionMissingException(
+                'No session and no recovery code found.');
+          }
+        }
+
         final response = await Supabase.instance.client.auth.updateUser(
           UserAttributes(password: _passwordController.text.trim()),
         );
@@ -151,11 +179,16 @@ class _ResetPasswordScreenState extends ConsumerState<ResetPasswordScreen> {
                 backgroundColor: AppTheme.accentEmerald,
               ),
             );
-            // Clean OAuth code parameter from URL before redirecting
-            // Supabase adds ?code= during password reset flow
-            // Use window.location.replace to navigate to clean URL without reload
-            html.window.location.replace('/app/');
-            return; // Don't use context.go after location.replace
+
+            // Sign out to force user to login with new password
+            try {
+              await Supabase.instance.client.auth.signOut();
+            } catch (e) {
+              debugPrint('Sign out failed: $e');
+            }
+
+            // Route to login
+            if (mounted) context.go('/login');
           }
         }
       } catch (e) {

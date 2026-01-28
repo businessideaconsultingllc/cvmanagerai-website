@@ -14,7 +14,7 @@ enum SubscriptionTier {
   String get description {
     switch (this) {
       case SubscriptionTier.free:
-        return '5 credits/month';
+        return '3 credits/month';
       case SubscriptionTier.premium:
         return '25 credits/month + No Ads';
     }
@@ -23,7 +23,7 @@ enum SubscriptionTier {
   int get monthlyCredits {
     switch (this) {
       case SubscriptionTier.free:
-        return 5;
+        return 3;
       case SubscriptionTier.premium:
         return 25;
     }

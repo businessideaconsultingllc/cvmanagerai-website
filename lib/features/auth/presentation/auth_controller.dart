@@ -11,6 +11,11 @@ final authControllerProvider =
   return AuthController(ref.watch(authRepositoryProvider));
 });
 
+/// Controller for Authentication
+///
+/// STABLE - DO NOT MODIFY
+/// The auth methods here (signIn, signInWithGoogle, etc.) are critical core logic.
+/// Any changes here could affect the entire app's stability.
 class AuthController extends StateNotifier<AsyncValue<void>> {
   final AuthRepository _authRepository;
 

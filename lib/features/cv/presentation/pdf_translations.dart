@@ -2,7 +2,7 @@ class PdfTranslations {
   static const Map<String, Map<String, String>> _translations = {
     'en': {
       'summary': 'Professional Summary',
-      'experience': 'Experience',
+      'experience': 'Work Experience',
       'education': 'Education',
       'certificates': 'Certificates',
       'skills': 'Skills',

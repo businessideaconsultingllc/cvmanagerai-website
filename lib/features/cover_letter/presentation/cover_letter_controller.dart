@@ -111,6 +111,27 @@ class CoverLetterController
     }
   }
 
+  Future<void> updateCoverLetter(CoverLetterModel coverLetter) async {
+    state = const AsyncValue.loading();
+    try {
+      final user = _ref.read(authRepositoryProvider).currentUser;
+      if (user == null) throw Exception('User not logged in');
+
+      // Update in DB
+      await _ref
+          .read(coverLetterRepositoryProvider)
+          .updateCoverLetter(coverLetter.copyWith(updatedAt: DateTime.now()));
+
+      // Update state with the new model
+      state = AsyncValue.data(coverLetter);
+
+      // Also refresh the list provider to ensure lists are up to date
+      _ref.invalidate(userCoverLettersProvider);
+    } catch (e, st) {
+      state = AsyncValue.error(e, st);
+    }
+  }
+
   String _buildPrompt({
     required Map<String, dynamic> profile,
     required String jobTitle,

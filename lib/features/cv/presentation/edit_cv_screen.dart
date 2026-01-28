@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../domain/cv_model.dart';
 import 'cv_controller.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter/services.dart';
 import '../../../core/constants/languages.dart';
 
 class EditCVScreen extends ConsumerStatefulWidget {
@@ -17,6 +18,8 @@ class EditCVScreen extends ConsumerStatefulWidget {
 
 class _EditCVScreenState extends ConsumerState<EditCVScreen> {
   final _formKey = GlobalKey<FormState>();
+  late FocusNode _focusNode;
+  final ScrollController _scrollController = ScrollController();
   late TextEditingController _firstNameController;
   late TextEditingController _lastNameController;
   late TextEditingController _emailController;
@@ -30,10 +33,15 @@ class _EditCVScreenState extends ConsumerState<EditCVScreen> {
   late List<Experience> _experience;
   late List<Education> _education;
   late List<Certificate> _certificates;
+  late List<CustomSection> _customSections;
 
   @override
   void initState() {
     super.initState();
+    _focusNode = FocusNode();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _focusNode.requestFocus();
+    });
     final data = widget.cvModel.data;
     _firstNameController =
         TextEditingController(text: data.personalInfo.firstName);
@@ -49,6 +57,7 @@ class _EditCVScreenState extends ConsumerState<EditCVScreen> {
     _experience = List.from(data.experience);
     _education = List.from(data.education);
     _certificates = List.from(data.certificates);
+    _customSections = List.from(data.customSections);
   }
 
   @override
@@ -61,6 +70,8 @@ class _EditCVScreenState extends ConsumerState<EditCVScreen> {
     _summaryController.dispose();
     _skillsController.dispose();
     _languagesController.dispose();
+    _focusNode.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -81,6 +92,7 @@ class _EditCVScreenState extends ConsumerState<EditCVScreen> {
         experience: _experience,
         education: _education,
         certificates: _certificates,
+        customSections: _customSections,
       );
 
       final updatedCV = widget.cvModel.copyWith(data: updatedData);
@@ -119,151 +131,228 @@ class _EditCVScreenState extends ConsumerState<EditCVScreen> {
             ),
         ],
       ),
-      body: Directionality(
-        textDirection: isRtl ? TextDirection.rtl : TextDirection.ltr,
-        child: Form(
-          key: _formKey,
-          child: ListView(
-            padding: const EdgeInsets.all(16.0),
-            children: [
-              _buildSectionCard(
-                title: l10n.personalInfo,
-                children: [
-                  Row(
+      body: Focus(
+        focusNode: _focusNode,
+        autofocus: true,
+        onKeyEvent: (node, event) {
+          if (event is KeyDownEvent || event is KeyRepeatEvent) {
+            final double scrollAmount = 100.0;
+            if (event.logicalKey == LogicalKeyboardKey.arrowDown) {
+              if (_scrollController.hasClients) {
+                _scrollController.animateTo(
+                  _scrollController.offset + scrollAmount,
+                  duration: const Duration(milliseconds: 100),
+                  curve: Curves.easeOut,
+                );
+                return KeyEventResult.handled;
+              }
+            } else if (event.logicalKey == LogicalKeyboardKey.arrowUp) {
+              if (_scrollController.hasClients) {
+                _scrollController.animateTo(
+                  _scrollController.offset - scrollAmount,
+                  duration: const Duration(milliseconds: 100),
+                  curve: Curves.easeOut,
+                );
+                return KeyEventResult.handled;
+              }
+            }
+          }
+          return KeyEventResult.ignored;
+        },
+        child: Directionality(
+          textDirection: isRtl ? TextDirection.rtl : TextDirection.ltr,
+          child: Form(
+            key: _formKey,
+            child: ListView(
+              controller: _scrollController,
+              padding: const EdgeInsets.all(16.0),
+              children: [
+                _buildSectionCard(
+                  title: l10n.personalInfo,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextFormField(
+                            controller: _firstNameController,
+                            decoration:
+                                InputDecoration(labelText: l10n.firstName),
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: TextFormField(
+                            controller: _lastNameController,
+                            decoration:
+                                InputDecoration(labelText: l10n.lastName),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: _emailController,
+                      decoration: InputDecoration(labelText: l10n.email),
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: _phoneController,
+                      decoration: InputDecoration(labelText: l10n.phone),
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: _addressController,
+                      decoration: InputDecoration(labelText: l10n.address),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                _buildSectionCard(
+                  title: l10n.professionalSummary,
+                  children: [
+                    TextFormField(
+                      controller: _summaryController,
+                      decoration: InputDecoration(
+                        hintText: l10n.professionalSummaryHint,
+                        alignLabelWithHint: true,
+                      ),
+                      maxLines: 5,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                _buildSectionCard(
+                  title: l10n.skillsLabel,
+                  children: [
+                    TextFormField(
+                      controller: _skillsController,
+                      decoration: InputDecoration(
+                        labelText: l10n.skillsLabel,
+                        hintText: l10n.skillsHint,
+                      ),
+                      maxLines: 2,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                _buildSectionCard(
+                  title: l10n.languagesLabel,
+                  children: [
+                    TextFormField(
+                      controller: _languagesController,
+                      decoration: InputDecoration(
+                        labelText: l10n.languagesLabel,
+                        hintText: l10n.languagesHint,
+                      ),
+                      maxLines: 1,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                _buildListSection(
+                  title: l10n.experience,
+                  items: _experience,
+                  onAdd: _addExperience,
+                  onEdit: _editExperience,
+                  onDelete: (index) {
+                    setState(() {
+                      _experience.removeAt(index);
+                    });
+                  },
+                  itemBuilder: (context, exp) => ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(exp.jobTitle,
+                        style: const TextStyle(fontWeight: FontWeight.bold)),
+                    subtitle: Text(
+                        '${exp.company} • ${exp.startDate} - ${exp.endDate}'),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                _buildListSection(
+                  title: l10n.education,
+                  items: _education,
+                  onAdd: _addEducation,
+                  onEdit: _editEducation,
+                  onDelete: (index) {
+                    setState(() {
+                      _education.removeAt(index);
+                    });
+                  },
+                  itemBuilder: (context, edu) => ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(edu.degree,
+                        style: const TextStyle(fontWeight: FontWeight.bold)),
+                    subtitle: Text(
+                        '${edu.school} • ${edu.startDate} - ${edu.endDate}'),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                _buildListSection(
+                  title: 'Certificates', // Temporary until we add localization
+                  items: _certificates,
+                  onAdd: _addCertificate,
+                  onEdit: _editCertificate,
+                  onDelete: (index) {
+                    setState(() {
+                      _certificates.removeAt(index);
+                    });
+                  },
+                  itemBuilder: (context, cert) => ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(cert.name,
+                        style: const TextStyle(fontWeight: FontWeight.bold)),
+                    subtitle: Text('${cert.issuer} • ${cert.date}'),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                // Dynamic Custom Sections
+                ..._customSections.asMap().entries.map((entry) {
+                  final index = entry.key;
+                  final section = entry.value;
+                  return Column(
                     children: [
-                      Expanded(
-                        child: TextFormField(
-                          controller: _firstNameController,
-                          decoration:
-                              InputDecoration(labelText: l10n.firstName),
+                      _buildListSection<CustomSectionItem>(
+                        title: section.title,
+                        isCustomSection: true,
+                        onDeleteSection: () => _deleteCustomSection(index),
+                        items: section.items,
+                        onAdd: () => _addCustomItem(index),
+                        onEdit: (itemIndex) =>
+                            _editCustomItem(index, itemIndex),
+                        onDelete: (itemIndex) {
+                          setState(() {
+                            section.items.removeAt(itemIndex);
+                          });
+                        },
+                        itemBuilder: (context, item) => ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          title: Text(item.title,
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold)),
+                          subtitle: Text('${item.subtitle} • ${item.date}'),
                         ),
                       ),
-                      const SizedBox(width: 16),
-                      Expanded(
-                        child: TextFormField(
-                          controller: _lastNameController,
-                          decoration: InputDecoration(labelText: l10n.lastName),
-                        ),
-                      ),
+                      const SizedBox(height: 16),
                     ],
-                  ),
-                  const SizedBox(height: 16),
-                  TextFormField(
-                    controller: _emailController,
-                    decoration: InputDecoration(labelText: l10n.email),
-                  ),
-                  const SizedBox(height: 16),
-                  TextFormField(
-                    controller: _phoneController,
-                    decoration: InputDecoration(labelText: l10n.phone),
-                  ),
-                  const SizedBox(height: 16),
-                  TextFormField(
-                    controller: _addressController,
-                    decoration: InputDecoration(labelText: l10n.address),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 16),
-              _buildSectionCard(
-                title: l10n.professionalSummary,
-                children: [
-                  TextFormField(
-                    controller: _summaryController,
-                    decoration: InputDecoration(
-                      hintText: l10n.professionalSummaryHint,
-                      alignLabelWithHint: true,
+                  );
+                }),
+                // Add New Section Button
+                Center(
+                  child: TextButton.icon(
+                    onPressed: _addCustomSection,
+                    icon: const Icon(Icons.add),
+                    label: const Text('Add Custom Section'),
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 24, vertical: 12),
+                      backgroundColor:
+                          Theme.of(context).primaryColor.withValues(alpha: 0.1),
                     ),
-                    maxLines: 5,
                   ),
-                ],
-              ),
-              const SizedBox(height: 16),
-              _buildSectionCard(
-                title: l10n.skillsLabel,
-                children: [
-                  TextFormField(
-                    controller: _skillsController,
-                    decoration: InputDecoration(
-                      labelText: l10n.skillsLabel,
-                      hintText: l10n.skillsHint,
-                    ),
-                    maxLines: 2,
-                  ),
-                ],
-              ),
-              const SizedBox(height: 16),
-              _buildSectionCard(
-                title: l10n.languagesLabel,
-                children: [
-                  TextFormField(
-                    controller: _languagesController,
-                    decoration: InputDecoration(
-                      labelText: l10n.languagesLabel,
-                      hintText: l10n.languagesHint,
-                    ),
-                    maxLines: 1,
-                  ),
-                ],
-              ),
-              const SizedBox(height: 16),
-              _buildListSection(
-                title: l10n.experience,
-                items: _experience,
-                onAdd: _addExperience,
-                onEdit: _editExperience,
-                onDelete: (index) {
-                  setState(() {
-                    _experience.removeAt(index);
-                  });
-                },
-                itemBuilder: (context, exp) => ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  title: Text(exp.jobTitle,
-                      style: const TextStyle(fontWeight: FontWeight.bold)),
-                  subtitle: Text(
-                      '${exp.company} • ${exp.startDate} - ${exp.endDate}'),
                 ),
-              ),
-              const SizedBox(height: 16),
-              _buildListSection(
-                title: l10n.education,
-                items: _education,
-                onAdd: _addEducation,
-                onEdit: _editEducation,
-                onDelete: (index) {
-                  setState(() {
-                    _education.removeAt(index);
-                  });
-                },
-                itemBuilder: (context, edu) => ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  title: Text(edu.degree,
-                      style: const TextStyle(fontWeight: FontWeight.bold)),
-                  subtitle:
-                      Text('${edu.school} • ${edu.startDate} - ${edu.endDate}'),
-                ),
-              ),
-              const SizedBox(height: 16),
-              _buildListSection(
-                title: 'Certificates', // Temporary until we add localization
-                items: _certificates,
-                onAdd: _addCertificate,
-                onEdit: _editCertificate,
-                onDelete: (index) {
-                  setState(() {
-                    _certificates.removeAt(index);
-                  });
-                },
-                itemBuilder: (context, cert) => ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  title: Text(cert.name,
-                      style: const TextStyle(fontWeight: FontWeight.bold)),
-                  subtitle: Text('${cert.issuer} • ${cert.date}'),
-                ),
-              ),
-              const SizedBox(height: 32),
-            ],
+                const SizedBox(height: 32),
+              ],
+            ),
           ),
         ),
       ),
@@ -300,6 +389,8 @@ class _EditCVScreenState extends ConsumerState<EditCVScreen> {
     required Function(int) onEdit,
     required Function(int) onDelete,
     required Widget Function(BuildContext, T) itemBuilder,
+    bool isCustomSection = false,
+    VoidCallback? onDeleteSection,
   }) {
     final l10n = AppLocalizations.of(context)!;
     return Card(
@@ -323,6 +414,11 @@ class _EditCVScreenState extends ConsumerState<EditCVScreen> {
                   icon: const Icon(Icons.add_circle_outline),
                   color: Theme.of(context).primaryColor,
                 ),
+                if (isCustomSection && onDeleteSection != null)
+                  IconButton(
+                    onPressed: onDeleteSection,
+                    icon: const Icon(Icons.delete_forever, color: Colors.red),
+                  ),
               ],
             ),
             if (items.isEmpty)
@@ -607,6 +703,144 @@ class _EditCVScreenState extends ConsumerState<EditCVScreen> {
           ],
         );
       },
+    );
+  }
+
+  void _addCustomSection() async {
+    final title = await _showAddSectionDialog();
+    if (title != null && title.isNotEmpty) {
+      setState(() {
+        _customSections.add(CustomSection(title: title, items: []));
+      });
+    }
+  }
+
+  void _deleteCustomSection(int index) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Delete Section?'),
+        content: const Text(
+            'Are you sure you want to delete this section and all its items?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              setState(() {
+                _customSections.removeAt(index);
+              });
+            },
+            child: const Text('Delete', style: TextStyle(color: Colors.red)),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _addCustomItem(int sectionIndex) async {
+    final result = await _showCustomItemDialog(null);
+    if (result != null) {
+      setState(() {
+        _customSections[sectionIndex].items.add(result);
+      });
+    }
+  }
+
+  void _editCustomItem(int sectionIndex, int itemIndex) async {
+    final item = _customSections[sectionIndex].items[itemIndex];
+    final result = await _showCustomItemDialog(item);
+    if (result != null) {
+      setState(() {
+        _customSections[sectionIndex].items[itemIndex] = result;
+      });
+    }
+  }
+
+  Future<String?> _showAddSectionDialog() {
+    final controller = TextEditingController();
+    return showDialog<String>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Add New Section'),
+        content: TextField(
+          controller: controller,
+          decoration: const InputDecoration(labelText: 'Section Title'),
+          autofocus: true,
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, controller.text.trim()),
+            child: const Text('Add'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future<CustomSectionItem?> _showCustomItemDialog(CustomSectionItem? item) {
+    final titleController = TextEditingController(text: item?.title);
+    final subtitleController = TextEditingController(text: item?.subtitle);
+    final dateController = TextEditingController(text: item?.date);
+    final descController = TextEditingController(text: item?.description);
+    final l10n = AppLocalizations.of(context)!;
+
+    return showDialog<CustomSectionItem>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(item == null ? 'Add Item' : 'Edit Item'),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: titleController,
+                decoration: const InputDecoration(labelText: 'Title'),
+              ),
+              TextField(
+                controller: subtitleController,
+                decoration: const InputDecoration(labelText: 'Subtitle'),
+              ),
+              TextField(
+                controller: dateController,
+                decoration: const InputDecoration(labelText: 'Date'),
+              ),
+              TextField(
+                controller: descController,
+                decoration: InputDecoration(labelText: l10n.description),
+                maxLines: 3,
+              ),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(l10n.cancel),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(
+                context,
+                CustomSectionItem(
+                  title: titleController.text,
+                  subtitle: subtitleController.text,
+                  date: dateController.text,
+                  description: descController.text,
+                ),
+              );
+            },
+            child: Text(l10n.save),
+          ),
+        ],
+      ),
     );
   }
 }

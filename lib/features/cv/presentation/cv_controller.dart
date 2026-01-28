@@ -109,8 +109,11 @@ class CVController extends StateNotifier<AsyncValue<CVModel?>> {
     }
   }
 
-  Future<void> optimizeCV(String content,
-      {String targetLanguage = 'en'}) async {
+  Future<void> optimizeCV(
+    String content, {
+    String targetLanguage = 'en',
+    String? customNotes,
+  }) async {
     state = const AsyncValue.loading();
     try {
       final user = _ref.read(authRepositoryProvider).currentUser;
@@ -124,79 +127,97 @@ class CVController extends StateNotifier<AsyncValue<CVModel?>> {
             'Insufficient credits. You need 1 credit to optimize a CV.');
       }
 
+      final customNotesSection = customNotes != null && customNotes.isNotEmpty
+          ? '''
+      
+      ADDITIONAL INFORMATION OR REQUESTS PROVIDED BY USER:
+      $customNotes
+      
+      IMPORTANT: Please incorporate the above requests or information into the optimized CV where appropriate.
+      '''
+          : '';
+
       // Construct prompt for DeepSeek
       final prompt = '''
-      You are an expert CV writer. Your task is to OPTIMIZE the existing CV content provided below.
+      You are an expert CV writer specializing in ATS (Applicant Tracking System) optimization. 
+      Your task is to OPTIMIZE the existing CV content to achieve a PERFECT ATS score (90-100%).
       
       TARGET LANGUAGE: $targetLanguage
       
       ORIGINAL CV CONTENT:
       $content
+      $customNotesSection
+      
+      MANDATORY ATS COMPATIBILITY RULES (AI EVALUATION CRITERIA):
+      Your output will be graded against the following 7 categories. Each MUST be perfected:
+      1. SECTION HEADERS: Use professional headers like "Work Experience", "Education", "Skills", "Professional Summary", "Certificates", "Languages", and descriptive titles for any additional sections.
+      2. CONTACT INFO: Ensure Email, Phone, and Name are clearly extracted.
+      3. PROFESSIONAL SUMMARY: Rewrite to be keyword-rich and focused on impact.
+      4. ACTION VERBS: Every single bullet point MUST begin with a strong, action verb.
+      5. QUANTIFIABLE METRICS: Include metrics (%, \$, or numbers) where possible.
+      6. SKILLS CLARITY: Categorize skills clearly (e.g., Technical, Soft Skills).
+      7. FORMATTING & DATES: Use clean text and "Month Year - Month Year" or "Month Year - Present" format.
       
       CRITICAL INSTRUCTIONS:
-      1. PRESERVE ALL EXISTING DATA: You MUST extract and keep all personal information, work experience, education, certificates, skills, and languages from the original content.
-      2. DO NOT GENERATE OR INFER: If you cannot find a specific field in the original content, leave it as an empty string. DO NOT create placeholder or fake data.
-      3. TRANSLATION REQUIREMENTS:
-         - ALL text content (summary, descriptions, skills, education degrees, certificates, languages) MUST be translated to $targetLanguage
-         - Translate education degree names (e.g., "Bachelor of Science" → translate to target language)
-         - Translate school names ONLY if they are descriptive (e.g., "University of Technology") but keep proper names as-is
-         - Translate certificate names and issuers to $targetLanguage
-         - Translate ALL skill names to $targetLanguage
-         - Translate ALL language names to $targetLanguage (e.g., "English" → translate to target language word for English)
-      4. PRESERVE FACTUAL INFORMATION:
-         - DO NOT change company names (keep as original)
-         - DO NOT change dates
-         - Keep personal contact information exactly as-is
-         - Keep job titles in their original form OR translate them naturally
-      5. OPTIMIZATION FOCUS:
-         - Improve grammar and language quality in the TARGET LANGUAGE
-         - Make the tone more professional
-         - Highlight key achievements with better wording
-         - Ensure ATS-friendly formatting
-      6. FORMATTING: Ensure 'description' fields are formatted as bullet points separated by newline characters (\\n). Do not use HTML or Markdown tags like <ul> or <li>.
-      7. Return ONLY valid JSON matching this exact structure:
+      - PRESERVE FACTUAL DATA: Keep all names, companies, and schools exactly as provided.
+      - INCORPORATE USER NOTES: If mandatory fixes or additional notes are provided above, you MUST prioritize fixing those specific issues.
+      - CUSTOM SECTIONS: Identify additional sections in the original CV (like Projects, Volunteering, etc.) and include them in "customSections". Each section must have a title and a list of items with title, subtitle, date, and description.
+      - BULLET POINTS: Use ONLY the '-' character for bullet points. Separate them with newline characters (\\n).
+      
+      Return ONLY valid JSON matching this exact structure:
       {
         "personalInfo": {
-          "firstName": "Extract from original or leave empty",
-          "lastName": "Extract from original or leave empty",
-          "email": "Extract from original or leave empty",
-          "phone": "Extract from original or leave empty",
-          "address": "Extract from original or leave empty",
-          "linkedin": "Extract from original or leave empty",
-          "website": "Extract from original or leave empty"
+          "firstName": "...",
+          "lastName": "...",
+          "email": "...",
+          "phone": "...",
+          "address": "...",
+          "linkedin": "...",
+          "website": "..."
         },
-        "summary": "Optimized summary FULLY TRANSLATED to $targetLanguage",
+        "summary": "Impactful summary in $targetLanguage.",
         "experience": [
           {
-            "jobTitle": "Job title from original (translated or kept as-is based on context)",
-            "company": "Exact company name from original (keep unchanged)",
-            "startDate": "Exact start date from original",
-            "endDate": "Exact end date from original",
-            "description": "Optimized description FULLY TRANSLATED to $targetLanguage. IMPORTANT: Format as bullet points separated by newline characters (\\n). Example: '- Achievement 1\\n- Achievement 2'"
+            "jobTitle": "...",
+            "company": "...",
+            "startDate": "...",
+            "endDate": "...",
+            "description": "- Action Verb + Task + Impact\\n- Action Verb + Task + Metric"
           }
         ],
         "education": [
           {
-            "degree": "Degree name TRANSLATED to $targetLanguage",
-            "school": "School name from original (translate if descriptive, keep proper names)",
-            "startDate": "Exact start date from original",
-            "endDate": "Exact end date from original",
-            "description": "Extract from original and TRANSLATE to $targetLanguage, or leave empty"
+            "degree": "...",
+            "school": "...",
+            "startDate": "...",
+            "endDate": "...",
+            "description": "..."
           }
         ],
         "certificates": [
           {
-            "name": "Certificate name TRANSLATED to $targetLanguage",
-            "issuer": "Issuer name from original",
-            "date": "Exact date from original",
-            "description": "Extract from original and TRANSLATE to $targetLanguage, or leave empty"
+            "name": "...",
+            "issuer": "...",
+            "date": "...",
+            "description": "..."
           }
         ],
-        "skills": ["ALL skills TRANSLATED to $targetLanguage"],
-        "languages": ["ALL language names TRANSLATED to $targetLanguage (e.g., 'English' becomes target language word for English)"]
+        "skills": ["Skill 1", "Skill 2"],
+        "languages": ["Language 1"],
+        "customSections": [
+          {
+            "title": "Section Title (e.g. Projects)",
+            "items": [
+              {
+                "title": "Item Title",
+                "subtitle": "Subtitle/Context",
+                "date": "Date Range",
+                "description": "- Action Verb + Impact"
+              }
+            ]
+          }
+        ]
       }
-      
-      REMEMBER: EVERYTHING you write in the response MUST be in $targetLanguage. Your job is to OPTIMIZE existing content AND translate it to the target language.
       ''';
 
       // Call DeepSeek API
@@ -252,7 +273,7 @@ class CVController extends StateNotifier<AsyncValue<CVModel?>> {
 
       // Construct prompt for DeepSeek
       final prompt = '''
-      You are an expert CV writer. Your task is to TAILOR the existing CV content to match a specific Job Description.
+      You are an expert CV writer. Your task is to TAILOR the existing CV content to match a specific Job Description and achieve an ATS score > 95%.
       
       TARGET LANGUAGE: $targetLanguage
       
@@ -262,64 +283,75 @@ class CVController extends StateNotifier<AsyncValue<CVModel?>> {
       ORIGINAL CV CONTENT:
       $cvContent
       
+      MANDATORY ATS COMPATIBILITY RULES (AI EVALUATION CRITERIA):
+      Your output will be graded against the following 7 categories. Each MUST be perfected:
+      1. SECTION HEADERS: Use professional headers like "Work Experience", "Education", "Skills", "Professional Summary", "Certificates", "Languages", and descriptive titles for any additional sections.
+      2. CONTACT INFO: Ensure all personal details are kept accurately.
+      3. PROFESSIONAL SUMMARY: Tailor to include top job-specific keywords.
+      4. ACTION VERBS: Start every bullet point with a strong, job-relevant action verb.
+      5. QUANTIFIABLE IMPACT: Include metrics (%, \$, or numbers) where possible.
+      6. SKILLS CLARITY: Prioritize skills mentioned in the job description and categorize them.
+      7. FORMATTING & DATES: Use clean text and "Month Year - Month Year" format.
+      
       CRITICAL INSTRUCTIONS:
-      1. PRESERVE FACTUAL INFORMATION: Keep all dates, company names, and certificate information exactly as they are in the original.
-      2. TRANSLATION REQUIREMENTS:
-         - ALL text content (summary, descriptions, skills, education degrees, certificates, languages) MUST be translated to $targetLanguage
-         - Translate education degree names to $targetLanguage
-         - Translate school names ONLY if they are descriptive, keep proper names as-is
-         - Translate certificate names and issuers to $targetLanguage
-         - Translate ALL skill names to $targetLanguage
-         - Translate ALL language names to $targetLanguage (e.g., "English" → translate to target language word for English)
-      3. TAILORING REQUIREMENTS:
-         - Rewrite the professional summary to highlight skills and experiences relevant to the Job Description
-         - Rewrite experience descriptions to emphasize achievements and skills that match the Job Description
-         - Incorporate relevant keywords from the Job Description into the summary and experience sections
-         - Keep job titles in their original form OR translate them naturally
-      4. FORMATTING: Ensure 'description' fields are formatted as bullet points separated by newline characters (\\n). Do not use HTML or Markdown tags like <ul> or <li>.
-      5. Return ONLY valid JSON matching this exact structure:
+      - KEYWORD MAPPING: Identify the top 10 keywords in the job description and weave them naturally into the summary and experience.
+      - CUSTOM SECTIONS: Identify additional sections in the original CV (like Projects, Volunteering, etc.) and include them/tailor them in "customSections". Each section must have a title and a list of items with title, subtitle, date, and description.
+      - BULLET POINTS: Use ONLY '-' character, separated by \\n.
+      
+      Return ONLY valid JSON matching this exact structure:
       {
         "personalInfo": {
-          "firstName": "Extract from original",
-          "lastName": "Extract from original",
-          "email": "Extract from original",
-          "phone": "Extract from original",
-          "address": "Extract from original",
-          "linkedin": "Extract from original",
-          "website": "Extract from original"
+          "firstName": "...",
+          "lastName": "...",
+          "email": "...",
+          "phone": "...",
+          "address": "...",
+          "linkedin": "...",
+          "website": "..."
         },
-        "summary": "Tailored professional summary FULLY TRANSLATED to $targetLanguage",
+        "summary": "Tailored summary in $targetLanguage.",
         "experience": [
           {
-            "jobTitle": "Job title from original (translated or kept as-is based on context)",
-            "company": "Exact company name from original (keep unchanged)",
-            "startDate": "Exact start date from original",
-            "endDate": "Exact end date from original",
-            "description": "Tailored description FULLY TRANSLATED to $targetLanguage with keywords. IMPORTANT: Format as bullet points separated by newline characters (\\n)."
+            "jobTitle": "...",
+            "company": "...",
+            "startDate": "...",
+            "endDate": "...",
+            "description": "- Action Verb + Keyword + Result\\n- Action Verb + Task + Metric"
           }
         ],
         "education": [
           {
-            "degree": "Degree name TRANSLATED to $targetLanguage",
-            "school": "School name from original (translate if descriptive, keep proper names)",
-            "startDate": "Exact start date from original",
-            "endDate": "Exact end date from original",
-            "description": "Extract from original and TRANSLATE to $targetLanguage, or leave empty"
+            "degree": "...",
+            "school": "...",
+            "startDate": "...",
+            "endDate": "...",
+            "description": "..."
           }
         ],
         "certificates": [
           {
-            "name": "Certificate name TRANSLATED to $targetLanguage",
-            "issuer": "Issuer name from original",
-            "date": "Exact date from original",
-            "description": "Extract from original and TRANSLATE to $targetLanguage, or leave empty"
+            "name": "...",
+            "issuer": "...",
+            "date": "...",
+            "description": "..."
           }
         ],
-        "skills": ["ALL skills TRANSLATED to $targetLanguage, prioritized based on Job Description relevance"],
-        "languages": ["ALL language names TRANSLATED to $targetLanguage (e.g., 'English' becomes target language word for English)"]
+        "skills": ["JD Keywords", "Hard Skills", "Soft Skills"],
+        "languages": ["Language 1"],
+        "customSections": [
+          {
+            "title": "Section Title (e.g. Projects)",
+            "items": [
+              {
+                "title": "Item Title",
+                "subtitle": "Subtitle/Context",
+                "date": "Date Range",
+                "description": "- Action Verb + Keyword + Result"
+              }
+            ]
+          }
+        ]
       }
-      
-      REMEMBER: EVERYTHING you write in the response MUST be in $targetLanguage. Your job is to TAILOR existing content to match the job description AND translate it to the target language.
       ''';
 
       // Call DeepSeek API
@@ -387,11 +419,14 @@ class CVController extends StateNotifier<AsyncValue<CVModel?>> {
     - Skills/languages → Add to skills or languages sections  
     - Certifications → Add to certificates section
     - Education → Add to education section
+    - Projects/Volunteer/Other → Add to customSections
     '''
         : '';
 
     return '''
-    You are an expert CV writer. Generate a professional CV for the following candidate targeting a specific job.
+    You are an expert CV writer specializing in ATS (Applicant Tracking System) optimization. 
+    Generate a professional CV for the candidate targeting the role of $jobTitle.
+    The goal is to achieve an ATS score above 95%.
     
     TARGET LANGUAGE: $targetLanguage
     
@@ -403,15 +438,17 @@ class CVController extends StateNotifier<AsyncValue<CVModel?>> {
     
     TARGET JOB: $jobTitle$customNotesSection
     
-    INSTRUCTIONS:
-    1. Generate ALL content in $targetLanguage.
-    2. Create a professional summary tailored to the target job ($jobTitle).
-    3. GENERATE relevant key skills for a $jobTitle.
-    4. GENERATE a realistic but hypothetical experience summary and bullet points for a $jobTitle (assuming the candidate has relevant experience).
-    5. GENERATE a placeholder education section relevant to the role.
-    6. GENERATE relevant certificates/certifications for the role.
-    7. GENERATE relevant languages for the candidate.
-    8. Return ONLY valid JSON matching the following structure:
+    MANDATORY ATS COMPATIBILITY RULES (AI EVALUATION CRITERIA):
+    Your output will be graded against the following 7 categories. Each MUST be perfected:
+    1. SECTION HEADERS: Use professional headers like "Work Experience", "Education", "Skills", "Professional Summary", "Certificates", "Languages", and descriptive titles for any additional sections.
+    2. CONTACT INFO: Include all provided candidate details.
+    3. PROFESSIONAL SUMMARY: Tailored to $jobTitle, highlighting value and impact.
+    4. ACTION VERBS: Every bullet point MUST begin with a strong action verb.
+    5. QUANTIFIABLE IMPACT: Include metrics (%, \$, or numbers) where possible.
+    6. SKILLS CLARITY: Categorized list of technical and soft skills.
+    7. FORMATTING & DATES: Clean "-" bullets and "Month Year - Month Year" format.
+    
+    Return ONLY valid JSON matching this exact structure:
     {
       "personalInfo": {
         "firstName": "${profile['first_name']}",
@@ -422,35 +459,48 @@ class CVController extends StateNotifier<AsyncValue<CVModel?>> {
         "linkedin": "",
         "website": ""
       },
-      "summary": "Professional summary here...",
+      "summary": "Impactful professional summary in $targetLanguage.",
       "experience": [
         {
           "jobTitle": "Job Title",
           "company": "Company Name",
-          "startDate": "Start Date",
-          "endDate": "End Date",
-          "description": "Bullet point 1\\nBullet point 2"
+          "startDate": "Month Year",
+          "endDate": "Month Year or Present",
+          "description": "- Action Verb + Achievement + Metric\\n- Action Verb + Responsibility + Quantifiable Result"
         }
       ],
       "education": [
         {
-          "degree": "Degree Name",
-          "school": "University Name",
-          "startDate": "Start Date",
-          "endDate": "End Date",
-          "description": "Optional description"
+          "degree": "Degree",
+          "school": "University",
+          "startDate": "Month Year",
+          "endDate": "Month Year",
+          "description": ""
         }
       ],
       "certificates": [
         {
-          "name": "Certificate Name",
-          "issuer": "Issuing Organization",
-          "date": "Issue Date",
-          "description": "Optional description"
+          "name": "Cert Name",
+          "issuer": "Issuer",
+          "date": "Date",
+          "description": ""
         }
       ],
       "skills": ["Skill 1", "Skill 2"],
-      "languages": ["Language 1"]
+      "languages": ["Language Name"],
+      "customSections": [
+        {
+          "title": "Section Title",
+          "items": [
+            {
+              "title": "Item Title",
+              "subtitle": "Subtitle",
+              "date": "Date",
+              "description": ""
+            }
+          ]
+        }
+      ]
     }
     ''';
   }

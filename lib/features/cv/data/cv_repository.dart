@@ -46,6 +46,10 @@ class CVRepository {
   Future<void> deleteCV(String cvId) async {
     await _supabase.from('cvs').delete().eq('id', cvId);
   }
+
+  Future<void> deleteCVs(List<String> cvIds) async {
+    await _supabase.from('cvs').delete().filter('id', 'in', cvIds);
+  }
 }
 
 final cvRepositoryProvider = Provider<CVRepository>((ref) {

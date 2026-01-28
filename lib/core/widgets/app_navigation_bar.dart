@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../utils/responsive.dart';
 import '../../features/admin/presentation/admin_controller.dart';
+import '../../features/feedback/presentation/feedback_dialog.dart';
 
 /// Navigation item data class
 class NavigationItem {
@@ -36,6 +37,31 @@ class AppNavigationBar extends ConsumerWidget {
         label: l10n.home,
         icon: Icons.home_outlined,
         route: '/',
+      ),
+      NavigationItem(
+        label: l10n.generateCV,
+        icon: Icons.auto_awesome_outlined,
+        route: '/generate-cv',
+      ),
+      NavigationItem(
+        label: l10n.optimizeCV,
+        icon: Icons.analytics_outlined,
+        route: '/optimize-cv',
+      ),
+      NavigationItem(
+        label: l10n.checkATSScore,
+        icon: Icons.speed_outlined,
+        route: '/check-ats-score',
+      ),
+      NavigationItem(
+        label: l10n.tailorCV,
+        icon: Icons.tune_outlined,
+        route: '/tailor-cv',
+      ),
+      NavigationItem(
+        label: l10n.coverLetter,
+        icon: Icons.mail_outline,
+        route: '/generate-cover-letter',
       ),
       NavigationItem(
         label: l10n.myFiles,
@@ -186,6 +212,16 @@ class AppNavigationBar extends ConsumerWidget {
                 },
               ),
             ),
+            const Divider(),
+            ListTile(
+              leading: const Icon(Icons.rate_review_outlined),
+              title: const Text('Send Feedback'),
+              onTap: () {
+                Navigator.pop(context);
+                showFeedbackDialog(context);
+              },
+            ),
+            const SizedBox(height: 16),
           ],
         ),
       ),

@@ -8,6 +8,11 @@ import '../../../core/widgets/beautiful_components.dart';
 import '../../../core/utils/responsive.dart';
 import 'auth_controller.dart';
 
+/// Login Screen
+///
+/// STABLE - DO NOT MODIFY
+/// This screen's logic (especially Google Sign In and navigation) is stable and working.
+/// Do not modify the authentication flow or navigation redirects without specific reason.
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
 
@@ -294,24 +299,49 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           const SizedBox(height: 32),
 
                           // Google Sign In
-                          OutlinedButton.icon(
-                            onPressed:
-                                authState.isLoading ? null : _signInWithGoogle,
-                            icon: Container(
-                              padding: const EdgeInsets.all(4),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(4),
-                              ),
-                              child: const Icon(
-                                Icons.g_mobiledata,
-                                size: 20,
-                                color: Colors.blue,
-                              ),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(30),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withValues(alpha: 0.1),
+                                  blurRadius: 10,
+                                  offset: const Offset(0, 4),
+                                ),
+                              ],
                             ),
-                            label: Text(l10n.signInWithGoogle),
-                            style: OutlinedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(vertical: 16),
+                            child: Material(
+                              color: Colors.transparent,
+                              child: InkWell(
+                                onTap: authState.isLoading
+                                    ? null
+                                    : _signInWithGoogle,
+                                borderRadius: BorderRadius.circular(30),
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 16),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Image.asset(
+                                        'assets/google-logo.png',
+                                        height: 24,
+                                        width: 24,
+                                      ),
+                                      const SizedBox(width: 12),
+                                      Text(
+                                        l10n.signInWithGoogle,
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.black87,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
                             ),
                           ).animate().fadeIn(delay: 700.ms).slideY(begin: 0.2),
 

@@ -34,7 +34,7 @@ class CreditsRepository {
     // Reset if 30 days have passed
     if (daysSinceReset >= 30) {
       await _supabase.from('profiles').update({
-        'credits_balance': 5,
+        'credits_balance': 3,
         'credits_reset_date': DateTime.now().toIso8601String(),
       }).eq('id', userId);
 
@@ -42,8 +42,8 @@ class CreditsRepository {
       await _logTransaction(
         userId: userId,
         operationType: 'reset',
-        creditsUsed: -5, // Negative means added
-        balanceAfter: 5,
+        creditsUsed: -3, // Negative means added
+        balanceAfter: 3,
       );
 
       return true;

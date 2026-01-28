@@ -26,6 +26,14 @@ class CoverLetterRepository {
   Future<void> deleteCoverLetter(String id) async {
     await _supabase.from('cover_letters').delete().eq('id', id);
   }
+
+  Future<void> deleteCoverLetters(List<String> ids) async {
+    await _supabase.from('cover_letters').delete().filter('id', 'in', ids);
+  }
+
+  Future<void> updateCoverLetter(CoverLetterModel coverLetter) async {
+    await _supabase.from('cover_letters').upsert(coverLetter.toMap());
+  }
 }
 
 final coverLetterRepositoryProvider = Provider<CoverLetterRepository>((ref) {

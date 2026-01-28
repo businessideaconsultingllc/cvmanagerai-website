@@ -11,7 +11,7 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/pdf_text_extractor.dart';
 import '../../domain/cv_model.dart';
 import 'categorized_cv_selector.dart';
-import '../../../home/presentation/home_screen.dart'; // For animations if needed
+// For animations if needed
 
 enum CVInputMode { select, upload, paste }
 
@@ -191,7 +191,7 @@ class _CVInputSelectorState extends ConsumerState<CVInputSelector>
                 const TextStyle(fontWeight: FontWeight.w500, fontSize: 13),
             indicatorSize: TabBarIndicatorSize.tab,
             dividerColor: Colors.transparent,
-            overlayColor: MaterialStateProperty.all(Colors.transparent),
+            overlayColor: WidgetStateProperty.all(Colors.transparent),
             tabs: tabs,
           ),
         ),

@@ -4,7 +4,7 @@ import Stripe from 'https://esm.sh/stripe@12.18.0?target=deno'
 
 console.log("Create Checkout Session Function Initialized")
 
-serve(async (req) => {
+serve(async (req: Request) => {
     // Handle CORS preflight requests
     // This is necessary because the browser initiates the request from a different domain
     if (req.method === 'OPTIONS') {
@@ -32,28 +32,39 @@ serve(async (req) => {
         })
 
         // 2. Parse the request body
-        const { userId, userEmail, credits = 25, amount = 5.00 } = await req.json()
+        const { userId, userEmail, credits = 25, amount = 5.00, priceId } = await req.json()
 
-        console.log(`Creating session for user: ${userId}, email: ${userEmail}, credits: ${credits}`)
+        console.log(`Creating session for user: ${userId}, email: ${userEmail}, credits: ${credits}, priceId: ${priceId || 'dynamic'}`)
 
         // 3. Create the Stripe Checkout Session
         // We pass the userId in metadata so we can fulfill the order later via webhook (optional but recommended)
+        let lineItem;
+
+        if (priceId) {
+            // Use existing Price ID
+            lineItem = {
+                price: priceId,
+                quantity: 1,
+            };
+        } else {
+            // Dynamic Pricing (Fallback)
+            lineItem = {
+                price_data: {
+                    currency: 'usd',
+                    product_data: {
+                        name: `${credits} Credits Pack`,
+                        description: 'Credits for CV optimization and tailoring',
+                        images: ['https://cvmanagerai.com/assets/icon/app_icon.png'],
+                    },
+                    unit_amount: Math.round(amount * 100), // Amount in cents
+                },
+                quantity: 1,
+            };
+        }
+
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
-            line_items: [
-                {
-                    price_data: {
-                        currency: 'usd',
-                        product_data: {
-                            name: `${credits} Credits Pack`,
-                            description: 'Credits for CV optimization and tailoring',
-                            images: ['https://cvmanagerai.com/assets/icon/app_icon.png'], // Update with your actual logo URL if available
-                        },
-                        unit_amount: Math.round(amount * 100), // Amount in cents (500 = $5.00)
-                    },
-                    quantity: 1,
-                },
-            ],
+            line_items: [lineItem],
             mode: 'payment',
             success_url: 'https://cvmanagerai.com/app/#/?payment=success',
             cancel_url: 'https://cvmanagerai.com/app/#/?payment=cancel',
@@ -62,6 +73,7 @@ serve(async (req) => {
                 userId: userId,
                 credits: credits.toString(),
                 type: 'credit_purchase',
+                plan: priceId || 'dynamic_plan'
             },
         })
 
@@ -82,8 +94,10 @@ serve(async (req) => {
     } catch (error) {
         console.error('Error creating checkout session:', error)
 
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+
         return new Response(
-            JSON.stringify({ error: error.message }),
+            JSON.stringify({ error: errorMessage }),
             {
                 headers: {
                     'Content-Type': 'application/json',

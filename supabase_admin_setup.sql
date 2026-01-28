@@ -1,162 +1,71 @@
--- =====================================================
--- CV Master AI - Admin Panel Setup Script
--- =====================================================
--- This script sets up the admin panel functionality
--- Execute this in your Supabase SQL Editor
--- =====================================================
+-- Create user_activities table
+CREATE TABLE IF NOT EXISTS public.user_activities (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    user_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
+    activity_type TEXT NOT NULL,
+    details JSONB,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+);
 
--- 1. Add is_admin column to profiles table
-ALTER TABLE profiles
-ADD COLUMN IF NOT EXISTS is_admin BOOLEAN DEFAULT FALSE;
+-- Enable RLS
+ALTER TABLE public.user_activities ENABLE ROW LEVEL SECURITY;
 
--- 2. Set admin user (ahmadkassem511@gmail.com)
--- This will set the user as admin based on their email
-UPDATE profiles
-SET is_admin = TRUE
-WHERE email = 'ahmadkassem511@gmail.com';
+-- Policies for user_activities
+-- Users can insert their own activity
+CREATE POLICY "Users can insert their own activity"
+ON public.user_activities FOR INSERT
+TO authenticated
+WITH CHECK (auth.uid() = user_id);
 
--- If the email field doesn't exist in profiles, use this alternative:
--- UPDATE profiles
--- SET is_admin = TRUE
--- WHERE id IN (
---   SELECT id FROM auth.users WHERE email = 'ahmadkassem511@gmail.com'
--- );
-
--- 3. Create RLS policy for admin access to view all profiles
-CREATE POLICY "Admins can view all profiles"
-ON profiles FOR SELECT
+-- Only admins can view activities
+CREATE POLICY "Admins can view all activities"
+ON public.user_activities FOR SELECT
 TO authenticated
 USING (
   EXISTS (
-    SELECT 1 FROM profiles
-    WHERE profiles.id = auth.uid()
-    AND profiles.is_admin = TRUE
+    SELECT 1 FROM public.profiles
+    WHERE profiles.id = auth.uid() AND profiles.is_admin = true
   )
-  OR profiles.id = auth.uid()  -- Users can still view their own profile
 );
 
--- 4. Create RLS policy for admin to update any profile
-CREATE POLICY "Admins can update all profiles"
-ON profiles FOR UPDATE
+-- Create user_feedback table
+CREATE TABLE IF NOT EXISTS public.user_feedback (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    user_id UUID REFERENCES public.profiles(id) ON DELETE SET NULL,
+    message TEXT NOT NULL,
+    rating INTEGER CHECK (rating >= 1 AND rating <= 5),
+    is_read BOOLEAN DEFAULT false,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+);
+
+-- Enable RLS
+ALTER TABLE public.user_feedback ENABLE ROW LEVEL SECURITY;
+
+-- Policies for user_feedback
+-- Users can insert their own feedback
+CREATE POLICY "Users can insert feedback"
+ON public.user_feedback FOR INSERT
+TO authenticated
+WITH CHECK (auth.uid() = user_id);
+
+-- Only admins can view feedback
+CREATE POLICY "Admins can view all feedback"
+ON public.user_feedback FOR SELECT
 TO authenticated
 USING (
   EXISTS (
-    SELECT 1 FROM profiles
-    WHERE profiles.id = auth.uid()
-    AND profiles.is_admin = TRUE
+    SELECT 1 FROM public.profiles
+    WHERE profiles.id = auth.uid() AND profiles.is_admin = true
   )
-  OR profiles.id = auth.uid()  -- Users can still update their own profile
 );
 
--- 5. Create RLS policy for admin to delete profiles
-CREATE POLICY "Admins can delete profiles"
-ON profiles FOR DELETE
+-- Admins can update feedback (to mark as read)
+CREATE POLICY "Admins can update feedback"
+ON public.user_feedback FOR UPDATE
 TO authenticated
 USING (
   EXISTS (
-    SELECT 1 FROM profiles
-    WHERE profiles.id = auth.uid()
-    AND profiles.is_admin = TRUE
-  )
-  AND profiles.id != auth.uid()  -- Prevent admin from deleting themselves
-);
-
--- 6. RLS policy for admin access to credit transactions
--- First, check if this policy already exists, if so, drop it
-DROP POLICY IF EXISTS "Admins can view all credit transactions" ON credit_transactions;
-
-CREATE POLICY "Admins can view all credit transactions"
-ON credit_transactions FOR SELECT
-TO authenticated
-USING (
-  EXISTS (
-    SELECT 1 FROM profiles
-    WHERE profiles.id = auth.uid()
-    AND profiles.is_admin = TRUE
-  )
-  OR credit_transactions.user_id = auth.uid()  -- Users can view their own transactions
-);
-
--- 7. RLS policy for admin to insert credit transactions
-DROP POLICY IF EXISTS "Admins can insert credit transactions" ON credit_transactions;
-
-CREATE POLICY "Admins can insert credit transactions"
-ON credit_transactions FOR INSERT
-TO authenticated
-WITH CHECK (
-  EXISTS (
-    SELECT 1 FROM profiles
-    WHERE profiles.id = auth.uid()
-    AND profiles.is_admin = TRUE
+    SELECT 1 FROM public.profiles
+    WHERE profiles.id = auth.uid() AND profiles.is_admin = true
   )
 );
-
--- 8. Create a function to get all users with their credit balance
--- This will be useful for the admin panel
-CREATE OR REPLACE FUNCTION get_all_users_with_credits()
-RETURNS TABLE (
-  id UUID,
-  email TEXT,
-  full_name TEXT,
-  first_name TEXT,
-  last_name TEXT,
-  phone TEXT,
-  address TEXT,
-  is_admin BOOLEAN,
-  created_at TIMESTAMPTZ,
-  updated_at TIMESTAMPTZ,
-  credit_balance INTEGER
-) 
-SECURITY DEFINER
-AS $$
-BEGIN
-  -- Check if the calling user is an admin
-  IF NOT EXISTS (
-    SELECT 1 FROM profiles 
-    WHERE profiles.id = auth.uid() 
-    AND profiles.is_admin = TRUE
-  ) THEN
-    RAISE EXCEPTION 'Only admins can access this function';
-  END IF;
-
-  -- Return all users with their credit balance
-  RETURN QUERY
-  SELECT 
-    p.id,
-    au.email,
-    p.full_name,
-    p.first_name,
-    p.last_name,
-    p.phone,
-    p.address,
-    p.is_admin,
-    p.created_at,
-    p.updated_at,
-    COALESCE(
-      (SELECT SUM(amount) 
-       FROM credit_transactions 
-       WHERE user_id = p.id), 
-      0
-    )::INTEGER as credit_balance
-  FROM profiles p
-  LEFT JOIN auth.users au ON p.id = au.id
-  ORDER BY p.created_at DESC;
-END;
-$$ LANGUAGE plpgsql;
-
--- 9. Grant execute permission on the function
-GRANT EXECUTE ON FUNCTION get_all_users_with_credits() TO authenticated;
-
--- =====================================================
--- Setup Complete!
--- =====================================================
--- Next steps:
--- 1. Verify that ahmadkassem511@gmail.com is set as admin
--- 2. Test the admin panel in the Flutter app
--- =====================================================
-
--- To verify admin setup, run this query:
--- SELECT id, email, full_name, is_admin 
--- FROM profiles p
--- LEFT JOIN auth.users au ON p.id = au.id
--- WHERE is_admin = TRUE;

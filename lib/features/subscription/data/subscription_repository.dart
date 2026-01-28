@@ -99,6 +99,14 @@ class SubscriptionRepository {
     });
   }
 
+  /// Update user's subscription tier manually
+  Future<void> updateTier(String userId, String tier) async {
+    await _client.from('profiles').update({
+      'subscription_tier': tier,
+      'updated_at': DateTime.now().toIso8601String(),
+    }).eq('id', userId);
+  }
+
   /// Create subscription record
   Future<void> createSubscription({
     required String userId,

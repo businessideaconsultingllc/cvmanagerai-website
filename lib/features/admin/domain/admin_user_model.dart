@@ -14,6 +14,7 @@ class AdminUserModel {
   final int creditBalance;
   final DateTime? lastSeen;
   final String signupMethod; // 'email' or 'google'
+  final bool isSuspended;
 
   AdminUserModel({
     required this.id,
@@ -29,6 +30,7 @@ class AdminUserModel {
     required this.creditBalance,
     this.lastSeen,
     this.signupMethod = 'email', // Default to email
+    this.isSuspended = false,
   });
 
   factory AdminUserModel.fromJson(Map<String, dynamic> json) {
@@ -52,6 +54,7 @@ class AdminUserModel {
           ? DateTime.parse(json['last_seen'] as String)
           : null,
       signupMethod: json['auth_provider'] as String? ?? 'email',
+      isSuspended: json['is_suspended'] as bool? ?? false,
     );
   }
 
@@ -70,6 +73,7 @@ class AdminUserModel {
       'credit_balance': creditBalance,
       'last_seen': lastSeen?.toIso8601String(),
       'auth_provider': signupMethod,
+      'is_suspended': isSuspended,
     };
   }
 
@@ -102,6 +106,7 @@ class AdminUserModel {
       creditBalance: creditBalance ?? this.creditBalance,
       lastSeen: lastSeen ?? this.lastSeen,
       signupMethod: signupMethod ?? this.signupMethod,
+      isSuspended: isSuspended ?? isSuspended,
     );
   }
 

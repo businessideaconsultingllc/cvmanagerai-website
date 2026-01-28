@@ -394,24 +394,53 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                           const SizedBox(height: 32),
 
                           // Google Sign In
-                          OutlinedButton.icon(
-                            onPressed:
-                                authState.isLoading ? null : _signInWithGoogle,
-                            icon: Container(
-                              padding: const EdgeInsets.all(4),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(4),
-                              ),
-                              child: const Icon(
-                                Icons.g_mobiledata,
-                                size: 20,
-                                color: Colors.blue,
-                              ),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(30),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withValues(alpha: 0.1),
+                                  blurRadius: 10,
+                                  offset: const Offset(0, 4),
+                                ),
+                              ],
                             ),
-                            label: const Text('Sign in with Google'),
-                            style: OutlinedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(vertical: 16),
+                            child: Material(
+                              color: Colors.transparent,
+                              child: InkWell(
+                                onTap: authState.isLoading
+                                    ? null
+                                    : _signInWithGoogle,
+                                borderRadius: BorderRadius.circular(30),
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 16),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Image.asset(
+                                        'assets/google-logo.png',
+                                        height: 24,
+                                        width: 24,
+                                      ),
+                                      const SizedBox(width: 12),
+                                      // Note: signup_screen.dart was hardcoding 'Sign in with Google' instead of using l10n in the label text widget in the original code (lines 412),
+                                      // but the surrounding code uses l10n. I should check if l10n.signInWithGoogle is available.
+                                      // In login_screen it was l10n.signInWithGoogle.
+                                      // I will use l10n.signInWithGoogle here too for consistency and internalization.
+                                      Text(
+                                        l10n.signInWithGoogle,
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.black87,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
                             ),
                           ).animate().fadeIn(delay: 700.ms).slideY(begin: 0.2),
 

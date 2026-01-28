@@ -23,14 +23,22 @@ class StripeConstants {
 
   // 💰 PRODUCT CONFIGURATION
   static const String credits25PriceId = 'price_1ScOWwHsFA1k3qUMLLTXEl1a';
+  // TODO: Replace with actual Price ID from Stripe Dashboard
+  static const String credits7PriceId = 'price_REPLACE_WITH_ACTUAL_ID';
 
   // Credit packages (for future expansion)
   static const Map<String, CreditPackage> packages = {
     'starter': CreditPackage(
       credits: 25,
       price: 5.00,
-      priceId: credits25PriceId,
-      name: 'Starter Pack',
+      priceId: 'price_1ScOWwHsFA1k3qUMLLTXEl1a',
+      name: 'Pro Pack',
+    ),
+    'basic': CreditPackage(
+      credits: 7,
+      price: 2.00,
+      priceId: 'price_1SdTwwHsFA1k3qUMsbrW6BOg',
+      name: 'Basic Pack',
     ),
   };
 

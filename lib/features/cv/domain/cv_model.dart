@@ -92,6 +92,7 @@ class CVData {
   final List<Certificate> certificates;
   final List<String> skills;
   final List<String> languages;
+  final List<CustomSection> customSections;
 
   CVData({
     required this.personalInfo,
@@ -101,6 +102,7 @@ class CVData {
     required this.certificates,
     required this.skills,
     required this.languages,
+    this.customSections = const [],
   });
 
   Map<String, dynamic> toMap() {
@@ -112,6 +114,7 @@ class CVData {
       'certificates': certificates.map((x) => x.toMap()).toList(),
       'skills': skills,
       'languages': languages,
+      'customSections': customSections.map((x) => x.toMap()).toList(),
     };
   }
 
@@ -127,6 +130,8 @@ class CVData {
           (map['certificates'] ?? []).map((x) => Certificate.fromMap(x))),
       skills: List<String>.from(map['skills'] ?? []),
       languages: List<String>.from(map['languages'] ?? []),
+      customSections: List<CustomSection>.from(
+          (map['customSections'] ?? []).map((x) => CustomSection.fromMap(x))),
     );
   }
   CVData copyWith({
@@ -137,6 +142,7 @@ class CVData {
     List<Certificate>? certificates,
     List<String>? skills,
     List<String>? languages,
+    List<CustomSection>? customSections,
   }) {
     return CVData(
       personalInfo: personalInfo ?? this.personalInfo,
@@ -146,6 +152,7 @@ class CVData {
       certificates: certificates ?? this.certificates,
       skills: skills ?? this.skills,
       languages: languages ?? this.languages,
+      customSections: customSections ?? this.customSections,
     );
   }
 }
@@ -313,6 +320,73 @@ class Certificate {
       issuer: map['issuer'] ?? '',
       date: map['date'] ?? '',
       description: map['description'],
+    );
+  }
+}
+
+class CustomSection {
+  final String title;
+  final List<CustomSectionItem> items;
+
+  CustomSection({
+    required this.title,
+    required this.items,
+  });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'title': title,
+      'items': items.map((x) => x.toMap()).toList(),
+    };
+  }
+
+  factory CustomSection.fromMap(Map<String, dynamic> map) {
+    return CustomSection(
+      title: map['title'] ?? '',
+      items: List<CustomSectionItem>.from(
+          (map['items'] ?? []).map((x) => CustomSectionItem.fromMap(x))),
+    );
+  }
+
+  CustomSection copyWith({
+    String? title,
+    List<CustomSectionItem>? items,
+  }) {
+    return CustomSection(
+      title: title ?? this.title,
+      items: items ?? this.items,
+    );
+  }
+}
+
+class CustomSectionItem {
+  final String title;
+  final String subtitle;
+  final String date;
+  final String description;
+
+  CustomSectionItem({
+    required this.title,
+    required this.subtitle,
+    required this.date,
+    required this.description,
+  });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'title': title,
+      'subtitle': subtitle,
+      'date': date,
+      'description': description,
+    };
+  }
+
+  factory CustomSectionItem.fromMap(Map<String, dynamic> map) {
+    return CustomSectionItem(
+      title: map['title'] ?? '',
+      subtitle: map['subtitle'] ?? '',
+      date: map['date'] ?? '',
+      description: map['description'] ?? '',
     );
   }
 }

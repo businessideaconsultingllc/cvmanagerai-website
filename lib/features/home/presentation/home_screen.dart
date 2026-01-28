@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -17,10 +17,13 @@ import '../../../core/theme/app_theme.dart';
 import '../../../core/utils/responsive.dart';
 import '../../../core/ads/banner_ad_widget.dart';
 import '../../../core/widgets/app_navigation_bar.dart';
-import '../../../core/widgets/beautiful_components.dart';
 
 import '../../../core/utils/url_cleaner.dart';
 import '../../../core/locale/locale_provider.dart';
+import '../../../core/constants/languages.dart';
+import '../../../core/services/pwa_service.dart';
+import '../../../core/widgets/pwa_install_prompt.dart';
+import '../../feedback/presentation/feedback_dialog.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -30,13 +33,28 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
+  late FocusNode _focusNode;
+  final ScrollController _scrollController = ScrollController();
+
   @override
   void initState() {
     super.initState();
+    _focusNode = FocusNode();
     // Clean stale OAuth parameters from URL when user lands on dashboard
     WidgetsBinding.instance.addPostFrameCallback((_) {
       UrlCleaner.clean();
+      // Initialize PWA service
+      ref.read(pwaServiceProvider).init(context);
+      // Force focus on the scrollable area to enable keyboard scrolling
+      _focusNode.requestFocus();
     });
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -58,169 +76,248 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         decoration: BoxDecoration(
           color: theme.scaffoldBackgroundColor,
         ),
-        child: RefreshIndicator(
-          onRefresh: () async {
-            ref.invalidate(profileProvider);
-            ref.invalidate(userCVsProvider);
-            ref.invalidate(creditBalanceProvider);
+        child: Focus(
+          focusNode: _focusNode,
+          autofocus: true,
+          onKeyEvent: (node, event) {
+            if (event is KeyDownEvent || event is KeyRepeatEvent) {
+              final double scrollAmount = 100.0; // Adjust speed as needed
+              if (event.logicalKey == LogicalKeyboardKey.arrowDown) {
+                if (_scrollController.hasClients) {
+                  _scrollController.animateTo(
+                    _scrollController.offset + scrollAmount,
+                    duration: const Duration(milliseconds: 100),
+                    curve: Curves.easeOut,
+                  );
+                  return KeyEventResult.handled;
+                }
+              } else if (event.logicalKey == LogicalKeyboardKey.arrowUp) {
+                if (_scrollController.hasClients) {
+                  _scrollController.animateTo(
+                    _scrollController.offset - scrollAmount,
+                    duration: const Duration(milliseconds: 100),
+                    curve: Curves.easeOut,
+                  );
+                  return KeyEventResult.handled;
+                }
+              }
+            }
+            return KeyEventResult.ignored;
           },
-          child: CustomScrollView(
-            slivers: [
-              // ✨ Premium App Bar
-              SliverAppBar(
-                expandedHeight: isMobile ? 120.0 : 160.0,
-                floating: true,
-                pinned: true,
-                elevation: 0,
-                centerTitle: false,
-                backgroundColor:
-                    theme.scaffoldBackgroundColor.withOpacity(0.85),
-                automaticallyImplyLeading: isMobile,
-                flexibleSpace: ClipRRect(
-                  // Clip for blur
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                    child: FlexibleSpaceBar(
-                      titlePadding: EdgeInsets.only(
-                        left: isMobile ? 56 : 32,
-                        bottom: 16,
-                      ),
-                      title: ShaderMask(
-                        shaderCallback: (bounds) =>
-                            AppTheme.heroGradient.createShader(bounds),
-                        child: Text(
-                          l10n.appTitle,
-                          style: theme.textTheme.headlineSmall?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            letterSpacing: -0.5,
+          child: Stack(
+            children: [
+              RefreshIndicator(
+                onRefresh: () async {
+                  ref.invalidate(profileProvider);
+                  ref.invalidate(userCVsProvider);
+                  ref.invalidate(creditBalanceProvider);
+                  ref.invalidate(isAdminProvider);
+                },
+                child: CustomScrollView(
+                  controller: _scrollController,
+                  slivers: [
+                    // ✨ Premium App Bar
+                    SliverAppBar(
+                      expandedHeight: isMobile ? 120.0 : 160.0,
+                      floating: true,
+                      pinned: true,
+                      elevation: 0,
+                      centerTitle: false,
+                      backgroundColor:
+                          theme.scaffoldBackgroundColor.withOpacity(0.85),
+                      automaticallyImplyLeading: isMobile,
+                      flexibleSpace: ClipRRect(
+                        // Clip for blur
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                          child: FlexibleSpaceBar(
+                            titlePadding: EdgeInsets.only(
+                              left: isMobile ? 56 : 32,
+                              bottom: 16,
+                            ),
+                            title: ShaderMask(
+                              shaderCallback: (bounds) =>
+                                  AppTheme.heroGradient.createShader(bounds),
+                              child: Text(
+                                l10n.appTitle,
+                                style: theme.textTheme.headlineSmall?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  letterSpacing: -0.5,
+                                ),
+                              ),
+                            ),
+                            background: Container(
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                  colors: [
+                                    theme.colorScheme.primary.withOpacity(0.08),
+                                    theme.colorScheme.secondary
+                                        .withOpacity(0.05),
+                                    Colors.transparent,
+                                  ],
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ),
-                      background: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [
-                              theme.colorScheme.primary.withOpacity(0.08),
-                              theme.colorScheme.secondary.withOpacity(0.05),
-                              Colors.transparent,
+                      actions: [
+                        // Language Selector
+                        PopupMenuButton<String>(
+                          tooltip: l10n.selectLanguage,
+                          icon: Container(
+                            padding: const EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: theme.colorScheme.surface.withOpacity(0.5),
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(
+                                color: theme.colorScheme.outlineVariant
+                                    .withOpacity(0.5),
+                              ),
+                            ),
+                            child: Icon(Icons.language,
+                                size: 20, color: theme.iconTheme.color),
+                          ),
+                          offset: const Offset(0, 50),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          itemBuilder: (context) {
+                            return AppLanguages.supportedLanguages.entries
+                                .map((entry) {
+                              return PopupMenuItem<String>(
+                                value: entry.key,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      _getFlagEmoji(entry.key),
+                                      style: const TextStyle(fontSize: 20),
+                                    ),
+                                    const SizedBox(width: 12),
+                                    Text(entry.value),
+                                  ],
+                                ),
+                              );
+                            }).toList();
+                          },
+                          onSelected: (String languageCode) {
+                            ref
+                                .read(localeProvider.notifier)
+                                .setLocale(Locale(languageCode));
+                          },
+                        ),
+                        const SizedBox(width: 8),
+                        // Theme Toggle
+                        _buildIconButton(
+                          icon: theme.brightness == Brightness.dark
+                              ? Icons.light_mode_rounded
+                              : Icons.dark_mode_rounded,
+                          tooltip: 'Toggle theme',
+                          onTap: () {
+                            ref.read(themeProvider.notifier).toggleTheme();
+                          },
+                          theme: theme,
+                        ),
+                        const SizedBox(width: 8),
+                        // Logout
+                        _buildIconButton(
+                          icon: Icons.logout_rounded,
+                          tooltip: 'Logout',
+                          onTap: () {
+                            ref.read(authControllerProvider.notifier).signOut();
+                          },
+                          theme: theme,
+                        ),
+                        SizedBox(width: isMobile ? 16 : 32),
+                      ],
+                    ),
+
+                    SliverToBoxAdapter(
+                      child: Responsive.constrainWidth(
+                        context: context,
+                        child: Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: screenPadding),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              const SizedBox(height: 16),
+                              // 👋 Welcome Section
+                              _buildWelcomeSection(
+                                  context, ref, l10n, profileAsync),
+                              const SizedBox(height: 24),
+
+                              // 💳 Premium Glass Credits Card
+                              _buildGlassCreditsCard(
+                                  context, ref, l10n, isMobile),
+                              const SizedBox(height: 32),
+
+                              // 📊 Quick Stats
+                              _buildQuickStats(context, ref, l10n),
+                              const SizedBox(height: 40),
+
+                              // 🎯 Quick Actions Title
+                              Row(
+                                children: [
+                                  Container(
+                                    padding: const EdgeInsets.all(8),
+                                    decoration: BoxDecoration(
+                                      color: theme.colorScheme.primary
+                                          .withOpacity(0.1),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Icon(Icons.flash_on_rounded,
+                                        color: theme.colorScheme.primary,
+                                        size: 20),
+                                  ),
+                                  const SizedBox(width: 12),
+                                  Text(
+                                    l10n.quickActions,
+                                    style: theme.textTheme.titleLarge?.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              )
+                                  .animate()
+                                  .fadeIn(delay: 200.ms)
+                                  .slideX(begin: -0.2),
+                              const SizedBox(height: 20),
+
+                              // 🎴 Action Cards - Bento Grid Style
+                              _buildActionCardsGrid(
+                                  context, ref, l10n, isAdminAsync),
+
+                              const SizedBox(height: 32),
+                              const BannerAdWidget(),
+
+                              const SizedBox(height: 40),
+                              _buildRecentCVsSection(context, ref, l10n),
+                              const SizedBox(height: 80), // Bottom spacing
                             ],
                           ),
                         ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-                actions: [
-                  // Language Selector
-                  _buildIconButton(
-                    icon: Icons.language,
-                    tooltip: l10n.selectLanguage,
-                    onTap: () => _showLanguageSelector(context, ref),
-                    theme: theme,
-                  ),
-                  const SizedBox(width: 8),
-                  // Theme Toggle
-                  _buildIconButton(
-                    icon: theme.brightness == Brightness.dark
-                        ? Icons.light_mode_rounded
-                        : Icons.dark_mode_rounded,
-                    tooltip: 'Toggle theme',
-                    onTap: () {
-                      ref.read(themeProvider.notifier).toggleTheme();
-                    },
-                    theme: theme,
-                  ),
-                  const SizedBox(width: 8),
-                  // Logout
-                  _buildIconButton(
-                    icon: Icons.logout_rounded,
-                    tooltip: 'Logout',
-                    onTap: () {
-                      ref.read(authControllerProvider.notifier).signOut();
-                    },
-                    theme: theme,
-                  ),
-                  SizedBox(width: isMobile ? 16 : 32),
-                ],
-              ),
-
-              SliverToBoxAdapter(
-                child: Responsive.constrainWidth(
-                  context: context,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: screenPadding),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        const SizedBox(height: 16),
-                        // 👋 Welcome Section
-                        _buildWelcomeSection(context, ref, l10n, profileAsync),
-                        const SizedBox(height: 24),
-
-                        // 💳 Premium Glass Credits Card
-                        _buildGlassCreditsCard(context, ref, l10n, isMobile),
-                        const SizedBox(height: 32),
-
-                        // 📊 Quick Stats
-                        _buildQuickStats(context, ref, l10n),
-                        const SizedBox(height: 40),
-
-                        // 🎯 Quick Actions Title
-                        Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                color:
-                                    theme.colorScheme.primary.withOpacity(0.1),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: Icon(Icons.flash_on_rounded,
-                                  color: theme.colorScheme.primary, size: 20),
-                            ),
-                            const SizedBox(width: 12),
-                            Text(
-                              l10n.quickActions,
-                              style: theme.textTheme.titleLarge?.copyWith(
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ).animate().fadeIn(delay: 200.ms).slideX(begin: -0.2),
-                        const SizedBox(height: 20),
-
-                        // 🎴 Action Cards - Bento Grid Style
-                        _buildActionCardsGrid(context, ref, l10n, isAdminAsync),
-
-                        const SizedBox(height: 32),
-                        const BannerAdWidget(),
-
-                        const SizedBox(height: 40),
-                        _buildRecentCVsSection(context, ref, l10n),
-                        const SizedBox(height: 80), // Bottom spacing
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+              ), // RefreshIndicator
+              const PWAInstallPrompt(),
             ],
-          ),
-        ),
+          ), // Stack
+        ), // Focus
+      ), // Container
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () => showFeedbackDialog(context),
+        icon: const Icon(Icons.rate_review_outlined),
+        label: const Text('Feedback'),
+        backgroundColor: theme.colorScheme.primary,
+        foregroundColor: Colors.white,
       ),
-    );
-
-    // Wrap with navigation for desktop
-    if (!isMobile) {
-      return Row(
-        children: [
-          const AppNavigationBar(currentRoute: '/'),
-          Expanded(child: scaffold),
-        ],
-      );
-    }
+    ); // Scaffold
 
     return scaffold;
   }
@@ -440,39 +537,39 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 const SizedBox(height: 24),
 
                 // Responsive Button Layout
-                SizedBox(
-                  width: double.infinity,
-                  height: 52,
-                  child: ElevatedButton(
-                    onPressed: () => context.push('/buy-credits'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      foregroundColor: AppTheme.primaryIndigo,
-                      elevation: 4,
-                      shadowColor: Colors.black26,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      padding: EdgeInsets.zero, // Important for small screens
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(Icons.add_circle_outline_rounded, size: 22),
-                        const SizedBox(width: 8),
-                        Text(
-                          'Buy Credits',
-                          style: theme.textTheme.titleMedium?.copyWith(
-                            color: AppTheme.primaryIndigo,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                // SizedBox(
+                //   width: double.infinity,
+                //   height: 52,
+                //   child: ElevatedButton(
+                //     onPressed: () => context.push('/buy-credits'),
+                //     style: ElevatedButton.styleFrom(
+                //       backgroundColor: Colors.white,
+                //       foregroundColor: AppTheme.primaryIndigo,
+                //       elevation: 4,
+                //       shadowColor: Colors.black26,
+                //       shape: RoundedRectangleBorder(
+                //         borderRadius: BorderRadius.circular(16),
+                //       ),
+                //       padding: EdgeInsets.zero, // Important for small screens
+                //     ),
+                //     child: Row(
+                //       mainAxisAlignment: MainAxisAlignment.center,
+                //       children: [
+                //         const Icon(Icons.add_circle_outline_rounded, size: 22),
+                //         const SizedBox(width: 8),
+                //         Text(
+                //           'Buy Credits',
+                //           style: theme.textTheme.titleMedium?.copyWith(
+                //             color: AppTheme.primaryIndigo,
+                //             fontWeight: FontWeight.bold,
+                //           ),
+                //           maxLines: 1,
+                //           overflow: TextOverflow.ellipsis,
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),
@@ -570,7 +667,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         icon: Icons.auto_awesome_rounded,
         color: AppTheme.primaryIndigo,
         route: '/generate-cv',
-        isPremiumOnly: false,
+        isPremiumOnly: true, // Locked when 0 credits
         decorationIcon: Icons.edit_document,
       ),
       _ActionCardData(
@@ -581,6 +678,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         route: '/optimize-cv',
         isPremiumOnly: true,
         decorationIcon: Icons.rocket_launch,
+      ),
+      _ActionCardData(
+        title: l10n.checkATSScore,
+        description: l10n.checkATSDescription,
+        icon: Icons.analytics_rounded,
+        color: AppTheme.primaryIndigo,
+        route: '/check-ats-score',
+        isPremiumOnly: true,
+        decorationIcon: Icons.speed_rounded,
       ),
       _ActionCardData(
         title: l10n.tailorCV,
@@ -597,7 +703,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         icon: Icons.mail_outline_rounded,
         color: AppTheme.accentEmerald,
         route: '/generate-cover-letter',
-        isPremiumOnly: false,
+        isPremiumOnly: true, // Locked when 0 credits
         decorationIcon: Icons.article_outlined,
       ),
       _ActionCardData(
@@ -658,7 +764,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             data: card,
             isLocked: isLocked,
             onTap: isLocked
-                ? () => _showUpgradeDialog(context)
+                ? () {
+                    // Temporarily disabled purchase redirect
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Credits required to use this feature.'),
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
+                  }
                 : () => context.push(card.route),
           ).animate().fadeIn(delay: (100 * index).ms).slideY(begin: 0.2);
         },
@@ -666,70 +780,35 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     });
   }
 
-  void _showUpgradeDialog(BuildContext context) {
-    // ... Existing dialog logic, can be enhanced later ...
-    showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-              title: const Text("Premium Feature"),
-              content: const Text("Upgrade to Pro to access this feature!"),
-              actions: [
-                TextButton(
-                    onPressed: () => Navigator.pop(context),
-                    child: const Text("Cancel")),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                      context.push('/buy-credits');
-                    },
-                    child: const Text("Upgrade"))
-              ],
-            ));
-  }
-
   // Language selector helper included to maintain functionality
-  void _showLanguageSelector(BuildContext context, WidgetRef ref) {
-    showModalBottomSheet(
-      context: context,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
-      builder: (context) {
-        return Container(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                'Select Language', // hardcoded for safety
-                style: Theme.of(context).textTheme.headlineSmall,
-              ),
-              const SizedBox(height: 20),
-              ListTile(
-                leading: const Text('🇬🇧', style: TextStyle(fontSize: 24)),
-                title: const Text('English'),
-                onTap: () {
-                  ref
-                      .read(localeProvider.notifier)
-                      .setLocale(const Locale('en'));
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                leading: const Text('🇸🇦', style: TextStyle(fontSize: 24)),
-                title: const Text('العربية'),
-                onTap: () {
-                  ref
-                      .read(localeProvider.notifier)
-                      .setLocale(const Locale('ar'));
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          ),
-        );
-      },
-    );
+  // Helper to get flag emoji for language code
+  String _getFlagEmoji(String languageCode) {
+    switch (languageCode) {
+      case 'en':
+        return '🇬🇧';
+      case 'ar':
+        return '🇸🇦';
+      case 'fr':
+        return '🇫🇷';
+      case 'es':
+        return '🇪🇸';
+      case 'de':
+        return '🇩🇪';
+      case 'it':
+        return '🇮🇹';
+      case 'pt':
+        return '🇵🇹';
+      case 'nl':
+        return '🇳🇱';
+      case 'ru':
+        return '🇷🇺';
+      case 'zh':
+        return '🇨🇳';
+      case 'ja':
+        return '🇯🇵';
+      default:
+        return '🌍';
+    }
   }
 
   // Recent CVs section placeholder to keep file complete
@@ -884,17 +963,18 @@ class _PremiumActionCardState extends State<_PremiumActionCard> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 12, vertical: 8),
                               decoration: BoxDecoration(
-                                color: Colors.black.withOpacity(0.8),
+                                color: AppTheme.primaryIndigo,
                                 borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: Colors.white24),
+                                boxShadow:
+                                    AppTheme.glowShadow(AppTheme.primaryIndigo),
                               ),
                               child: const Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Icon(Icons.lock_rounded,
+                                  Icon(Icons.upgrade_rounded,
                                       color: Colors.white, size: 16),
                                   SizedBox(width: 6),
-                                  Text("PRO",
+                                  Text("UPGRADE",
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 12,

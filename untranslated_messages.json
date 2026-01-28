@@ -1,25 +1,117 @@
 {
   "ar": [
-    "enterTargetJobTitle"
+    "enterTargetJobTitle",
+    "selected",
+    "selectItems",
+    "confirmGenerateCVCost",
+    "confirmOptimizeCVCost",
+    "confirmTailorCVCost",
+    "confirmATSCheckCost",
+    "confirmCoverLetterCost",
+    "proceed"
   ],
 
   "de": [
-    "enterTargetJobTitle"
+    "enterTargetJobTitle",
+    "selected",
+    "selectItems",
+    "confirmGenerateCVCost",
+    "confirmOptimizeCVCost",
+    "confirmTailorCVCost",
+    "confirmATSCheckCost",
+    "confirmCoverLetterCost",
+    "proceed"
   ],
 
   "es": [
-    "enterTargetJobTitle"
+    "enterTargetJobTitle",
+    "selected",
+    "selectItems",
+    "confirmGenerateCVCost",
+    "confirmOptimizeCVCost",
+    "confirmTailorCVCost",
+    "confirmATSCheckCost",
+    "confirmCoverLetterCost",
+    "proceed"
   ],
 
   "fr": [
-    "enterTargetJobTitle"
+    "enterTargetJobTitle",
+    "selected",
+    "selectItems",
+    "confirmGenerateCVCost",
+    "confirmOptimizeCVCost",
+    "confirmTailorCVCost",
+    "confirmATSCheckCost",
+    "confirmCoverLetterCost",
+    "proceed"
+  ],
+
+  "it": [
+    "selected",
+    "selectItems",
+    "confirmGenerateCVCost",
+    "confirmOptimizeCVCost",
+    "confirmTailorCVCost",
+    "confirmATSCheckCost",
+    "confirmCoverLetterCost",
+    "proceed"
+  ],
+
+  "ja": [
+    "selected",
+    "selectItems",
+    "confirmGenerateCVCost",
+    "confirmOptimizeCVCost",
+    "confirmTailorCVCost",
+    "confirmATSCheckCost",
+    "confirmCoverLetterCost",
+    "proceed"
   ],
 
   "nl": [
-    "enterTargetJobTitle"
+    "enterTargetJobTitle",
+    "selected",
+    "selectItems",
+    "confirmGenerateCVCost",
+    "confirmOptimizeCVCost",
+    "confirmTailorCVCost",
+    "confirmATSCheckCost",
+    "confirmCoverLetterCost",
+    "proceed"
+  ],
+
+  "pt": [
+    "selected",
+    "selectItems",
+    "confirmGenerateCVCost",
+    "confirmOptimizeCVCost",
+    "confirmTailorCVCost",
+    "confirmATSCheckCost",
+    "confirmCoverLetterCost",
+    "proceed"
   ],
 
   "ru": [
-    "enterTargetJobTitle"
+    "enterTargetJobTitle",
+    "selected",
+    "selectItems",
+    "confirmGenerateCVCost",
+    "confirmOptimizeCVCost",
+    "confirmTailorCVCost",
+    "confirmATSCheckCost",
+    "confirmCoverLetterCost",
+    "proceed"
+  ],
+
+  "zh": [
+    "selected",
+    "selectItems",
+    "confirmGenerateCVCost",
+    "confirmOptimizeCVCost",
+    "confirmTailorCVCost",
+    "confirmATSCheckCost",
+    "confirmCoverLetterCost",
+    "proceed"
   ]
 }

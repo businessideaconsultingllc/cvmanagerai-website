@@ -30,7 +30,18 @@ class ThemeNotifier extends Notifier<ThemeMode> {
   }
 
   Future<void> toggleTheme() async {
-    final newMode = state == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
+    ThemeMode currentMode = state;
+
+    // If system, resolve to actual brightness
+    if (currentMode == ThemeMode.system) {
+      final brightness =
+          WidgetsBinding.instance.platformDispatcher.platformBrightness;
+      currentMode =
+          brightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light;
+    }
+
+    final newMode =
+        currentMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
     await setThemeMode(newMode);
   }
 }

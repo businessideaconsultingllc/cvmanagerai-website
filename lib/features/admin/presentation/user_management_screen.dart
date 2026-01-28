@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter/services.dart';
 import 'admin_controller.dart';
 import '../domain/admin_user_model.dart';
 import 'widgets/edit_user_dialog.dart';
@@ -16,6 +17,24 @@ class UserManagementScreen extends ConsumerStatefulWidget {
 
 class _UserManagementScreenState extends ConsumerState<UserManagementScreen> {
   String _searchQuery = '';
+  late FocusNode _focusNode;
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode = FocusNode();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _focusNode.requestFocus();
+    });
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,115 +46,147 @@ class _UserManagementScreenState extends ConsumerState<UserManagementScreen> {
         title: const Text('User Management'),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          // Search Bar
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: 'Search users...',
-                prefixIcon: const Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
+      body: Focus(
+        focusNode: _focusNode,
+        autofocus: true,
+        onKeyEvent: (node, event) {
+          if (event is KeyDownEvent || event is KeyRepeatEvent) {
+            final double scrollAmount = 100.0;
+            if (event.logicalKey == LogicalKeyboardKey.arrowDown) {
+              if (_scrollController.hasClients) {
+                _scrollController.animateTo(
+                  _scrollController.offset + scrollAmount,
+                  duration: const Duration(milliseconds: 100),
+                  curve: Curves.easeOut,
+                );
+                return KeyEventResult.handled;
+              }
+            } else if (event.logicalKey == LogicalKeyboardKey.arrowUp) {
+              if (_scrollController.hasClients) {
+                _scrollController.animateTo(
+                  _scrollController.offset - scrollAmount,
+                  duration: const Duration(milliseconds: 100),
+                  curve: Curves.easeOut,
+                );
+                return KeyEventResult.handled;
+              }
+            }
+          }
+          return KeyEventResult.ignored;
+        },
+        child: Column(
+          children: [
+            // Search Bar
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Search users...',
+                  prefixIcon: const Icon(Icons.search),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  filled: true,
+                  fillColor: theme.colorScheme.surfaceContainerHighest,
                 ),
-                filled: true,
-                fillColor: theme.colorScheme.surfaceContainerHighest,
+                onChanged: (value) {
+                  setState(() {
+                    _searchQuery = value.toLowerCase();
+                  });
+                },
               ),
-              onChanged: (value) {
-                setState(() {
-                  _searchQuery = value.toLowerCase();
-                });
-              },
             ),
-          ),
 
-          // User List
-          Expanded(
-            child: usersAsync.when(
-              data: (users) {
-                final filteredUsers = users.where((user) {
-                  if (_searchQuery.isEmpty) return true;
-                  return user.displayName
-                          .toLowerCase()
-                          .contains(_searchQuery) ||
-                      user.email.toLowerCase().contains(_searchQuery);
-                }).toList();
+            // User List
+            Expanded(
+              child: usersAsync.when(
+                data: (users) {
+                  final filteredUsers = users.where((user) {
+                    if (_searchQuery.isEmpty) return true;
+                    return user.displayName
+                            .toLowerCase()
+                            .contains(_searchQuery) ||
+                        user.email.toLowerCase().contains(_searchQuery);
+                  }).toList();
 
-                if (filteredUsers.isEmpty) {
-                  return Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.search_off,
-                          size: 64,
-                          color: theme.colorScheme.onSurface
-                              .withValues(alpha: 0.2),
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          'No users found',
-                          style: theme.textTheme.titleMedium?.copyWith(
+                  if (filteredUsers.isEmpty) {
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.search_off,
+                            size: 64,
                             color: theme.colorScheme.onSurface
-                                .withValues(alpha: 0.5),
+                                .withValues(alpha: 0.2),
                           ),
-                        ),
-                      ],
+                          const SizedBox(height: 16),
+                          Text(
+                            'No users found',
+                            style: theme.textTheme.titleMedium?.copyWith(
+                              color: theme.colorScheme.onSurface
+                                  .withValues(alpha: 0.5),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+
+                  return RefreshIndicator(
+                    onRefresh: () async {
+                      ref.invalidate(allUsersProvider);
+                    },
+                    child: ListView.builder(
+                      controller: _scrollController,
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      itemCount: filteredUsers.length,
+                      itemBuilder: (context, index) {
+                        final user = filteredUsers[index];
+                        return _UserCard(
+                          user: user,
+                          onEdit: () => _showEditDialog(user),
+                          onDelete: () => _showDeleteDialog(user),
+                          onAdjustCredits: () =>
+                              _showCreditAdjustmentDialog(user),
+                          onToggleSuspension: () => _toggleSuspension(user),
+                          onToggleAdmin: () => _toggleAdmin(user),
+                        )
+                            .animate()
+                            .fadeIn(delay: (index * 50).ms)
+                            .slideX(begin: 0.1, end: 0);
+                      },
                     ),
                   );
-                }
-
-                return RefreshIndicator(
-                  onRefresh: () async {
-                    ref.invalidate(allUsersProvider);
-                  },
-                  child: ListView.builder(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    itemCount: filteredUsers.length,
-                    itemBuilder: (context, index) {
-                      final user = filteredUsers[index];
-                      return _UserCard(
-                        user: user,
-                        onEdit: () => _showEditDialog(user),
-                        onDelete: () => _showDeleteDialog(user),
-                        onAdjustCredits: () =>
-                            _showCreditAdjustmentDialog(user),
-                      )
-                          .animate()
-                          .fadeIn(delay: (index * 50).ms)
-                          .slideX(begin: 0.1, end: 0);
-                    },
+                },
+                loading: () => const Center(child: CircularProgressIndicator()),
+                error: (e, st) => Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.error_outline,
+                        size: 64,
+                        color: theme.colorScheme.error,
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        'Error loading users',
+                        style: theme.textTheme.titleMedium,
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        e.toString(),
+                        style: theme.textTheme.bodySmall,
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
                   ),
-                );
-              },
-              loading: () => const Center(child: CircularProgressIndicator()),
-              error: (e, st) => Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.error_outline,
-                      size: 64,
-                      color: theme.colorScheme.error,
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      'Error loading users',
-                      style: theme.textTheme.titleMedium,
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      e.toString(),
-                      style: theme.textTheme.bodySmall,
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -157,6 +208,91 @@ class _UserManagementScreenState extends ConsumerState<UserManagementScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('User updated successfully')),
       );
+    }
+  }
+
+  Future<void> _toggleSuspension(AdminUserModel user) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(user.isSuspended ? 'Unsuspend User' : 'Suspend User'),
+        content: Text(
+          'Are you sure you want to ${user.isSuspended ? 'unsuspend' : 'suspend'} ${user.displayName}?',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: const Text('Cancel'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            style: FilledButton.styleFrom(
+              backgroundColor: user.isSuspended ? Colors.green : Colors.orange,
+            ),
+            child: Text(user.isSuspended ? 'Unsuspend' : 'Suspend'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed == true) {
+      await ref
+          .read(adminControllerProvider.notifier)
+          .toggleUserSuspension(user.id, !user.isSuspended);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'User ${user.isSuspended ? 'unsuspended' : 'suspended'} successfully',
+            ),
+          ),
+        );
+      }
+    }
+  }
+
+  Future<void> _toggleAdmin(AdminUserModel user) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(user.isAdmin ? 'Revoke Admin' : 'Make Admin'),
+        content: Text(
+          'Are you sure you want to ${user.isAdmin ? 'revoke admin status from' : 'make admin'} ${user.displayName}?',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: const Text('Cancel'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: Text(user.isAdmin ? 'Revoke' : 'Promote'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed == true) {
+      try {
+        await ref
+            .read(adminControllerProvider.notifier)
+            .toggleAdminStatus(user.id, !user.isAdmin);
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                'User ${user.isAdmin ? 'demoted' : 'promoted'} successfully',
+              ),
+            ),
+          );
+        }
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(e.toString())),
+          );
+        }
+      }
     }
   }
 
@@ -230,12 +366,16 @@ class _UserCard extends StatelessWidget {
   final VoidCallback onEdit;
   final VoidCallback onDelete;
   final VoidCallback onAdjustCredits;
+  final VoidCallback onToggleSuspension;
+  final VoidCallback onToggleAdmin;
 
   const _UserCard({
     required this.user,
     required this.onEdit,
     required this.onDelete,
     required this.onAdjustCredits,
+    required this.onToggleSuspension,
+    required this.onToggleAdmin,
   });
 
   @override
@@ -293,13 +433,33 @@ class _UserCard extends StatelessWidget {
                                 vertical: 2,
                               ),
                               decoration: BoxDecoration(
-                                color: Colors.red.withValues(alpha: 0.1),
+                                color: Colors.blue.withValues(alpha: 0.1),
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: Text(
                                 'ADMIN',
                                 style: theme.textTheme.labelSmall?.copyWith(
-                                  color: Colors.red,
+                                  color: Colors.blue,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                          if (user.isSuspended) ...[
+                            const SizedBox(width: 8),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 2,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.orange.withValues(alpha: 0.1),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: Text(
+                                'SUSPENDED',
+                                style: theme.textTheme.labelSmall?.copyWith(
+                                  color: Colors.orange,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -318,6 +478,64 @@ class _UserCard extends StatelessWidget {
                       ),
                     ],
                   ),
+                ),
+                PopupMenuButton<String>(
+                  onSelected: (value) {
+                    switch (value) {
+                      case 'suspend':
+                        onToggleSuspension();
+                        break;
+                      case 'admin':
+                        onToggleAdmin();
+                        break;
+                      case 'delete':
+                        onDelete();
+                        break;
+                    }
+                  },
+                  itemBuilder: (context) => [
+                    PopupMenuItem(
+                      value: 'suspend',
+                      child: Row(
+                        children: [
+                          Icon(
+                            user.isSuspended ? Icons.play_arrow : Icons.pause,
+                            size: 20,
+                          ),
+                          const SizedBox(width: 8),
+                          Text(user.isSuspended ? 'Unsuspend' : 'Suspend'),
+                        ],
+                      ),
+                    ),
+                    PopupMenuItem(
+                      value: 'admin',
+                      child: Row(
+                        children: [
+                          Icon(
+                            user.isAdmin
+                                ? Icons.person_remove
+                                : Icons.person_add,
+                            size: 20,
+                          ),
+                          const SizedBox(width: 8),
+                          Text(user.isAdmin ? 'Revoke Admin' : 'Make Admin'),
+                        ],
+                      ),
+                    ),
+                    const PopupMenuDivider(),
+                    PopupMenuItem(
+                      value: 'delete',
+                      child: Row(
+                        children: [
+                          const Icon(Icons.delete_outline,
+                              color: Colors.red, size: 20),
+                          const SizedBox(width: 8),
+                          const Text('Delete',
+                              style: TextStyle(color: Colors.red)),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -345,19 +563,6 @@ class _UserCard extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 8),
-            // Signup method indicator
-            Row(
-              children: [
-                _InfoChip(
-                  icon: user.signupMethodIcon,
-                  label: user.signupMethodDisplay,
-                  color: user.signupMethod == 'google'
-                      ? Colors.red
-                      : Colors.purple,
-                ),
-              ],
-            ),
             const SizedBox(height: 12),
             Row(
               children: [
@@ -365,7 +570,7 @@ class _UserCard extends StatelessWidget {
                   child: OutlinedButton.icon(
                     onPressed: onEdit,
                     icon: const Icon(Icons.edit, size: 16),
-                    label: const Text('Edit'),
+                    label: const Text('Edit Profile'),
                   ),
                 ),
                 const SizedBox(width: 8),
@@ -373,15 +578,8 @@ class _UserCard extends StatelessWidget {
                   child: OutlinedButton.icon(
                     onPressed: onAdjustCredits,
                     icon: const Icon(Icons.account_balance_wallet, size: 16),
-                    label: const Text('Credits'),
+                    label: const Text('Adjust Credits'),
                   ),
-                ),
-                const SizedBox(width: 8),
-                IconButton(
-                  onPressed: user.isAdmin ? null : onDelete,
-                  icon: const Icon(Icons.delete_outline),
-                  color: theme.colorScheme.error,
-                  tooltip: user.isAdmin ? 'Cannot delete admin' : 'Delete user',
                 ),
               ],
             ),
