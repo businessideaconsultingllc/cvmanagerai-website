@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Career & CV Writing Blog | CV Manager AI</title>
+    <meta name="title" content="Career & CV Writing Blog | CV Manager AI">
+    <meta name="description"
+        content="Expert advice on resume writing, ATS optimization, career development, and job search strategies. Free guides to help you land your dream job in 2026.">
+    <meta name="keywords"
+        content="CV writing tips, resume advice, ATS optimization guide, career blog, job search tips, resume templates, cover letter writing">
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://cvmanagerai.com/blog/">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon" type="image/png" sizes="192x192" href="../favicon.png">
+    <link rel="apple-touch-icon" href="../favicon.png">
+
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --bg-light: #f8fafc;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.8;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+
+        .navbar {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .blog-card-header {
+            padding: 32px 32px 24px;
+        }
+
+        .blog-category {
+            display: inline-block;
+            background: #e0e7ff;
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        .blog-card h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+            line-height: 1.3;
+        }
+
+        .blog-card h2 a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        .blog-card h2 a:hover {
+            color: var(--primary);
+        }
+
+        .blog-excerpt {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 0 32px 32px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .read-time {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 32px;
+            text-align: center;
+            margin: 80px 0;
+        }
+
+        .cta-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 32px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 16px 36px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        footer {
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="brand">CV Manager AI</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/blog/">Blog</a>
+                <a href="/resources.html">Resources</a>
+                <a href="/about.html">About</a>
+                <a href="/app/">Launch App</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="header">
+        <h1>Career & Resume Writing Blog</h1>
+        <p>Expert advice on CV writing, ATS optimization, and career development to help you land your dream job</p>
+    </header>
+
+    <div class="container">
+        <div class="blog-grid">
+            <article class="blog-card">
+                <div class="blog-card-header">
+                    <span class="blog-category">ATS Optimization</span>
+                    <h2><a href="how-to-write-ats-friendly-cv-2026.html">How to Write a CV That Passes ATS in 2026</a>
+                    </h2>
+                    <p class="blog-excerpt">Learn the essential strategies for creating ATS-optimized resumes that get
+                        past
+                        automated filters and into the hands of hiring managers. Discover formatting best practices and
+                        keyword optimization techniques.</p>
+                </div>
+                <div class="blog-meta">
+                    <span>📅 January 28, 2026</span>
+                    <span class="read-time">⏱️ 8 min read</span>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-card-header">
+                    <span class="blog-category">CV Writing</span>
+                    <h2><a href="cv-vs-resume-complete-guide.html">CV vs Resume: Complete Guide for 2026</a></h2>
+                    <p class="blog-excerpt">Understand the critical differences between CVs and resumes, including
+                        regional
+                        variations, length expectations, and when to use each format for maximum impact in your job
+                        applications.</p>
+                </div>
+                <div class="blog-meta">
+                    <span>📅 January 28, 2026</span>
+                    <span class="read-time">⏱️ 7 min read</span>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-card-header">
+                    <span class="blog-category">Writing Tips</span>
+                    <h2><a href="top-action-verbs-for-cv.html">Top 10 Action Verbs to Use on Your CV</a></h2>
+                    <p class="blog-excerpt">Transform your resume from passive to powerful with the right action verbs.
+                        Discover 50+ categorized verbs that showcase leadership, technical skills, and achievements that
+                        recruiters love to see.</p>
+                </div>
+                <div class="blog-meta">
+                    <span>📅 January 28, 2026</span>
+                    <span class="read-time">⏱️ 6 min read</span>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-card-header">
+                    <span class="blog-category">Industry-Specific</span>
+                    <h2><a href="cv-templates-for-tech-jobs.html">CV Templates That Work for Tech Jobs</a></h2>
+                    <p class="blog-excerpt">Tech industry hiring trends for 2026 and how to structure your resume to
+                        highlight projects, technical skills, and GitHub contributions. Learn what tech recruiters
+                        really
+                        look for.</p>
+                </div>
+                <div class="blog-meta">
+                    <span>📅 January 28, 2026</span>
+                    <span class="read-time">⏱️ 7 min read</span>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-card-header">
+                    <span class="blog-category">Common Mistakes</span>
+                    <h2><a href="resume-mistakes-to-avoid.html">Mistakes That Can Get Your Resume Ignored by
+                            Recruiters</a>
+                    </h2>
+                    <p class="blog-excerpt">Discover the top 15 resume mistakes that lead to instant rejection. From
+                        formatting errors that break ATS parsing to content red flags that turn off recruiters—and how
+                        to
+                        avoid them all.</p>
+                </div>
+                <div class="blog-meta">
+                    <span>📅 January 28, 2026</span>
+                    <span class="read-time">⏱️ 7 min read</span>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-card-header">
+                    <span class="blog-category">Career Strategy</span>
+                    <h2><a href="optimize-cv-for-different-industries.html">How to Optimize Your CV for Different
+                            Industries</a></h2>
+                    <p class="blog-excerpt">Industry-specific CV optimization strategies for healthcare, engineering,
+                        finance,
+                        education, and creative fields. Learn how to tailor your resume to match the expectations of
+                        your
+                        target industry.</p>
+                </div>
+                <div class="blog-meta">
+                    <span>📅 January 28, 2026</span>
+                    <span class="read-time">⏱️ 8 min read</span>
+                </div>
+            </article>
+        </div>
+
+        <div class="cta-section">
+            <h2>Ready to Build Your Perfect CV?</h2>
+            <p>Use our AI-powered CV builder to create an ATS-optimized resume in minutes</p>
+            <a href="/app/" class="btn">Start Building Free →</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>
+            <a href="/">Home</a> |
+            <a href="/about.html">About</a> |
+            <a href="/resources.html">Resources</a> |
+            <a href="/privacy.html">Privacy</a> |
+            <a href="/terms.html">Terms</a> |
+            <a href="/contact.html">Contact</a>
+        </p>
+        <p style="margin-top: 20px; color: var(--text-muted);">&copy; 2026 CV Manager AI. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
