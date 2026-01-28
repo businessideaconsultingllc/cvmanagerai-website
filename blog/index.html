@@ -136,12 +136,24 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
             transition: all 0.3s ease;
             border: 1px solid #e2e8f0;
+            position: relative;
+            cursor: pointer;
         }
 
         .blog-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
             border-color: var(--primary);
+        }
+
+        .stretched-link::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+            content: "";
         }
 
         .blog-card-header {
@@ -301,8 +313,8 @@
             <article class="blog-card">
                 <div class="blog-card-header">
                     <span class="blog-category">ATS Optimization</span>
-                    <h2><a href="how-to-write-ats-friendly-cv-2026.html">How to Write a CV That Passes ATS in 2026</a>
-                    </h2>
+                    <h2><a href="how-to-write-ats-friendly-cv-2026.html" class="stretched-link">How to Write a CV That
+                            Passes ATS in 2026</a></h2>
                     <p class="blog-excerpt">Learn the essential strategies for creating ATS-optimized resumes that get
                         past
                         automated filters and into the hands of hiring managers. Discover formatting best practices and
@@ -317,7 +329,8 @@
             <article class="blog-card">
                 <div class="blog-card-header">
                     <span class="blog-category">CV Writing</span>
-                    <h2><a href="cv-vs-resume-complete-guide.html">CV vs Resume: Complete Guide for 2026</a></h2>
+                    <h2><a href="cv-vs-resume-complete-guide.html" class="stretched-link">CV vs Resume: Complete Guide
+                            for 2026</a></h2>
                     <p class="blog-excerpt">Understand the critical differences between CVs and resumes, including
                         regional
                         variations, length expectations, and when to use each format for maximum impact in your job
@@ -332,7 +345,8 @@
             <article class="blog-card">
                 <div class="blog-card-header">
                     <span class="blog-category">Writing Tips</span>
-                    <h2><a href="top-action-verbs-for-cv.html">Top 10 Action Verbs to Use on Your CV</a></h2>
+                    <h2><a href="top-action-verbs-for-cv.html" class="stretched-link">Top 10 Action Verbs to Use on Your
+                            CV</a></h2>
                     <p class="blog-excerpt">Transform your resume from passive to powerful with the right action verbs.
                         Discover 50+ categorized verbs that showcase leadership, technical skills, and achievements that
                         recruiters love to see.</p>
@@ -346,7 +360,8 @@
             <article class="blog-card">
                 <div class="blog-card-header">
                     <span class="blog-category">Industry-Specific</span>
-                    <h2><a href="cv-templates-for-tech-jobs.html">CV Templates That Work for Tech Jobs</a></h2>
+                    <h2><a href="cv-templates-for-tech-jobs.html" class="stretched-link">CV Templates That Work for Tech
+                            Jobs</a></h2>
                     <p class="blog-excerpt">Tech industry hiring trends for 2026 and how to structure your resume to
                         highlight projects, technical skills, and GitHub contributions. Learn what tech recruiters
                         really
@@ -361,9 +376,8 @@
             <article class="blog-card">
                 <div class="blog-card-header">
                     <span class="blog-category">Common Mistakes</span>
-                    <h2><a href="resume-mistakes-to-avoid.html">Mistakes That Can Get Your Resume Ignored by
-                            Recruiters</a>
-                    </h2>
+                    <h2><a href="resume-mistakes-to-avoid.html" class="stretched-link">Mistakes That Can Get Your Resume
+                            Ignored by Recruiters</a></h2>
                     <p class="blog-excerpt">Discover the top 15 resume mistakes that lead to instant rejection. From
                         formatting errors that break ATS parsing to content red flags that turn off recruiters—and how
                         to
@@ -378,8 +392,8 @@
             <article class="blog-card">
                 <div class="blog-card-header">
                     <span class="blog-category">Career Strategy</span>
-                    <h2><a href="optimize-cv-for-different-industries.html">How to Optimize Your CV for Different
-                            Industries</a></h2>
+                    <h2><a href="optimize-cv-for-different-industries.html" class="stretched-link">How to Optimize Your
+                            CV for Different Industries</a></h2>
                     <p class="blog-excerpt">Industry-specific CV optimization strategies for healthcare, engineering,
                         finance,
                         education, and creative fields. Learn how to tailor your resume to match the expectations of

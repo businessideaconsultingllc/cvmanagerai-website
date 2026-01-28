@@ -216,6 +216,48 @@
             transform: translateY(-2px);
         }
 
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .related-card {
+            background: #f8fafc;
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .related-card:hover {
+            border-color: var(--primary);
+            background: white;
+            transform: translateY(-4px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .related-card h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .stretched-link::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+            content: "";
+        }
+
         footer {
             background: white;
             border-top: 1px solid #e2e8f0;
@@ -427,7 +469,8 @@
         <p>While keywords are important, cramming your resume with irrelevant keywords or repeating the same words
             excessively will backfire. Modern ATS systems in 2026 use AI to detect unnatural keyword density.
             <strong>Focus
-                on quality over quantity</strong>—use keywords contextually within meaningful sentences.</p>
+                on quality over quantity</strong>—use keywords contextually within meaningful sentences.
+        </p>
 
         <h2>Section-by-Section ATS Optimization Guide</h2>
 
@@ -546,17 +589,23 @@
             search. Good luck!</p>
 
         <div style="border-top: 2px solid #e2e8f0; margin-top: 48px; padding-top: 24px;">
-            <p><strong>Related Articles:</strong></p>
-            <ul style="list-style: none; margin-left: 0;">
-                <li>→ <a href="top-action-verbs-for-cv.html" style="color: var(--primary);">Top Action Verbs to Use on
-                        Your
-                        CV</a></li>
-                <li>→ <a href="resume-mistakes-to-avoid.html" style="color: var(--primary);">Common Resume Mistakes That
-                        Lead to Rejection</a></li>
-                <li>→ <a href="cv-templates-for-tech-jobs.html" style="color: var(--primary);">Best CV Templates for
-                        Tech
-                        Jobs</a></li>
-            </ul>
+            <p
+                style="font-family: 'Outfit', sans-serif; font-size: 1.5rem; margin-bottom: 20px; color: var(--text-dark);">
+                Related Articles</p>
+            <div class="related-grid">
+                <div class="related-card">
+                    <h4><a href="top-action-verbs-for-cv.html" class="stretched-link">Top 10 Action Verbs to Use on Your
+                            CV</a></h4>
+                </div>
+                <div class="related-card">
+                    <h4><a href="resume-mistakes-to-avoid.html" class="stretched-link">Common Resume Mistakes That Lead
+                            to Rejection</a></h4>
+                </div>
+                <div class="related-card">
+                    <h4><a href="cv-templates-for-tech-jobs.html" class="stretched-link">Best CV Templates for Tech
+                            Jobs</a></h4>
+                </div>
+            </div>
         </div>
     </article>
 

@@ -138,13 +138,25 @@
             padding: 40px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, .06);
             border: 1px solid #e2e8f0;
-            transition: all .3s ease
+            transition: all .3s ease;
+            position: relative;
+            cursor: pointer;
         }
 
         .resource-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 12px 40px rgba(0, 0, 0, .1);
             border-color: var(--primary)
+        }
+
+        .stretched-link::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+            content: ""
         }
 
         .resource-icon {
@@ -211,7 +223,9 @@
             background: var(--bg-light);
             border-radius: 16px;
             border: 1px solid #e2e8f0;
-            transition: all .3s
+            transition: all .3s;
+            position: relative;
+            cursor: pointer;
         }
 
         .blog-item:hover {
@@ -349,7 +363,8 @@
                         <li>Formatting best practices</li>
                         <li>Common ATS mistakes to avoid</li>
                     </ul>
-                    <a href="/blog/how-to-write-ats-friendly-cv-2026.html" class="btn-resource">Read Full Guide →</a>
+                    <a href="/blog/how-to-write-ats-friendly-cv-2026.html" class="btn-resource stretched-link">Read Full
+                        Guide →</a>
                 </div>
 
                 <div class="resource-card">
@@ -364,7 +379,7 @@
                         <li>Education & Teaching</li>
                         <li>Marketing & Creative</li>
                     </ul>
-                    <a href="/app/#/generate-cv" class="btn-resource">Create Your CV →</a>
+                    <a href="/app/#/generate-cv" class="btn-resource stretched-link">Create Your CV →</a>
                 </div>
 
                 <div class="resource-card">
@@ -378,7 +393,7 @@
                         <li>Keyword optimization check</li>
                         <li>Proofreading guidelines</li>
                     </ul>
-                    <a href="/app/#/check-ats-score" class="btn-resource">Check Your Resume →</a>
+                    <a href="/app/#/check-ats-score" class="btn-resource stretched-link">Check Your Resume →</a>
                 </div>
 
                 <div class="resource-card">
@@ -392,7 +407,7 @@
                         <li>Application tracking systems</li>
                         <li>Follow-up best practices</li>
                     </ul>
-                    <a href="/blog/" class="btn-resource">Explore Articles →</a>
+                    <a href="/blog/" class="btn-resource stretched-link">Explore Articles →</a>
                 </div>
 
                 <div class="resource-card">
@@ -406,7 +421,8 @@
                         <li>Communication & collaboration words</li>
                         <li>Creative & innovation vocabulary</li>
                     </ul>
-                    <a href="/blog/top-action-verbs-for-cv.html" class="btn-resource">View Verbs Library →</a>
+                    <a href="/blog/top-action-verbs-for-cv.html" class="btn-resource stretched-link">View Verbs Library
+                        →</a>
                 </div>
 
                 <div class="resource-card">
@@ -420,7 +436,7 @@
                         <li>Salary negotiation tips</li>
                         <li>Virtual interview best practices</li>
                     </ul>
-                    <a href="/blog/" class="btn-resource">Prepare for Interviews →</a>
+                    <a href="/blog/" class="btn-resource stretched-link">Prepare for Interviews →</a>
                 </div>
             </div>
         </section>
@@ -431,29 +447,33 @@
                 career development, and job search strategies</p>
             <div class="blog-grid">
                 <div class="blog-item">
-                    <h4><a href="/blog/how-to-write-ats-friendly-cv-2026.html">How to Write a CV That Passes ATS in
-                            2026</a></h4>
+                    <h4><a href="/blog/how-to-write-ats-friendly-cv-2026.html" class="stretched-link">How to Write a CV
+                            That Passes ATS in 2026</a></h4>
                     <p>Essential strategies for creating ATS-optimized resumes that get past automated filters</p>
                 </div>
                 <div class="blog-item">
-                    <h4><a href="/blog/cv-vs-resume-complete-guide.html">CV vs Resume: Complete Guide</a></h4>
+                    <h4><a href="/blog/cv-vs-resume-complete-guide.html" class="stretched-link">CV vs Resume: Complete
+                            Guide</a></h4>
                     <p>Understand the differences and when to use each format for job applications</p>
                 </div>
                 <div class="blog-item">
-                    <h4><a href="/blog/top-action-verbs-for-cv.html">Top Action Verbs for Your CV</a></h4>
+                    <h4><a href="/blog/top-action-verbs-for-cv.html" class="stretched-link">Top Action Verbs for Your
+                            CV</a></h4>
                     <p>Transform your resume with powerful action verbs that showcase achievements</p>
                 </div>
                 <div class="blog-item">
-                    <h4><a href="/blog/cv-templates-for-tech-jobs.html">CV Templates for Tech Jobs</a></h4>
+                    <h4><a href="/blog/cv-templates-for-tech-jobs.html" class="stretched-link">CV Templates for Tech
+                            Jobs</a></h4>
                     <p>Tech industry hiring trends and how to structure your developer resume</p>
                 </div>
                 <div class="blog-item">
-                    <h4><a href="/blog/resume-mistakes-to-avoid.html">Resume Mistakes to Avoid</a></h4>
+                    <h4><a href="/blog/resume-mistakes-to-avoid.html" class="stretched-link">Resume Mistakes to
+                            Avoid</a></h4>
                     <p>Top 15 mistakes that lead to instant rejection and how to avoid them</p>
                 </div>
                 <div class="blog-item">
-                    <h4><a href="/blog/optimize-cv-for-different-industries.html">Optimize CV for Different
-                            Industries</a></h4>
+                    <h4><a href="/blog/optimize-cv-for-different-industries.html" class="stretched-link">Optimize CV for
+                            Different Industries</a></h4>
                     <p>Industry-specific optimization strategies for healthcare, tech, finance, and more</p>
                 </div>
             </div>
