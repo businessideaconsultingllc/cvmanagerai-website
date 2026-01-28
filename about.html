@@ -37,22 +37,34 @@
             background: var(--bg-light)
         }
 
-        .navbar {
-            background: #fff;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, .05);
-            position: sticky;
-            top: 0;
-            z-index: 100
-        }
-
-        .nav-container {
+        /* Standardized Premium Navbar Style */
+        .navbar-premium {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 15px 30px;
+            border-radius: 24px;
             display: flex;
             justify-content: space-between;
-            align-items: center
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-premium.scrolled {
+            top: 0;
+            width: 100%;
+            max-width: 100%;
+            border-radius: 0;
+            background: rgba(255, 255, 255, 0.9);
         }
 
         .brand {
@@ -63,7 +75,39 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-decoration: none
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn-nav {
+            background: var(--primary);
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .hero {
+            padding: 160px 20px 80px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 10%, #f3f4ff 0%, #fff 50%);
         }
 
         .header {
@@ -254,8 +298,15 @@
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="nav-container"><a href="/" class="brand">CV Manager AI</a></div>
+    <nav class="navbar-premium" id="navbar">
+        <a href="/" class="brand">CV Manager AI</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/resources.html">Resources</a>
+            <a href="/about.html">About</a>
+            <a href="/app/" class="btn-nav">Launch App</a>
+        </div>
     </nav>
     <header class="header">
         <h1>About CV Manager AI</h1>
@@ -434,6 +485,16 @@
         </p>
         <p style="margin-top:20px;color:var(--text-muted)">&copy; 2026 CV Manager AI. All rights reserved.</p>
     </footer>
+    <script>
+        window.onscroll = function () {
+            const nav = document.getElementById('navbar');
+            if (window.pageYOffset > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        };
+    </script>
 </body>
 
 </html>
