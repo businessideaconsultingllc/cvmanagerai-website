@@ -194,6 +194,48 @@
             margin-top: 16px
         }
 
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .related-card {
+            background: #f8fafc;
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .related-card:hover {
+            border-color: var(--primary);
+            background: white;
+            transform: translateY(-4px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .related-card h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .stretched-link::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+            content: "";
+        }
+
         footer {
             background: #fff;
             border-top: 1px solid #e2e8f0;
@@ -430,14 +472,24 @@
             Remember: <strong>your resume has one job—to get you to the next stage.</strong> Make every word count, stay
             focused on achievements, and tailor it to each opportunity.</p>
 
-        <div style="border-top:2px solid #e2e8f0;margin-top:48px;padding-top:24px">
-            <p><strong>Related Articles:</strong></p>
-            <ul style="list-style:none;margin-left:0">
-                <li>→ <a href="how-to-write-ats-friendly-cv-2026.html" style="color:var(--primary)">How to Write an
-                        ATS-Friendly CV in 2026</a></li>
-                <li>→ <a href="top-action-verbs-for-cv.html" style="color:var(--primary)">Top Action Verbs to Use on
-                        Your CV</a></li>
-            </ul>
+        <div style="border-top: 2px solid #e2e8f0; margin-top: 48px; padding-top: 24px;">
+            <p
+                style="font-family: 'Outfit', sans-serif; font-size: 1.5rem; margin-bottom: 20px; color: var(--text-dark);">
+                Related Articles</p>
+            <div class="related-grid">
+                <div class="related-card">
+                    <h4><a href="how-to-write-ats-friendly-cv-2026.html" class="stretched-link">How to Write an
+                            ATS-Friendly CV in 2026</a></h4>
+                </div>
+                <div class="related-card">
+                    <h4><a href="top-action-verbs-for-cv.html" class="stretched-link">Top 10 Action Verbs to Use on Your
+                            CV</a></h4>
+                </div>
+                <div class="related-card">
+                    <h4><a href="cv-templates-for-tech-jobs.html" class="stretched-link">Best CV Templates for Tech
+                            Jobs</a></h4>
+                </div>
+            </div>
         </div>
     </article>
     <footer>

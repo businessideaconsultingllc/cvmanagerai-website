@@ -359,7 +359,21 @@
             animation: move 20s infinite alternate;
         }
 
-        @keyframes move {
+        .pulse {
+            animation: pulse-animation 2s infinite;
+        }
+
+        .stretched-link::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+            content: "";
+        }
+
+        @keyframes pulse-animation {
             from {
                 transform: translate(-10%, -10%);
             }
@@ -846,10 +860,14 @@
                 </div>
                 <div class="features-grid"
                     style="max-width: 1200px; margin: 0 auto; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-                    <div class="f-card" style="padding: 40px; text-align: left;" data-aos="fade-up">
-                        <h3 style="margin-bottom: 20px; color: var(--primary);">Mastering ATS Optimization in 2025</h3>
+                    <div class="f-card" style="padding: 40px; text-align: left; position: relative; cursor: pointer;"
+                        data-aos="fade-up">
+                        <h3 style="margin-bottom: 20px; color: var(--primary);"><a
+                                href="blog/how-to-write-ats-friendly-cv-2026.html" class="stretched-link"
+                                style="text-decoration: none; color: inherit;">Mastering ATS Optimization in 2026</a>
+                        </h3>
                         <p style="font-size: 1rem; margin-bottom: 15px;">Applicant Tracking Systems have evolved from
-                            simple keyword scanners to sophisticated data analysis tools. In 2025, passing the "bot
+                            simple keyword scanners to sophisticated data analysis tools. In 2026, passing the "bot
                             filter" requires more than just sprinkling buzzwords throughout your document. It requires a
                             clean, hierarchical data structure. Our AI ensures that your contact information,
                             professional summary, and experience sections are delimited in a way that modern parsers
@@ -860,10 +878,12 @@
                             guarantees that your professional identity remains intact during the digital parsing phase.
                         </p>
                     </div>
-                    <div class="f-card" style="padding: 40px; text-align: left;" data-aos="fade-up"
-                        data-aos-delay="100">
-                        <h3 style="margin-bottom: 20px; color: var(--primary);">The Psychology of Professional Action
-                            Verbs</h3>
+                    <div class="f-card" style="padding: 40px; text-align: left; position: relative; cursor: pointer;"
+                        data-aos="fade-up" data-aos-delay="100">
+                        <h3 style="margin-bottom: 20px; color: var(--primary);"><a
+                                href="blog/top-action-verbs-for-cv.html" class="stretched-link"
+                                style="text-decoration: none; color: inherit;">The Psychology of Professional Action
+                                Verbs</a></h3>
                         <p style="font-size: 1rem; margin-bottom: 15px;">Recruiters spend an average of 6 seconds on the
                             initial screen of a resume. To grab their attention, passive phrases like "Responsible for"
                             or "Assisted in" must be replaced with authoritative action verbs. Words like
@@ -874,9 +894,12 @@
                             automatically upgrades the vocabulary to reach a senior-level tone, ensuring that your
                             experience sounds as impactful as the work you actually performed.</p>
                     </div>
-                    <div class="f-card" style="padding: 40px; text-align: left;" data-aos="fade-up"
-                        data-aos-delay="200">
-                        <h3 style="margin-bottom: 20px; color: var(--primary);">Impact-Driven Achievement Quantification
+                    <div class="f-card" style="padding: 40px; text-align: left; position: relative; cursor: pointer;"
+                        data-aos="fade-up" data-aos-delay="200">
+                        <h3 style="margin-bottom: 20px; color: var(--primary);"><a
+                                href="blog/cv-vs-resume-complete-guide.html" class="stretched-link"
+                                style="text-decoration: none; color: inherit;">Impact-Driven Achievement
+                                Quantification</a>
                         </h3>
                         <p style="font-size: 1rem; margin-bottom: 15px;">Quantification is the language of business. A
                             resume that lists duties is a job description; a resume that lists achievements is a
@@ -888,10 +911,12 @@
                             or the dollar amount of sales generated, CV Manager AI helps you turn abstract tasks into
                             hard data that proves your value to the organization.</p>
                     </div>
-                    <div class="f-card" style="padding: 40px; text-align: left;" data-aos="fade-up"
-                        data-aos-delay="300">
-                        <h3 style="margin-bottom: 20px; color: var(--primary);">Global Branding & Multi-Language
-                            Standards</h3>
+                    <div class="f-card" style="padding: 40px; text-align: left; position: relative; cursor: pointer;"
+                        data-aos="fade-up" data-aos-delay="300">
+                        <h3 style="margin-bottom: 20px; color: var(--primary);"><a
+                                href="blog/optimize-cv-for-different-industries.html" class="stretched-link"
+                                style="text-decoration: none; color: inherit;">Global Branding & Multi-Language
+                                Standards</a></h3>
                         <p style="font-size: 1rem; margin-bottom: 15px;">The global job market is more interconnected
                             than ever, but professional standards vary wildly by region. A Silicon Valley-style resume
                             is structurally different from a European CV or a Middle Eastern professional profile.
