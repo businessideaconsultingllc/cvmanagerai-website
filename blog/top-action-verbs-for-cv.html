@@ -103,6 +103,35 @@
             box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
         }
 
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
         .breadcrumb {
             max-width: 900px;
             margin: 120px auto 24px;
@@ -336,11 +365,16 @@
 <body>
     <nav class="navbar-premium" id="navbar">
         <a href="/" class="brand">CV Manager AI</a>
-        <div class="nav-links">
+        <div class="nav-links" id="navLinks">
             <a href="/">Home</a>
             <a href="/blog/">Blog</a>
             <a href="/resources.html">Resources</a>
             <a href="/app/" class="btn-nav">Launch App</a>
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </nav>
     <div class="breadcrumb"><a href="/">Home</a> / <a href="/blog/">Blog</a> / Top 10 Action Verbs to Use on Your CV
@@ -601,6 +635,25 @@
                 nav.classList.remove('scrolled');
             }
         };
+
+        // Mobile Menu Logic
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+        });
+
+        // Close menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
     </script>
 </body>
 

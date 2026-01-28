@@ -111,6 +111,35 @@
             color: var(--primary);
         }
 
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
         .btn-nav {
             background: var(--primary);
             color: white !important;
@@ -119,10 +148,47 @@
             box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
         }
 
-        .container {
-            max-width: 900px;
-            margin: 120px auto 80px;
-            padding: 0 20px;
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 32px;
+                transition: 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+                z-index: 1000;
+                display: flex;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.5rem;
+            }
+
+            .container {
+                margin: 80px 20px;
+                padding: 0;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .article-content {
+                padding: 24px;
+            }
         }
 
         .article-content {
@@ -212,11 +278,16 @@
 <body>
     <nav class="navbar-premium" id="navbar">
         <a href="/" class="brand">CV Manager AI</a>
-        <div class="nav-links">
+        <div class="nav-links" id="navLinks">
             <a href="/">Home</a>
             <a href="/blog/">Blog</a>
             <a href="/resources.html">Resources</a>
             <a href="/app/" class="btn-nav">Launch App</a>
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </nav>
 
@@ -295,6 +366,25 @@
                 nav.classList.remove('scrolled');
             }
         };
+
+        // Mobile Menu Logic
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+        });
+
+        // Close menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
     </script>
 </body>
 
