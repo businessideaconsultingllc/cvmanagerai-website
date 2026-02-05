@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
 
+    // Initialize theme
+    initTheme();
+
     // Scroll effect
     window.addEventListener('scroll', () => {
         if (navbar) {
@@ -34,9 +37,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Theme toggle button
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
+
     // Cookie Consent Banner
     initCookieConsent();
 });
+
+// Theme Management Functions
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+}
+
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+}
+
+function updateThemeIcon(theme) {
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.innerHTML = theme === 'light'
+            ? '🌙' // Moon icon for light mode (click to go dark)
+            : '☀️'; // Sun icon for dark mode (click to go light)
+    }
+}
+
 
 function initCookieConsent() {
     if (localStorage.getItem('cookieConsent') === 'accepted') {

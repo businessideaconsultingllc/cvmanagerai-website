@@ -147,8 +147,8 @@
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            color: var(--text-main);
-            background-color: #fcfcfd;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
             overflow-x: hidden;
         }
 
@@ -174,7 +174,7 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            background: radial-gradient(circle at 50% 10%, #f3f4ff 0%, #ffffff 50%);
+            background: var(--hero-gradient);
             overflow: hidden;
         }
 
@@ -222,7 +222,7 @@
 
         .hero p {
             font-size: 1.25rem;
-            color: #64748b;
+            color: var(--text-secondary);
             max-width: 700px;
             margin: 0 auto 40px;
             line-height: 1.75;
@@ -257,14 +257,14 @@
         }
 
         .btn-secondary {
-            background: white;
-            color: var(--bg-dark);
-            border: 2px solid #e2e8f0;
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
         }
 
         .btn-secondary:hover {
-            background: #f8fafc;
-            border-color: #cbd5e1;
+            background: var(--bg-secondary);
+            border-color: var(--border-light);
             transform: translateY(-3px);
         }
 
@@ -418,10 +418,10 @@
         }
 
         .f-card {
-            background: white;
+            background: var(--card-bg);
             padding: 40px;
             border-radius: 24px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--border-color);
             transition: all 0.3s ease;
             position: relative;
         }
@@ -445,14 +445,14 @@
         }
 
         .f-card p {
-            color: #64748b;
+            color: var(--text-secondary);
             font-size: 1.05rem;
             line-height: 1.75;
         }
 
         /* How it works */
         .process {
-            background: #f8fafc;
+            background: var(--bg-secondary);
             padding: 120px 20px;
         }
 
@@ -487,12 +487,12 @@
 
         .step h3 {
             font-size: 1.3rem;
-            color: var(--bg-dark);
+            color: var(--text-primary);
             margin-bottom: 12px;
         }
 
         .step p {
-            color: #64748b;
+            color: var(--text-secondary);
             font-size: 1rem;
             line-height: 1.7;
         }
@@ -587,6 +587,7 @@
             <a href="/resources.html">Resources</a>
             <a href="/about.html">About</a>
             <a href="/app/" class="btn-nav">Launch App</a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
         </div>
         <div class="menu-toggle" id="menuToggle">
             <span></span>
