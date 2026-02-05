@@ -226,7 +226,7 @@
             gap: 12px;
             margin: 24px 0;
             padding: 24px;
-            background: #f8fafc;
+            background: var(--bg-secondary);
             border-radius: 12px
         }
 
@@ -234,7 +234,7 @@
             background: #fff;
             padding: 12px 16px;
             border-radius: 8px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--border-color);
             font-weight: 600;
             color: var(--primary)
         }
@@ -296,10 +296,10 @@
         }
 
         .related-card {
-            background: #f8fafc;
+            background: var(--bg-secondary);
             padding: 24px;
             border-radius: 16px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--border-color);
             position: relative;
             transition: all 0.3s ease;
             cursor: pointer;
@@ -307,7 +307,7 @@
 
         .related-card:hover {
             border-color: var(--primary);
-            background: white;
+            background: var(--card-bg);
             transform: translateY(-4px);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
