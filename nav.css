@@ -1,13 +1,79 @@
-/* Global Navigation Styles */
+/* Global Navigation & Premium Styles */
 :root {
+    /* === Enhanced Color Palette === */
     --primary: #6366f1;
     --primary-dark: #4f46e5;
+    --primary-light: #818cf8;
     --secondary: #ec4899;
+    --secondary-light: #f472b6;
+    --accent: #8b5cf6;
+    --accent-glow: rgba(139, 92, 246, 0.4);
+
+    /* Text & Backgrounds */
     --text-main: #1e293b;
     --text-muted: #64748b;
-    --glass: rgba(255, 255, 255, 0.7);
-    --glass-border: rgba(255, 255, 255, 0.3);
+    --text-light: #94a3b8;
+    --bg-dark: #0f172a;
+    --bg-darker: #020617;
+    --soft-bg: #f8fafc;
+
+    /* Glassmorphism */
+    --glass: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --glass-dark: rgba(15, 23, 42, 0.8);
+
+    /* Shadows & Effects */
+    --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.12);
+    --shadow-primary: 0 10px 30px rgba(99, 102, 241, 0.35);
+    --shadow-secondary: 0 10px 30px rgba(236, 72, 153, 0.3);
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+    --gradient-hero: linear-gradient(135deg, #f8fafc 0%, #eef2ff 50%, #fce7f3 100%);
+    --gradient-dark: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
 }
+
+/* === Micro-Animation Utilities === */
+.hover-lift {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.glow-on-hover {
+    transition: box-shadow 0.4s ease;
+}
+
+.glow-on-hover:hover {
+    box-shadow: 0 0 25px var(--accent-glow), var(--shadow-md);
+}
+
+.gradient-border {
+    position: relative;
+    background: white;
+    border-radius: 24px;
+}
+
+.gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 26px;
+    background: var(--gradient-primary);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.gradient-border:hover::before {
+    opacity: 1;
+}
+
 
 .navbar-premium,
 .navbar {
