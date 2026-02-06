@@ -119857,7 +119857,7 @@ gqO(){return u.v},
 gqI(){return u.l},
 gqJ(){return u.C},
 gtl(){return"Proceed"},
-gmH(){return"\u0644\u064a\u0646\u0643\u062f \u0625\u0646"},
+gmH(){return"\u0644\u064a\u0646\u0643\u062f \u0625\u0646 (\u0627\u062e\u062a\u064a\u0627\u0631\u064a)"},
 gmI(){return"linkedin.com/in/username"}}
 A.ZN.prototype={
 goD(){return"CV Manager KI"},
@@ -120033,7 +120033,7 @@ gqO(){return u.v},
 gqI(){return u.l},
 gqJ(){return u.C},
 gtl(){return"Proceed"},
-gmH(){return"LinkedIn"},
+gmH(){return"LinkedIn (Optional)"},
 gmI(){return"linkedin.com/in/username"}}
 A.ZO.prototype={
 goD(){return"CV Manager AI"},
@@ -120209,7 +120209,7 @@ gqO(){return u.v},
 gqI(){return u.l},
 gqJ(){return u.C},
 gtl(){return"Proceed"},
-gmH(){return"LinkedIn"},
+gmH(){return"LinkedIn (Optional)"},
 gmI(){return"linkedin.com/in/username"}}
 A.ZP.prototype={
 goD(){return"CV Manager AI"},
@@ -120385,7 +120385,7 @@ gqO(){return u.v},
 gqI(){return u.l},
 gqJ(){return u.C},
 gtl(){return"Proceed"},
-gmH(){return"LinkedIn"},
+gmH(){return"LinkedIn (Optional)"},
 gmI(){return"linkedin.com/in/username"}}
 A.ZQ.prototype={
 goD(){return"Gestionnaire de CV IA"},
@@ -120561,7 +120561,7 @@ gqO(){return u.v},
 gqI(){return u.l},
 gqJ(){return u.C},
 gtl(){return"Proceed"},
-gmH(){return"LinkedIn"},
+gmH(){return"LinkedIn (Optional)"},
 gmI(){return"linkedin.com/in/username"}}
 A.ZR.prototype={
 goD(){return"CV Manager AI"},
@@ -120737,7 +120737,7 @@ gqO(){return u.v},
 gqI(){return u.l},
 gqJ(){return u.C},
 gtl(){return"Proceed"},
-gmH(){return"LinkedIn"},
+gmH(){return"LinkedIn (Optional)"},
 gmI(){return"linkedin.com/in/username"}}
 A.ZS.prototype={
 goD(){return"CV Manager AI"},
@@ -120913,7 +120913,7 @@ gqO(){return u.v},
 gqI(){return u.l},
 gqJ(){return u.C},
 gtl(){return"Proceed"},
-gmH(){return"LinkedIn"},
+gmH(){return"LinkedIn (Optional)"},
 gmI(){return"linkedin.com/in/username"}}
 A.ZT.prototype={
 goD(){return"CV Manager AI"},
@@ -121089,7 +121089,7 @@ gqO(){return u.v},
 gqI(){return u.l},
 gqJ(){return u.C},
 gtl(){return"Proceed"},
-gmH(){return"LinkedIn"},
+gmH(){return"LinkedIn (Optional)"},
 gmI(){return"linkedin.com/in/username"}}
 A.ZU.prototype={
 goD(){return"CV Manager AI"},
@@ -121265,7 +121265,7 @@ gqO(){return u.v},
 gqI(){return u.l},
 gqJ(){return u.C},
 gtl(){return"Proceed"},
-gmH(){return"LinkedIn"},
+gmH(){return"LinkedIn (Optional)"},
 gmI(){return"linkedin.com/in/username"}}
 A.ZV.prototype={
 goD(){return"CV Manager AI"},
@@ -121441,7 +121441,7 @@ gqO(){return u.v},
 gqI(){return u.l},
 gqJ(){return u.C},
 gtl(){return"Proceed"},
-gmH(){return"LinkedIn"},
+gmH(){return"LinkedIn (Optional)"},
 gmI(){return"linkedin.com/in/username"}}
 A.ZW.prototype={
 goD(){return"CV Manager AI"},
@@ -121617,7 +121617,7 @@ gqO(){return u.v},
 gqI(){return u.l},
 gqJ(){return u.C},
 gtl(){return"Proceed"},
-gmH(){return"LinkedIn"},
+gmH(){return"LinkedIn (Optional)"},
 gmI(){return"linkedin.com/in/username"}}
 A.aAO.prototype={}
 A.aAP.prototype={}
