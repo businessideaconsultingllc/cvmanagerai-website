@@ -70,3 +70,12 @@ function initCookieConsent() {
     });
 }
 
+
+function trackCTA(location) {
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'cta_click', {
+            'event_category': 'engagement',
+            'event_label': location
+        });
+    }
+}
