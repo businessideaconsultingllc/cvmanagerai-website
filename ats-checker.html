@@ -40,8 +40,6 @@
         .form-group textarea:focus{border-color:#6366f1;}
         .form-group input[type="text"]{width:100%;padding:14px 16px;border:2px solid #e2e8f0;border-radius:12px;font-family:inherit;font-size:0.95rem;outline:none;color:var(--text-main);transition:border-color 0.2s;}
         .form-group input:focus{border-color:#6366f1;}
-        .btn-analyze{width:100%;padding:18px;background:#6366f1;color:white;border:none;border-radius:14px;font-family:inherit;font-size:1.05rem;font-weight:700;cursor:pointer;transition:all 0.3s;box-shadow:0 8px 20px rgba(99,102,241,0.3);}
-        .btn-analyze:hover{background:#4f46e5;transform:translateY(-2px);box-shadow:0 12px 28px rgba(99,102,241,0.4);}
         .btn-analyze:disabled{background:#94a3b8;cursor:not-allowed;transform:none;box-shadow:none;}
         #results{display:none;margin-top:40px;border-top:2px solid #f1f5f9;padding-top:40px;}
         .score-row{display:flex;align-items:center;gap:32px;margin-bottom:32px;flex-wrap:wrap;}
@@ -62,7 +60,7 @@
         .upsell-box{background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:20px;padding:36px;text-align:center;color:white;margin-top:36px;}
         .upsell-box h3{font-size:1.5rem;margin-bottom:10px;}
         .upsell-box p{opacity:0.88;margin-bottom:20px;font-size:0.95rem;}
-        .upsell-box a{background:white;color:#6366f1;padding:14px 32px;border-radius:12px;font-weight:700;font-size:1rem;text-decoration:none;display:inline-block;}
+        .upsell-box a{ margin-top: 8px; }
         .how-it-works{max-width:920px;margin:0 auto 80px;padding:0 20px;}
         .how-it-works h2{text-align:center;font-size:2rem;margin-bottom:40px;}
         .steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;}
@@ -91,7 +89,11 @@
             <a href="/about.html">About</a>
             <a href="/app/" class="btn-nav" onclick="trackCTA('navbar_launch')">Launch App</a>
         </div>
-        <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
 
     <div class="tool-hero">
@@ -111,7 +113,7 @@
                     <label for="resume-text">Paste Your Resume Text</label>
                     <textarea id="resume-text" placeholder="Paste the full text of your resume here. Include Skills, Experience, Education sections for the most accurate analysis…"></textarea>
                 </div>
-                <button class="btn-analyze" id="analyzeBtn" onclick="analyzeResume()">⚡ Check My ATS Score</button>
+                <button class="btn-premium btn-premium-primary btn-analyze" id="analyzeBtn" onclick="analyzeResume()">⚡ Check My ATS Score</button>
 
                 <div id="results">
                     <div class="score-row">
@@ -153,7 +155,7 @@
                     <div class="upsell-box">
                         <h3>Fix All Issues in 60 Seconds</h3>
                         <p>Our AI resume builder automatically inserts the missing keywords, rewrites weak bullet points, and formats your CV to score 90%+ on any ATS.</p>
-                        <a href="/app/">Fix My Resume with AI →</a>
+                        <a href="/app/" class="btn-premium btn-premium-white">Fix My Resume with AI →</a>
                     </div>
                 </div>
             </div>

@@ -27,8 +27,7 @@
         .page-hero h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.2;max-width:800px;margin:0 auto 20px;}
         .page-hero p{font-size:1.15rem;color:#94a3b8;max-width:600px;margin:0 auto 36px;}
         .text-grad{background:linear-gradient(135deg,#6366f1,#8b5cf6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-        .btn-cta{background:#6366f1;color:white;padding:16px 36px;border-radius:12px;text-decoration:none;font-weight:700;font-size:1rem;display:inline-block;transition:all 0.3s;box-shadow:0 8px 20px rgba(99,102,241,0.35);}
-        .btn-cta:hover{background:#4f46e5;transform:translateY(-2px);}
+        /* Standardized Premium Buttons Inherited */
         .container{max-width:900px;margin:0 auto;padding:0 20px;}
         .section{padding:80px 20px;}
         .section h2{font-size:2rem;margin-bottom:16px;color:var(--text-main);}
@@ -43,7 +42,7 @@
         .cta-box{background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:24px;padding:60px 40px;text-align:center;color:white;margin:60px 0;}
         .cta-box h2{font-size:2rem;margin-bottom:12px;}
         .cta-box p{opacity:0.85;margin-bottom:28px;font-size:1.05rem;}
-        .cta-box .btn-white{background:white;color:#6366f1;padding:16px 36px;border-radius:12px;font-weight:700;text-decoration:none;display:inline-block;}
+        .cta-box .btn-white{ margin-top: 8px; }
         .breadcrumb{padding:16px 20px;font-size:0.9rem;color:var(--text-light);max-width:900px;margin:0 auto;}
         .breadcrumb a{color:var(--primary);text-decoration:none;}
         footer{background:#0f172a;color:#94a3b8;text-align:center;padding:40px 20px;font-size:0.9rem;}
@@ -59,7 +58,7 @@
             <a href="/ats-checker.html">ATS Checker</a>
             <a href="/resources.html">Resources</a>
             <a href="/about.html">About</a>
-            <a href="/app/" class="btn-nav" onclick="trackCTA('navbar_launch');">Launch App</a>
+            <a href="/app/" class="btn-premium btn-premium-white" onclick="trackCTA('navbar_launch');">Launch App</a>
         </div>
         <div class="menu-toggle" id="menuToggle">
             <span></span>
@@ -72,7 +71,7 @@
         <span class="badge">💻 Role-Specific Resume Builder</span>
         <h1>Free <span class="text-grad">AI Resume Builder</span> for Software Engineers</h1>
         <p>Build an ATS-optimized software engineer resume that gets past the bots and impresses hiring managers — in under 60 seconds.</p>
-        <a href="/app/" class="btn-cta">Build My Software Engineer Resume Free →</a>
+        <a href="/app/" class="btn-premium btn-premium-primary">Build My Software Engineer Resume Free →</a>
     </div>
 
     <div class="breadcrumb">
@@ -122,7 +121,7 @@
             <div class="cta-box">
                 <h2>Ready to Build Your Software Engineer Resume?</h2>
                 <p>Our AI writes your bullet points, optimizes for ATS, and formats everything perfectly. Free, instant, and no credit card required.</p>
-                <a href="/app/" class="btn-white">Create My Resume Now →</a>
+                <a href="/app/" class="btn-premium btn-premium-white">Create My Resume Now →</a>
             </div>
 
             <p>Also read: <a href="/blog/why-ats-rejects-resumes.html" style="color:var(--primary);">Why ATS Rejects Resumes</a> | <a href="/ats-checker.html" style="color:var(--primary); font-weight:700;">ATS Score Checker <span style="color:#6366f1;">(Check Score Free)</span></a> | <a href="/resume/data-analyst.html" style="color:var(--primary);">Data Analyst Resume</a></p>
