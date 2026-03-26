@@ -1,87 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://cvmanagerai.com/</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://cvmanagerai.com/app/</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://cvmanagerai.com/about.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://cvmanagerai.com/resources.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://cvmanagerai.com/blog/</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://cvmanagerai.com/blog/how-to-write-ats-friendly-cv-2026.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cvmanagerai.com/blog/cv-vs-resume-complete-guide.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cvmanagerai.com/blog/top-action-verbs-for-cv.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cvmanagerai.com/blog/cv-templates-for-tech-jobs.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cvmanagerai.com/blog/resume-mistakes-to-avoid.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cvmanagerai.com/blog/optimize-cv-for-different-industries.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cvmanagerai.com/privacy.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://cvmanagerai.com/terms.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://cvmanagerai.com/contact.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+  <url><loc>https://cvmanagerai.com/</loc><lastmod>2026-03-26</lastmod><priority>1.0</priority></url>
+  <url><loc>https://cvmanagerai.com/ats-checker.html</loc><lastmod>2026-03-26</lastmod><priority>0.9</priority></url>
+  <url><loc>https://cvmanagerai.com/blog/</loc><lastmod>2026-03-26</lastmod><priority>0.8</priority></url>
+  
+  <!-- Blog Posts -->
+  <url><loc>https://cvmanagerai.com/blog/why-ats-rejects-resumes.html</loc><lastmod>2026-03-26</lastmod><priority>0.8</priority></url>
+  <url><loc>https://cvmanagerai.com/blog/best-resume-format-2026.html</loc><lastmod>2026-03-26</lastmod><priority>0.8</priority></url>
+  <url><loc>https://cvmanagerai.com/blog/how-to-optimize-resume-for-ats.html</loc><lastmod>2026-03-26</lastmod><priority>0.8</priority></url>
+  <url><loc>https://cvmanagerai.com/blog/how-to-write-ats-friendly-cv-2026.html</loc><lastmod>2026-01-28</lastmod><priority>0.7</priority></url>
+  
+  <!-- Role-Specific Pages -->
+  <url><loc>https://cvmanagerai.com/resume/software-engineer.html</loc><lastmod>2026-03-26</lastmod><priority>0.8</priority></url>
+  <url><loc>https://cvmanagerai.com/resume/data-analyst.html</loc><lastmod>2026-03-26</lastmod><priority>0.8</priority></url>
+  <url><loc>https://cvmanagerai.com/resume/marketing-manager.html</loc><lastmod>2026-03-26</lastmod><priority>0.8</priority></url>
+  <url><loc>https://cvmanagerai.com/resume/product-manager.html</loc><lastmod>2026-03-26</lastmod><priority>0.8</priority></url>
+  <url><loc>https://cvmanagerai.com/resume/graphic-designer.html</loc><lastmod>2026-03-26</lastmod><priority>0.8</priority></url>
+  
+  <!-- Country Pages -->
+  <url><loc>https://cvmanagerai.com/cv-country/france.html</loc><lastmod>2026-03-26</lastmod><priority>0.8</priority></url>
+  <url><loc>https://cvmanagerai.com/cv-country/germany.html</loc><lastmod>2026-03-26</lastmod><priority>0.8</priority></url>
+  <url><loc>https://cvmanagerai.com/cv-country/canada.html</loc><lastmod>2026-03-26</lastmod><priority>0.8</priority></url>
+  
+  <!-- Skill Pages -->
+  <url><loc>https://cvmanagerai.com/resume-skills/project-management.html</loc><lastmod>2026-03-26</lastmod><priority>0.8</priority></url>
+  <url><loc>https://cvmanagerai.com/resume-skills/communication.html</loc><lastmod>2026-03-26</lastmod><priority>0.8</priority></url>
+  <url><loc>https://cvmanagerai.com/resume-skills/data-analysis.html</loc><lastmod>2026-03-26</lastmod><priority>0.8</priority></url>
 </urlset>

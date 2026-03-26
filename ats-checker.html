@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free ATS Resume Checker — Score Your Resume Instantly | CV Manager AI</title>
+    <meta name="description" content="Check your resume's ATS score for free. Paste your resume, enter the job title, and get an instant keyword analysis and score. Fix issues in seconds with AI.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cvmanagerai.com/ats-checker">
+    <meta property="og:title" content="Free ATS Resume Checker | CV Manager AI">
+    <meta property="og:description" content="Instantly check if your resume will pass ATS. Get a keyword score, gap analysis, and AI-powered fix suggestions for free.">
+    <meta property="og:url" content="https://cvmanagerai.com/ats-checker.html">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebApplication","name":"Free ATS Resume Checker","description":"Check your resume's ATS compatibility score instantly. Enter your resume text and job title to receive a keyword analysis and score.","url":"https://cvmanagerai.com/ats-checker.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"applicationCategory":"ResumeBuilder"}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is an ATS resume checker?","acceptedAnswer":{"@type":"Answer","text":"An ATS resume checker analyzes your resume text against standard ATS criteria: keyword density, formatting, section structure, and job-description match. It gives you a score from 0–100 and shows exactly what needs improving."}},{"@type":"Question","name":"How does the ATS checker work?","acceptedAnswer":{"@type":"Answer","text":"Paste your resume text and enter a job title. The tool scans for important keywords, checks for ATS-friendly formatting signals, and gives you a percentage score along with specific recommendations to improve your chances of passing the ATS filter."}},{"@type":"Question","name":"Is this ATS checker really free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free. No account needed, no credit card required. For a full AI-powered fix of your resume, you can use our free AI resume builder."}}]}
+    </script>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/nav.css">
+    <style>
+        :root{--primary:#6366f1;--primary-dark:#4f46e5;--text-main:#1e293b;--text-light:#475569;--bg-light:#f8fafc;--white:#fff;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--text-main);background:#f8fafc;line-height:1.7;}
+        h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:800;}
+        nav a{text-decoration:none;}
+        .tool-hero{background:linear-gradient(135deg,#0f172a,#1e293b);padding:120px 20px 60px;text-align:center;color:white;}
+        .tool-hero .badge{background:rgba(99,102,241,0.25);color:#a5b4fc;border:1px solid rgba(99,102,241,0.4);padding:8px 18px;border-radius:100px;font-size:0.85rem;font-weight:700;display:inline-block;margin-bottom:20px;}
+        .tool-hero h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.2;max-width:700px;margin:0 auto 16px;}
+        .tool-hero p{color:#94a3b8;max-width:560px;margin:0 auto;font-size:1.05rem;}
+        .text-grad{background:linear-gradient(135deg,#6366f1,#8b5cf6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+        .tool-wrapper{max-width:920px;margin:-40px auto 80px;padding:0 20px;}
+        .tool-card{background:white;border-radius:24px;box-shadow:0 20px 60px rgba(0,0,0,0.08);border:1px solid #e2e8f0;overflow:hidden;}
+        .tool-body{padding:40px;}
+        .form-group{margin-bottom:24px;}
+        .form-group label{display:block;font-weight:700;margin-bottom:8px;font-size:0.95rem;color:var(--text-main);}
+        .form-group textarea{width:100%;padding:16px;border:2px solid #e2e8f0;border-radius:12px;font-family:inherit;font-size:0.95rem;resize:vertical;min-height:200px;color:var(--text-main);transition:border-color 0.2s;outline:none;}
+        .form-group textarea:focus{border-color:#6366f1;}
+        .form-group input[type="text"]{width:100%;padding:14px 16px;border:2px solid #e2e8f0;border-radius:12px;font-family:inherit;font-size:0.95rem;outline:none;color:var(--text-main);transition:border-color 0.2s;}
+        .form-group input:focus{border-color:#6366f1;}
+        .btn-analyze{width:100%;padding:18px;background:#6366f1;color:white;border:none;border-radius:14px;font-family:inherit;font-size:1.05rem;font-weight:700;cursor:pointer;transition:all 0.3s;box-shadow:0 8px 20px rgba(99,102,241,0.3);}
+        .btn-analyze:hover{background:#4f46e5;transform:translateY(-2px);box-shadow:0 12px 28px rgba(99,102,241,0.4);}
+        .btn-analyze:disabled{background:#94a3b8;cursor:not-allowed;transform:none;box-shadow:none;}
+        #results{display:none;margin-top:40px;border-top:2px solid #f1f5f9;padding-top:40px;}
+        .score-row{display:flex;align-items:center;gap:32px;margin-bottom:32px;flex-wrap:wrap;}
+        .score-circle{flex-shrink:0;width:120px;height:120px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:6px solid #6366f1;background:white;}
+        .score-circle .score-num{font-size:2.4rem;font-weight:800;font-family:'Outfit',sans-serif;line-height:1;}
+        .score-circle .score-label{font-size:0.75rem;color:var(--text-light);font-weight:600;text-transform:uppercase;letter-spacing:1px;}
+        .score-verdict h3{font-size:1.4rem;margin-bottom:8px;}
+        .score-verdict p{color:var(--text-light);font-size:0.95rem;}
+        .score-bar-wrap{margin-bottom:24px;}
+        .score-bar-wrap label{font-weight:600;font-size:0.9rem;margin-bottom:6px;display:flex;justify-content:space-between;}
+        .score-bar{height:10px;background:#e2e8f0;border-radius:100px;overflow:hidden;}
+        .score-bar-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,#6366f1,#8b5cf6);transition:width 1s ease;}
+        .keywords-section{margin-top:28px;}
+        .keywords-section h3{font-size:1.1rem;margin-bottom:16px;}
+        .kw-list{display:flex;flex-wrap:wrap;gap:10px;}
+        .kw-found{background:#dcfce7;color:#166534;padding:6px 14px;border-radius:100px;font-size:0.85rem;font-weight:600;}
+        .kw-missing{background:#fee2e2;color:#991b1b;padding:6px 14px;border-radius:100px;font-size:0.85rem;font-weight:600;}
+        .upsell-box{background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:20px;padding:36px;text-align:center;color:white;margin-top:36px;}
+        .upsell-box h3{font-size:1.5rem;margin-bottom:10px;}
+        .upsell-box p{opacity:0.88;margin-bottom:20px;font-size:0.95rem;}
+        .upsell-box a{background:white;color:#6366f1;padding:14px 32px;border-radius:12px;font-weight:700;font-size:1rem;text-decoration:none;display:inline-block;}
+        .how-it-works{max-width:920px;margin:0 auto 80px;padding:0 20px;}
+        .how-it-works h2{text-align:center;font-size:2rem;margin-bottom:40px;}
+        .steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;}
+        .step-card{background:white;border:1px solid #e2e8f0;border-radius:20px;padding:28px;text-align:center;}
+        .step-num{width:44px;height:44px;background:#6366f1;color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;margin:0 auto 16px;}
+        .step-card h3{font-size:1rem;margin-bottom:8px;}
+        .step-card p{color:var(--text-light);font-size:0.9rem;}
+        .faq-section{max-width:780px;margin:0 auto 80px;padding:0 20px;}
+        .faq-section h2{font-size:2rem;margin-bottom:32px;}
+        .faq-item{border-bottom:1px solid #e2e8f0;padding:20px 0;}
+        .faq-item h3{font-size:1rem;font-weight:700;margin-bottom:8px;}
+        .faq-item p{color:var(--text-light);font-size:0.95rem;}
+        footer{background:#0f172a;color:#94a3b8;text-align:center;padding:40px 20px;font-size:0.9rem;}
+        footer a{color:#6366f1;text-decoration:none;}
+        @media(max-width:640px){.score-row{flex-direction:column;align-items:flex-start;gap:16px;}.tool-body{padding:24px;}}
+    </style>
+</head>
+<body>
+    <nav class="navbar-premium" id="navbar">
+        <a href="/" class="brand">CV Manager AI</a>
+        <div class="nav-links" id="navLinks">
+            <a href="/#features">Features</a><a href="/blog/">Blog</a>
+            <a href="/ats-checker.html" style="color:#6366f1;font-weight:700;">ATS Checker</a>
+            <a href="/resources.html">Resources</a>
+            <a href="/app/" class="btn-nav">Launch App</a>
+        </div>
+        <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+    </nav>
+
+    <div class="tool-hero">
+        <span class="badge">🆓 100% Free Tool</span>
+        <h1>Free <span class="text-grad">ATS Resume Checker</span></h1>
+        <p>Paste your resume, enter a job title, and get an instant ATS compatibility score — with specific fixes to boost your chances.</p>
+    </div>
+
+    <div class="tool-wrapper">
+        <div class="tool-card">
+            <div class="tool-body">
+                <div class="form-group">
+                    <label for="job-title">Target Job Title</label>
+                    <input type="text" id="job-title" placeholder="e.g. Software Engineer, Marketing Manager, Data Analyst…" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="resume-text">Paste Your Resume Text</label>
+                    <textarea id="resume-text" placeholder="Paste the full text of your resume here. Include Skills, Experience, Education sections for the most accurate analysis…"></textarea>
+                </div>
+                <button class="btn-analyze" id="analyzeBtn" onclick="analyzeResume()">⚡ Check My ATS Score</button>
+
+                <div id="results">
+                    <div class="score-row">
+                        <div class="score-circle" id="scoreCircle">
+                            <span class="score-num" id="scoreNum">0</span>
+                            <span class="score-label">ATS Score</span>
+                        </div>
+                        <div class="score-verdict">
+                            <h3 id="verdictTitle">Analyzing…</h3>
+                            <p id="verdictText"></p>
+                        </div>
+                    </div>
+
+                    <div class="score-bar-wrap">
+                        <label><span>Keyword Match</span><span id="kwPct">0%</span></label>
+                        <div class="score-bar"><div class="score-bar-fill" id="kwBar" style="width:0%"></div></div>
+                    </div>
+                    <div class="score-bar-wrap">
+                        <label><span>Format & Structure</span><span id="fmtPct">0%</span></label>
+                        <div class="score-bar"><div class="score-bar-fill" id="fmtBar" style="width:0%"></div></div>
+                    </div>
+                    <div class="score-bar-wrap">
+                        <label><span>Achievement Density</span><span id="achPct">0%</span></label>
+                        <div class="score-bar"><div class="score-bar-fill" id="achBar" style="width:0%"></div></div>
+                    </div>
+
+                    <div class="keywords-section">
+                        <h3>✅ Keywords Found</h3>
+                        <div class="kw-list" id="foundKw"></div>
+                        <h3 style="margin-top:20px;">❌ Keywords to Add</h3>
+                        <div class="kw-list" id="missingKw"></div>
+                    </div>
+
+                    <div class="upsell-box">
+                        <h3>Fix All Issues in 60 Seconds</h3>
+                        <p>Our AI resume builder automatically inserts the missing keywords, rewrites weak bullet points, and formats your CV to score 90%+ on any ATS.</p>
+                        <a href="/app/">Fix My Resume with AI →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="how-it-works">
+        <h2>How the ATS Checker Works</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-num">1</div>
+                <h3>Paste Your Resume</h3>
+                <p>Copy all text from your resume and paste it into the text box. Include all sections for best results.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">2</div>
+                <h3>Enter Job Title</h3>
+                <p>Type your target role. The checker adjusts its keyword expectations based on the role you're applying for.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">3</div>
+                <h3>Get Your Score</h3>
+                <p>Receive an instant ATS score (0–100), keyword gap analysis, and structure feedback.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">4</div>
+                <h3>Fix with AI</h3>
+                <p>Use our free AI resume builder to automatically fix every issue and boost your score in minutes.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <h3>What is an ATS resume checker?</h3>
+            <p>An ATS resume checker analyzes your resume text against standard ATS criteria: keyword density, formatting, section structure, and job-description match. It gives you a score from 0–100 and shows exactly what needs improving.</p>
+        </div>
+        <div class="faq-item">
+            <h3>How does the ATS checker work?</h3>
+            <p>Paste your resume text and enter a job title. The tool scans for important keywords, checks for ATS-friendly formatting signals, and gives you a percentage score along with specific recommendations.</p>
+        </div>
+        <div class="faq-item">
+            <h3>What is a good ATS score?</h3>
+            <p>A score of 75%+ is considered competitive. A score of 85%+ puts you in the top candidates. Below 60% means your resume is likely being automatically filtered out before a human sees it.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Is this ATS checker really free?</h3>
+            <p>Yes, completely free. No account, no credit card. For a full AI-powered fix, use our <a href="/app/" style="color:#6366f1;">free AI resume builder</a>.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Why does my resume score low even though I'm qualified?</h3>
+            <p>ATS systems don't evaluate qualifications — they match text patterns. The most common reasons for low scores are: missing keywords from the job description, non-standard formatting, and lack of measurable achievements. All fixable in minutes with AI.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 <a href="/">CV Manager AI</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/blog/">Blog</a></p>
+    </footer>
+
+    <script src="/nav.js"></script>
+    <script>
+    const keywordMap = {
+        'software engineer': ['Python','JavaScript','React','Node.js','REST API','Git','Docker','CI/CD','Agile','SQL','AWS','TypeScript','APIs','microservices'],
+        'data analyst': ['SQL','Python','Tableau','Power BI','Excel','Google Analytics','A/B testing','ETL','data visualization','dashboards','BigQuery','statistical analysis'],
+        'marketing manager': ['Google Ads','Meta Ads','SEO','HubSpot','Salesforce','A/B testing','content strategy','email marketing','KPIs','ROI','budget management','campaigns'],
+        'product manager': ['roadmap','OKRs','Agile','stakeholder management','user research','Jira','A/B testing','go-to-market','cross-functional','product strategy','Figma'],
+        'default': ['leadership','communication','project management','problem-solving','teamwork','results-driven','analytical','strategic','cross-functional','stakeholder']
+    };
+
+    const achievementPatterns = [/\d+%/,/\$\d/,/\d+x/,/\d+ (million|thousand|users|clients|projects)/i,/increased|decreased|reduced|improved|grew|launched|led|managed|delivered/i];
+
+    function getKeywords(jobTitle) {
+        const jt = (jobTitle || '').toLowerCase();
+        for (const key of Object.keys(keywordMap)) {
+            if (key !== 'default' && jt.includes(key)) return keywordMap[key];
+        }
+        return keywordMap['default'];
+    }
+
+    function animate(el, target, suffix, duration) {
+        const start = Date.now();
+        const tick = () => {
+            const p = Math.min((Date.now() - start) / duration, 1);
+            el.textContent = Math.round(p * target) + suffix;
+            if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+    }
+
+    function analyzeResume() {
+        const jobTitle = document.getElementById('job-title').value.trim();
+        const resumeText = document.getElementById('resume-text').value.trim();
+        if (!resumeText || resumeText.length < 50) { alert('Please paste your full resume text for an accurate analysis.'); return; }
+
+        const btn = document.getElementById('analyzeBtn');
+        btn.disabled = true; btn.textContent = 'Analyzing…';
+
+        setTimeout(() => {
+            const keywords = getKeywords(jobTitle);
+            const resumeLow = resumeText.toLowerCase();
+            const found = keywords.filter(k => resumeLow.includes(k.toLowerCase()));
+            const missing = keywords.filter(k => !resumeLow.includes(k.toLowerCase()));
+            const kwScore = Math.round((found.length / keywords.length) * 100);
+
+            const sections = ['experience', 'education', 'skills', 'summary', 'profile', 'work'];
+            const fmtMatches = sections.filter(s => resumeLow.includes(s)).length;
+            const fmtScore = Math.min(Math.round((fmtMatches / 3) * 100), 100);
+
+            const achMatches = achievementPatterns.filter(p => p.test(resumeText)).length;
+            const achScore = Math.min(achievementPatterns.length > 0 ? Math.round((achMatches / achievementPatterns.length) * 100) : 50, 100);
+
+            const overall = Math.round(kwScore * 0.5 + fmtScore * 0.3 + achScore * 0.2);
+
+            // Update UI
+            const circle = document.getElementById('scoreCircle');
+            const scoreColor = overall >= 75 ? '#10b981' : overall >= 55 ? '#f59e0b' : '#ef4444';
+            circle.style.borderColor = scoreColor;
+            document.getElementById('scoreNum').style.color = scoreColor;
+
+            document.getElementById('results').style.display = 'block';
+            animate(document.getElementById('scoreNum'), overall, '', 1000);
+            animate(document.getElementById('kwPct'), kwScore, '%', 800);
+            animate(document.getElementById('fmtPct'), fmtScore, '%', 800);
+            animate(document.getElementById('achPct'), achScore, '%', 800);
+
+            setTimeout(() => {
+                document.getElementById('kwBar').style.width = kwScore + '%';
+                document.getElementById('fmtBar').style.width = fmtScore + '%';
+                document.getElementById('achBar').style.width = achScore + '%';
+            }, 100);
+
+            let verdict, verdictText;
+            if (overall >= 80) {
+                verdict = '🚀 Great ATS Score!';
+                verdictText = 'Your resume is well-optimized. Our AI builder can push it even higher and tailor it to the specific job description.';
+            } else if (overall >= 60) {
+                verdict = '⚠️ Room for Improvement';
+                verdictText = 'Your resume is borderline. Add the missing keywords below and quantify your achievements to boost your score significantly.';
+            } else {
+                verdict = '🔴 High Risk of Rejection';
+                verdictText = 'Your resume is likely being filtered out automatically. Use our free AI builder to fix all issues instantly.';
+            }
+            document.getElementById('verdictTitle').textContent = verdict;
+            document.getElementById('verdictText').textContent = verdictText;
+
+            const foundEl = document.getElementById('foundKw');
+            const missingEl = document.getElementById('missingKw');
+            foundEl.innerHTML = found.length ? found.map(k => `<span class="kw-found">✓ ${k}</span>`).join('') : '<span style="color:#64748b;">No matching keywords detected</span>';
+            missingEl.innerHTML = missing.slice(0, 8).map(k => `<span class="kw-missing">+ ${k}</span>`).join('');
+
+            btn.disabled = false; btn.textContent = '⚡ Check My ATS Score';
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 1500);
+    }
+    </script>
+</body>
+</html>
