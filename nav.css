@@ -174,62 +174,90 @@ body {
     box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
 }
 
-/* === Global Layout Design System === */
-.hero-section {
-    padding: 180px 20px 100px;
-    text-align: center;
-    background: var(--hero-gradient);
+/* === Global Layout Design System (Ultra Premium) === */
+.hero-section,
+.page-header,
+.page-hero {
     position: relative;
     overflow: hidden;
+    background: #000000;
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.15), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.15), transparent 25%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: white;
 }
 
-.page-header {
+.hero-section {
+    padding: 200px 20px 120px;
+    text-align: center;
+}
+
+.page-header,
+.page-hero {
     margin-top: 0;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    color: white;
     padding: 160px 20px 80px;
     text-align: center;
 }
 
-.page-header h1 {
-    font-size: 3.2rem;
-    margin-bottom: 20px;
+.page-header h1,
+.page-hero h1,
+.hero-section h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    font-weight: 800;
+    max-width: 900px;
+    margin: 0 auto 24px;
     font-family: 'Outfit', sans-serif;
+    color: #ffffff;
 }
 
-.page-header p {
-    font-size: 1.2rem;
+.page-header p,
+.page-hero p,
+.hero-section p {
+    font-size: 1.25rem;
     max-width: 700px;
-    margin: 0 auto;
-    opacity: 0.9;
+    margin: 0 auto 36px;
+    opacity: 0.85;
+    line-height: 1.6;
+    font-weight: 400;
+    color: #94a3b8;
 }
 
 .content-container {
     max-width: 1200px;
-    margin: 40px auto;
+    margin: -40px auto 40px;
     padding: 40px 20px;
     background: var(--card-bg);
     border-radius: 32px;
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+    position: relative;
+    z-index: 10;
 }
 
-.page-hero {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    padding: 160px 20px 80px;
-    text-align: center;
-    color: white;
-}
-
-.page-hero .badge {
-    background: rgba(99, 102, 241, 0.2);
-    color: #a5b4fc;
-    border: 1px solid rgba(99, 102, 241, 0.3);
+.page-hero .badge,
+.hero-section .badge-hero {
+    background: rgba(255, 255, 255, 0.05);
+    color: #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     padding: 8px 18px;
     border-radius: 100px;
     font-size: 0.85rem;
     font-weight: 600;
     display: inline-block;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+    letter-spacing: 0.02em;
+}
+
+.text-gradient,
+.text-grad {
+    background: linear-gradient(135deg, #a5b4fc 0%, #c084fc 50%, #f472b6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* === Global Premium Button Design System === */
