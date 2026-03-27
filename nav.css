@@ -51,9 +51,18 @@
 
 /* Smooth theme transition */
 body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+h1,
+h2,
+h3 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+}
 
 /* === Micro-Animation Utilities === */
 .hover-lift {
@@ -150,6 +159,7 @@ body {
 .nav-links a {
     text-decoration: none;
     color: var(--text-main);
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 600;
     font-size: 0.95rem;
     transition: color 0.3s;
