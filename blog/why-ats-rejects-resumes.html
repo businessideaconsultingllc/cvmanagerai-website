@@ -56,11 +56,50 @@
         .issue-card{background:var(--bg-light);border:1px solid #e2e8f0;border-radius:16px;padding:28px;margin:24px 0;}
         .issue-card h3{margin:0 0 12px;font-size:1.1rem;}
         .issue-card .fix{background:#f0fdf4;border-radius:8px;padding:12px 16px;margin-top:12px;font-size:0.95rem;color:#166534;}
-        .cta-box{background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:24px;padding:48px 32px;text-align:center;color:white;margin:60px 0;}
-        .cta-box h2{font-size:1.8rem;margin-bottom:10px;}
-        .cta-box p{margin-bottom:24px; font-size: 1.1rem; font-weight: 500;}
-        .cta-box a{background:white;color:#4f46e5;padding:14px 32px;border-radius:12px;font-weight:700;text-decoration:none;display:inline-block;transition: transform 0.2s ease;}
-        .cta-box a:hover{transform: translateY(-2px);}
+        .cta-box {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%) !important;
+            border-radius: 24px !important;
+            padding: 60px 40px !important;
+            text-align: center !important;
+            color: white !important;
+            margin: 60px 0 !important;
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2) !important;
+        }
+        .cta-box h2, .cta-box h3 {
+            color: white !important;
+            font-size: 2.2rem !important;
+            margin: 0 0 16px 0 !important;
+            font-family: 'Outfit', sans-serif !important;
+            font-weight: 800 !important;
+            line-height: 1.2 !important;
+        }
+        .cta-box p {
+            color: white !important;
+            opacity: 1 !important;
+            font-size: 1.2rem !important;
+            margin: 0 auto 32px auto !important;
+            font-weight: 500 !important;
+            max-width: 650px !important;
+            line-height: 1.6 !important;
+        }
+        .cta-box a, .cta-box .btn {
+            background: white !important;
+            color: #6366f1 !important;
+            padding: 16px 36px !important;
+            border-radius: 14px !important;
+            font-weight: 800 !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+            font-size: 1.1rem !important;
+            transition: all 0.3s ease !important;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+            margin-top: 8px !important;
+        }
+        .cta-box a:hover, .cta-box .btn:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important;
+            background: #f8fafc !important;
+        }
         .breadcrumb{padding:16px 20px;font-size:0.9rem;color:var(--text-light);max-width:780px;margin:0 auto;}
         .breadcrumb a{color:var(--primary);text-decoration:none;}
         .related{max-width:780px;margin:0 auto;padding:0 20px 60px;}
