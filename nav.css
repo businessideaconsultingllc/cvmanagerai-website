@@ -733,7 +733,7 @@ div.header p {
 
 .footer-col a {
     text-decoration: none;
-    color: #64748b;
+    color: #94a3b8;
     transition: all 0.3s;
     font-weight: 500;
     font-size: 0.92rem;
@@ -745,7 +745,7 @@ div.header p {
 }
 
 .footer-col p {
-    color: #475569;
+    color: #94a3b8;
     font-size: 0.9rem;
     line-height: 1.6;
     margin-top: 10px;
@@ -754,7 +754,7 @@ div.header p {
 .copyright,
 .footer-bottom {
     text-align: center;
-    color: #475569;
+    color: #64748b;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
     padding-top: 40px;
     font-size: 0.85rem;
