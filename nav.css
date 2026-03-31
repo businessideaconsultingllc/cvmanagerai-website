@@ -683,11 +683,12 @@ div.header p {
     }
 }
 
-/* Standardized Footer Styles */
+/* === Standardized Dark Footer (matches header) === */
 .footer {
     padding: 100px 20px 40px;
-    background: white;
-    border-top: 1px solid #f1f5f9;
+    background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+    color: #94a3b8;
+    border-top: none;
 }
 
 .footer-grid {
@@ -704,13 +705,21 @@ div.header p {
     margin-bottom: 20px;
     display: block;
     font-weight: 800;
+    color: white !important;
+    text-decoration: none;
+}
+
+.footer .brand {
+    color: white !important;
 }
 
 .footer-col h4 {
     margin-bottom: 24px;
-    color: var(--text-main);
-    font-size: 1.1rem;
+    color: white;
+    font-size: 1rem;
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
 }
 
 .footer-col ul {
@@ -724,22 +733,84 @@ div.header p {
 
 .footer-col a {
     text-decoration: none;
-    color: var(--text-muted);
+    color: #64748b;
     transition: all 0.3s;
     font-weight: 500;
+    font-size: 0.92rem;
 }
 
 .footer-col a:hover {
-    color: var(--primary);
+    color: #a5b4fc;
     padding-left: 5px;
 }
 
-.copyright {
-    text-align: center;
-    color: var(--text-muted);
-    border-top: 1px solid #f1f5f9;
-    padding-top: 40px;
+.footer-col p {
+    color: #475569;
     font-size: 0.9rem;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+.copyright,
+.footer-bottom {
+    text-align: center;
+    color: #475569;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 40px;
+    font-size: 0.85rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.copyright a,
+.footer-bottom a {
+    color: #475569;
+    text-decoration: none;
+}
+
+.copyright a:hover,
+.footer-bottom a:hover {
+    color: #a5b4fc;
+}
+
+/* === Standardized CTA Banner (matches header dark navy) === */
+.cta-section,
+.verdict-banner-cta,
+.cta-banner {
+    background: linear-gradient(135deg, #1e1b4b 0%, #1a1a3e 50%, #0f172a 100%) !important;
+    color: white !important;
+    position: relative;
+    overflow: hidden;
+    border-radius: 28px;
+}
+
+.cta-section::before,
+.cta-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 600px 300px at 50% 0%, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.cta-section h2,
+.cta-banner h2 {
+    color: white !important;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-section p,
+.cta-banner p {
+    color: #94a3b8 !important;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-section a,
+.cta-banner a {
+    position: relative;
+    z-index: 1;
 }
 
 @media (max-width: 992px) {
