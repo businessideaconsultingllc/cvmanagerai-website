@@ -226,12 +226,12 @@ h3 {
 .page-header h1,
 .page-hero h1,
 .hero-section h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    font-weight: 800;
-    max-width: 900px;
-    margin: 0 auto 24px;
+    font-size: clamp(2.8rem, 8vw, 5rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    font-weight: 900;
+    max-width: 1000px;
+    margin: 0 auto 28px;
     font-family: 'Outfit', sans-serif;
     color: #ffffff;
 }
