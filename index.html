@@ -37,7 +37,7 @@
 
     <!-- AOS Library for Animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="/nav.cssnav.css">
 
     <!-- Primary Meta Tags -->
     <title>AI Resume Builder — Free to Start & ATS-Optimized | CV Manager AI</title>
@@ -472,14 +472,22 @@
 </head>
 
 <body>
-    <nav class="navbar-premium" id="navbar">
+        <nav class="navbar-premium" id="navbar">
         <a href="/" class="brand">CV Manager AI</a>
         <div class="nav-links" id="navLinks">
             <a href="/#features">Features</a>
-            <a href="/blog/">Blog</a>
+            <div class="nav-dropdown">
+                <div class="nav-dropdown-toggle">Compare</div>
+                <div class="nav-dropdown-content">
+                    <a href="/vs/cv-manager-ai-vs-canva.html">vs Canva</a>
+                    <a href="/vs/cv-manager-ai-vs-zety.html">vs Zety</a>
+                    <a href="/vs/cv-manager-ai-vs-resume-io.html">vs Resume.io</a>
+                    <a href="/vs/cv-manager-ai-vs-kickresume.html">vs Kickresume</a>
+                </div>
+            </div>
             <a href="/ats-checker.html">ATS Checker</a>
+            <a href="/blog/">Blog</a>
             <a href="/resources.html">Resources</a>
-            <a href="/#faq">FAQ</a>
             <a href="/about.html">About</a>
             <a href="/app/" class="btn-nav" onclick="trackCTA('navbar_launch')">Launch App</a>
         </div>
@@ -1078,7 +1086,7 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="nav.js"></script>
+    <script src="/nav.jsnav.js"></script>
     <script>
         // Init AOS
         AOS.init({

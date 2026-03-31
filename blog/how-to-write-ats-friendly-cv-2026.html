@@ -21,7 +21,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="../nav.css">
+    <link rel="stylesheet" href="/nav.cssnav.css">
 
     <!-- Article Schema -->
     <script type="application/ld+json">
@@ -320,14 +320,22 @@
 </head>
 
 <body>
-    <nav class="navbar-premium" id="navbar">
+        <nav class="navbar-premium" id="navbar">
         <a href="/" class="brand">CV Manager AI</a>
         <div class="nav-links" id="navLinks">
             <a href="/#features">Features</a>
-            <a href="/blog/">Blog</a>
+            <div class="nav-dropdown">
+                <div class="nav-dropdown-toggle">Compare</div>
+                <div class="nav-dropdown-content">
+                    <a href="/vs/cv-manager-ai-vs-canva.html">vs Canva</a>
+                    <a href="/vs/cv-manager-ai-vs-zety.html">vs Zety</a>
+                    <a href="/vs/cv-manager-ai-vs-resume-io.html">vs Resume.io</a>
+                    <a href="/vs/cv-manager-ai-vs-kickresume.html">vs Kickresume</a>
+                </div>
+            </div>
             <a href="/ats-checker.html">ATS Checker</a>
+            <a href="/blog/">Blog</a>
             <a href="/resources.html">Resources</a>
-            <a href="/#faq">FAQ</a>
             <a href="/about.html">About</a>
             <a href="/app/" class="btn-nav" onclick="trackCTA('navbar_launch')">Launch App</a>
         </div>
@@ -721,7 +729,7 @@
             </p>
         </div>
     </footer>
-    <script src="../nav.js"></script>
+    <script src="/nav.jsnav.js"></script>
 </body>
 
 </html>

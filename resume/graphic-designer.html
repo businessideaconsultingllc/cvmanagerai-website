@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/nav.css">
+    <link rel="stylesheet" href="/nav.cssnav.css">
     <style>
         :root{--primary:#6366f1;--text-main:#1e293b;--text-light:#475569;--bg-light:#f8fafc;}
         *{margin:0;padding:0;box-sizing:border-box;}
@@ -68,16 +68,24 @@
         crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav class="navbar-premium" id="navbar">
+        <nav class="navbar-premium" id="navbar">
         <a href="/" class="brand">CV Manager AI</a>
         <div class="nav-links" id="navLinks">
             <a href="/#features">Features</a>
-            <a href="/blog/">Blog</a>
+            <div class="nav-dropdown">
+                <div class="nav-dropdown-toggle">Compare</div>
+                <div class="nav-dropdown-content">
+                    <a href="/vs/cv-manager-ai-vs-canva.html">vs Canva</a>
+                    <a href="/vs/cv-manager-ai-vs-zety.html">vs Zety</a>
+                    <a href="/vs/cv-manager-ai-vs-resume-io.html">vs Resume.io</a>
+                    <a href="/vs/cv-manager-ai-vs-kickresume.html">vs Kickresume</a>
+                </div>
+            </div>
             <a href="/ats-checker.html">ATS Checker</a>
+            <a href="/blog/">Blog</a>
             <a href="/resources.html">Resources</a>
-            <a href="/#faq">FAQ</a>
             <a href="/about.html">About</a>
-            <a href="/app/" class="btn-nav" onclick="trackCTA('navbar_launch');">Launch App</a>
+            <a href="/app/" class="btn-nav" onclick="trackCTA('navbar_launch')">Launch App</a>
         </div>
         <div class="menu-toggle" id="menuToggle">
             <span></span>
@@ -198,6 +206,6 @@
             </p>
         </div>
     </footer>
-    <script src="/nav.js"></script>
+    <script src="/nav.jsnav.js"></script>
 </body>
 </html>

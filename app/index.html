@@ -102,9 +102,35 @@
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5276105875006506"
         crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/nav.css">
 </head>
 
 <body>
+    <nav class="navbar-premium" id="navbar">
+        <a href="/" class="brand">CV Manager AI</a>
+        <div class="nav-links" id="navLinks">
+            <a href="/#features">Features</a>
+            <div class="nav-dropdown">
+                <div class="nav-dropdown-toggle">Compare</div>
+                <div class="nav-dropdown-content">
+                    <a href="/vs/cv-manager-ai-vs-canva.html">vs Canva</a>
+                    <a href="/vs/cv-manager-ai-vs-zety.html">vs Zety</a>
+                    <a href="/vs/cv-manager-ai-vs-resume-io.html">vs Resume.io</a>
+                    <a href="/vs/cv-manager-ai-vs-kickresume.html">vs Kickresume</a>
+                </div>
+            </div>
+            <a href="/ats-checker.html">ATS Checker</a>
+            <a href="/blog/">Blog</a>
+            <a href="/resources.html">Resources</a>
+            <a href="/about.html">About</a>
+            <a href="/app/" class="btn-nav" onclick="trackCTA('navbar_launch')">Launch App</a>
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
   <div id="loading" class="loading-container">
     <div class="spinner"></div>
     <div class="loading-text">Loading CV Manager AI...</div>
@@ -165,6 +191,7 @@
       }
     }, 200);
   </script>
+    <script src="/nav.js"></script>
 </body>
 
 </html>
