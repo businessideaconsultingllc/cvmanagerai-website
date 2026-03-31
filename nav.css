@@ -124,11 +124,9 @@ h3 {
     width: 90%;
     max-width: 1200px;
     background: rgba(255, 255, 255, 0.75);
-    /* Standardized glass background */
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.4);
-    /* Standardized glass border */
     padding: 15px 30px;
     border-radius: 24px;
     display: flex;
@@ -137,6 +135,8 @@ h3 {
     z-index: 1000;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Allow dropdown to overflow the navbar bounds */
+    overflow: visible;
 }
 
 .navbar-premium.scrolled,
@@ -224,7 +224,6 @@ h3 {
     background: rgba(99, 102, 241, 0.06);
 }
 
-.nav-dropdown:hover .nav-dropdown-toggle::after,
 .nav-dropdown.open .nav-dropdown-toggle::after {
     transform: rotate(-135deg) translateY(-2px);
     opacity: 1;
@@ -263,7 +262,6 @@ h3 {
     border-radius: 2px 0 0 0;
 }
 
-.nav-dropdown:hover .nav-dropdown-content,
 .nav-dropdown.open .nav-dropdown-content {
     opacity: 1;
     visibility: visible;

@@ -142,18 +142,30 @@
         crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav class="navbar-premium" id="navbar">
+        <nav class="navbar-premium" id="navbar">
         <a href="/" class="brand">CV Manager AI</a>
         <div class="nav-links" id="navLinks">
             <a href="/#features">Features</a>
-            <a href="/blog/">Blog</a>
+            <div class="nav-dropdown">
+                <div class="nav-dropdown-toggle">Compare</div>
+                <div class="nav-dropdown-content">
+                    <a href="/vs/cv-manager-ai-vs-canva.html">Canva</a>
+                    <a href="/vs/cv-manager-ai-vs-zety.html">Zety</a>
+                    <a href="/vs/cv-manager-ai-vs-resume-io.html">Resume.io</a>
+                    <a href="/vs/cv-manager-ai-vs-kickresume.html">Kickresume</a>
+                </div>
+            </div>
             <a href="/ats-checker.html">ATS Checker</a>
+            <a href="/blog/">Blog</a>
             <a href="/resources.html">Resources</a>
-            <a href="/#faq">FAQ</a>
             <a href="/about.html">About</a>
             <a href="/app/" class="btn-nav" onclick="trackCTA('navbar_launch')">Launch App</a>
         </div>
-        <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
 
     <div class="blog-hero">

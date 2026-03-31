@@ -9,34 +9,37 @@ document.addEventListener('DOMContentLoaded', () => {
         if (navbar) {
             navbar.classList.toggle('scrolled', window.scrollY > 50);
         }
-    });
+    }, { passive: true });
 
-    // ── Compare Dropdown (desktop click + mobile toggle) ──────────
+    // ── Compare Dropdown — click-based on ALL screen sizes ─────────
+    // (CSS :hover was removed; this keeps dropdown open during scroll)
     const dropdowns = document.querySelectorAll('.nav-dropdown');
 
     dropdowns.forEach(dropdown => {
         const toggle = dropdown.querySelector('.nav-dropdown-toggle');
         if (!toggle) return;
 
-        // Desktop: hover is handled by CSS.
-        // Mobile (<850px): toggle open/close on click
         toggle.addEventListener('click', (e) => {
-            // Only intercept on mobile; desktop uses CSS :hover
-            if (window.innerWidth <= 850) {
-                e.stopPropagation();
-                dropdown.classList.toggle('open');
-            }
+            e.stopPropagation();
+            const isOpen = dropdown.classList.contains('open');
+
+            // Close all other dropdowns
+            dropdowns.forEach(d => d.classList.remove('open'));
+
+            // Toggle this one
+            if (!isOpen) dropdown.classList.add('open');
         });
     });
 
-    // Close dropdowns when clicking outside
+    // Close dropdowns when clicking anywhere outside
     document.addEventListener('click', () => {
         dropdowns.forEach(d => d.classList.remove('open'));
     });
 
     // ── Mobile menu toggle ─────────────────────────────────────────
     if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
             menuToggle.classList.toggle('active');
             navLinks.classList.toggle('active');
             document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
