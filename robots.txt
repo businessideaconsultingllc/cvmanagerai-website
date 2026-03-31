@@ -2,11 +2,5 @@ User-agent: *
 Allow: /
 Disallow: /app/private/
 Disallow: /tmp/
-Disallow: /build/
-Disallow: /internal/
 
-# Host
-Host: https://cvmanagerai.com
-
-# Sitemap
 Sitemap: https://cvmanagerai.com/sitemap.xml
