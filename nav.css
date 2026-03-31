@@ -320,17 +320,32 @@ h3 {
 }
 
 /* === Global Layout Design System (Ultra Premium) === */
+/* Standardized dark hero gradient — consistent across ALL pages */
 .hero-section,
 .page-header,
-.page-hero {
+.page-hero,
+header.header,
+div.header {
     position: relative;
     overflow: hidden;
-    background: #000000;
-    background-image: 
-        radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.15), transparent 25%),
-        radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.15), transparent 25%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: linear-gradient(135deg, #1e1b4b 0%, #1a1a3e 40%, #0f172a 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     color: white;
+}
+
+/* Subtle purple glow overlay on all hero sections */
+.hero-section::before,
+.page-header::before,
+.page-hero::before,
+header.header::before,
+div.header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 800px 400px at 50% 0%, rgba(99, 102, 241, 0.25) 0%, transparent 70%),
+        radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.12), transparent 40%);
+    pointer-events: none;
 }
 
 .hero-section {
@@ -341,7 +356,9 @@ h3 {
 }
 
 .page-header,
-.page-hero {
+.page-hero,
+header.header,
+div.header {
     margin-top: 0;
     padding: 160px 20px 80px;
     text-align: center;
@@ -349,7 +366,9 @@ h3 {
 
 .page-header h1,
 .page-hero h1,
-.hero-section h1 {
+.hero-section h1,
+header.header h1,
+div.header h1 {
     font-size: clamp(2.8rem, 8vw, 5rem);
     line-height: 1.05;
     letter-spacing: -0.04em;
@@ -362,7 +381,9 @@ h3 {
 
 .page-header p,
 .page-hero p,
-.hero-section p {
+.hero-section p,
+header.header p,
+div.header p {
     font-size: 1.25rem;
     max-width: 700px;
     margin: 0 auto 36px;
