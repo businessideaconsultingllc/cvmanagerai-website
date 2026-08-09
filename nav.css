@@ -1,13 +1,13 @@
 /* Global Navigation & Premium Styles */
 :root {
-    /* === Brand Colors — ink & cobalt, one confident accent === */
-    --primary: #1E4FD6;
-    --primary-dark: #12318C;
-    --primary-light: #4A73E0;
-    --secondary: #12318C;
-    --secondary-light: #4A73E0;
-    --accent: #1E4FD6;
-    --accent-glow: rgba(30, 79, 214, 0.28);
+    /* === Brand Colors — paper & burgundy, one confident accent === */
+    --primary: #7A1F2B;
+    --primary-dark: #591620;
+    --primary-light: #A33642;
+    --secondary: #591620;
+    --secondary-light: #A33642;
+    --accent: #7A1F2B;
+    --accent-glow: rgba(122, 31, 43, 0.22);
 
     /* === Light Theme (Default) — warm paper ground === */
     --bg-primary: #FAF9F6;
@@ -78,7 +78,7 @@
 
 .mono-chip.pass {
     background: var(--pass-soft);
-    color: #6FCB90;
+    color: var(--pass);
 }
 
 .mono-num {
@@ -365,7 +365,7 @@ h3 {
 }
 
 /* === Global Layout Design System (Ultra Premium) === */
-/* Standardized dark hero gradient — consistent across ALL pages */
+/* Standardized paper header — consistent across ALL pages */
 .hero-section,
 .page-header,
 .page-hero,
@@ -373,12 +373,12 @@ header.header,
 div.header {
     position: relative;
     overflow: hidden;
-    background: var(--bg-dark);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    color: white;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
 }
 
-/* Single restrained accent line under the hero — no glow orbs */
+/* Single restrained accent rule under the hero — like a letterhead line */
 .hero-section::before,
 .page-header::before,
 .page-hero::before,
@@ -390,6 +390,17 @@ div.header::before {
     height: 3px;
     background: var(--primary);
     pointer-events: none;
+}
+
+/* Faint ink-ruled texture for paper backgrounds */
+.doc-grid-light {
+    background-image: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 27px,
+        rgba(20, 24, 28, 0.035) 27px,
+        rgba(20, 24, 28, 0.035) 28px
+    );
 }
 
 .hero-section {
@@ -413,14 +424,14 @@ div.header {
 .hero-section h1,
 header.header h1,
 div.header h1 {
-    font-size: clamp(2.8rem, 8vw, 5rem);
-    line-height: 1.05;
-    letter-spacing: -0.04em;
-    font-weight: 900;
-    max-width: 1000px;
+    font-size: clamp(2.6rem, 6.5vw, 4.2rem);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+    max-width: 780px;
     margin: 0 auto 28px;
     font-family: 'Outfit', sans-serif;
-    color: #ffffff;
+    color: var(--text-primary);
 }
 
 .page-header p,
@@ -428,13 +439,12 @@ div.header h1 {
 .hero-section p,
 header.header p,
 div.header p {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     max-width: 700px;
     margin: 0 auto 36px;
-    opacity: 0.85;
     line-height: 1.6;
     font-weight: 400;
-    color: #94a3b8;
+    color: var(--text-secondary);
 }
 
 .content-container {
@@ -451,10 +461,9 @@ div.header p {
 
 .page-hero .badge,
 .hero-section .badge-hero {
-    background: rgba(255, 255, 255, 0.05);
-    color: #e2e8f0;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
     padding: 8px 18px;
     border-radius: 100px;
     font-size: 0.85rem;
