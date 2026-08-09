@@ -45,6 +45,56 @@
     --gradient-primary: #1E4FD6;
     --gradient-hero: #FAF9F6;
     --gradient-dark: #14181C;
+
+    /* Document-precision motif */
+    --pass: #2C6E4A;
+    --pass-soft: rgba(44, 110, 74, 0.12);
+    --crit: #B23B2C;
+    --crit-soft: rgba(178, 59, 44, 0.1);
+    --mono: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+}
+
+/* === Document-precision motif — signature detail, used sparingly === */
+.mono-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.4em 0.85em;
+    border-radius: 3px;
+    font-weight: 500;
+}
+
+.mono-chip::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.mono-chip.pass {
+    background: var(--pass-soft);
+    color: #6FCB90;
+}
+
+.mono-num {
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Faint ruled-document texture — the one deliberate visual signature */
+.doc-grid {
+    background-image: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 27px,
+        rgba(255, 255, 255, 0.035) 27px,
+        rgba(255, 255, 255, 0.035) 28px
+    );
 }
 
 /* === Dark Theme === */

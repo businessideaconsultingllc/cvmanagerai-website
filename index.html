@@ -376,8 +376,9 @@
 
     <main>
         <!-- Hero -->
-        <section class="hero hero-section">
+        <section class="hero hero-section doc-grid">
             <div data-aos="fade-up">
+                <span class="mono-chip pass" style="margin-bottom: 24px;">ATS parse — pass</span>
                 <h1>Write your CV with AI, formatted to pass <span class="text-gradient">ATS filters</span></h1>
                 <p>Enter your role and background — the AI writes your bullet points, checks your CV against common ATS parsing rules, and tailors it to a specific job description. Free to start.</p>
 
@@ -403,22 +404,22 @@
         </section>
 
         <!-- Stats — real numbers only -->
-        <section class="stats-bar">
+        <section class="stats-bar doc-grid">
             <div class="stats-grid">
                 <div class="stat-item">
-                    <span class="stat-val">300+</span>
+                    <span class="stat-val mono-num">300+</span>
                     <span class="stat-label">People signed up</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-val">5</span>
+                    <span class="stat-val mono-num">5</span>
                     <span class="stat-label">AI tools included</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-val">Free</span>
-                    <span class="stat-label">To start, no card</span>
+                    <span class="stat-val mono-num">0</span>
+                    <span class="stat-label">Cost to start</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-val">~60s</span>
+                    <span class="stat-val mono-num">~60s</span>
                     <span class="stat-label">To a first draft</span>
                 </div>
             </div>
@@ -491,7 +492,7 @@
 
         <!-- ATS Info -->
         <section class="ats-info">
-            <div class="ats-card" data-aos="zoom-in">
+            <div class="ats-card doc-grid" data-aos="zoom-in">
                 <div style="font-size: 3rem;">◈</div>
                 <div>
                     <h3>Why ATS formatting matters</h3>
@@ -539,7 +540,7 @@
         </section>
 
         <!-- Comparisons — factual, no invented stats -->
-        <section style="padding: 100px 20px; background: var(--bg-dark); color: white;">
+        <section class="doc-grid" style="padding: 100px 20px; background: var(--bg-dark); color: white;">
             <div class="section-header" data-aos="fade-up">
                 <h2 style="color: white;">How it compares</h2>
                 <p style="color: #9CA3AF;">Read the detailed, factual comparison — no invented scores.</p>
@@ -575,24 +576,24 @@
                 <p>Illustrative example — not a specific user's result.</p>
             </div>
             <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:24px;" data-aos="fade-up">
-                <div style="background:#FBF4F2;border:1px solid #EAD5CF;border-radius:14px;padding:28px;">
+                <div style="background:var(--card-bg);border:1px solid var(--border-color);border-radius:10px;padding:28px;">
                     <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
-                        <span style="background:#B23B2C;color:white;padding:4px 12px;border-radius:6px;font-size:0.78rem;font-weight:700;">BEFORE</span>
+                        <span class="mono-chip" style="background:var(--crit-soft);color:var(--crit);">before</span>
                         <span style="color:var(--text-light);font-size:0.88rem;">Generic wording</span>
                     </div>
-                    <div style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:0.86rem;line-height:1.8;color:var(--text-secondary);">
+                    <div style="font-family:var(--mono);font-size:0.86rem;line-height:1.8;color:var(--text-secondary);">
                         <p>• Responsible for managing projects</p>
                         <p>• Helped with marketing campaigns</p>
                         <p>• Did customer service tasks</p>
                     </div>
                 </div>
-                <div style="background:#F1F7F3;border:1px solid #CBE3D2;border-radius:14px;padding:28px;">
+                <div style="background:var(--card-bg);border:1px solid var(--border-color);border-radius:10px;padding:28px;">
                     <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
-                        <span style="background:#2C6E4A;color:white;padding:4px 12px;border-radius:6px;font-size:0.78rem;font-weight:700;">AFTER</span>
+                        <span class="mono-chip" style="background:var(--pass-soft);color:var(--pass);">after</span>
                         <span style="color:var(--text-light);font-size:0.88rem;">Specific, quantified</span>
                     </div>
-                    <div style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:0.86rem;line-height:1.8;color:var(--text-secondary);">
-                        <p>• Led a cross-functional team of 8 across 3 concurrent projects</p>
+                    <div style="font-family:var(--mono);font-size:0.86rem;line-height:1.8;color:var(--text-secondary);">
+                        <p>• Led a cross-functional team of <span class="mono-num">8</span> across <span class="mono-num">3</span> concurrent projects</p>
                         <p>• Ran paid campaigns across two channels within a set budget</p>
                         <p>• Handled inbound support tickets within an SLA window</p>
                     </div>
@@ -636,7 +637,7 @@
         </section>
 
         <!-- Mid-Page CTA -->
-        <section class="cta-section" style="padding:80px 20px;text-align:center;">
+        <section class="cta-section doc-grid" style="padding:80px 20px;text-align:center;">
             <div style="position:relative;z-index:1;max-width:640px;margin:0 auto;">
                 <h2 style="font-size:2.1rem;margin-bottom:14px;">Build your CV in about a minute</h2>
                 <p style="margin-bottom:28px;font-size:1.05rem;">Free to start. No credit card required.</p>
