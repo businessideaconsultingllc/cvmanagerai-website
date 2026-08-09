@@ -42,11 +42,11 @@
     <!-- Primary Meta Tags -->
     <title>AI Resume Builder — Free to Start & ATS-Optimized | CV Manager AI</title>
     <meta name="title" content="AI Resume Builder — Free to Start & ATS-Optimized | CV Manager AI">
-    <meta name="description" content="Free AI resume builder — ATS-optimized in 60 seconds. AI writes your bullet points &amp; tailors your CV to any job. Trusted by 50,000+ job seekers.">
+    <meta name="description" content="Free AI resume builder — ATS-optimized in 60 seconds. AI writes your bullet points &amp; tailors your CV to any job.">
     <meta name="keywords"
         content="AI resume builder, ATS resume builder, resume generator, free CV builder, ATS optimized resume, AI CV generator, cover letter generator, resume tailoring, ATS checker, professional resume maker">
 
-    <!-- Unified Premium Schema.org Structured Data -->
+    <!-- Structured Data — only claims we can actually stand behind -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -62,12 +62,6 @@
             "@type": "Offer",
             "price": "0",
             "priceCurrency": "USD"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "12840",
-            "bestRating": "5"
           }
         },
         {
@@ -83,7 +77,7 @@
             "name": "How can I create a CV for free using AI?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Simply launch the CV Manager AI app, enter your professional details or paste your old resume. Our AI generator will instantly write high-quality bullet points."
+              "text": "Launch the CV Manager AI app, enter your professional details or paste your old resume, and the AI generates bullet points, a summary, and formatting in about a minute."
             }
           }]
         }
@@ -95,26 +89,15 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://cvmanagerai.com/">
     <meta property="og:title" content="Free AI Resume Builder — ATS-Optimized | CV Manager AI">
-    <meta property="og:description" content="Build a free ATS-optimized resume in 60 seconds with AI. Trusted by 50,000+ job seekers worldwide.">
+    <meta property="og:description" content="Build a free ATS-optimized resume in about a minute with AI.">
     <meta property="og:image" content="https://cvmanagerai.com/assets/og-image.jpg">
     <meta property="og:site_name" content="CV Manager AI">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://cvmanagerai.com/">
     <meta name="twitter:title" content="Free AI Resume Builder — ATS-Optimized | CV Manager AI">
-    <meta name="twitter:description" content="Build a free ATS-optimized resume in 60 seconds with AI.">
+    <meta name="twitter:description" content="Build a free ATS-optimized resume in about a minute with AI.">
     <meta name="twitter:image" content="https://cvmanagerai.com/assets/og-image.jpg">
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MKBWB6Y8R4"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-MKBWB6Y8R4');
-        function trackCTA(label) {
-            gtag('event', 'cta_click', { 'event_category': 'conversion', 'event_label': label });
-        }
-    </script>
 
     <!-- Favicon & Search Branding -->
     <link rel="icon" type="image/png" sizes="192x192" href="favicon.png" />
@@ -122,8 +105,6 @@
     <link rel="shortcut icon" type="image/png" href="favicon.png" />
 
     <style>
-        /* Global styles correctly inherited from nav.css */
-
         * {
             margin: 0;
             padding: 0;
@@ -134,144 +115,77 @@
             overflow-x: hidden;
         }
 
-        /* Global styles correctly inherited from nav.css */
-        /* Mockup Section */
+        /* Mockup */
         .mockup-container {
-            margin: 80px auto 0;
-            max-width: 1000px;
-            perspective: 1500px;
+            margin: 70px auto 0;
+            max-width: 960px;
             position: relative;
         }
 
         .app-mockup {
             width: 100%;
             height: auto;
-            border-radius: 20px;
-            box-shadow:
-                0 50px 100px -20px rgba(15, 23, 42, 0.25),
-                0 30px 60px -30px rgba(99, 102, 241, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transform: rotateX(8deg);
-            transition: all 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
-            image-rendering: -webkit-optimize-contrast;
-            background: var(--bg-dark);
-        }
-
-        .mockup-container:hover .app-mockup {
-            transform: rotateX(0deg) scale(1.03);
-            box-shadow:
-                0 60px 120px -20px rgba(15, 23, 42, 0.3),
-                0 40px 80px -30px rgba(99, 102, 241, 0.4),
-                0 0 50px rgba(139, 92, 246, 0.2);
-        }
-
-        .floating-orb {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-            filter: blur(80px);
-            opacity: 0.15;
-            z-index: -1;
-            animation: float-orb 20s ease-in-out infinite alternate;
-        }
-
-        @keyframes float-orb {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            50% {
-                transform: translate(30px, -20px) scale(1.1);
-            }
-
-            100% {
-                transform: translate(-20px, 30px) scale(0.95);
-            }
-        }
-
-        .pulse {
-            animation: pulse-animation 2s infinite;
-        }
-
-        .stretched-link::after {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 1;
-            content: "";
-        }
-
-        @keyframes pulse-animation {
-            from {
-                transform: translate(-10%, -10%);
-            }
-
-            to {
-                transform: translate(100%, 50%);
-            }
+            border-radius: 14px;
+            box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.12);
         }
 
         /* Stats Bar */
         .stats-bar {
             background: var(--bg-dark);
             color: white;
-            padding: 40px 0;
-            margin-top: -50px;
+            padding: 36px 0;
             position: relative;
             z-index: 10;
         }
 
         .stats-grid {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             text-align: center;
-            gap: 30px;
+            gap: 24px;
         }
 
         .stat-val {
-            font-size: 2.5rem;
+            font-size: 2.1rem;
+            font-weight: 700;
             display: block;
-            margin-bottom: 5px;
-            background: linear-gradient(to right, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            margin-bottom: 4px;
+            font-family: 'Outfit', sans-serif;
+            font-variant-numeric: tabular-nums;
         }
 
         .stat-label {
-            color: #94a3b8;
-            font-size: 0.9rem;
+            color: #9CA3AF;
+            font-size: 0.82rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 0.08em;
             font-weight: 600;
         }
 
         /* Features Section */
         .features {
-            padding: 140px 20px;
-            max-width: 1300px;
+            padding: 110px 20px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 64px;
         }
 
         .section-header h2 {
-            font-size: 3.2rem;
+            font-size: 2.5rem;
             color: var(--text-primary);
-            margin-bottom: 20px;
+            margin-bottom: 14px;
+            letter-spacing: -0.01em;
         }
 
         .section-header p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto;
@@ -279,47 +193,46 @@
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
         }
 
         .f-card {
             background: var(--card-bg);
-            padding: 40px;
-            border-radius: 24px;
+            padding: 32px;
+            border-radius: 14px;
             border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
+            transition: border-color 0.2s ease, transform 0.2s ease;
             position: relative;
         }
 
         .f-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-            border-color: #6366f1;
+            transform: translateY(-4px);
+            border-color: var(--primary);
         }
 
         .f-icon {
-            font-size: 2.5rem;
-            margin-bottom: 24px;
+            font-size: 1.8rem;
+            margin-bottom: 18px;
             display: block;
         }
 
         .f-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 16px;
-            color: var(--bg-dark);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
         }
 
         .f-card p {
             color: var(--text-secondary);
-            font-size: 1.05rem;
-            line-height: 1.75;
+            font-size: 0.98rem;
+            line-height: 1.7;
         }
 
         /* How it works */
         .process {
             background: var(--bg-secondary);
-            padding: 120px 20px;
+            padding: 100px 20px;
         }
 
         .process-steps {
@@ -327,101 +240,76 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 60px;
-            position: relative;
+            gap: 50px;
         }
 
         .step {
             text-align: center;
-            position: relative;
         }
 
         .step-num {
-            width: 50px;
-            height: 50px;
-            background: #6366f1;
+            width: 42px;
+            height: 42px;
+            background: var(--primary);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 24px;
-            font-weight: 800;
-            font-size: 1.2rem;
-            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+            margin: 0 auto 20px;
+            font-weight: 700;
+            font-size: 1.05rem;
         }
 
         .step h3 {
-            font-size: 1.3rem;
+            font-size: 1.15rem;
             color: var(--text-primary);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .step p {
             color: var(--text-secondary);
-            font-size: 1rem;
+            font-size: 0.95rem;
             line-height: 1.7;
         }
 
-        /* ATS Section Overlay */
+        /* ATS Info Card */
         .ats-info {
-            background: linear-gradient(to bottom, var(--bg-secondary) 50%, #fcfcfd 50%);
-            padding: 40px 20px 80px;
+            padding: 0 20px 80px;
             text-align: center;
             position: relative;
-            z-index: 10;
         }
 
         .ats-card {
-            max-width: 1050px;
-            margin: -100px auto 0;
-            background: linear-gradient(135deg, #1e1b4b 0%, #1a1a3e 50%, #0f172a 100%);
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--bg-dark);
             color: white;
-            padding: 60px 80px;
-            border-radius: 24px;
+            padding: 48px 56px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
-            gap: 50px;
+            gap: 40px;
             text-align: left;
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            box-shadow: 0 30px 60px -15px rgba(15, 23, 42, 0.6), 0 0 40px rgba(99, 102, 241, 0.15);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ats-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.2), transparent 50%);
-            pointer-events: none;
+            border-top: 3px solid var(--primary);
         }
 
         .ats-card h3 {
-            font-size: 2rem;
-            margin-bottom: 12px;
-            line-height: 1.2;
-            background: linear-gradient(to right, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            line-height: 1.25;
+            color: white;
         }
 
         @media (max-width: 850px) {
             .ats-card {
                 flex-direction: column;
                 text-align: center;
-                padding: 50px 30px;
-                gap: 20px;
-                margin-top: -60px;
+                padding: 40px 28px;
+                gap: 16px;
             }
-
             .process-steps {
                 grid-template-columns: 1fr;
-            }
-
-            .process-steps::before {
-                display: none;
             }
         }
 
@@ -430,49 +318,37 @@
             color: var(--text-secondary);
             border-top: 1px solid var(--border-color);
             padding-top: 40px;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
 
-        /* Responsiveness */
         @media (max-width: 768px) {
             h1 {
-                font-size: 2.8rem !important;
-                line-height: 1.1 !important;
+                font-size: 2.4rem !important;
+                line-height: 1.15 !important;
             }
-
             .hero {
-                padding: 160px 20px 100px;
+                padding: 150px 20px 90px;
                 min-height: auto;
             }
-
             .section-header h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
-
             .f-card {
-                padding: 32px;
+                padding: 26px;
             }
-
-            .stats-bar {
-                border-radius: 0;
-                max-width: 100%;
-                margin-top: 0;
-            }
-
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
             }
-
             .stat-val {
-                font-size: 2rem;
+                font-size: 1.7rem;
             }
         }
     </style>
 </head>
 
 <body>
-            <nav class="navbar-premium" id="navbar">
+    <nav class="navbar-premium" id="navbar">
         <a href="/" class="brand">CV Manager AI</a>
         <div class="nav-links" id="navLinks">
             <a href="/#features">Features</a>
@@ -501,27 +377,21 @@
     <main>
         <!-- Hero -->
         <section class="hero hero-section">
-            <div class="floating-orb" style="top: 10%; left: -5%;" aria-hidden="true"></div>
-            <div class="floating-orb" style="bottom: 10%; right: -5%; background: var(--secondary);" aria-hidden="true">
-            </div>
-
             <div data-aos="fade-up">
-                <span class="badge-hero">⚡ 50,000+ Resumes Generated</span>
-                <h1>The #1 <span class="text-gradient">AI Resume Builder</span> for ATS-Optimized CVs</h1>
-                <p>Create a professional, recruiter-ready resume in under 60 seconds. Our <strong>AI resume builder</strong> writes your bullet points, optimizes for ATS, and tailors your CV to any job description. Get started for free — build your perfect career path today.</p>
+                <h1>Write your CV with AI, formatted to pass <span class="text-gradient">ATS filters</span></h1>
+                <p>Enter your role and background — the AI writes your bullet points, checks your CV against common ATS parsing rules, and tailors it to a specific job description. Free to start.</p>
 
                 <div class="cta-group">
-            <a href="/app/" class="btn-premium btn-premium-primary" onclick="trackCTA('hero_launch')">Launch AI Builder →</a>
-            <a href="#features" class="btn-premium btn-premium-secondary">See Features</a>
-        </div>
+                    <a href="/app/" class="btn-premium btn-premium-primary" onclick="trackCTA('hero_launch')">Launch AI Builder →</a>
+                    <a href="#features" class="btn-premium btn-premium-secondary">See how it works</a>
+                </div>
             </div>
 
             <div class="mockup-container" data-aos="zoom-in-up" data-aos-delay="200">
-                <img src="assets/landing_page/app_dashboard.png" alt="Real CV Manager AI Dashboard Interface"
+                <img src="assets/landing_page/app_dashboard.png" alt="CV Manager AI dashboard interface"
                     class="app-mockup">
             </div>
 
-            <!-- Manual Ad Unit Section (For AdSense Verification) -->
             <div id="homescreen-ad-container"
                 style="margin-top: 60px; width: 100%; max-width: 970px; height: auto; min-height: 100px; display: flex; align-items: center; justify-content: center; padding: 10px; color: #64748b; font-size: 0.8rem;">
                 <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5276105875006506"
@@ -532,24 +402,24 @@
             </div>
         </section>
 
-        <!-- Stats -->
+        <!-- Stats — real numbers only -->
         <section class="stats-bar">
             <div class="stats-grid">
                 <div class="stat-item">
-                    <span class="stat-val">50,000+</span>
-                    <span class="stat-label">Resumes Created</span>
+                    <span class="stat-val">300+</span>
+                    <span class="stat-label">People signed up</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-val">98%</span>
-                    <span class="stat-label">ATS Pass Rate</span>
+                    <span class="stat-val">5</span>
+                    <span class="stat-label">AI tools included</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-val">12+</span>
-                    <span class="stat-label">Global Languages</span>
+                    <span class="stat-val">Free</span>
+                    <span class="stat-label">To start, no card</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-val">4.9★</span>
-                    <span class="stat-label">User Rating</span>
+                    <span class="stat-val">~60s</span>
+                    <span class="stat-label">To a first draft</span>
                 </div>
             </div>
         </section>
@@ -557,48 +427,40 @@
         <!-- Features -->
         <section class="features" id="features">
             <div class="section-header" data-aos="fade-up">
-                <h2>Designed for Success</h2>
-                <p>Everything you need to stand out in the modern job market.</p>
+                <h2>What the tool actually does</h2>
+                <p>Five specific tools, not a vague promise.</p>
             </div>
 
             <div class="features-grid">
                 <a href="/features/instant-cv-generation.html" class="f-card" data-aos="fade-up" style="text-decoration: none; color: inherit; display: block;">
-                    <span class="f-icon">✨</span>
-                    <h3 style="color: var(--primary); margin-bottom: 12px; transition: color 0.3s;">Instant CV AI Generation</h3>
-                    <p>Just tell us your role. Our <strong>CV AI generator</strong> writes professional bullet points,
-                        summaries, and skills tailored
-                        to your industry standards in seconds.</p>
-                    <span style="display: inline-block; margin-top: 15px; color: var(--primary); font-weight: 700;">Learn How →</span>
+                    <span class="f-icon">✦</span>
+                    <h3>Instant CV generation</h3>
+                    <p>Describe your role and background — the AI drafts bullet points, a summary, and a skills section you can edit.</p>
+                    <span style="display: inline-block; margin-top: 15px; color: var(--primary); font-weight: 700;">Learn more →</span>
                 </a>
                 <a href="/features/ats-optimized-resumes.html" class="f-card" data-aos="fade-up" data-aos-delay="100" style="text-decoration: none; color: inherit; display: block;">
-                    <span class="f-icon">🎯</span>
-                    <h3 style="color: var(--primary); margin-bottom: 12px; transition: color 0.3s;">ATS Optimized AI Resumes</h3>
-                    <p>Stop being ignored by bots. Our <strong>AI resume builder</strong> analyzes your CV against real
-                        ATS filters to ensure you're in the
-                        top 5% of candidates.</p>
-                    <span style="display: inline-block; margin-top: 15px; color: var(--primary); font-weight: 700;">Learn How →</span>
+                    <span class="f-icon">✓</span>
+                    <h3>ATS format check</h3>
+                    <p>Checks your CV's structure against common parsing rules — headings, dates, file structure — so an ATS can read it correctly.</p>
+                    <span style="display: inline-block; margin-top: 15px; color: var(--primary); font-weight: 700;">Learn more →</span>
                 </a>
                 <a href="/features/global-cv-support.html" class="f-card" data-aos="fade-up" data-aos-delay="200" style="text-decoration: none; color: inherit; display: block;">
-                    <span class="f-icon">🌍</span>
-                    <h3 style="color: var(--primary); margin-bottom: 12px; transition: color 0.3s;">Global AI CV Support</h3>
-                    <p>Create AI-powered resumes in English, Arabic (RTL), French, German, Italian, and 8+ other languages. The most
-                        versatile <strong>CV AI</strong> on the market.</p>
-                    <span style="display: inline-block; margin-top: 15px; color: var(--primary); font-weight: 700;">Learn How →</span>
+                    <span class="f-icon">◎</span>
+                    <h3>Multiple languages</h3>
+                    <p>Generate CVs and cover letters in English, Arabic (RTL), French, German, and other supported languages.</p>
+                    <span style="display: inline-block; margin-top: 15px; color: var(--primary); font-weight: 700;">Learn more →</span>
                 </a>
                 <a href="/features/job-specific-tailoring.html" class="f-card" data-aos="fade-up" style="text-decoration: none; color: inherit; display: block;">
-                    <span class="f-icon">🔧</span>
-                    <h3 style="color: var(--primary); margin-bottom: 12px; transition: color 0.3s;">Job-Specific AI Tailoring</h3>
-                    <p>Paste a job description and our <strong>CV AI</strong> will automatically adjust your resume,
-                        highlighting the most
-                        relevant skills for that specific role.</p>
-                    <span style="display: inline-block; margin-top: 15px; color: var(--primary); font-weight: 700;">Learn How →</span>
+                    <span class="f-icon">⌁</span>
+                    <h3>Tailor to a job post</h3>
+                    <p>Paste a job description and the AI adjusts your CV to foreground the skills and keywords that posting actually asks for.</p>
+                    <span style="display: inline-block; margin-top: 15px; color: var(--primary); font-weight: 700;">Learn more →</span>
                 </a>
                 <a href="/features/ai-cover-letter-writer.html" class="f-card" data-aos="fade-up" data-aos-delay="100" style="text-decoration: none; color: inherit; display: block;">
-                    <span class="f-icon">📝</span>
-                    <h3 style="color: var(--primary); margin-bottom: 12px; transition: color 0.3s;">AI Cover Letter Writer</h3>
-                    <p>Generate matching cover letters with our <strong>AI resume generator</strong> that resonate with
-                        recruiters and complement your new CV perfectly.</p>
-                    <span style="display: inline-block; margin-top: 15px; color: var(--primary); font-weight: 700;">Learn How →</span>
+                    <span class="f-icon">✎</span>
+                    <h3>Cover letter writer</h3>
+                    <p>Generates a matching cover letter from the same profile data, so tone and content line up with your CV.</p>
+                    <span style="display: inline-block; margin-top: 15px; color: var(--primary); font-weight: 700;">Learn more →</span>
                 </a>
             </div>
         </section>
@@ -606,401 +468,181 @@
         <!-- Process -->
         <section class="process" id="process">
             <div class="section-header" data-aos="fade-up">
-                <h2>How It Works</h2>
+                <h2>How it works</h2>
             </div>
             <div class="process-steps">
                 <div class="step" data-aos="fade-right">
                     <div class="step-num">1</div>
-                    <h3>Input Details</h3>
-                    <p>Enter your basic info or paste your old resume to get started.</p>
+                    <h3>Add your details</h3>
+                    <p>Enter your background, or paste an existing resume to start from.</p>
                 </div>
                 <div class="step" data-aos="fade-right" data-aos-delay="100">
                     <div class="step-num">2</div>
-                    <h3>AI Refinement</h3>
-                    <p>Our AI optimizes your keywords and professional phrasing.</p>
+                    <h3>AI drafts it</h3>
+                    <p>The AI writes bullet points and checks formatting against ATS rules.</p>
                 </div>
                 <div class="step" data-aos="fade-right" data-aos-delay="200">
                     <div class="step-num">3</div>
-                    <h3>Launch & Land</h3>
-                    <p>Download your PDF and start applying with confidence.</p>
+                    <h3>Edit and download</h3>
+                    <p>Review, adjust anything, and download the PDF.</p>
                 </div>
             </div>
         </section>
 
-        <!-- ATS Special Info -->
+        <!-- ATS Info -->
         <section class="ats-info">
             <div class="ats-card" data-aos="zoom-in">
-                <div style="font-size: 4rem;">🤖</div>
+                <div style="font-size: 3rem;">◈</div>
                 <div>
-                    <h3>Why is ATS optimization critical for your AI Resume?</h3>
-                    <p style="margin-top: 15px; opacity: 0.8; line-height: 1.6;">90% of Fortune 500 companies use
-                        Applicant Tracking Systems to filter candidates. If your <strong>AI CV</strong> lacks the right
-                        keywords or format,
-                        it may never reach a human. CV Manager AI bridges this gap automatically, making it the best
-                        <strong>free CV AI</strong> for job seekers.
-                    </p>
+                    <h3>Why ATS formatting matters</h3>
+                    <p style="margin-top: 12px; opacity: 0.82; line-height: 1.65;">Many companies use an Applicant Tracking System to parse résumés before a human sees them. A CV with unusual formatting, tables, or missing standard headings can be misread or dropped. The ATS checker flags exactly that class of issue before you apply.</p>
                 </div>
             </div>
-            <!-- Niche Targeting Section -->
-            <section class="features" style="background: #fcfcfd; padding-top: 0;">
-                <div class="section-header" data-aos="fade-up">
-                    <h2>Tailored for Every Profession</h2>
-                    <p>Our AI understands the specific requirements for your industry.</p>
-                </div>
-                <div class="features-grid">
-                    <a href="/professions/software-engineers.html" class="f-card" data-aos="fade-up" style="text-decoration: none; color: inherit; display: block;">
-                        <span class="f-icon">💻</span>
-                        <h3 style="color: var(--primary); margin-bottom: 12px; transition: color 0.3s;">AI Resume for Software Engineers</h3>
-                        <p>Highlight your tech stack, GitHub contributions, and project impact with industry-standard
-                            technical phrasing.</p>
-                        <span style="display: inline-block; margin-top: 15px; color: var(--primary); font-weight: 700;">Learn How →</span>
-                    </a>
-                    <a href="/professions/teachers.html" class="f-card" data-aos="fade-up" data-aos-delay="100" style="text-decoration: none; color: inherit; display: block;">
-                        <span class="f-icon">👩‍🏫</span>
-                        <h3 style="color: var(--primary); margin-bottom: 12px; transition: color 0.3s;">AI Resume for Teachers</h3>
-                        <p>Optimize your teaching philosophy and classroom results for school district Applicant
-                            Tracking Systems.</p>
-                        <span style="display: inline-block; margin-top: 15px; color: var(--primary); font-weight: 700;">Learn How →</span>
-                    </a>
-                    <a href="/professions/nurses-healthcare.html" class="f-card" data-aos="fade-up" data-aos-delay="200" style="text-decoration: none; color: inherit; display: block;">
-                        <span class="f-icon">🏥</span>
-                        <h3 style="color: var(--primary); margin-bottom: 12px; transition: color 0.3s;">AI Resume for Nurses & Healthcare</h3>
-                        <p>Ensure your certifications and clinical experience stand out to healthcare recruiters
-                            immediately.</p>
-                        <span style="display: inline-block; margin-top: 15px; color: var(--primary); font-weight: 700;">Learn How →</span>
-                    </a>
-                </div>
-            </section>
+        </section>
 
-            <!-- Technology Deep Dive Section -->
-            <section class="features" style="background: white; padding-bottom: 0;">
-                <div class="section-header" data-aos="fade-up">
-                    <h2>Advanced AI Career Technology</h2>
-                    <p>The science of success behind CV Manager AI.</p>
-                </div>
-                <div
-                    style="max-width: 1000px; margin: 0 auto; line-height: 1.8; color: var(--text-light); text-align: left;">
-                    <div style="margin-bottom: 40px;" data-aos="fade-up">
-                        <h3 style="color: var(--bg-dark); margin-bottom: 15px;">Natural Language Processing in
-                            Recruitment</h3>
-                        <p>Our platform leverages state-of-the-art Natural Language Processing (NLP) models to analyze
-                            job descriptions and candidate profiles. Unlike traditional templates, CV Manager AI doesn't
-                            just format your data; it understands the semantic meaning behind your professional
-                            experiences. This allows the AI to suggest achievements that resonate with specific industry
-                            standards and recruitment expectations for 2026.</p>
-                        <p style="margin-top: 15px;">By utilizing Large Language Models (LLMs), we can provide
-                            contextual suggestions that go beyond simple keyword matching. The AI identifies core
-                            competencies and soft skills that are often missed by human writers, ensuring that every
-                            bullet point on your resume serves a clear strategic purpose.</p>
+        <!-- Tailored for Professions -->
+        <section class="features" style="background: var(--bg-secondary); padding-top: 100px;">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Guides by profession</h2>
+                <p>What actually matters for your field, not generic advice.</p>
+            </div>
+            <div class="features-grid" style="max-width:1100px; margin: 0 auto; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+                <a href="/professions/software-engineers.html" style="text-decoration:none; color:inherit;">
+                    <div class="f-card" style="text-align:center; padding: 28px;">
+                        <div style="font-size:2rem; margin-bottom:14px;">💻</div>
+                        <h4 style="margin-bottom:8px;">Software Engineers</h4>
+                        <p style="font-size:0.88rem; color:var(--text-light);">Tech-stack listing, GitHub links, ATS quirks in engineering job boards.</p>
                     </div>
-                    <div style="margin-bottom: 40px;" data-aos="fade-up" data-aos-delay="100">
-                        <h3 style="color: var(--bg-dark); margin-bottom: 15px;">The Algorithmic Approach to ATS Scoring
-                        </h3>
-                        <p>Applicant Tracking Systems (ATS) are used by over 95% of Fortune 500 companies. These systems
-                            rank candidates based on complex algorithms that look for specific data structures and
-                            keyword densities. CV Manager AI reverse-engineers these preferences to ensure your CV is
-                            not just "readable" by a bot, but highly ranked.</p>
-                        <p style="margin-top: 15px;">We focus on three primary pillars of ATS success: Parsing Accuracy,
-                            Keyword Optimization, and Semantic Relevance. Our system verifies that every heading, date
-                            format, and list is structured in a clean, standardized way that is guaranteed to pass
-                            through filters at top-tier companies like Google, Amazon, and Microsoft.</p>
+                </a>
+                <a href="/professions/accountant.html" style="text-decoration:none; color:inherit;">
+                    <div class="f-card" style="text-align:center; padding: 28px;">
+                        <div style="font-size:2rem; margin-bottom:14px;">📊</div>
+                        <h4 style="margin-bottom:8px;">Accountants</h4>
+                        <p style="font-size:0.88rem; color:var(--text-light);">Certifications, compliance language, and quantifying financial impact.</p>
                     </div>
-                </div>
-            </section>
+                </a>
+                <a href="/professions/nurses-healthcare.html" style="text-decoration:none; color:inherit;">
+                    <div class="f-card" style="text-align:center; padding: 28px;">
+                        <div style="font-size:2rem; margin-bottom:14px;">🏥</div>
+                        <h4 style="margin-bottom:8px;">Healthcare</h4>
+                        <p style="font-size:0.88rem; color:var(--text-light);">Licensure, clinical hours, and how healthcare ATS systems parse credentials.</p>
+                    </div>
+                </a>
+                <a href="/professions/data-scientist.html" style="text-decoration:none; color:inherit;">
+                    <div class="f-card" style="text-align:center; padding: 28px;">
+                        <div style="font-size:2rem; margin-bottom:14px;">📈</div>
+                        <h4 style="margin-bottom:8px;">Data Science</h4>
+                        <p style="font-size:0.88rem; color:var(--text-light);">Framing model work and measurable outcomes recruiters actually scan for.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
 
+        <!-- Comparisons — factual, no invented stats -->
+        <section style="padding: 100px 20px; background: var(--bg-dark); color: white;">
+            <div class="section-header" data-aos="fade-up">
+                <h2 style="color: white;">How it compares</h2>
+                <p style="color: #9CA3AF;">Read the detailed, factual comparison — no invented scores.</p>
+            </div>
+            <div class="features-grid" style="max-width: 1100px; margin: 0 auto; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+                <a href="/vs/cv-manager-ai-vs-canva.html" class="f-card" data-aos="fade-up" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); text-decoration: none;">
+                    <span style="font-size: 1.15rem; font-weight: 700; color: #fff;">vs Canva</span>
+                    <p style="color: #9CA3AF; font-size: 0.9rem; line-height: 1.6; margin-top: 12px;">Canva is design-first and template-driven; this tool writes and structures content for ATS parsing.</p>
+                    <span style="display: inline-block; margin-top: 16px; color: var(--primary-light); font-weight: 700; font-size: 0.88rem;">Read the comparison →</span>
+                </a>
+                <a href="/vs/cv-manager-ai-vs-zety.html" class="f-card" data-aos="fade-up" data-aos-delay="100" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); text-decoration: none;">
+                    <span style="font-size: 1.15rem; font-weight: 700; color: #fff;">vs Zety</span>
+                    <p style="color: #9CA3AF; font-size: 0.9rem; line-height: 1.6; margin-top: 12px;">Zety is subscription-based; the core CV generation and ATS check here are free.</p>
+                    <span style="display: inline-block; margin-top: 16px; color: var(--primary-light); font-weight: 700; font-size: 0.88rem;">Read the comparison →</span>
+                </a>
+                <a href="/vs/cv-manager-ai-vs-resume-io.html" class="f-card" data-aos="fade-up" data-aos-delay="200" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); text-decoration: none;">
+                    <span style="font-size: 1.15rem; font-weight: 700; color: #fff;">vs Resume.io</span>
+                    <p style="color: #9CA3AF; font-size: 0.9rem; line-height: 1.6; margin-top: 12px;">Resume.io focuses on templates; this tool also tailors content per job description.</p>
+                    <span style="display: inline-block; margin-top: 16px; color: var(--primary-light); font-weight: 700; font-size: 0.88rem;">Read the comparison →</span>
+                </a>
+                <a href="/vs/cv-manager-ai-vs-kickresume.html" class="f-card" data-aos="fade-up" data-aos-delay="300" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); text-decoration: none;">
+                    <span style="font-size: 1.15rem; font-weight: 700; color: #fff;">vs Kickresume</span>
+                    <p style="color: #9CA3AF; font-size: 0.9rem; line-height: 1.6; margin-top: 12px;">Similar AI-assisted approach; the differences are in pricing and language coverage — details in the full comparison.</p>
+                    <span style="display: inline-block; margin-top: 16px; color: var(--primary-light); font-weight: 700; font-size: 0.88rem;">Read the comparison →</span>
+                </a>
+            </div>
+        </section>
 
-            <!-- Our Mission / About Section -->
-            <section class="features" id="about" style="background: white;">
-                <div class="section-header" data-aos="fade-up">
-                    <h2>Our Mission & Story</h2>
-                    <p>Why we built CV Manager AI.</p>
-                </div>
-                <div
-                    style="max-width: 900px; margin: 0 auto; line-height: 1.8; color: var(--text-light); text-align: center; padding: 0 20px;">
-                    <p style="font-size: 1.1rem; margin-bottom: 25px;">At <strong>CV Manager AI</strong>, we believe
-                        that high-quality career tools should be accessible to everyone, regardless of their budget or
-                        background. The modern job search is increasingly dominated by algorithms and automated filters,
-                        which can often overlook talented individuals due to simple formatting errors or keyword
-                        mismatches.</p>
-                    <p style="font-size: 1.1rem; margin-bottom: 25px;">Our team of recruitment experts and AI engineers
-                        developed this platform to bridge the gap between human talent and digital parsers. By combining
-                        the latest in Large Language Models with deep industry insight, we provide a tool that doesn't
-                        just "build resumes"—it empowers careers.</p>
-                    <p style="font-size: 1.1rem;">We are committed to continuous improvement, ensuring that our AI
-                        remains updated with the latest 2026 recruitment trends and ATS standards. Thank you for
-                        choosing CV Manager AI to be part of your professional journey.</p>
-                </div>
-            </section>
-
-            <!-- FAQ Section -->
-            <section class="features" id="faq" style="background: white;">
-                <div class="section-header" data-aos="fade-up">
-                    <h2 style="font-size: 2.5rem;">Frequently Asked Questions</h2>
-                    <p>Learn more about how CV Manager AI helps your career.</p>
-                </div>
-                <div style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
-                    <div style="margin-bottom: 30px;" data-aos="fade-up">
-                        <h3 style="font-size: 1.25rem; margin-bottom: 10px; color: var(--bg-dark);">How can I create a
-                            CV for free using AI?</h3>
-                        <p style="color: var(--text-light); line-height: 1.6;">Simply launch the CV Manager AI app,
-                            enter your professional details or paste your old resume. Our AI generator will instantly
-                            write high-quality bullet points and summaries tailored to your target role.</p>
+        <!-- Before / After (labeled as an illustrative example) -->
+        <section class="features" style="background: white;">
+            <div class="section-header" data-aos="fade-up">
+                <h2>An example of what the AI changes</h2>
+                <p>Illustrative example — not a specific user's result.</p>
+            </div>
+            <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:24px;" data-aos="fade-up">
+                <div style="background:#FBF4F2;border:1px solid #EAD5CF;border-radius:14px;padding:28px;">
+                    <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+                        <span style="background:#B23B2C;color:white;padding:4px 12px;border-radius:6px;font-size:0.78rem;font-weight:700;">BEFORE</span>
+                        <span style="color:var(--text-light);font-size:0.88rem;">Generic wording</span>
                     </div>
-                    <div style="margin-bottom: 30px;" data-aos="fade-up" data-aos-delay="100">
-                        <h3 style="font-size: 1.25rem; margin-bottom: 10px; color: var(--bg-dark);">Is CV Manager AI
-                            really free?</h3>
-                        <p style="color: var(--text-light); line-height: 1.6;">Yes! You can generate, optimize, and
-                            download your CV as a professional PDF for free. We believe everyone deserves access to
-                            top-tier career tools.</p>
-                    </div>
-
-                    <div style="margin-bottom: 30px;" data-aos="fade-up" data-aos-delay="200">
-                        <h3 style="font-size: 1.25rem; margin-bottom: 10px; color: var(--bg-dark);">Does this AI resume
-                            builder support ATS?</h3>
-                        <p style="color: var(--text-light); line-height: 1.6;">Absolutely. Our templates and AI-written
-                            content are specifically designed to be highly readable by Applicant Tracking Systems (ATS),
-                            helping you pass the initial bot filters.</p>
-                    </div>
-                    <div style="margin-bottom: 30px;" data-aos="fade-up" data-aos-delay="300">
-                        <h3 style="font-size: 1.25rem; margin-bottom: 10px; color: var(--bg-dark);">Can I create a cover
-                            letter with the AI?</h3>
-                        <p style="color: var(--text-light); line-height: 1.6;">Yes, CV Manager AI includes a smart cover
-                            letter generator that matches your resume's tone and highlights your best achievements for
-                            the specific job you're applying for.</p>
+                    <div style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:0.86rem;line-height:1.8;color:var(--text-secondary);">
+                        <p>• Responsible for managing projects</p>
+                        <p>• Helped with marketing campaigns</p>
+                        <p>• Did customer service tasks</p>
                     </div>
                 </div>
-            </section>
-
-            <!-- Role-Specific Section -->
-            <section class="features" id="professions" style="padding: 100px 20px; background: white;">
-                <div class="section-header" data-aos="fade-up">
-                    <div style="display:inline-block;padding:8px 16px;background:rgba(99, 102, 241, 0.1);border-radius:100px;color:#6366f1;font-weight:700;font-size:0.85rem;margin-bottom:20px;">
-                        Niche-Specific SEO Optimization
+                <div style="background:#F1F7F3;border:1px solid #CBE3D2;border-radius:14px;padding:28px;">
+                    <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+                        <span style="background:#2C6E4A;color:white;padding:4px 12px;border-radius:6px;font-size:0.78rem;font-weight:700;">AFTER</span>
+                        <span style="color:var(--text-light);font-size:0.88rem;">Specific, quantified</span>
                     </div>
-                    <h2>Tailored for Your Industry</h2>
-                    <p>Get a CV that speaks the language of your specific field.</p>
-                </div>
-                <div class="features-grid" style="max-width:1100px; margin: 0 auto; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-                    <a href="/professions/software-engineers.html" style="text-decoration:none; color:inherit;">
-                        <div class="f-card" style="text-align:center; padding: 30px; transition: transform 0.3s ease;">
-                            <div style="font-size:2.5rem; margin-bottom:15px;">💻</div>
-                            <h4 style="margin-bottom:10px;">Software Engineers</h4>
-                            <p style="font-size:0.9rem; color:#64748b;">Optimized for Tech ATS and GitHub integration.</p>
-                        </div>
-                    </a>
-                    <a href="/professions/accountant.html" style="text-decoration:none; color:inherit;">
-                        <div class="f-card" style="text-align:center; padding: 30px; transition: transform 0.3s ease;">
-                            <div style="font-size:2.5rem; margin-bottom:15px;">📊</div>
-                            <h4 style="margin-bottom:10px;">Accountants</h4>
-                            <p style="font-size:0.9rem; color:#64748b;">Focused on CPA compliance and financial metrics.</p>
-                        </div>
-                    </a>
-                    <a href="/professions/nurses-healthcare.html" style="text-decoration:none; color:inherit;">
-                        <div class="f-card" style="text-align:center; padding: 30px; transition: transform 0.3s ease;">
-                            <div style="font-size:2.5rem; margin-bottom:15px;">🏥</div>
-                            <h4 style="margin-bottom:10px;">Healthcare</h4>
-                            <p style="font-size:0.9rem; color:#64748b;">Highlighting clinical skills and patient outcomes.</p>
-                        </div>
-                    </a>
-                    <a href="/professions/data-scientist.html" style="text-decoration:none; color:inherit;">
-                        <div class="f-card" style="text-align:center; padding: 30px; transition: transform 0.3s ease;">
-                            <div style="font-size:2.5rem; margin-bottom:15px;">🧬</div>
-                            <h4 style="margin-bottom:10px;">Data Science</h4>
-                            <p style="font-size:0.9rem; color:#64748b;">Showcasing ML models and data-driven ROI.</p>
-                        </div>
-                    </a>
-                </div>
-            </section>
-
-            <!-- Premium Comparison Section -->
-            <section style="padding: 120px 20px; background: linear-gradient(135deg, #1e1b4b 0%, #1a1a3e 50%, #0f172a 100%); color: white; position: relative; overflow: hidden;">
-                <div class="floating-orb" style="top: 10%; right: -5%; opacity: 0.1;" aria-hidden="true"></div>
-                
-                <div class="section-header" data-aos="fade-up">
-                    <div style="display:inline-block; padding:8px 16px; background:rgba(99, 102, 241, 0.1); color:#818cf8; border-radius:100px; font-weight:700; margin-bottom:20px; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase;">
-                        Built for Performance
-                    </div>
-                    <h2 style="color: white; font-size: 3.5rem;">Compare Builders</h2>
-                    <p style="color: #94a3b8; font-size: 1.2rem; max-width: 700px; margin: 0 auto;">See why 50,000+ professionals choose CV Manager AI over legacy platforms.</p>
-                </div>
-
-                <div class="features-grid" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
-                    <!-- vs Canva -->
-                    <a href="/vs/cv-manager-ai-vs-canva.html" class="f-card" data-aos="fade-up" style="background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); text-decoration: none; transition: transform 0.3s ease;">
-                        <div style="display:flex; justify-content: space-between; align-items: start; margin-bottom: 24px;">
-                            <span style="font-size: 1.5rem; font-weight: 800; color: #fff;">vs Canva</span>
-                            <span style="padding: 4px 12px; background: #10b981; color: white; border-radius: 100px; font-size: 0.75rem; font-weight: 800;">TECH WINNER</span>
-                        </div>
-                        <div style="margin-bottom: 20px;">
-                            <div style="display:flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px; color: #94a3b8;">
-                                <span>ATS Optimization</span>
-                                <span style="color: #10b981; font-weight: 700;">99%</span>
-                            </div>
-                            <div style="height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden;">
-                                <div style="width: 99%; height: 100%; background: #6366f1;"></div>
-                            </div>
-                        </div>
-                        <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6;">98% of corporate recruiters use ATS. Canva is design-first; we are machine-first.</p>
-                        <span style="display: inline-block; margin-top: 20px; color: #818cf8; font-weight: 700; font-size: 0.9rem;">View Technical Deep-Dive →</span>
-                    </a>
-
-                    <!-- vs Zety -->
-                    <a href="/vs/cv-manager-ai-vs-zety.html" class="f-card" data-aos="fade-up" data-aos-delay="100" style="background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); text-decoration: none;">
-                        <div style="display:flex; justify-content: space-between; align-items: start; margin-bottom: 24px;">
-                            <span style="font-size: 1.5rem; font-weight: 800; color: #fff;">vs Zety</span>
-                            <span style="padding: 4px 12px; background: #6366f1; color: white; border-radius: 100px; font-size: 0.75rem; font-weight: 800;">VALUE WINNER</span>
-                        </div>
-                        <div style="margin-bottom: 20px;">
-                            <div style="display:flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px; color: #94a3b8;">
-                                <span>AI Generation Depth</span>
-                                <span style="color: #818cf8; font-weight: 700;">High</span>
-                            </div>
-                            <div style="height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden;">
-                                <div style="width: 95%; height: 100%; background: #8b5cf6;"></div>
-                            </div>
-                        </div>
-                        <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6;">Why pay high monthly fees? Level up your career with next-gen AI for free.</p>
-                        <span style="display: inline-block; margin-top: 20px; color: #818cf8; font-weight: 700; font-size: 0.9rem;">See Pricing Comparison →</span>
-                    </a>
-
-                    <!-- vs Resume.io -->
-                    <a href="/vs/cv-manager-ai-vs-resume-io.html" class="f-card" data-aos="fade-up" data-aos-delay="200" style="background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); text-decoration: none;">
-                        <div style="display:flex; justify-content: space-between; align-items: start; margin-bottom: 24px;">
-                            <span style="font-size: 1.5rem; font-weight: 800; color: #fff;">vs Resume.io</span>
-                            <span style="padding: 4px 12px; background: #ec4899; color: white; border-radius: 100px; font-size: 0.75rem; font-weight: 800;">AI WINNER</span>
-                        </div>
-                        <div style="margin-bottom: 20px;">
-                            <div style="display:flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px; color: #94a3b8;">
-                                <span>Contextual Tailoring</span>
-                                <span style="color: #ec4899; font-weight: 700;">100%</span>
-                            </div>
-                            <div style="height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden;">
-                                <div style="width: 100%; height: 100%; background: #ec4899;"></div>
-                            </div>
-                        </div>
-                        <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6;">Don't just use templates. Our LLM-engine tailors every word to the job lead.</p>
-                        <span style="display: inline-block; margin-top: 20px; color: #818cf8; font-weight: 700; font-size: 0.9rem;">Check AI Benchmarks →</span>
-                    </a>
-
-                    <!-- vs Kickresume -->
-                    <a href="/vs/cv-manager-ai-vs-kickresume.html" class="f-card" data-aos="fade-up" data-aos-delay="300" style="background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); text-decoration: none;">
-                        <div style="display:flex; justify-content: space-between; align-items: start; margin-bottom: 24px;">
-                            <span style="font-size: 1.5rem; font-weight: 800; color: #fff;">vs Kickresume</span>
-                            <span style="padding: 4px 12px; background: #f59e0b; color: white; border-radius: 100px; font-size: 0.75rem; font-weight: 800;">DATA WINNER</span>
-                        </div>
-                        <div style="margin-bottom: 20px;">
-                            <div style="display:flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px; color: #94a3b8;">
-                                <span>Interview Rate Increase</span>
-                                <span style="color: #f59e0b; font-weight: 700;">+44%</span>
-                            </div>
-                            <div style="height: 6px; background: rgba(255,255,255,0.1); border-radius: 100px; overflow: hidden;">
-                                <div style="width: 88%; height: 100%; background: #f59e0b;"></div>
-                            </div>
-                        </div>
-                        <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6;">Built for the corporate boardroom, not just the designer's portfolio.</p>
-                        <span style="display: inline-block; margin-top: 20px; color: #818cf8; font-weight: 700; font-size: 0.9rem;">View Performance Data →</span>
-                    </a>
-                </div>
-            </section>
-
-            <!-- Testimonials Section -->
-            <section class="features" id="testimonials" style="background:#f8fafc; border-top:1px solid #e2e8f0;">
-                <div class="section-header" data-aos="fade-up">
-                    <div style="display:inline-flex;align-items:center;padding:8px 16px;background:rgba(99, 102, 241, 0.1);border-radius:100px;color:#6366f1;font-weight:700;font-size:0.85rem;margin-bottom:20px;gap:8px;">
-                        <span>⭐</span> Trustpilot 4.9/5
-                    </div>
-                    <h2>Trusted by 12,840+ Job Seekers</h2>
-                    <p>Real results from professionals who landed interviews at top global companies.</p>
-                </div>
-                <div class="features-grid" style="max-width:1200px;margin:0 auto;">
-                    <div class="f-card" data-aos="fade-up" style="text-align:left; border: 1px solid #e2e8f0; background: white;">
-                        <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
-                            <div style="width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#1e1b4b 0%,#1a1a3e 50%,#0f172a 100%);display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:1.2rem;box-shadow: 0 4px 12px rgba(99,102,241,0.3);">SM</div>
-                            <div><strong style="display:block;font-size:1.1rem;">Sarah Miller</strong><span style="color:#64748b;font-size:0.9rem;">Senior Software Engineer</span></div>
-                        </div>
-                        <div style="color:#f59e0b;margin-bottom:12px;font-size:1.1rem;">★★★★★</div>
-                        <p style="font-style:italic;line-height:1.7;color:var(--text-light);">&ldquo;I sent out 20 applications with my old CV and got zero callbacks. After using CV Manager AI, I landed 4 interviews in the first week at major tech firms. The ATS optimization is genuinely game-changing.&rdquo;</p>
-                        <div style="margin-top:20px;padding-top:16px;border-top:1px solid #f1f5f9;display:flex;align-items:center;gap:8px;font-size:0.8rem;color:#94a3b8;font-weight:600;">
-                            <span style="color:#10b981;">✓</span> Verified Review
-                        </div>
-                    </div>
-                    <div class="f-card" data-aos="fade-up" data-aos-delay="100" style="text-align:left; border: 1px solid #e2e8f0; background: white;">
-                        <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
-                            <div style="width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#ec4899,#f43f5e);display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:1.2rem;box-shadow: 0 4px 12px rgba(236,72,153,0.3);">AK</div>
-                            <div><strong style="display:block;font-size:1.1rem;">Ahmed Khan</strong><span style="color:#64748b;font-size:0.9rem;">Digital Marketing Lead</span></div>
-                        </div>
-                        <div style="color:#f59e0b;margin-bottom:12px;font-size:1.1rem;">★★★★★</div>
-                        <p style="font-style:italic;line-height:1.7;color:var(--text-light);">&ldquo;As a non-native English speaker, writing a professional CV felt impossible. CV Manager AI wrote better, more impactful bullet points than any expensive consultant I hired. It's an essential tool.&rdquo;</p>
-                        <div style="margin-top:20px;padding-top:16px;border-top:1px solid #f1f5f9;display:flex;align-items:center;gap:8px;font-size:0.8rem;color:#94a3b8;font-weight:600;">
-                            <span style="color:#10b981;">✓</span> Verified Review
-                        </div>
-                    </div>
-                    <div class="f-card" data-aos="fade-up" data-aos-delay="200" style="text-align:left; border: 1px solid #e2e8f0; background: white;">
-                        <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
-                            <div style="width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#10b981,#059669);display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:1.2rem;box-shadow: 0 4px 12px rgba(16,185,129,0.3);">JT</div>
-                            <div><strong style="display:block;font-size:1.1rem;">Julia Thompson</strong><span style="color:#64748b;font-size:0.9rem;">Data Science Specialist</span></div>
-                        </div>
-                        <div style="color:#f59e0b;margin-bottom:12px;font-size:1.1rem;">★★★★★</div>
-                        <p style="font-style:italic;line-height:1.7;color:var(--text-light);">&ldquo;I was switching careers from finance to data. The AI tailored my CV to highlight my transferable skills perfectly. Got an offer within 3 weeks. I can't recommend this enough for career pivots.&rdquo;</p>
-                        <div style="margin-top:20px;padding-top:16px;border-top:1px solid #f1f5f9;display:flex;align-items:center;gap:8px;font-size:0.8rem;color:#94a3b8;font-weight:600;">
-                            <span style="color:#10b981;">✓</span> Verified Review
-                        </div>
+                    <div style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:0.86rem;line-height:1.8;color:var(--text-secondary);">
+                        <p>• Led a cross-functional team of 8 across 3 concurrent projects</p>
+                        <p>• Ran paid campaigns across two channels within a set budget</p>
+                        <p>• Handled inbound support tickets within an SLA window</p>
                     </div>
                 </div>
-                <div style="text-align:center;margin-top:30px;">
-                    <div style="display:inline-flex;align-items:center;gap:12px;color:#64748b;font-size:1rem;font-weight:600;">
-                        <span style="color:#10b981;font-size:1.2rem;">⭐</span> Rated 4.9/5 by 12,840+ users on G2, Capterra, and Trustpilot
-                    </div>
-                </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Before / After Section -->
-            <section class="features" id="before-after" style="background:white;">
-                <div class="section-header" data-aos="fade-up">
-                    <h2>See the Difference AI Makes</h2>
-                    <p>From a generic CV to an ATS-scoring powerhouse — in under 60 seconds.</p>
-                </div>
-                <div class="features-grid-2col" style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px;" data-aos="fade-up">
-                    <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:20px;padding:32px;">
-                        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
-                            <span style="background:#ef4444;color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:700;">❌ BEFORE</span>
-                            <span style="color:#64748b;font-size:0.9rem;">Generic CV</span>
-                        </div>
-                        <div style="font-family:monospace;font-size:0.9rem;line-height:1.8;color:#475569;">
-                            <p><strong>Experience</strong></p>
-                            <p>• Responsible for managing projects</p>
-                            <p>• Helped with marketing campaigns</p>
-                            <p>• Did customer service tasks</p>
-                            <p style="margin-top:16px;"><strong>ATS Score: 42%</strong> 😞</p>
-                        </div>
-                    </div>
-                    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:20px;padding:32px;">
-                        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
-                            <span style="background:#10b981;color:white;padding:4px 12px;border-radius:100px;font-size:0.8rem;font-weight:700;">✅ AFTER AI</span>
-                            <span style="color:#64748b;font-size:0.9rem;">ATS-Optimized</span>
-                        </div>
-                        <div style="font-family:monospace;font-size:0.9rem;line-height:1.8;color:#475569;">
-                            <p><strong>Professional Experience</strong></p>
-                            <p>• Led cross-functional teams of 8, delivering 3 projects on time, reducing costs by 22%</p>
-                            <p>• Launched 5 paid campaigns generating $180K revenue in Q3 2026</p>
-                            <p>• Resolved 95% of customer issues within SLA, achieving 4.8/5 CSAT score</p>
-                            <p style="margin-top:16px;"><strong>ATS Score: 96%</strong> 🚀</p>
-                        </div>
-                    </div>
-                </div>
+        <!-- Why we built this -->
+        <section class="features" id="about" style="background: var(--bg-secondary);">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Why this exists</h2>
+            </div>
+            <div style="max-width: 700px; margin: 0 auto; line-height: 1.8; color: var(--text-secondary); text-align: center; padding: 0 20px;">
+                <p style="font-size: 1.05rem;">A well-formatted CV shouldn't require design software or a paid subscription. This tool exists to make the two things that actually matter — clear writing and correct ATS formatting — free to get right, in a couple of minutes.</p>
+            </div>
+        </section>
 
-            </section>
-
-            <!-- Mid-Page CTA Banner -->
-            <section style="background:linear-gradient(135deg,#1e1b4b 0%,#1a1a3e 50%,#0f172a 100%);padding:80px 20px;text-align:center;position:relative;overflow:hidden;">
-                <div style="position:absolute;inset:0;background:radial-gradient(ellipse 600px 300px at 50% 0%,rgba(99,102,241,0.3) 0%,transparent 70%);pointer-events:none;"></div>
-                <div style="position:relative;z-index:1;max-width:700px;margin:0 auto;">
-                    <h2 style="color:white;font-size:2.5rem;margin-bottom:16px;">Ready to Land More Interviews?</h2>
-                    <p style="color:#94a3b8;margin-bottom:32px;font-size:1.1rem;">Join 50,000+ job seekers who built ATS-optimized resumes with CV Manager AI — completely free.</p>
-                    <a href="/app/" class="btn" onclick="trackCTA('midpage_cta')" style="background:white;color:#4f46e5;font-weight:800;font-size:1.1rem;padding:20px 44px;border-radius:14px;text-decoration:none;display:inline-block;box-shadow:0 10px 30px rgba(0,0,0,0.3);transition:all 0.3s;">Generate ATS-Optimized CV Free →</a>
-                    <div style="margin-top:24px;color:rgba(255,255,255,0.5);font-size:0.9rem;">✓ No credit card &nbsp;&nbsp; ✓ Ready in 60 seconds &nbsp;&nbsp; ✓ Free PDF download</div>
+        <!-- FAQ -->
+        <section class="features" id="faq" style="background: white;">
+            <div class="section-header" data-aos="fade-up">
+                <h2 style="font-size: 2.1rem;">Frequently asked questions</h2>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
+                <div style="margin-bottom: 28px;" data-aos="fade-up">
+                    <h3 style="font-size: 1.15rem; margin-bottom: 8px; color: var(--text-primary);">How can I create a CV for free using AI?</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.65;">Launch the app, enter your details or paste an old resume, and the AI drafts bullet points and a summary tailored to your target role.</p>
                 </div>
-            </section>
+                <div style="margin-bottom: 28px;" data-aos="fade-up" data-aos-delay="100">
+                    <h3 style="font-size: 1.15rem; margin-bottom: 8px; color: var(--text-primary);">Is it really free?</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.65;">Generating, optimizing, and downloading your CV as a PDF is free to start. Some AI-heavy actions use a small credit allowance.</p>
+                </div>
+                <div style="margin-bottom: 28px;" data-aos="fade-up" data-aos-delay="200">
+                    <h3 style="font-size: 1.15rem; margin-bottom: 8px; color: var(--text-primary);">Does it check ATS compatibility?</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.65;">Yes — the ATS checker reviews structure, headings, and formatting against common parsing rules used by Applicant Tracking Systems.</p>
+                </div>
+                <div style="margin-bottom: 28px;" data-aos="fade-up" data-aos-delay="300">
+                    <h3 style="font-size: 1.15rem; margin-bottom: 8px; color: var(--text-primary);">Can I generate a cover letter too?</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.65;">Yes — the cover letter tool uses the same profile data so tone and content match your CV.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mid-Page CTA -->
+        <section class="cta-section" style="padding:80px 20px;text-align:center;">
+            <div style="position:relative;z-index:1;max-width:640px;margin:0 auto;">
+                <h2 style="font-size:2.1rem;margin-bottom:14px;">Build your CV in about a minute</h2>
+                <p style="margin-bottom:28px;font-size:1.05rem;">Free to start. No credit card required.</p>
+                <a href="/app/" class="btn-premium btn-premium-white" onclick="trackCTA('midpage_cta')">Generate ATS-Optimized CV Free →</a>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -1008,8 +650,7 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <a href="/" class="brand footer-logo">CV Manager AI</a>
-                <p style="color: var(--text-light); margin-top: 10px;">The next generation of career tools. Empowering
-                    job seekers with professional AI technology.</p>
+                <p style="color: var(--text-light); margin-top: 10px;">A free AI resume builder — writing and ATS formatting, without a design tool or a subscription.</p>
             </div>
             <div class="footer-col">
                 <h4>AI Career Tools</h4>
@@ -1017,9 +658,8 @@
                     <li><a href="/app/#/generate-cv" title="Generate Free CV with AI">Generate Free CV with AI</a></li>
                     <li><a href="/app/#/optimize-cv" title="Optimize CV using AI">Optimize CV with AI</a></li>
                     <li><a href="/app/#/tailor-cv" title="Tailor CV to Job Description">Tailor AI Resume</a></li>
-                    <li><a href="/ats-checker.html" title="Check ATS Score Free">Free ATS Score Checker <span style="color: #6366f1; font-weight: 700;">(Check Score Free)</span></a></li>
-                    <li><a href="/app/#/generate-cover-letter" title="AI Cover Letter Generator">Create AI Cover
-                            Letter</a></li>
+                    <li><a href="/ats-checker.html" title="Check ATS Score Free">Free ATS Score Checker</a></li>
+                    <li><a href="/app/#/generate-cover-letter" title="AI Cover Letter Generator">Create AI Cover Letter</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -1038,7 +678,6 @@
                     <li><a href="/professions/data-scientist.html">Data Scientist</a></li>
                     <li><a href="/professions/project-manager.html">Project Manager</a></li>
                     <li><a href="/professions/ux-designer.html">UX Designer</a></li>
-                    <li><a href="/resume/software-engineer.html">Software Engineer</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -1053,8 +692,8 @@
             <div class="footer-col">
                 <h4>Resume Skills</h4>
                 <ul>
-                    <li><a href="/resume-skills/sql.html">SQL Mastery</a></li>
-                    <li><a href="/resume-skills/leadership.html">Leadership Skills</a></li>
+                    <li><a href="/resume-skills/sql.html">SQL</a></li>
+                    <li><a href="/resume-skills/leadership.html">Leadership</a></li>
                     <li><a href="/resume-skills/project-management.html">Project Management</a></li>
                     <li><a href="/blog/top-action-verbs-for-cv.html">Action Verbs</a></li>
                 </ul>
@@ -1078,10 +717,7 @@
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2026 CV Manager AI. All rights reserved.</p>
-            <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.7;">
-                Created with excellence for job seekers worldwide.
-            </p>
+            <p>&copy; 2026 CV Manager AI.</p>
         </div>
     </footer>
 
@@ -1089,9 +725,8 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="nav.js"></script>
     <script>
-        // Init AOS
         AOS.init({
-            duration: 1000,
+            duration: 800,
             once: true,
             offset: 100
         });
