@@ -42,7 +42,7 @@
     --text-main: #14181C;
 
     /* Flat ink sections — no rainbow gradients */
-    --gradient-primary: #1E4FD6;
+    --gradient-primary: #7A1F2B;
     --gradient-hero: #FAF9F6;
     --gradient-dark: #14181C;
 
@@ -790,7 +790,7 @@ div.header p {
 }
 
 .footer-col a:hover {
-    color: #a5b4fc;
+    color: #D9A9AE;
     padding-left: 5px;
 }
 
@@ -820,7 +820,7 @@ div.header p {
 
 .copyright a:hover,
 .footer-bottom a:hover {
-    color: #a5b4fc;
+    color: #D9A9AE;
 }
 
 /* === Standardized CTA Banner (matches header dark navy) === */
