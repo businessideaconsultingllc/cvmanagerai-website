@@ -8,7 +8,7 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cvmanagerai.com/ats-checker.html">
     <meta property="og:title" content="Free ATS Resume Checker | CV Manager AI">
-    <meta property="og:description" content="Instantly check if your resume will pass ATS. Get a keyword score, gap analysis, and AI-powered fix suggestions for free.">
+    <meta property="og:description" content="Instantly check if your resume will pass ATS. Get a keyword score, gap analysis, and specific fix suggestions for free.">
     <meta property="og:url" content="https://cvmanagerai.com/ats-checker.html">
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"WebApplication","name":"Free ATS Resume Checker","description":"Check your resume's ATS compatibility score instantly. Enter your resume text and job title to receive a keyword analysis and score.","url":"https://cvmanagerai.com/ats-checker.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"applicationCategory":"ResumeBuilder"}
@@ -616,9 +616,19 @@
     // ── KEYWORD MAP ──
     const keywordMap = {
         'software engineer': ['Python','JavaScript','React','Node.js','REST API','Git','Docker','CI/CD','Agile','SQL','AWS','TypeScript','APIs','microservices'],
+        'developer': ['Python','JavaScript','React','Node.js','REST API','Git','Docker','CI/CD','Agile','SQL','AWS','TypeScript','APIs','microservices'],
         'data analyst': ['SQL','Python','Tableau','Power BI','Excel','Google Analytics','A/B testing','ETL','data visualization','dashboards','BigQuery','statistical analysis'],
+        'data scientist': ['SQL','Python','Tableau','Power BI','Excel','A/B testing','ETL','data visualization','statistical analysis','machine learning','BigQuery'],
         'marketing manager': ['Google Ads','Meta Ads','SEO','HubSpot','Salesforce','A/B testing','content strategy','email marketing','KPIs','ROI','budget management','campaigns'],
+        'marketing': ['Google Ads','Meta Ads','SEO','HubSpot','Salesforce','A/B testing','content strategy','email marketing','KPIs','ROI','campaigns'],
         'product manager': ['roadmap','OKRs','Agile','stakeholder management','user research','Jira','A/B testing','go-to-market','cross-functional','product strategy','Figma'],
+        'accountant': ['GAAP','IFRS','SOX compliance','reconciliation','QuickBooks','SAP','Oracle','accounts payable','forecasting','audit','CPA','month-end close','Excel'],
+        'teacher': ['differentiated instruction','IEP','classroom management','curriculum development','standardized testing','Google Classroom','social-emotional learning','parent communication','state certification'],
+        'nurse': ['BLS','ACLS','Epic','Cerner','patient charting','medication administration','RN license','care coordination','HIPAA compliance','triage'],
+        'nursing': ['BLS','ACLS','Epic','Cerner','patient charting','medication administration','RN license','care coordination','HIPAA compliance','triage'],
+        'graphic designer': ['Adobe Creative Suite','Photoshop','Illustrator','InDesign','Figma','UI/UX design','typography','branding','print design','logo design'],
+        'designer': ['Adobe Creative Suite','Photoshop','Illustrator','Figma','UI/UX design','typography','branding','print design'],
+        'project manager': ['roadmap','Agile','Scrum','stakeholder management','Jira','budget management','risk management','cross-functional','project planning','Gantt'],
         'default': ['leadership','communication','project management','problem-solving','teamwork','results-driven','analytical','strategic','cross-functional','stakeholder']
     };
     const achievementPatterns = [/\d+%/,/\$\d/,/\d+x/,/\d+ (million|thousand|users|clients|projects)/i,/increased|decreased|reduced|improved|grew|launched|led|managed|delivered/i];
@@ -670,9 +680,17 @@
             const missing=keywords.filter(k=>!resumeLow.includes(k.toLowerCase()));
             const kwScore=Math.round((found.length/keywords.length)*100);
 
-            const sections=['experience','education','skills','summary','profile','work'];
-            const fmtMatches=sections.filter(s=>resumeLow.includes(s)).length;
-            const fmtScore=Math.min(Math.round((fmtMatches/3)*100),100);
+            // Real structural signals an ATS parser actually looks for, not just
+            // whether the word "experience" appears somewhere in the text.
+            const structuralChecks=[
+                /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/.test(resumeText),        // email address
+                /(\+?\d[\d\s().-]{7,}\d)/.test(resumeText),                                // phone number
+                /(19|20)\d{2}\s*[-–—to]{1,4}\s*((19|20)\d{2}|present|current)/i.test(resumeText), // "Month Year - Month Year" style date range
+                ['experience','education','skills'].filter(s=>resumeLow.includes(s)).length>=2, // standard section headers present
+                /(^|\n)\s*[•\-\*]/.test(resumeText) || /\n-\s/.test(resumeText)             // bullet points used
+            ];
+            const fmtMatches=structuralChecks.filter(Boolean).length;
+            const fmtScore=Math.round((fmtMatches/structuralChecks.length)*100);
 
             const achMatches=achievementPatterns.filter(p=>p.test(resumeText)).length;
             const achScore=Math.min(achievementPatterns.length>0?Math.round((achMatches/achievementPatterns.length)*100):50,100);
