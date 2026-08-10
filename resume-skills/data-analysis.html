@@ -12,29 +12,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../nav.css">
     <style>
-        :root{--primary:#6366f1;--text-main:#1e293b;--text-light:#475569;--bg-light:#f8fafc;}
+        :root{--primary:#7A1F2B;--text-main:#14181C;--text-light:#454B52;--bg-light:#F1EFE9;}
         *{margin:0;padding:0;box-sizing:border-box;}
         body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--text-main);line-height:1.7;}
         h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:800;}
-        .page-hero{background:linear-gradient(135deg,#0f172a,#1e293b);padding:140px 20px 80px;text-align:center;color:white;}
-        .page-hero .badge{background:rgba(99,102,241,0.2);color:#a5b4fc;border:1px solid rgba(99,102,241,0.3);padding:8px 18px;border-radius:100px;font-size:0.85rem;font-weight:600;display:inline-block;margin-bottom:20px;}
+        .page-hero{background:linear-gradient(135deg,#0B0E11,#14181C);padding:140px 20px 80px;text-align:center;color:white;}
+        .page-hero .badge{background:rgba(122,31,43,0.2);color:#D9A9AE;border:1px solid rgba(122,31,43,0.3);padding:8px 18px;border-radius:100px;font-size:0.85rem;font-weight:600;display:inline-block;margin-bottom:20px;}
         .page-hero h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.2;max-width:800px;margin:0 auto 20px;}
-        .page-hero p{font-size:1.15rem;color:#94a3b8;max-width:640px;margin:0 auto 36px;}
-        .text-grad{background:linear-gradient(135deg,#6366f1,#8b5cf6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+        .page-hero p{font-size:1.15rem;color:#6B7178;max-width:640px;margin:0 auto 36px;}
+        .text-grad{background:linear-gradient(135deg,#7A1F2B,#A33642);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
         /* Standardized Premium Buttons Inherited */
         .container{max-width:900px;margin:0 auto;padding:0 20px;}
         .section{padding:80px 20px;}
         .section h2{font-size:2rem;margin-bottom:16px;}
         .tag-list{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0;}
-        .tag{background:#e0e7ff;color:#4f46e5;padding:6px 14px;border-radius:100px;font-size:0.85rem;font-weight:600;}
-        .example-box{background:var(--bg-light);border-left:4px solid #6366f1;border-radius:0 12px 12px 0;padding:20px 24px;margin:16px 0;font-style:italic;color:var(--text-light);}
-        .cta-box{background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:24px;padding:60px 40px;text-align:center;color:white;margin:60px 0;}
+        .tag{background:#F1EFE9;color:#591620;padding:6px 14px;border-radius:100px;font-size:0.85rem;font-weight:600;}
+        .example-box{background:var(--bg-light);border-left:4px solid #7A1F2B;border-radius:0 12px 12px 0;padding:20px 24px;margin:16px 0;font-style:italic;color:var(--text-light);}
+        .cta-box{background:linear-gradient(135deg,#7A1F2B,#A33642);border-radius:24px;padding:60px 40px;text-align:center;color:white;margin:60px 0;}
         .cta-box h2{font-size:2rem;margin-bottom:12px;}
         .cta-box p{opacity:0.85;margin-bottom:28px;}
         .cta-box .btn-white{ margin-top: 8px; }
         .breadcrumb{padding:16px 20px;font-size:0.9rem;color:var(--text-light);max-width:900px;margin:0 auto;}
         .breadcrumb a{color:var(--primary);text-decoration:none;}
-        footer{background:#0f172a;color:#94a3b8;text-align:center;padding:40px 20px;font-size:0.9rem;}
+        footer{background:#0B0E11;color:#6B7178;text-align:center;padding:40px 20px;font-size:0.9rem;}
     </style>
 
     <!-- Breadcrumb Schema -->
@@ -122,12 +122,24 @@
             <div class="example-box">"Used Tableau to show team performance."</div>
             <h3>✅ Strong</h3>
             <div class="example-box">"Developed real-time Tableau dashboards for 5 department leads, reducing weekly reporting time by 15 hours and increasing data-driven decision speed by 40%."</div>
+
+            <h2 style="margin-top:48px;">Data Skills Read Differently by Role</h2>
+            <div class="tip-card"><h3>For Marketing</h3><p>Lead with campaign and channel metrics: ROAS, conversion rate, cohort retention. The tool (Google Analytics, GA4) matters less than what you did with what it showed you.</p></div>
+            <div class="tip-card"><h3>For Operations & Finance</h3><p>Lead with process metrics: forecast accuracy, cost variance identified, cycle-time reductions. These roles get screened for spreadsheet fluency plus a specific business outcome.</p></div>
+            <div class="tip-card"><h3>For Product & Engineering</h3><p>Lead with what the analysis changed about a decision — a feature prioritized, a bug's root cause found via query, an experiment's result. SQL and Python are assumed; the decision is the differentiator.</p></div>
+
+            <h2 style="margin-top:48px;">Where Data-Skill Claims Fall Apart</h2>
+            <p>Naming a tool is not the same as showing a skill. "Proficient in Excel and SQL" is a claim; "found and fixed a $140K pricing error using a cohort query" is proof. Reviewers — and increasingly, the ATS keyword matching behind them — respond to the second kind, so keep at least one full example like the ones above instead of a tools list alone.</p>
+
+            <h2 style="margin-top:48px;">How CV Manager AI Helps With This Specifically</h2>
+            <p>The <a href="/app/">CV generator</a> helps translate your actual analysis work into bullet points with a real before/after, not just a tool list. The <a href="/ats-checker.html">ATS checker</a> confirms your Skills section will parse the way you intend. And the <a href="/app/#/tailor-cv">tailoring tool</a> re-weights which examples lead depending on whether the posting is a marketing, operations, or product role.</p>
+
             <div class="cta-box">
                 <h2>Let AI Quantify Your Data Skills</h2>
                 <p>Our AI analyzes your experience and suggests measurable achievement statements that highlight your data analysis capabilities automatically.</p>
                 <a href="/app/" class="btn-premium btn-premium-white">Build My Resume Free →</a>
             </div>
-            <p>Also read: <a href="/ats-checker.html" style="color:var(--primary); font-weight:700;">ATS Score Checker <span style="color:#6366f1;">(Check Score Free)</span></a> | <a href="/resume/data-analyst.html" style="color:var(--primary);">Data Analyst Resume Guide</a> | <a href="/resume-skills/project-management.html" style="color:var(--primary);">Project Management Skills</a></p>
+            <p>Also read: <a href="/ats-checker.html" style="color:var(--primary); font-weight:700;">ATS Score Checker (Check Score Free)</a> | <a href="/resume/data-analyst.html" style="color:var(--primary);">Data Analyst Resume Guide</a> | <a href="/resume-skills/leadership.html" style="color:var(--primary);">Leadership Skills</a></p>
         </div>
     </div>
     <footer class="footer">
@@ -143,7 +155,7 @@
                     <li><a href="/app/#/generate-cv" title="Generate Free CV with AI">Generate Free CV with AI</a></li>
                     <li><a href="/app/#/optimize-cv" title="Optimize CV using AI">Optimize CV with AI</a></li>
                     <li><a href="/app/#/tailor-cv" title="Tailor CV to Job Description">Tailor AI Resume</a></li>
-                    <li><a href="/ats-checker.html" title="Check ATS Score Free">Free ATS Score Checker <span style="color: #6366f1; font-weight: 700;">(Check Score Free)</span></a></li>
+                    <li><a href="/ats-checker.html" title="Check ATS Score Free">Free ATS Score Checker <span style="color: #7A1F2B; font-weight: 700;">(Check Score Free)</span></a></li>
                     <li><a href="/app/#/generate-cover-letter" title="AI Cover Letter Generator">Create AI Cover
                             Letter</a></li>
                 </ul>
@@ -179,7 +191,7 @@
             <div class="footer-col">
                 <h4>Resume Skills</h4>
                 <ul>
-                    <li><a href="/resume-skills/project-management.html">Project Management</a></li>
+                    <li><a href="/resume-skills/leadership.html">Leadership</a></li>
                     <li><a href="/resume-skills/communication.html">Communication</a></li>
                     <li><a href="/resume-skills/data-analysis.html">Data Analysis</a></li>
                     <li><a href="/blog/top-action-verbs-for-cv.html">Action Verbs</a></li>

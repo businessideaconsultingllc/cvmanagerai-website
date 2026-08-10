@@ -28,14 +28,14 @@
     <style>
         *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
         :root{
-            --primary:#6366f1;
-            --primary-dark:#4f46e5;
-            --primary-glow:rgba(99,102,241,0.25);
-            --accent:#8b5cf6;
-            --bg:#f8fafc;
-            --text:#1e293b;
-            --muted:#475569;
-            --border:#e2e8f0;
+            --primary:#7A1F2B;
+            --primary-dark:#591620;
+            --primary-glow:rgba(122,31,43,0.25);
+            --accent:#A33642;
+            --bg:#F1EFE9;
+            --text:#14181C;
+            --muted:#454B52;
+            --border:#E4E1DA;
             --win:#10b981;
             --warn:#f59e0b;
             --lose:#ef4444;
@@ -44,7 +44,7 @@
 
         /* ── HERO ── */
         .ats-hero{
-            background:linear-gradient(135deg,#0f0c29,#1e1b4b 40%,#0f172a);
+            background:linear-gradient(135deg,#0f0c29,#14181C 40%,#0B0E11);
             padding:130px 20px 90px;
             text-align:center;
             position:relative;
@@ -52,11 +52,11 @@
         }
         .ats-hero::before{
             content:'';position:absolute;inset:0;
-            background:radial-gradient(ellipse 900px 500px at 50% -10%,rgba(99,102,241,0.4) 0%,transparent 70%);
+            background:radial-gradient(ellipse 900px 500px at 50% -10%,rgba(122,31,43,0.4) 0%,transparent 70%);
         }
         .ats-hero::after{
             content:'';position:absolute;inset:0;
-            background:radial-gradient(ellipse 400px 400px at 80% 80%,rgba(139,92,246,0.15) 0%,transparent 60%);
+            background:radial-gradient(ellipse 400px 400px at 80% 80%,rgba(163,54,66,0.15) 0%,transparent 60%);
         }
         .hero-badge{
             display:inline-flex;align-items:center;gap:8px;
@@ -77,7 +77,7 @@
             -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
         }
         .hero-sub{
-            font-size:1.15rem;color:#94a3b8;max-width:560px;margin:0 auto 48px;
+            font-size:1.15rem;color:#6B7178;max-width:560px;margin:0 auto 48px;
             position:relative;z-index:1;line-height:1.6;
         }
         .hero-stats{
@@ -86,18 +86,18 @@
         }
         .hero-stat{text-align:center;}
         .hero-stat-num{font-size:1.8rem;font-weight:800;color:white;line-height:1;}
-        .hero-stat-label{font-size:0.78rem;color:#64748b;text-transform:uppercase;letter-spacing:0.06em;margin-top:4px;}
+        .hero-stat-label{font-size:0.78rem;color:#6B7178;text-transform:uppercase;letter-spacing:0.06em;margin-top:4px;}
         .hero-divider{width:1px;height:40px;background:rgba(255,255,255,0.1);}
 
         /* ── TOOL CARD ── */
         .tool-wrapper{max-width:860px;margin:-50px auto 80px;padding:0 20px;position:relative;z-index:10;}
         .tool-card{
             background:white;border-radius:28px;
-            box-shadow:0 30px 80px rgba(0,0,0,0.12),0 0 0 1px rgba(99,102,241,0.08);
+            box-shadow:0 30px 80px rgba(0,0,0,0.12),0 0 0 1px rgba(122,31,43,0.08);
             overflow:hidden;
         }
         .tool-card-header{
-            background:linear-gradient(135deg,#f8fafc,#f1f5f9);
+            background:linear-gradient(135deg,#F1EFE9,#f1f5f9);
             border-bottom:1px solid var(--border);
             padding:24px 36px;
             display:flex;align-items:center;gap:12px;
@@ -122,7 +122,7 @@
         }
         .field-label .label-icon{
             width:26px;height:26px;border-radius:8px;
-            background:linear-gradient(135deg,rgba(99,102,241,0.12),rgba(139,92,246,0.12));
+            background:linear-gradient(135deg,rgba(122,31,43,0.12),rgba(163,54,66,0.12));
             display:flex;align-items:center;justify-content:center;font-size:0.8rem;
         }
         .field-label .label-badge{
@@ -141,12 +141,12 @@
             border-color:var(--primary);
             box-shadow:0 0 0 4px var(--primary-glow);
         }
-        .field-input::placeholder{color:#94a3b8;}
+        .field-input::placeholder{color:#6B7178;}
         .field-textarea{
             resize:vertical;min-height:220px;line-height:1.6;
         }
         .char-count{
-            text-align:right;font-size:0.78rem;color:#94a3b8;margin-top:6px;
+            text-align:right;font-size:0.78rem;color:#6B7178;margin-top:6px;
         }
 
         /* ── ANALYZE BUTTON ── */
@@ -157,13 +157,13 @@
             font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;
             cursor:pointer;transition:all 0.3s ease;
             display:flex;align-items:center;justify-content:center;gap:10px;
-            box-shadow:0 8px 24px rgba(99,102,241,0.3);
+            box-shadow:0 8px 24px rgba(122,31,43,0.3);
             margin-top:8px;
         }
-        .btn-analyze:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(99,102,241,0.4);}
+        .btn-analyze:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(122,31,43,0.4);}
         .btn-analyze:active{transform:translateY(0);}
         .btn-analyze:disabled{
-            background:linear-gradient(135deg,#94a3b8,#64748b);
+            background:linear-gradient(135deg,#6B7178,#6B7178);
             cursor:not-allowed;transform:none;box-shadow:none;
         }
         .btn-analyze .btn-icon{font-size:1.2rem;animation:none;}
@@ -232,16 +232,16 @@
 
         /* CTA BOX */
         .cta-box{
-            background:linear-gradient(135deg,#0f172a,#1e1b4b);
+            background:linear-gradient(135deg,#0B0E11,#14181C);
             border-radius:20px;padding:36px;text-align:center;
             position:relative;overflow:hidden;
         }
         .cta-box::before{
             content:'';position:absolute;inset:0;
-            background:radial-gradient(ellipse 500px 300px at 50% 0%,rgba(99,102,241,0.3) 0%,transparent 70%);
+            background:radial-gradient(ellipse 500px 300px at 50% 0%,rgba(122,31,43,0.3) 0%,transparent 70%);
         }
         .cta-box h3{font-size:1.5rem;font-weight:800;color:white;margin-bottom:10px;position:relative;z-index:1;}
-        .cta-box p{color:#94a3b8;font-size:0.95rem;margin-bottom:24px;position:relative;z-index:1;}
+        .cta-box p{color:#6B7178;font-size:0.95rem;margin-bottom:24px;position:relative;z-index:1;}
         .btn-cta{
             display:inline-block;padding:14px 32px;
             background:linear-gradient(135deg,var(--primary),var(--accent));
@@ -249,7 +249,7 @@
             font-weight:700;font-size:1rem;transition:all 0.3s;
             position:relative;z-index:1;
         }
-        .btn-cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(99,102,241,0.4);}
+        .btn-cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(122,31,43,0.4);}
 
         /* ── HOW IT WORKS ── */
         .section-wrap{max-width:860px;margin:0 auto 80px;padding:0 20px;}
@@ -289,7 +289,7 @@
             cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;
             transition:background 0.15s;
         }
-        .faq-q:hover{background:#f8fafc;}
+        .faq-q:hover{background:#F1EFE9;}
         .faq-q .faq-arrow{font-size:1rem;color:var(--primary);flex-shrink:0;transition:transform 0.2s;}
         .faq-q.open .faq-arrow{transform:rotate(180deg);}
         .faq-a{padding:0 24px;max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s;}
@@ -298,16 +298,16 @@
         .faq-a a{color:var(--primary);font-weight:600;text-decoration:none;}
 
         /* ── FOOTER ── */
-        footer.footer{background:#0f172a;padding:60px 20px 30px;}
+        footer.footer{background:#0B0E11;padding:60px 20px 30px;}
         .footer-inner{max-width:1000px;margin:0 auto;}
         .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:40px;margin-bottom:40px;}
         .footer-col h4{color:white;font-weight:600;margin-bottom:14px;font-size:0.9rem;}
-        .footer-col a{display:block;color:#475569;text-decoration:none;margin-bottom:9px;font-size:0.85rem;transition:color 0.2s;}
+        .footer-col a{display:block;color:#454B52;text-decoration:none;margin-bottom:9px;font-size:0.85rem;transition:color 0.2s;}
         .footer-col a:hover{color:white;}
         .footer-logo-link{color:white!important;font-weight:800;font-size:1.15rem!important;}
         .footer-col p{font-size:0.85rem;line-height:1.5;color:#334155;margin-top:8px;}
-        .footer-bottom{padding-top:24px;border-top:1px solid #1e293b;font-size:0.82rem;color:#334155;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-        .footer-bottom a{color:#475569;text-decoration:none;}
+        .footer-bottom{padding-top:24px;border-top:1px solid #14181C;font-size:0.82rem;color:#334155;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+        .footer-bottom a{color:#454B52;text-decoration:none;}
         .footer-bottom a:hover{color:white;}
 
         @media(max-width:640px){
@@ -436,7 +436,7 @@
                                 <div class="bar-label"><span class="bar-label-icon">🔑</span> Keyword Match</div>
                                 <div class="bar-pct" id="kwPct">0%</div>
                             </div>
-                            <div class="bar-track"><div class="bar-fill" id="kwBar" style="background:linear-gradient(90deg,#6366f1,#8b5cf6)"></div></div>
+                            <div class="bar-track"><div class="bar-fill" id="kwBar" style="background:linear-gradient(90deg,#7A1F2B,#A33642)"></div></div>
                         </div>
                         <div class="bar-item">
                             <div class="bar-header">
@@ -645,7 +645,7 @@
         const txt=document.getElementById('resume-text').value;
         const el=document.getElementById('charCount');
         el.textContent=txt.length+' characters';
-        el.style.color=txt.length>200?'#059669':'#94a3b8';
+        el.style.color=txt.length>200?'#059669':'#6B7178';
     }
 
     function toggleFaq(el){
@@ -727,7 +727,7 @@
 
             const foundEl=document.getElementById('foundKw');
             const missingEl=document.getElementById('missingKw');
-            foundEl.innerHTML=found.length?found.map(k=>`<span class="kw-pill kw-found">✓ ${k}</span>`).join(''):'<span style="color:#64748b;font-size:.9rem;">No matching keywords detected — try a more specific job title.</span>';
+            foundEl.innerHTML=found.length?found.map(k=>`<span class="kw-pill kw-found">✓ ${k}</span>`).join(''):'<span style="color:#6B7178;font-size:.9rem;">No matching keywords detected — try a more specific job title.</span>';
             missingEl.innerHTML=missing.slice(0,8).map(k=>`<span class="kw-pill kw-missing">+ ${k}</span>`).join('');
 
             btn.disabled=false;

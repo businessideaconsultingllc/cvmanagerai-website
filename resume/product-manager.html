@@ -12,27 +12,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../nav.css">
     <style>
-        :root{--primary:#6366f1;--text-main:#1e293b;--text-light:#475569;--bg-light:#f8fafc;}
+        :root{--primary:#7A1F2B;--text-main:#14181C;--text-light:#454B52;--bg-light:#F1EFE9;}
         *{margin:0;padding:0;box-sizing:border-box;}
         body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--text-main);line-height:1.7;}
         h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:800;}
-        .page-hero{background:linear-gradient(135deg,#0f172a,#1e293b);padding:140px 20px 80px;text-align:center;color:white;}
+        .page-hero{background:linear-gradient(135deg,#0B0E11,#14181C);padding:140px 20px 80px;text-align:center;color:white;}
         .container{max-width:900px;margin:0 auto;padding:0 20px;}
         .section{padding:80px 20px;}
         .section h2{font-size:2rem;margin-bottom:16px;}
         .tag-list{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0;}
-        .tag{background:#e0e7ff;color:#4f46e5;padding:6px 14px;border-radius:100px;font-size:0.85rem;font-weight:600;}
-        .resume-snippet{background:#0f172a;color:#e2e8f0;padding:32px;border-radius:16px;font-family:monospace;font-size:0.9rem;line-height:1.9;margin:24px 0;border-left:4px solid #6366f1;}
-        .resume-snippet .label{color:#a5b4fc;font-weight:700;}
-        .tip-card{background:var(--bg-light);border:1px solid #e2e8f0;border-radius:16px;padding:24px;margin:16px 0;}
-        .cta-box{background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:24px;padding:60px 40px;text-align:center;color:white;margin:60px 0;}
+        .tag{background:#F1EFE9;color:#591620;padding:6px 14px;border-radius:100px;font-size:0.85rem;font-weight:600;}
+        .resume-snippet{background:#0B0E11;color:#E4E1DA;padding:32px;border-radius:16px;font-family:monospace;font-size:0.9rem;line-height:1.9;margin:24px 0;border-left:4px solid #7A1F2B;}
+        .resume-snippet .label{color:#D9A9AE;font-weight:700;}
+        .tip-card{background:var(--bg-light);border:1px solid #E4E1DA;border-radius:16px;padding:24px;margin:16px 0;}
+        .cta-box{background:linear-gradient(135deg,#7A1F2B,#A33642);border-radius:24px;padding:60px 40px;text-align:center;color:white;margin:60px 0;}
         .cta-box h2{font-size:2rem;margin-bottom:12px;}
         .cta-box p{opacity:0.85;margin-bottom:28px;}
         .cta-box .btn-white{ margin-top: 8px; }
         .breadcrumb{padding:16px 20px;font-size:0.9rem;color:var(--text-light);max-width:900px;margin:0 auto;}
         .breadcrumb a{color:var(--primary);text-decoration:none;}
-        footer{background:#0f172a;color:#94a3b8;text-align:center;padding:40px 20px;font-size:0.9rem;}
-        footer a{color:#6366f1;text-decoration:none;}
+        footer{background:#0B0E11;color:#6B7178;text-align:center;padding:40px 20px;font-size:0.9rem;}
+        footer a{color:#7A1F2B;text-decoration:none;}
     </style>
 
     <!-- Breadcrumb Schema -->
@@ -128,12 +128,21 @@
             <div class="tip-card"><h3>2. Show scope and scale</h3><p>Mention DAU, MAU, revenue, or team size. "Managed product serving 1M users" is far more compelling than "managed product."</p></div>
             <div class="tip-card"><h3>3. Include technical fluency signals</h3><p>List SQL, APIs, or analytics tools. Modern PMs are expected to be data-fluent; showing this wins over ATS and interviewers.</p></div>
             <div class="tip-card"><h3>4. Quantify your GTM launches</h3><p>For each shipped product, include a metric: adoption rate, revenue contribution, or NPS improvement.</p></div>
+
+            <h2 style="margin-top:48px;">Where PM Resumes Lose Reviewers</h2>
+            <div class="tip-card"><h3>Sounding like an engineer's job description</h3><p>Listing every tool you touched (Jira, Figma, SQL) without a decision you made or a tradeoff you owned reads as adjacent-to-product, not product. Reviewers are looking for judgment, not tool familiarity.</p></div>
+            <div class="tip-card"><h3>No visible "why" behind the roadmap</h3><p>"Owned the roadmap" says nothing about how you prioritized. One line on how you weighed a tradeoff — user research vs. a sales ask, for instance — shows the actual skill PM interviews screen for.</p></div>
+            <div class="tip-card"><h3>0-to-1 and growth-stage experience blurred together</h3><p>These are genuinely different jobs. A resume that doesn't distinguish which stage each role was at makes it hard for a hiring manager to tell if you fit what they're actually hiring for right now.</p></div>
+
+            <h2 style="margin-top:48px;">How CV Manager AI Helps With This Specifically</h2>
+            <p>The <a href="/app/">CV generator</a> helps translate your actual product decisions into bullet points that show judgment, not just task lists. The <a href="/ats-checker.html">ATS checker</a> catches formatting that would otherwise get your resume auto-filtered before a human sees it. And the <a href="/app/#/tailor-cv">tailoring tool</a> re-emphasizes 0-to-1 vs. growth-stage language depending on what a specific job posting is asking for.</p>
+
             <div class="cta-box">
                 <h2>Ready to Build Your PM Resume?</h2>
                 <p>AI-generated bullet points tailored for product roles. Free, instant, no credit card needed.</p>
                 <a href="/app/" class="btn-premium btn-premium-primary">Build My PM Resume Free →</a>
             </div>
-            <p>Also read: <a href="/resume/software-engineer.html" style="color:var(--primary);">Software Engineer Resume</a> | <a href="/ats-checker.html" style="color:var(--primary); font-weight:700;">ATS Score Checker <span style="color:#6366f1;">(Check Score Free)</span></a> | <a href="/blog/why-ats-rejects-resumes.html" style="color:var(--primary);">Why ATS Rejects Resumes</a></p>
+            <p>Also read: <a href="/resume/software-engineer.html" style="color:var(--primary);">Software Engineer Resume</a> | <a href="/ats-checker.html" style="color:var(--primary); font-weight:700;">ATS Score Checker <span style="color:#7A1F2B;">(Check Score Free)</span></a> | <a href="/blog/why-ats-rejects-resumes.html" style="color:var(--primary);">Why ATS Rejects Resumes</a></p>
         </div>
     </div>
     <footer class="footer">
@@ -149,7 +158,7 @@
                     <li><a href="/app/#/generate-cv" title="Generate Free CV with AI">Generate Free CV with AI</a></li>
                     <li><a href="/app/#/optimize-cv" title="Optimize CV using AI">Optimize CV with AI</a></li>
                     <li><a href="/app/#/tailor-cv" title="Tailor CV to Job Description">Tailor AI Resume</a></li>
-                    <li><a href="/ats-checker.html" title="Check ATS Score Free">Free ATS Score Checker <span style="color: #6366f1; font-weight: 700;">(Check Score Free)</span></a></li>
+                    <li><a href="/ats-checker.html" title="Check ATS Score Free">Free ATS Score Checker <span style="color: #7A1F2B; font-weight: 700;">(Check Score Free)</span></a></li>
                     <li><a href="/app/#/generate-cover-letter" title="AI Cover Letter Generator">Create AI Cover
                             Letter</a></li>
                 </ul>
@@ -185,7 +194,7 @@
             <div class="footer-col">
                 <h4>Resume Skills</h4>
                 <ul>
-                    <li><a href="/resume-skills/project-management.html">Project Management</a></li>
+                    <li><a href="/resume-skills/leadership.html">Leadership</a></li>
                     <li><a href="/resume-skills/communication.html">Communication</a></li>
                     <li><a href="/resume-skills/data-analysis.html">Data Analysis</a></li>
                     <li><a href="/blog/top-action-verbs-for-cv.html">Action Verbs</a></li>
