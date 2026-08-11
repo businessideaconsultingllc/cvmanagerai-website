@@ -80,20 +80,34 @@
 
     <div class="content-container" style="max-width: 900px; margin: -60px auto 80px; padding: 50px; background: white; border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); text-align: left; line-height: 1.8; position: relative; z-index: 10;">
         
-        <h2 style="font-size: 2.2rem; color: var(--text-dark); margin-bottom: 24px;">Why You Are Being Ignored</h2>
-        <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 32px;">You applied for 50 jobs this month. You have exactly the qualifications they asked for. Yet, you received zero interviews. Why? Because a human never actually saw your resume. Applicant Tracking Systems (ATS) automatically filter out candidates who do not perfectly match their hidden keyword criteria or who use non-standard file formats.</p>
+        <h2 style="font-size: 2.2rem; color: var(--text-dark); margin-bottom: 24px;">Why Qualified Applicants Get Filtered Out</h2>
+        <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 32px;">You applied for 50 jobs this month, you match the requirements, and you heard nothing back. Often the reason isn't your experience — it's that a human never read the document. Most mid-size and large employers run applications through an Applicant Tracking System first, and a resume that the software can't parse cleanly, or that doesn't contain the terminology the posting used, can be ranked out before anyone sees it.</p>
 
-        <h2 style="font-size: 2.2rem; color: var(--text-dark); margin-bottom: 24px; margin-top: 50px;">How CV Manager AI Helps You</h2>
-        <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 32px;"><strong>CV Manager AI</strong> was built specifically to defeat aggressive ATS filters. Our <strong>AI resume builder</strong> reverse-engineers the algorithms used by platforms like Workday, Taleo, and Greenhouse. We structure your PDF to maintain perfect document hierarchy, and our AI automatically injects the exact hard skills and metrics necessary to trigger a high algorithmic score.</p>
+        <h2 style="font-size: 2.2rem; color: var(--text-dark); margin-bottom: 24px; margin-top: 50px;">What Actually Breaks ATS Parsing</h2>
+        <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 24px;">These are the specific, mechanical failures that cost people interviews:</p>
+        <div style="background: #F1EFE9; padding: 24px 28px; border-radius: 16px; margin-bottom: 16px;"><strong>Multi-column layouts.</strong> A parser reads left-to-right, top-to-bottom. Two columns often get merged into nonsense — "Experience: Google" beside "Skills: Python" becomes one garbled line, breaking both entries.</div>
+        <div style="background: #F1EFE9; padding: 24px 28px; border-radius: 16px; margin-bottom: 16px;"><strong>Text inside images, tables, or text boxes.</strong> If your name and contact details sit in a header graphic or a table cell, many systems simply won't extract them — and a candidate record with no email is a dead record.</div>
+        <div style="background: #F1EFE9; padding: 24px 28px; border-radius: 16px; margin-bottom: 16px;"><strong>Creative section headings.</strong> "My Journey" and "What I Bring" don't map to the fields the software expects. "Work Experience," "Education," and "Skills" do.</div>
+        <div style="background: #F1EFE9; padding: 24px 28px; border-radius: 16px; margin-bottom: 32px;"><strong>Inconsistent or missing dates.</strong> Parsers look for a recognizable date-range pattern to build your work history. Mixed formats across roles can produce gaps that aren't really there.</div>
+
+        <h2 style="font-size: 2.2rem; color: var(--text-dark); margin-bottom: 24px; margin-top: 50px;">How CV Manager AI Handles This</h2>
+        <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 32px;">Every CV the generator produces uses a single-column layout with standard section headings, consistent "Month Year – Month Year" dates, real selectable text rather than images, and simple hyphen bullets — so there's no column order to get wrong and nothing for a parser to choke on. Bullet points are written to lead with an action verb and include a measurable result, which is also what makes them read well to the human who sees them next.</p>
+
+        <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 32px;">For keyword matching, the <a href="/app/#/tailor-cv" style="color:var(--primary);">tailoring tool</a> takes a specific job description and adjusts which of your real skills and phrasing get foregrounded, so your CV speaks the same vocabulary as the posting. And the <a href="/ats-checker.html" style="color:var(--primary);">free ATS checker</a> lets you scan any resume — ours or one you already have — for missing keywords and formatting problems before you submit it.</p>
+
+        <h2 style="font-size: 2.2rem; color: var(--text-dark); margin-bottom: 24px; margin-top: 50px;">What We Don't Claim</h2>
+        <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 32px;">No tool has access to the internal scoring logic of Workday, Taleo, Greenhouse, or any other ATS — those systems are proprietary and configured differently by every employer that uses them. Anyone promising a guaranteed score against a named platform is guessing. What genuinely helps is universal: clean structure a parser can read, standard headings, and the actual terminology from the job description. That's what we build for, and it's a real advantage — just not a magic one.</p>
 
         <div style="background: #F1EFE9; padding: 40px; border-radius: 20px; border-left: 5px solid var(--primary); margin: 50px 0;">
              <h3 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 20px;">Key Benefits & Features</h3>
              <ul style="color: var(--text-dark); font-size: 1.1rem; padding-left: 20px; line-height: 1.6;">
-                 <li><strong>Keyword Matching Engine:</strong> Automatically detects missing abilities and suggests them.</li><li style='margin-top: 10px;'><strong>Clean Data Structure:</strong> No complex tables or merged cells that break parsers.</li><li style='margin-top: 10px;'><strong>Free ATS Checker:</strong> Verify your exact score before you hit the submit button.</li>
+                 <li><strong>Single-Column by Default:</strong> No column order for a parser to misread.</li><li style='margin-top: 10px;'><strong>Standard Section Headings:</strong> Maps to the fields ATS software expects.</li><li style='margin-top: 10px;'><strong>Selectable Text, Not Images:</strong> Everything extractable, including your contact details.</li><li style='margin-top: 10px;'><strong>Free ATS Checker:</strong> Scan any resume for keyword gaps and formatting issues before submitting.</li>
              </ul>
         </div>
 
-        <div style="text-align: center; margin-top: 80px;">
+        <p style="font-size: 1.05rem; color: var(--text-muted);">Related: <a href="/blog/why-ats-rejects-resumes.html" style="color:var(--primary);">Why ATS Rejects Resumes</a> · <a href="/blog/how-to-optimize-resume-for-ats.html" style="color:var(--primary);">How to Optimize Your Resume for ATS</a> · <a href="/ats-checker.html" style="color:var(--primary);">Free ATS Checker</a></p>
+
+        <div style="text-align: center; margin-top: 60px;">
              <a href="/app/" class="btn-premium btn-premium-primary" style="font-size: 1.2rem; padding: 18px 44px; display: inline-block;">Try ATS Optimization Now →</a>
              <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 15px;">Free to start. No credit card required.</p>
         </div>
